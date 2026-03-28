@@ -35,34 +35,37 @@
             <thead cTableColor="light1">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">Base Currency</th>
-                <th scope="col">Target Currency</th>
-                <th scope="col">Rate</th>
+                <th scope="col">Project</th>
+                <th scope="col">Submission Type</th>
+                <th scope="col">Investor</th>
+                <th scope="col">Consultant</th>
+                <th scope="col">Status</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <!-- <tr>
-                <td>1</td>
-                <td>Joe Doe</td>
-                <td>JD</td>
-                <td>11/03/2023</td>
-              </tr> -->
               <tr *ngFor="let item of mSolutionDefinitions; index as i">
-                <td>{{this.mPageFrom+i}}.</td>
-                <td>{{item.date|date:'dd/MM/yyyy'}}</td>
-                <td>{{item.base_currency.name}} ({{item.base_currency.code}})</td>
-                <td>{{item.target_currency.name}} ({{item.target_currency.code}})</td>
-                <td>{{item.rate}}</td>
-                <td>{{item.created_at|date}}</td>
+                <td>{{ this.mPageFrom+i }}.</td>
+                <td>{{ item.project_brief }}</td>
+                <td>
+                  <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.plan_submission_type_id==1,'bg-secondary':item.plan_submission_type_id==2, 'bg-success':item.plan_submission_type_id==3, 'bg-danger':item.plan_submission_type_id==4,'bg-warning text-dark':item.status_id==5,'bg-info':item.plan_submission_type_id==6,'bg-dark':item.plan_submission_type_id==7}">
+                    {{ item.type?.name }}
+                  </span>
+                </td>
+                <td>{{ item.investor.name }}</td>
+                <td>{{ item.consultant.name }}</td>
+                <td>
+                  <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.status_id==1,'bg-warning text-dark':item.status_id==2, 'bg-secondary':item.status_id==3, 'bg-info text-dark':item.status_id==4,'bg-light text-dark':item.status_id==5,'bg-dark':item.status_id==6,'bg-white  text-dark':item.status_id==7,'bg-danger':item.status_id==8, 'bg-success':item.status_id==9}">
+                    {{ item.status?.name }}
+                  </span>
+                </td>
+                <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">
-                    <button type="button" cButton color="dark" variant="outline" size="sm"><span class="cil-low-vision btn-icon"></span></button>
-                    <!-- <button (click)="onShow(item)" type="button" cButton color="dark" variant="outline" size="sm"><span class="cil-low-vision btn-icon"></span></button>
-                    <button (click)="onEdit(item)" type="button" cButton color="dark" size="sm"><span class="cil-pencil btn-icon"></span></button>
-                    <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><span class="cil-trash btn-icon"></span></button> -->
+                    <a routerLink="/plan-submissions/show/{{item.id}}" cButton color="dark" variant="outline" size="sm"><svg cIcon name="cilLowVision" class="btn-icon"></svg></a>
+                    <a routerLink="/plan-submissions/edit/{{item.id}}" cButton color="dark" size="sm"><svg cIcon name="cilPencil" class="btn-icon"></svg></a>
+                    <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><svg cIcon name="cilTrash" class="btn-icon"></svg></button>
                   </div>
                 </td>
               </tr>

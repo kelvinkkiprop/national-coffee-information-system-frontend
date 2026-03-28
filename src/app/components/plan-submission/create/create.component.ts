@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { PlanSubmissionService } from '../../../services/plan-submission.service';
-import { AppContextService } from '../../../core/app-context.service';
 import { ToastrService } from 'ngx-toastr';
+import { AppContextService } from '../../../core/app-context.service';
+import { PlanSubmissionService } from '../../../services/plan-submission.service';
 import { ProfileService } from '../../../services/profile.service';
-
 
 @Component({
   selector: 'app-create',
@@ -18,55 +17,29 @@ import { ProfileService } from '../../../services/profile.service';
 export class CreateComponent {
 
   // variables
-  investor_id?: any
-  plan_submission_type_id?: any
-
-  professional_body_id?: any
-  membership_number?: any
-  consultant_name?: any
-  address?: any
-  email?: any
-  citizenship?: any
-  project_brief?: any
-
-  context_analysis?: any
-
-  concept_plan?: any
-  geotechnical_report?: any
-  topographical_survey?: any
-
-  parking_strategy?: any
-  traffic_management_plan?: any
-
-  estimated_utility_demand_requirements?: any
-
-  project_sustainability_brief?: any
-  green_certification_id?: any
-  other_green_certification?: any
-  sustainability_report?: any
-
-  require_variations?: any
-  estimated_project_duration?: any
-  estimated_project_construction_cost?: any
-  commitment_to_comply_with_development_codes_and_guidelines?: any
-
-
-  status_id?: any
-
-
-  mInvestors:any
+  mInvestors:any;
   mProfessionalBodies:any;
   mPlanSubmissionTypes:any;
   mGreenCertifications:any;
 
-  public mEditor: any = ClassicEditor;
-
   itemForm:any
   mProgress = signal(false);
 
-  mProfessionalStatus:any
-  mProfessionalGoodStanding:any
-  mProfessionalBalanceReason:any
+  mProfessionalStatus:any;
+  mProfessionalGoodStanding:any;
+  mProfessionalBalanceReason:any;
+
+  public mEditor: any = ClassicEditor;
+
+  context_analysis_file:any;
+  concept_plan_file:any;
+  geotechnical_report_file:any;
+  topographical_survey_file:any;
+  parking_strategy_file:any;
+  traffic_management_plan_file:any;
+  estimated_utility_demand_requirements_file:any;
+  sustainability_report_file:any;
+
 
   constructor(
     private mPlanSubmissionService: PlanSubmissionService,
@@ -74,79 +47,45 @@ export class CreateComponent {
     private router: Router,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
-  ) { }
+    private fb: FormBuilder
+  ) {
+    // validation
+    this.itemForm = this.fb.group({
+      investor_id: ['', Validators.required],
+      plan_submission_type_id: ['', Validators.required],
+
+      professional_body_id: ['', Validators.nullValidator],
+      membership_number: ['', [Validators.nullValidator, Validators.minLength(9)]],
+      consultant_name: ['', Validators.nullValidator],
+      address: ['', Validators.nullValidator],
+      email: ['', Validators.nullValidator],
+      citizenship: ['', Validators.nullValidator],
+
+      project_brief: ['', Validators.required],
+      project_purpose: ['', Validators.required],
+
+      context_analysis: ['', Validators.nullValidator],
+      concept_plan: ['', Validators.nullValidator],
+      geotechnical_report: ['', Validators.nullValidator],
+      topographical_survey: ['', Validators.nullValidator],
+      parking_strategy: ['', Validators.nullValidator],
+      traffic_management_plan: ['', Validators.nullValidator],
+      estimated_utility_demand_requirements: ['', Validators.nullValidator],
+
+      project_sustainability_brief: ['', Validators.required],
+      green_certification_id: ['', Validators.required],
+      other_green_certification: ['', Validators.nullValidator],
+      sustainability_report: ['', Validators.nullValidator],
+
+      require_variations: ['', Validators.required],
+      estimated_project_duration: ['', Validators.required],
+      estimated_project_construction_cost: ['', Validators.required],
+      commitment_to_comply_with_development_codes_and_guidelines : [false, Validators.requiredTrue],
+    });
+
+   }
 
   ngOnInit(): void {
-
-    // validation
-    this.investor_id = new FormControl('', Validators.required);
-    this.plan_submission_type_id = new FormControl('', Validators.required);
-
-    this.professional_body_id = new FormControl('', Validators.required);
-    this.membership_number = new FormControl('', Validators.required);
-    this.consultant_name = new FormControl('', Validators.required);
-    this.address = new FormControl('', Validators.required);
-    this.email = new FormControl('', Validators.required);
-    this.citizenship = new FormControl('', Validators.required);
-    this.project_brief = new FormControl('', Validators.required);
-
-    this.context_analysis = new FormControl('', Validators.nullValidator);
-
-    this.concept_plan = new FormControl('', Validators.nullValidator);
-    this.geotechnical_report = new FormControl('', Validators.nullValidator);
-    this.topographical_survey = new FormControl('', Validators.nullValidator);
-
-    this.parking_strategy = new FormControl('', Validators.nullValidator);
-    this.traffic_management_plan = new FormControl('', Validators.nullValidator);
-
-    this.project_sustainability_brief = new FormControl('', Validators.nullValidator);
-    this.green_certification_id = new FormControl('', Validators.required);
-    this.other_green_certification = new FormControl('', Validators.nullValidator);
-    this.sustainability_report = new FormControl('', Validators.nullValidator);
-
-    this.estimated_utility_demand_requirements = new FormControl('', Validators.nullValidator);
-
-    this.require_variations = new FormControl('', Validators.required);
-    this.estimated_project_duration = new FormControl('', Validators.required);
-    this.estimated_project_construction_cost = new FormControl('', Validators.required);
-    this.commitment_to_comply_with_development_codes_and_guidelines = new FormControl( false, Validators.requiredTrue);
-
-    this.itemForm = new FormGroup({
-      investor_id: this.investor_id,
-      plan_submission_type_id: this.plan_submission_type_id,
-
-
-      professional_body_id: this.professional_body_id,
-      membership_number: this.membership_number,
-      consultant_name: this.consultant_name,
-      address: this.address,
-      email: this.email,
-      citizenship: this.citizenship,
-      project_brief: this.project_brief,
-
-
-      context_analysis: this.context_analysis,
-
-      concept_plan: this.concept_plan,
-      geotechnical_report: this.geotechnical_report,
-      topographical_survey: this.topographical_survey,
-
-      parking_strategy: this.parking_strategy,
-      traffic_management_plan: this.traffic_management_plan,
-
-      estimated_utility_demand_requirements: this.estimated_utility_demand_requirements,
-
-      project_sustainability_brief: this.project_sustainability_brief,
-      green_certification_id: this.green_certification_id,
-      other_green_certification: this.other_green_certification,
-      sustainability_report: this.sustainability_report,
-
-      require_variations: this.require_variations,
-      estimated_project_duration: this.estimated_project_duration,
-      estimated_project_construction_cost: this.estimated_project_construction_cost,
-      commitment_to_comply_with_development_codes_and_guidelines: this.commitment_to_comply_with_development_codes_and_guidelines,
-
-    })
     // Call
     this.loadUnpaginatedItems();
   }
@@ -174,16 +113,49 @@ export class CreateComponent {
 
   }
 
-  //onSubmit
+  // onSubmit
   onSubmit(formValues: any){
-    // console.log(formValues);
+    let formData:any = new FormData();
+    formData.append('investor_id', formValues.investor_id);
+    formData.append('plan_submission_type_id', formValues.plan_submission_type_id);
+    formData.append('professional_body_id', formValues.professional_body_id);
+    formData.append('membership_number', formValues.membership_number);
+    formData.append('consultant_name', formValues.consultant_name);
+    formData.append('address', formValues.address);
+    formData.append('email', formValues.email);
+    formData.append('citizenship', formValues.citizenship);
+    formData.append('project_brief', formValues.project_brief);
+    formData.append('project_sustainability_brief', formValues.project_sustainability_brief);
+    formData.append('green_certification_id', formValues.green_certification_id);
+    formData.append('project_purpose', formValues.project_purpose);
+    formData.append('other_green_certification', formValues.other_green_certification);
+    // formData.append('sustainability_report', formValues.project_purpose);
+    formData.append('require_variations', formValues.require_variations);
+    formData.append('estimated_project_duration',formValues.estimated_project_duration);
+    formData.append('estimated_project_construction_cost', formValues.estimated_project_construction_cost);
+    formData.append('commitment_to_comply_with_development_codes_and_guidelines', formValues.commitment_to_comply_with_development_codes_and_guidelines);
+
+
+    // attachments
+    formData.append('context_analysis', this.context_analysis_file, this.context_analysis_file.name);
+    formData.append('concept_plan', this.concept_plan_file, this.concept_plan_file.name);
+    formData.append('geotechnical_report', this.geotechnical_report_file, this.geotechnical_report_file.name);
+    formData.append('topographical_survey', this.topographical_survey_file, this.topographical_survey_file.name);
+    formData.append('parking_strategy', this.parking_strategy_file, this.parking_strategy_file.name);
+    formData.append('traffic_management_plan', this.traffic_management_plan_file, this.traffic_management_plan_file.name);
+    formData.append('estimated_utility_demand_requirements', this.estimated_utility_demand_requirements_file, this.estimated_utility_demand_requirements_file.name);
+    formData.append('sustainability_report', this.sustainability_report_file, this.sustainability_report_file.name);
+
+    formData.append('_method', 'POST')
+
+
     this.mProgress.set(true);
-    this.mPlanSubmissionService.createItem(formValues).subscribe({
+    this.mPlanSubmissionService.createItem(formData).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
           this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/deals');
+          this.router.navigateByUrl('/plan-submissions');
           this.mProgress.set(false);
         }
       },
@@ -198,53 +170,105 @@ export class CreateComponent {
   }
 
 
-
   // verifyProfessional
   verifyProfessional(){
     const item: any = {
       professional_body_id: this.itemForm.get('professional_body_id')?.value,
       membership_number: this.itemForm.get('membership_number')?.value,
     }
+    if (!item.professional_body_id || !item.membership_number) {
+      return;
+    }
 
     this.mProgress.set(true);
     this.mProfileService.professionalSearch(item).subscribe({
       next: (response) => {
         if(response){
-          // console.log(response)
           if((response as any).status==="failed"){
-            // this.router.navigateByUrl('/deals');
+            // this.router.navigateByUrl('/plan-submissions');
             this.mToastrService.error((response as any).message);
           }else{
             // this.mToastrService.success((response as any).message);
-            const mProfessional = response as any
-            this.itemForm.get('consultant_name')?.setValue(mProfessional.name);
-            this.itemForm.get('address')?.setValue(mProfessional.address);
-            this.itemForm.get('email')?.setValue(mProfessional.email);
-            this.itemForm.get('citizenship')?.setValue(mProfessional.nationality);
-
-            this.mProfessionalStatus = mProfessional.status
-            this.mProfessionalGoodStanding = mProfessional.good_standing
-            this.mProfessionalBalanceReason = mProfessional.balance_reason
-
-            if(this.mProfessionalStatus == "Inactive")
-              // Disappear
-              setTimeout(() => {
-                this.mToastrService.error(this.mProfessionalGoodStanding+' '+this.mProfessionalBalanceReason);
-                this.router.navigateByUrl('/dashboard');
-              }, 5000); // 5000ms = 5 seconds
+            const mResponse = response as any
+            this.itemForm.get('consultant_name')?.setValue(mResponse.name);
+            this.itemForm.get('address')?.setValue(mResponse.address);
+            this.itemForm.get('email')?.setValue(mResponse.email);
+            this.itemForm.get('citizenship')?.setValue(mResponse.nationality);
+            if(mResponse.status == "Inactive"){
+                let mResponse = (response as any)
+                this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
+                this.mProgress.set(false);
+                this.router.navigateByUrl('/plan-submissions');
             }
+          }
           this.mProgress.set(false);
-        }
+        };
       },
       error: (error ) => {
-        console.log(error);
-        // if(error.error.message){
-        // this.mToastrService.error(error.error.message);
-        // }
+        if(error.error.message){
+        this.mToastrService.error(error.error.message);
+        }
         this.mProgress.set(false);
       }
     });
   }
 
+
+  // onContextAnalysisChange
+  onContextAnalysisChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.context_analysis_file = file;
+    }
+  }
+  // onConceptPlanChange
+  onConceptPlanChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.concept_plan_file = file;
+    }
+  }
+  // onGeotechnicalReportChange
+  onGeotechnicalReportChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.geotechnical_report_file = file;
+    }
+  }
+  // onTopographicalSurveyChange
+  onTopographicalSurveyChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.topographical_survey_file = file;
+    }
+  }
+  // onParkingStrategyChange
+  onParkingStrategyChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.parking_strategy_file = file;
+    }
+  }
+  // onTrafficManagementPlanChange
+  onTrafficManagementPlanChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.traffic_management_plan_file = file;
+    }
+  }
+  // onEstimatedUtilityDemandRequirementsChange
+  onEstimatedUtilityDemandRequirementsChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.estimated_utility_demand_requirements_file = file;
+    }
+  }
+  // onSustainabilityReportChange
+  onSustainabilityReportChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.sustainability_report_file = file;
+    }
+  }
 
 }

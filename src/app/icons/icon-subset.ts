@@ -99,6 +99,7 @@ import {
   // Add
   cilSearch,
   cilPlus,
+  cilLowVision,
 
 } from '@coreui/icons';
 
@@ -208,6 +209,7 @@ export const iconSubset = {
   // Add
   cilSearch,
   cilPlus,
+  cilLowVision,
 };
 
 export enum IconSubset {
@@ -312,6 +314,7 @@ export enum IconSubset {
 
   // Add
   cilSearch = 'cilSearch',
-  cilPlus = 'cilPlus'
+  cilPlus = 'cilPlus',
+  cilLowVision = 'cilLowVision',
 }
 

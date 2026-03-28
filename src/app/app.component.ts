@@ -15,7 +15,7 @@ import { iconSubset } from './icons/icon-subset';
 })
 export class AppComponent implements OnInit {
 
-  title = 'KonzaOSS | ePMS';
+  title = 'KonzaOSS | CPMS';
 
   readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);

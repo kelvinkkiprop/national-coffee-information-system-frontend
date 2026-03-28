@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 // import { DefaultLayoutComponent } from './layout/default-layout';
 import { AuthUIComponent } from './containers/auth-ui/auth-ui.component';
 import { AuthGuard } from './guards/auth.guard';
-import { DefaultLayoutComponent } from './layout/default-layout';
+import { DefaultLayoutComponent } from './containers/layout';
 
 export const routes: Routes = [
 

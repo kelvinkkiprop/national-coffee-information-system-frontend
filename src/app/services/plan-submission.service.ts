@@ -24,7 +24,8 @@ export class PlanSubmissionService {
 
   createItem(item: PlanSubmission): Observable<PlanSubmission>{
     const url = `${environment.base_url}/plan-submissions`;
-    return this.http.post<PlanSubmission>(url, item, this.mAppContextService.getHttpOptions());
+    // return this.http.post<PlanSubmission>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<PlanSubmission>(url, item);
   }
 
   getOneItem(id:number){
@@ -32,8 +33,8 @@ export class PlanSubmissionService {
     return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
   }
 
-  updateItem(item: PlanSubmission): Observable<PlanSubmission>{
-    const url = `${environment.base_url}/plan-submissions/${item.id}`;
+  updateItem(id:any, item: PlanSubmission): Observable<PlanSubmission>{
+    const url = `${environment.base_url}/plan-submissions/${id}`;
     return this.http.put<PlanSubmission>(url, item, this.mAppContextService.getHttpOptions());
   }
 

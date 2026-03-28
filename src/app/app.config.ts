@@ -19,15 +19,15 @@ import { serverErrorsInterceptor } from './interceptors/server-errors.intercepto
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes,
-      withRouterConfig({
-        onSameUrlNavigation: 'reload'
-      }),
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'top',
-        anchorScrolling: 'enabled'
-      }),
-      withEnabledBlockingInitialNavigation(),
-      withViewTransitions(),
+      // withRouterConfig({
+      //   onSameUrlNavigation: 'reload'
+      // }),
+      // withInMemoryScrolling({
+      //   scrollPositionRestoration: 'top',
+      //   anchorScrolling: 'enabled'
+      // }),
+      // withEnabledBlockingInitialNavigation(),
+      // withViewTransitions(),
       withHashLocation()
     ),
     provideAnimationsAsync(),
