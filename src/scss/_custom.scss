@@ -1,0 +1,307 @@
+// Here you can add other styles
+
+// custom .chartjs-tooltip-body-item padding
+@use "charts";
+
+// custom tweaks for scrollbar styling (wip)
+@use "scrollbar";
+
+ // custom calendar today cell color
+.calendar-cell.today {
+  --cui-calendar-cell-today-color: var(--cui-info) !important;
+}
+
+// custom select week cursor pointer
+.select-week .calendar-row.current {
+  cursor: pointer;
+}
+
+
+
+
+
+// Here you can add other styles
+$green: #007A37;
+$teal: #00552d; //00695c;
+$red: #E2251D;
+$accent: #ff9100;
+$black: #111820;
+$white: #FFFFFF;
+$gray: #e9ecef;
+
+/*--------------------------------------body------------------------------------------*/
+@font-face {
+  // // Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
+  // font-family: 'TwCenMT';
+  // /*a name to be used later*/
+  // src: url(/assets/fonts/tw-cen-mt-std/TwCenMTStd.otf);
+  // /*URL to font*/
+  // // src:url(/assets/fonts/futura/futur.ttf);/*URL to font*/
+  // // font-family: 'Futura'; /*a name to be used later*/
+  // // src:url(/assets/fonts/futura.futur.tff);/*URL to font*/
+}
+
+body {
+  // font-family: TwCenMT !important;
+
+  // font-family: 'Futura' !important;
+  // font-family:  "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  //BGs
+  .bg-success {
+    background-color: $green !important;
+  }
+
+  // .bg-warning{
+  //   background-color: $red !important;
+  // }
+  //Text
+  .text-success {
+    color: $green !important;
+  }
+
+  // .text-warning {
+  //   color: $red !important;
+  // }
+
+  //Buttons
+  .btn-success {
+    background-color: $green !important;
+    border-color: $green !important;
+  }
+
+  .btn-success:hover {
+    background-color: $teal !important;
+    border-color: $teal !important;
+  }
+
+  .btn-link {
+    color: $green;
+    text-decoration: none;
+  }
+
+  .btn-link:hover {
+    color: $red;
+  }
+
+  .btn-warning {
+    background-color: $red !important;
+    border-color: $red !important;
+  }
+
+  .btn-warning:hover {
+    background-color: $accent !important;
+    border-color: $accent !important;
+  }
+}
+
+html {
+  //Smooth scroll
+  scroll-behavior: smooth;
+}
+
+.required:after {
+  content: " *";
+  color: $red;
+}
+
+input[readonly] {
+  background-color: $gray !important;
+  opacity: 1;
+  pointer-events: none;
+}
+
+// input[readonly] {
+//   background-color: var(--cui-gray-200); // Adjust_based_on_CoreUI_color_variables
+//   pointer-events: none;
+// }
+/*--------------------------------------./body------------------------------------------*/
+
+/*--------------------------------------HOME------------------------------------------*/
+#homeUI {
+  min-height: 100vh;
+
+  .header1 {
+
+    // min-height: 100vh;
+    // background-image: linear-gradient(rgba(14, 171, 183, 0.6), rgba(14, 171, 183, 0.6)), url(/images/laptop.jpg);
+    // background-size: cover;
+    // background-position: center;
+    nav {
+      border-top: 1.5px solid $red;
+
+      //Dropdown menu
+      .dropdown-menu {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+
+        a {
+          margin-top: 5px;
+          background-color: $white;
+          color: $green;
+        }
+
+        a:hover {
+          border-left: 2px solid $red;
+        }
+      }
+    }
+  }
+
+  #hero {
+    min-height: 50vh;
+  }
+
+  #quote {
+    margin-top: -50px !important;
+  }
+}
+
+/*--------------------------------------./HOME------------------------------------------*/
+
+
+/*--------------------------------------FOOTER------------------------------------------*/
+#footer {
+  a {
+    color: $green;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $red;
+  }
+}
+
+/*--------------------------------------./FOOTER------------------------------------------*/
+
+
+
+/*-------------------------------------------------coreUI-------------------------------------------------*/
+#coreUI {
+  // min-height: 100vh;
+  border-top: 2px $red solid;
+  #sidebar1 {
+    background-color: $green !important;
+    .nav-link:hover {
+      background-color: rgba($black, 0.3);
+      border-left: 3px solid $white;
+    }
+    .nav-link.active {
+      background-color: $white !important;
+      color: $green !important;
+    }
+
+    .nav-link.active {
+      color: $green !important;
+    }
+  }
+  // .header {
+  //   .dropdown-item:hover{//,:visited{
+  //     color: $red;
+  //     background-color: $green;
+  //   }
+  // }
+
+  .wrapper {
+    .breadcrumb {
+      color: $green !important;
+      .breadcrumb-item {
+        a {
+          color: $green !important;
+          text-decoration: none !important;
+        }
+        a:hover {
+          color: $red !important;
+          text-decoration: none;
+        }
+      }
+    }
+
+    label {
+      font-weight: bold !important;
+    }
+
+    .card {
+      // box-shadow: none !important;
+      // border-radius: 0 !important;
+      // box-shadow: 2px 2px 2px 2px $body-bg;
+      border: none;
+      .card-header {
+        border-bottom: 0;
+      }
+      .card-body {
+        a {
+          color: $green;
+          text-decoration: none;
+        }
+        a:hover {
+          color: $red;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .pagination {
+      // Pagination
+      .page-link {
+        color: $green;
+      }
+      .page-item.active .page-link {
+        background-color: $green;
+        border-color: $green;
+        color: $white !important;
+      }
+      .page-link:hover,
+      .page-item.active:hover {
+        background-color: $red !important;
+        border-color: $red !important;
+        color: $white !important;
+      }
+    }
+
+    .full-calendar {
+      .fc-button-primary {
+        background-color: $green !important;
+        border-color: $green !important;
+      }
+
+      .fc-button-primary:hover {
+        background-color: $teal !important;
+        border-color: $teal !important;
+      }
+
+      a {
+        color: $green;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $red;
+      }
+
+      .fc-daygrid-event-dot {
+        margin: 0 4px;
+        box-sizing: content-box;
+        width: 0;
+        height: 0;
+        border: 4px solid $green !important;
+        border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, $green);
+        border-radius: 4px;
+        border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
+      }
+    }
+
+    .footer {
+      a {
+        color: $green;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $red;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------------./coreUI-------------------------------------------------*/

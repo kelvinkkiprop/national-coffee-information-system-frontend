@@ -1,0 +1,205 @@
+===================================ANGULAR===================================
+A. ANGULAR
+1. Installation
+Download: https://github.com/coreui/coreui-free-angular-admin-template
+ng new permitting-management-system-frontend
+2. Start server
+ng serve --open
+npm start
+
+
+3. Containers
+ng generate component containers/authUI
+ng generate component components/auth/sso
+ng generate module components/auth/auth
+ng generate module components/auth/authRouting
+ng generate component components/auth/login
+ng generate component components/auth/register
+ng generate component components/auth/forgotPassword
+ng generate component components/auth/recoverPassword
+ng generate component containers/inc/CommonProgress
+
+ng generate module components/container/container
+
+ng generate component containers/coreUI
+ng generate class containers/inc/navItems
+ng generate class containers/index
+
+ng generate component containers/homeUI
+ng generate module components/home/home
+ng generate module components/home/homeRouting
+ng generate component components/home/index
+
+ng generate component containers/inc/default-header
+ng generate component containers/inc/default-footer
+
+4. Components
+ng generate component components/dashboard/index
+ng generate module components/dashboard/dashboard
+ng generate module components/dashboard/dashboardRouting
+
+ng generate component components/plan-submission/index
+ng generate component components/plan-submission/create
+ng generate component components/plan-submission/edit
+ng generate component components/plan-submission/show
+ng generate module components/plan-submission/plan-submission
+ng generate module components/plan-submission/plan-submission-routing
+
+ng generate component components/profiles/index
+ng generate component components/profiles/create
+ng generate component components/profiles/edit
+ng generate component components/profiles/show
+ng generate module components/profiles/profile
+ng generate module components/profiles/profileRouting
+
+ng generate component components/variations/index
+ng generate component components/variations/create
+ng generate component components/variations/edit
+ng generate component components/variations/show
+ng generate module components/variations/variation
+ng generate module components/variations/variationRouting
+
+ng generate component components/design-submission/index
+ng generate component components/design-submission/create
+ng generate component components/design-submission/edit
+ng generate component components/design-submission/show
+ng generate module components/design-submission/designSubmission
+ng generate module components/design-submission/designSubmissionRouting
+
+ng generate component components/reports/read
+ng generate component components/reports/show
+ng generate component components/reports/edit
+ng generate module components/reports/reports
+ng generate module components/reports/reportsRouting
+
+ng generate component components/vendorApplications/read
+ng generate component components/vendorApplications/create
+ng generate component components/vendorApplications/edit
+ng generate component components/vendorApplications/show
+ng generate module components/vendorApplications/vendorApplication
+ng generate module components/vendorApplications/vendorApplicationRouting
+ng generate component components/vendorApplications/process
+ng generate component components/vendorApplications/inc/itEnterprise
+ng generate component components/vendorApplications/inc/technicalTeam
+ng generate component components/vendorApplications/inc/technicalReportConsideration
+ng generate component components/vendorApplications/inc/pitching
+ng generate component components/vendorApplications/inc/revenueShare
+ng generate component components/vendorApplications/inc/contracting
+ng generate component components/vendorApplications/inc/offerAcceptance
+ng generate component components/vendorApplications/inc/sendNotification
+
+ng generate component components/construction-site-board/index
+ng generate component components/construction-site-board/create
+ng generate component components/construction-site-board/edit
+ng generate component components/construction-site-board/show
+ng generate module components/construction-site-board/constructionSiteBoard
+ng generate module components/construction-site-board/constructionSiteBoardRouting
+
+ng generate component components/advertising-application/index
+ng generate component components/advertising-application/create
+ng generate component components/advertising-application/edit
+ng generate component components/advertising-application/show
+ng generate module components/advertising-application/advertisingApplication
+ng generate module components/advertising-application/advertisingApplicationRouting
+
+ng generate component components/auth/read
+ng generate component components/auth/create
+ng generate component components/auth/edit
+ng generate component components/auth/show
+ng generate module components/auth/auth
+ng generate module components/auth/authRouting
+
+ng generate component components/progress/progress
+ng generate module components/progress/progress
+
+
+
+5. Modules
+ng generate module appRouting
+
+6. Class
+ng generate module app-routing
+ng generate class classes/has-role
+
+7. Environments
+ng generate environments
+
+6. Interceptors
+ng generate interceptor interceptors/token
+ng generate interceptor interceptors/Errors
+ng generate interceptor interceptors/RoleChange
+
+7. Services
+ng generate service services/auth
+ng generate service services/toastr
+ng generate service services/user
+ng generate service services/DataSharingService
+ng generate service services/Singleton
+ng generate service services/planSubmission
+ng generate service services/investorApplication
+ng generate service services/profile
+ng generate service services/dashboard
+ng generate service services/areaOfCollaboration
+ng generate service services/brsVerification
+ng generate service services/exchangeRate
+ng generate service services/vendor
+ng generate service services/report
+ng generate service services/priceProposal
+ng generate service services/priceProposalResponse
+ng generate service services/customer
+ng generate service services/deal
+
+ng generate service services/AppSidebar
+ng generate service services/Local
+ng generate service services/Crypto
+
+7. Interfaces
+ng generate interface interfaces/user
+ng generate interface interfaces/role
+ng generate interface interfaces/planSubmission
+ng generate interface interfaces/areaOfCollaboration
+ng generate interface interfaces/investorApplication
+ng generate interface interfaces/profile
+ng generate interface interfaces/brsVerification
+ng generate interface interfaces/exchangeRate
+ng generate interface interfaces/vendor
+ng generate interface interfaces/priceProposal
+ng generate interface interfaces/priceProposalResponse
+ng generate interface interfaces/customer
+ng generate interface interfaces/deal
+
+8. Guards
+ng generate guard guards/auth
+ng generate guard guards/verifyEmail
+ng generate guard guards/withProfileOnly
+ng generate guard guards/adminsOnly
+ng generate guard guards/activeAccountsOnly
+ng generate guard guards/notInvestorOnly
+
+9. Build
+ng build --configuration production
+
+===================================./ANGULAR===================================
+
+
+===================================SweetAlert2===================================
+1. Install
+npm install sweetalert2 --save
+2. Add angular.json
+"styles": [
+      "node_modules/sweetalert2/src/sweetalert2.scss"
+      "node_modules/sweetalert2/dist/sweetalert2.css"
+  ],
+"scripts": [
+      "node_modules/sweetalert2/dist/sweetalert2.js"
+  ],
+2. Import in Component
+import swal from 'sweetalert2';
+3. Use in Component
+swal({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  type: 'error',
+  confirmButtonText: 'Cool'
+})
+===================================./SweetAlert2===================================

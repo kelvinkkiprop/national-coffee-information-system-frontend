@@ -1,0 +1,96 @@
+
+<!-- <app-progress *ngIf="mProgress"/> -->
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="card-title">
+            <a routerLink="/exchange-rates/create" class="btn btn-danger btn-sm">
+              <span class="cil-plus btn-icon"></span> Add
+              <svg cIcon name="cilUser"></svg> Add
+              <!-- <svg [cIcon]="icons.cilSearch"></svg> Add -->
+              <!-- <svg [cIcon]="icons.cilSearch" style="width: 16px; height: 16px;"></svg> -->
+            </a>
+            <div class="alert alert-danger p-1 m-0 text-sm me-2">
+              CBK indicative <a href="https://www.centralbank.go.ke/" target="_blank" class="text-danger">Exchange Rates</a>
+              might not be available <strong class="text-success">before 9:00AM</strong> and <strong>on weekends</strong>
+            </div>
+          </div>
+          <div>
+            <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
+              <div class="input-group input-group-sm"  style="width: 150px;">
+                <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                  <button type="submit" cButton size="sm" color="success">
+                    <span class="cil-search btn-icon"></span>
+                  </button>
+                </div>
+                <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="alert">
+                  <div *ngIf="search_term.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </c-card-header>
+      <c-card-body>
+
+        <div *ngIf="mSolutionDefinitions.length>0; else noItemsTemplate" class="table-responsive">
+          <table cTable striped>
+            <thead cTableColor="light1">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Base Currency</th>
+                <th scope="col">Target Currency</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Created</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>1</td>
+                <td>Joe Doe</td>
+                <td>JD</td>
+                <td>11/03/2023</td>
+              </tr> -->
+              <tr *ngFor="let item of mSolutionDefinitions; index as i">
+                <td>{{this.mPageFrom+i}}.</td>
+                <td>{{item.date|date:'dd/MM/yyyy'}}</td>
+                <td>{{item.base_currency.name}} ({{item.base_currency.code}})</td>
+                <td>{{item.target_currency.name}} ({{item.target_currency.code}})</td>
+                <td>{{item.rate}}</td>
+                <td>{{item.created_at|date}}</td>
+                <td>
+                  <div class="text-nowrap">
+                    <button type="button" cButton color="dark" variant="outline" size="sm"><span class="cil-low-vision btn-icon"></span></button>
+                    <!-- <button (click)="onShow(item)" type="button" cButton color="dark" variant="outline" size="sm"><span class="cil-low-vision btn-icon"></span></button>
+                    <button (click)="onEdit(item)" type="button" cButton color="dark" size="sm"><span class="cil-pencil btn-icon"></span></button>
+                    <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><span class="cil-trash btn-icon"></span></button> -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="links">
+          <ul class="pagination">
+            <li *ngFor="let item of links" [ngClass]="{'active': item.active, 'disabled': !item.url}" class="page-item">
+              <a class="page-link" (click)="onChangePage(item.url)" [innerHTML]="item.label"></a>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #noItemsTemplate>
+          <p class="p-5 text-center text-muted">No items</p>
+        </ng-template>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+

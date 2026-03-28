@@ -1,0 +1,5 @@
+export const environment = {
+  production: false,
+  base_url: 'http://localhost:8000/api',
+  sso_account_url: "http://localhost:5000",
+};

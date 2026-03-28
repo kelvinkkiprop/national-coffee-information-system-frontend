@@ -1,0 +1,15 @@
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #E7F2E4; */
+  background-color: #EBEDEF;
+  z-index: 100;
+}
+#status {
+  text-align: center;
+  padding-top: calc(100vh / 2);
+  height: 100vh;
+}

@@ -1,0 +1,330 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <!-- <c-card-header>
+        <div class="card-title">
+          Create Deal
+        </div>
+      </c-card-header> -->
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">GENERAL INFORMATION</h6></legend>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="investor_id" class="col-form-label required">Company:</label>
+                    <select formControlName="investor_id" [ngClass]="{'is-invalid': investor_id.invalid && (investor_id.dirty || investor_id.touched)}" id="investor_id" type="text" class="form-control">
+                      <option value="" disabled="true" selected="true">--- Select investor ---</option>
+                      <option *ngFor="let item of mInvestors" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+                    <div *ngIf="investor_id.invalid && (investor_id.dirty || investor_id.touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="investor_id.errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="plan_submission_type_id" class="col-form-label required">Nature of Application:</label>
+                    <select formControlName="plan_submission_type_id" [ngClass]="{'is-invalid': plan_submission_type_id.invalid && (plan_submission_type_id.dirty || plan_submission_type_id.touched)}" id="plan_submission_type_id" type="text" class="form-control">
+                      <option value="" disabled="true" selected="true">--- Select plan submission type ---</option>
+                      <option *ngFor="let item of mPlanSubmissionTypes" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+                    <div *ngIf="plan_submission_type_id.invalid && (plan_submission_type_id.dirty || plan_submission_type_id.touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="plan_submission_type_id.errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">CONSULTANT INFORMATION</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="professional_body_id" class="col-form-label required">Professional Body:</label>
+                  <select (change)="verifyProfessional()" formControlName="professional_body_id" [ngClass]="{'is-invalid': professional_body_id.invalid && (professional_body_id.dirty || professional_body_id.touched)}" id="professional_body_id" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select professional body ---</option>
+                    <option *ngFor="let item of mProfessionalBodies" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="professional_body_id.invalid && (professional_body_id.dirty || professional_body_id.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="professional_body_id.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="membership_number" class="col-form-label required">Membership Number:</label>
+                  <input (change)="verifyProfessional()" formControlName="membership_number" [ngClass]="{'is-invalid': membership_number.invalid && (membership_number.dirty || membership_number.touched)}" type="membership_number" class="form-control"/>
+                  <div *ngIf="membership_number.invalid && (membership_number.dirty || membership_number.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="membership_number.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="consultant_name" class="col-form-label required">Consultant Name:</label>
+                  <input formControlName="consultant_name" [ngClass]="{'is-invalid': consultant_name.invalid && (consultant_name.dirty || consultant_name.touched)}" type="text" class="form-control" readonly/>
+                  <div *ngIf="consultant_name.invalid && (consultant_name.dirty || consultant_name.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="consultant_name.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="address" class="col-form-label required">Address:</label>
+                  <input formControlName="address" [ngClass]="{'is-invalid': address.invalid && (address.dirty || address.touched)}" type="text" class="form-control" readonly/>
+                  <div *ngIf="address.invalid && (address.dirty || address.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="address.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="email" class="col-form-label required1">Email:</label>
+                  <input formControlName="email" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}" type="text" class="form-control" readonly/>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="email.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="citizenship" class="col-form-label required1">Citizenship:</label>
+                  <input formControlName="citizenship" [ngClass]="{'is-invalid': citizenship.invalid && (citizenship.dirty || citizenship.touched)}" type="text" class="form-control" readonly/>
+                  <div *ngIf="citizenship.invalid && (citizenship.dirty || citizenship.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="citizenship.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12" *ngIf="mProfessionalStatus">
+                <div class="form-group mb-3">
+                  <c-alert [color]="mProfessionalStatus=='Inactive' ? 'danger' : 'success'">
+                      <strong>{{ mProfessionalGoodStanding }}</strong> {{mProfessionalBalanceReason}}
+                    </c-alert>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROJECT BRIEF AND PURPOSE</h6></legend>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="project_brief" class="col-form-label required">Project Brief and Purpose (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                    <textarea formControlName="project_brief" [ngClass]="{'is-invalid': project_brief.invalid && (project_brief.dirty || project_brief.touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="project_brief.invalid && (project_brief.dirty || project_brief.touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="project_brief.errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PARCEL & CONTEXT ANALYSIS</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="context_analysis" class="col-form-label required">Context Analysis (500m radius context analysis):</label>
+                  <input formControlName="context_analysis" [ngClass]="{'is-invalid': context_analysis.invalid && (context_analysis.dirty || context_analysis.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="context_analysis.invalid && (context_analysis.dirty || context_analysis.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="context_analysis.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DEVELOPMENT DATA</h6></legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="concept_plan" class="col-form-label required">Concept Plan (Elevations, concept images and massing model and Building footprint anticipated for your site):</label>
+                  <input formControlName="concept_plan" [ngClass]="{'is-invalid': concept_plan.invalid && (concept_plan.dirty || concept_plan.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="concept_plan.invalid && (concept_plan.dirty || concept_plan.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="concept_plan.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="geotechnical_report" class="col-form-label required">Geotechnical Report (Signed and stamped by a geologist or civil structural engineer):</label>
+                  <input formControlName="geotechnical_report" [ngClass]="{'is-invalid': geotechnical_report.invalid && (geotechnical_report.dirty || geotechnical_report.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="geotechnical_report.invalid && (geotechnical_report.dirty || geotechnical_report.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="geotechnical_report.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="topographical_survey" class="col-form-label required">Topographical Survey:</label>
+                  <input formControlName="topographical_survey" [ngClass]="{'is-invalid': topographical_survey.invalid && (topographical_survey.dirty || topographical_survey.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="topographical_survey.invalid && (topographical_survey.dirty || topographical_survey.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="topographical_survey.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">ACCESS ANALYSIS PLAN</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="parking_strategy" class="col-form-label required">Parking Strategy (Using <a routerLink="/reference-materials" target="_blank" rel="noopener noreferrer">Reference Materials</a> on parking e.g., Streetscape and Mobility Guidelines Chapter 3.6), :</label>
+                  <input formControlName="parking_strategy" [ngClass]="{'is-invalid': parking_strategy.invalid && (parking_strategy.dirty || parking_strategy.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="parking_strategy.invalid && (parking_strategy.dirty || parking_strategy.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="parking_strategy.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="traffic_management_plan" class="col-form-label required">Traffic Management Plan (Access to the site diagram, vehicle trip generation and traffic management strategy):</label>
+                  <input formControlName="traffic_management_plan" [ngClass]="{'is-invalid': traffic_management_plan.invalid && (traffic_management_plan.dirty || traffic_management_plan.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="traffic_management_plan.invalid && (traffic_management_plan.dirty || traffic_management_plan.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="traffic_management_plan.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">INFRASTRUCTURE</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="estimated_utility_demand_requirements" class="col-form-label required">Estimated utility demand requirements (i.e., For Water, Sewer, Electricity, Internet requirement, solid waste, storm water, Irrigation/recycled water, Industrial waste, Glass, E-waste, Medical and hazardous waste):</label>
+                  <input formControlName="estimated_utility_demand_requirements" [ngClass]="{'is-invalid': estimated_utility_demand_requirements.invalid && (estimated_utility_demand_requirements.dirty || estimated_utility_demand_requirements.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="estimated_utility_demand_requirements.invalid && (estimated_utility_demand_requirements.dirty || estimated_utility_demand_requirements.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="estimated_utility_demand_requirements.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">INFRASTRUCTURE</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="estimated_utility_demand_requirements" class="col-form-label required">Project Sustainability Brief (What sustainability rating tool and level do you plan to use):</label>
+                  <input formControlName="estimated_utility_demand_requirements" [ngClass]="{'is-invalid': estimated_utility_demand_requirements.invalid && (estimated_utility_demand_requirements.dirty || estimated_utility_demand_requirements.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="estimated_utility_demand_requirements.invalid && (estimated_utility_demand_requirements.dirty || estimated_utility_demand_requirements.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="estimated_utility_demand_requirements.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROJECT SUSTAINABILITY</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="project_sustainability_brief" class="col-form-label required">Project Sustainability Brief (What sustainability rating tool and level do you plan to use):</label>
+                  <textarea formControlName="project_sustainability_brief" [ngClass]="{'is-invalid': project_sustainability_brief.invalid && (project_sustainability_brief.dirty || project_sustainability_brief.touched)}" type="file" class="form-control"></textarea>
+                  <div *ngIf="project_sustainability_brief.invalid && (project_sustainability_brief.dirty || project_sustainability_brief.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="project_sustainability_brief.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="green_certification_id" class="col-form-label required">Green Certifications:</label>
+                  <select formControlName="green_certification_id" [ngClass]="{'is-invalid': green_certification_id.invalid && (green_certification_id.dirty || green_certification_id.touched)}" id="green_certification_id" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select certification ---</option>
+                    <option *ngFor="let item of mGreenCertifications" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="green_certification_id.invalid && (green_certification_id.dirty || green_certification_id.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="green_certification_id.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="green_certification_id.value === '4'"  class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="other_green_certification" class="col-form-label required">Specify Other:</label>
+                  <input formControlName="other_green_certification" [ngClass]="{'is-invalid': other_green_certification.invalid && (other_green_certification.dirty || other_green_certification.touched)}" type="text" class="form-control"/>
+                  <div *ngIf="other_green_certification.invalid && (other_green_certification.dirty || other_green_certification.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="other_green_certification.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="sustainability_report" class="col-form-label required">Sustainability Report (upload a report on design, materials and utility management, i.e., water and electricity):</label>
+                  <input formControlName="sustainability_report" [ngClass]="{'is-invalid': sustainability_report.invalid && (sustainability_report.dirty || sustainability_report.touched)}" type="file" class="form-control"/>
+                  <div *ngIf="sustainability_report.invalid && (sustainability_report.dirty || sustainability_report.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="sustainability_report.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">CONCLUSIONS</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="require_variations" class="col-form-label required">Variations (Does Your Project Require any Variation?):</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="require_variations" id="variation_yes" value="yes" />
+                    <label class="form-check-label" for="variation_yes"> Yes </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="require_variations" id="variation_no" value="no" />
+                    <label class="form-check-label" for="variation_no"> No </label>
+                  </div>
+                  <div *ngIf="require_variations.invalid && (require_variations.dirty || require_variations.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="require_variations.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="estimated_project_duration" class="col-form-label required">Estimated Project Duration (In months):</label>
+                  <input formControlName="estimated_project_duration" [ngClass]="{'is-invalid': estimated_project_duration.invalid && (estimated_project_duration.dirty || estimated_project_duration.touched)}" type="number" class="form-control"/>
+                  <div *ngIf="estimated_project_duration.invalid && (estimated_project_duration.dirty || estimated_project_duration.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="estimated_project_duration.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="estimated_project_construction_cost" class="col-form-label required">Estimated Project Construction Cost (In USD):</label>
+                  <input formControlName="estimated_project_construction_cost" [ngClass]="{'is-invalid': estimated_project_construction_cost.invalid && (estimated_project_construction_cost.dirty || estimated_project_construction_cost.touched)}" type="number" class="form-control"/>
+                  <div *ngIf="estimated_project_construction_cost.invalid && (estimated_project_construction_cost.dirty || estimated_project_construction_cost.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="estimated_project_construction_cost.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="investorCommitment" formControlName="commitment_to_comply_with_development_codes_and_guidelines" />
+                  <label class="form-check-label" for="investorCommitment">
+                    By checking this, confirms the investor's commitment to comply with the <a routerLink="#">Konza Technopolis Development Codes and Guidelines</a>
+                  </label>
+                </div>
+                <div *ngIf="commitment_to_comply_with_development_codes_and_guidelines.invalid && (commitment_to_comply_with_development_codes_and_guidelines.dirty || commitment_to_comply_with_development_codes_and_guidelines.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="commitment_to_comply_with_development_codes_and_guidelines.errors?.['requiredTrue']">You must accept to proceed.</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-3 text-right">
+            <button routerLink="/deals" cButton color="danger">Cancel</button>
+            <button [disabled]="itemForm.invalid" type="submit" cButton color="success">Submit</button>
+          </div>
+
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
