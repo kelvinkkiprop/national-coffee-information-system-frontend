@@ -122,14 +122,14 @@ export class ShowComponent {
       next: (response) => {
         if(response){
           this.item = response as any;
-          this.mProgress = signal(false);
+          this.mProgress.set(false);
         }
       },
       error: (error ) => {
         if(error.error.message){
           this.mToastrService.error(error.error.message)
         }
-        this.mProgress = signal(false);
+        this.mProgress.set(false);
       }
     });
   }

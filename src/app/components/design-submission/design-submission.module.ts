@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule, CardModule, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
+import { AlertComponent, AlertLinkDirective, ButtonModule, CardModule, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
 import { CreateComponent } from './create/create.component';
 import { DesignSubmissionRoutingModule } from './design-submission-routing.module';
 import { EditComponent } from './edit/edit.component';
@@ -37,6 +37,10 @@ import { IconDirective } from '@coreui/icons-angular';
     ReactiveFormsModule,
     IconModule,
     IconDirective,
+
+    // add
+    AlertComponent,
+    AlertLinkDirective,
   ]
 })
 export class DesignSubmissionModule { }

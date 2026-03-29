@@ -9,7 +9,7 @@ export class AppInfoService {
 
   // variables
   private readonly appInfo = {
-    name: 'KonzaePMS',
+    name: 'Konza CPMS',
     year: new Date().getFullYear(),
     version: packageInfo.version
   };

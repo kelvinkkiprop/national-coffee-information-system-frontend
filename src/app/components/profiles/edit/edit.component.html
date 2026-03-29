@@ -1,1 +1,32 @@
-<p>edit works!</p>
+
+<app-progress *ngIf="mProgress"/>
+
+<c-card class="mb-3">
+
+  <c-card-header>
+    <div class="card-title"  cAccordionButton>Profile</div>
+  </c-card-header>
+
+  <c-card-body>
+    <c-accordion>
+      <ul cListGroup>
+        <li cListGroupItem>
+          <a routerLink="profile" class="btn btn-link">
+            Settings
+          </a>
+        </li>
+        <li cListGroupItem>
+          <a routerLink="dashboard" class="btn btn-link">
+            Dashboard
+          </a>
+        </li>
+        <li cListGroupItem>
+          <a href="{{sso_account_url}}/#/account/dashboard" class="btn btn-link"><i class="cil-user"></i>&nbsp;User Account</a>
+        </li>
+      </ul>
+      <div class="py-2 text-end">
+        <button (click)="goBack()" cButton color="danger">Cancel</button>
+      </div>
+    </c-accordion>
+  </c-card-body>
+</c-card>

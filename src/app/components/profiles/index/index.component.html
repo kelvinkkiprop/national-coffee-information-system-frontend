@@ -1,7 +1,8 @@
-<c-alert color="danger" class="d-flex align-items-center">
-  <div>
-    <strong>🚧 Coming Soon!</strong><br />
-    This feature is under development.
-    <a routerLink="/dashboard" class="alert-link">Learn more</a>
-  </div>
-</c-alert>
+<c-row ngPreserveWhitespaces>
+  <c-col md="4">
+    <app-show/>
+  </c-col>
+  <c-col md="8">
+    <app-edit/>
+  </c-col>
+</c-row>

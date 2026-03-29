@@ -1,0 +1,64 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+        <div>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">Parcel Information</h6></legend>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="investor_id">Number:</label>
+                  <div class="text-muted">{{ item?.number }}</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="investor_id">Phase:</label>
+                  <div class="text-muted">{{ item?.phase }}</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="investor_id">Size:</label>
+                  <div class="text-muted">{{ item?.acres }} acres</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="investor_id">Min Floors:</label>
+                  <div class="text-muted">{{ item?.min_floors }}</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="investor_id">Max Floors:</label>
+                  <div class="text-muted">{{ item?.max_floors }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+          <legend class="float-none w-auto"><h6 class="text-bolder text-muted">Parcel Status</h6></legend>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="investor_id">Status:</label>
+                <div class="text-muted">{{ item?.status?.name }}</div>
+              </div>
+            </div>
+            </div>
+          </fieldset>
+          <div class="mt-3 text-right">
+            <button routerLink="/plan-submissions" cButton color="danger">Cancel</button>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -74,9 +74,14 @@ export const navItems: INavData[] = [
     name: 'Extras',
   },
   {
+    name: 'Parcel Allocation Worksheet',
+    url: '/parcel-allocation-worksheet',
+    iconComponent: { name: 'cil-map' },
+  },
+  {
     name: 'Profile',
     url: '/profile',
     iconComponent: { name: 'cil-user' },
-  }
+  },
 
 ];

@@ -1,1 +1,29 @@
-<p>show works!</p>
+
+<app-progress *ngIf="mProgress"/>
+
+<c-card class="mb-3">
+
+  <c-card-body>
+    <div class="text-center mb-3">
+      <span class="rounded-circle bg-danger p-4 text-light">
+        <svg cIcon name="cilUser" class="display-3"></svg>
+      </span>
+    </div>
+   <div>
+    <h3 class="text-center">{{ mCurrentUser?.name }}</h3>
+    <p class="text-muted text-center">{{ mCurrentUser?.role.name }}</p>
+   </div>
+    <ul class="list-group list-group-unbordered mb-3">
+        <li class="list-group-item">
+            <b>Email: </b><span class="float-right">{{ mCurrentUser?.email }}</span>
+        </li>
+        <li class="list-group-item">
+            <b>Created: </b><span class="float-right">{{ mCurrentUser?.user?.created_at | date }}</span>
+        </li>
+        <li class="list-group-item">
+            <b>Updated: </b><span class="float-right">{{ mCurrentUser?.user?.updated_at | date }}</span>
+        </li>
+    </ul>
+  </c-card-body>
+
+</c-card>

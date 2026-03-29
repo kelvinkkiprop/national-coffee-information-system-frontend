@@ -69,6 +69,16 @@ export const routes: Routes = [
           import('./components/advertising-application/advertising-application.module').then((m) => m.AdvertisingApplicationModule)
       },
       {
+        path: 'compliance-and-enforcement',
+        loadChildren: () =>
+          import('./components/compliance-and-enforcement/compliance-and-enforcement.module').then((m) => m.ComplianceAndEnforcementModule)
+      },
+      {
+        path: 'parcel-allocation-worksheet',
+        loadChildren: () =>
+          import('./components/parcel-allocation-worksheet/parcel-allocation-worksheet.module').then((m) => m.ParcelAllocationWorksheetModule)
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('./components/profiles/profile.module').then((m) => m.ProfileModule)

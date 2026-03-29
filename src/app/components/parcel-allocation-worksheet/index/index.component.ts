@@ -1,11 +1,9 @@
 import { Component, signal } from '@angular/core';
 // Import
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
-import { PlanSubmissionService } from '../../../services/plan-submission.service';
-
+import { ParcelAllocationWorksheetService } from '../../../services/parcel-allocation-worksheet.service';
 
 @Component({
   selector: 'app-index',
@@ -18,7 +16,7 @@ export class IndexComponent {
 
 
   //variables
-  mSolutionDefinitions: any = {}
+  mParcelAllocationWorksheet: any = {}
   links:any= []
   mPageFrom: any
 
@@ -28,9 +26,8 @@ export class IndexComponent {
   itemForm:any
 
   constructor(
-    private mPlanSubmissionService: PlanSubmissionService,
+    private mParcelAllocationWorksheetService: ParcelAllocationWorksheetService,
     public mToastrService: ToastrService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,20 +46,16 @@ export class IndexComponent {
   // index
   index(){
     this.mProgress.set(true);
-    this.mPlanSubmissionService.allItems().subscribe({
+    this.mParcelAllocationWorksheetService.allItems().subscribe({
       next: (response) => {
-          console.log(response)
         if(response){
           this.mPageFrom = (response as any).from
-          this.mSolutionDefinitions =(response as any).data;
+          this.mParcelAllocationWorksheet =(response as any).data;
           this.links = (response as any).links;
         }
         this.mProgress.set(false);
-        console.log(this.mProgress)
       },
       error: (error ) => {
-        // console.log(error);
-          // console.log(error)
         if(error.error.message){
           this.mToastrService.error(error.error.message);
         }
@@ -74,21 +67,17 @@ export class IndexComponent {
 
   //onChangePage
   onChangePage(item:any){
-    // console.log(item);
-
     this.mProgress.set(true);
-    this.mPlanSubmissionService.paginateItems(item).subscribe({
+    this.mParcelAllocationWorksheetService.paginateItems(item).subscribe({
       next: (response) => {
         if(response){
-          // console.log(response)
           this.mPageFrom = (response as any).from
-          this.mSolutionDefinitions =(response as any).data;
+          this.mParcelAllocationWorksheet =(response as any).data;
           this.links = (response as any).links;
           this.mProgress.set(false);;
         }
       },
       error: (error ) => {
-        // console.log(error);
         if(error.error.message){
           this.mToastrService.error(error.error.message);
         }
@@ -124,17 +113,15 @@ export class IndexComponent {
           //Delete
           if (result.isConfirmed) {
             this.mProgress.set(true);
-            this.mPlanSubmissionService.deleteItem(item).subscribe({
+            this.mParcelAllocationWorksheetService.deleteItem(item).subscribe({
               next: (response) => {
                 if(response){
-                  // console.log(response)
-                  this.mSolutionDefinitions = this.mSolutionDefinitions.filter((items: { id: any; })=>items.id !== item.id);
+                  this.mParcelAllocationWorksheet = this.mParcelAllocationWorksheet.filter((items: { id: any; })=>items.id !== item.id);
                   this.mToastrService.error((response as any).message);
                   this.mProgress.set(false);
                 }
               },
               error: (error ) => {
-                // console.log(error);
                 if(error.error.message){
                   this.mToastrService.error(error.error.message);
                 }
@@ -150,11 +137,10 @@ export class IndexComponent {
   //onSubmit
   onSubmit(formValues: any){
     this.mProgress.set(true);
-    this.mPlanSubmissionService.searchItems(formValues).subscribe({
+    this.mParcelAllocationWorksheetService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mSolutionDefinitions = (response as any).salutations
-          // console.log(response);
+          this.mParcelAllocationWorksheet = (response as any).salutations
           this.mToastrService.success((response as any).message);
           this.mProgress.set(false);
         }
@@ -172,17 +158,15 @@ export class IndexComponent {
   //onSearch
   onSearch(formValues: any){
     this.mProgress.set(true);
-    this.mPlanSubmissionService.searchItems(formValues).subscribe({
+    this.mParcelAllocationWorksheetService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mSolutionDefinitions = (response as any).data
-          // console.log(response)
+          this.mParcelAllocationWorksheet = (response as any).data
           this.mToastrService.success((response as any).message)
           this.mProgress.set(false);
         }
       },
       error: (error ) => {
-        // console.log(error)
         if(error.error.message){
           this.mToastrService.error(error.error.message)
         }
@@ -193,3 +177,4 @@ export class IndexComponent {
 
 
 }
+

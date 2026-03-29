@@ -102,6 +102,20 @@ ng generate component components/advertising-application/show
 ng generate module components/advertising-application/advertisingApplication
 ng generate module components/advertising-application/advertisingApplicationRouting
 
+ng generate component components/compliance-and-enforcement/index
+ng generate component components/compliance-and-enforcement/create
+ng generate component components/compliance-and-enforcement/edit
+ng generate component components/compliance-and-enforcement/show
+ng generate module components/compliance-and-enforcement/complianceAndEnforcement
+ng generate module components/compliance-and-enforcement/complianceAndEnforcementRouting
+
+ng generate component components/parcel-allocation-worksheet/index
+ng generate component components/parcel-allocation-worksheet/create
+ng generate component components/parcel-allocation-worksheet/edit
+ng generate component components/parcel-allocation-worksheet/show
+ng generate module components/parcel-allocation-worksheet/parcelAllocationWorksheet
+ng generate module components/parcel-allocation-worksheet/parcelAllocationWorksheetRouting
+
 ng generate component components/auth/read
 ng generate component components/auth/create
 ng generate component components/auth/edit
@@ -139,15 +153,8 @@ ng generate service services/planSubmission
 ng generate service services/investorApplication
 ng generate service services/profile
 ng generate service services/dashboard
-ng generate service services/areaOfCollaboration
-ng generate service services/brsVerification
-ng generate service services/exchangeRate
-ng generate service services/vendor
-ng generate service services/report
-ng generate service services/priceProposal
-ng generate service services/priceProposalResponse
-ng generate service services/customer
-ng generate service services/deal
+ng generate service services/parcelAllocationWorksheet
+
 
 ng generate service services/AppSidebar
 ng generate service services/Local
@@ -160,13 +167,7 @@ ng generate interface interfaces/planSubmission
 ng generate interface interfaces/areaOfCollaboration
 ng generate interface interfaces/investorApplication
 ng generate interface interfaces/profile
-ng generate interface interfaces/brsVerification
-ng generate interface interfaces/exchangeRate
-ng generate interface interfaces/vendor
-ng generate interface interfaces/priceProposal
-ng generate interface interfaces/priceProposalResponse
-ng generate interface interfaces/customer
-ng generate interface interfaces/deal
+ng generate interface interfaces/parcelAllocationWorksheet
 
 8. Guards
 ng generate guard guards/auth

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-//Import
-
 
 @Component({
   selector: 'app-index',
@@ -10,6 +8,5 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class IndexComponent {
-
 
 }

@@ -6,8 +6,8 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertComponent, AlertHeadingDirective, ButtonModule, CardModule, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
-import { IconDirective } from '@coreui/icons-angular';
+import { AlertComponent, AlertHeadingDirective, ButtonModule, CardBodyComponent, CardModule, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
+import { IconDirective, IconModule } from '@coreui/icons-angular';
 import { ProgressModule } from '../progress/progress.module';
 
 
@@ -28,6 +28,7 @@ import { ProgressModule } from '../progress/progress.module';
     // add
     ButtonModule,
     CardModule,
+    CardBodyComponent,
     FormModule,
     GridModule,
     PaginationModule,
@@ -35,7 +36,7 @@ import { ProgressModule } from '../progress/progress.module';
     TableModule,
     ModalModule,
     ReactiveFormsModule,
-    // IconModule,
+    IconModule,
     IconDirective,
     AlertHeadingDirective,
     AlertComponent
