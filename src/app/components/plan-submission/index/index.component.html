@@ -36,8 +36,11 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Project</th>
-                <th scope="col">Submission Type</th>
                 <th scope="col">Investor</th>
+                <th scope="col">Submission Type</th>
+                <th scope="col">Has Variations</th>
+                <th scope="col">Duration (Months)</th>
+                <th scope="col">Estimated Cost (USD)</th>
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
@@ -48,12 +51,15 @@
               <tr *ngFor="let item of mSolutionDefinitions; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.project_brief }}</td>
+                <td>{{ item.investor.name }}</td>
                 <td>
                   <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.plan_submission_type_id==1,'bg-secondary':item.plan_submission_type_id==2, 'bg-success':item.plan_submission_type_id==3, 'bg-danger':item.plan_submission_type_id==4,'bg-warning text-dark':item.status_id==5,'bg-info':item.plan_submission_type_id==6,'bg-dark':item.plan_submission_type_id==7}">
                     {{ item.type?.name }}
                   </span>
                 </td>
-                <td>{{ item.investor.name }}</td>
+                <td>{{ item.require_variations }}</td>
+                <td>{{ item.estimated_project_duration }}</td>
+                <td>{{ item.estimated_project_construction_cost | currency:'USD':'symbol':'1.2-2' }}</td>
                 <td>{{ item.consultant.name }}</td>
                 <td>
                   <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.status_id==1,'bg-warning text-dark':item.status_id==2, 'bg-secondary':item.status_id==3, 'bg-info text-dark':item.status_id==4,'bg-light text-dark':item.status_id==5,'bg-dark':item.status_id==6,'bg-white  text-dark':item.status_id==7,'bg-danger':item.status_id==8, 'bg-success':item.status_id==9}">

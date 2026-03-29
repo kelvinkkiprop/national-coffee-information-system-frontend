@@ -45,6 +45,18 @@
           <fieldset class="border p-2 mb-3">
             <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PARCEL & CONTEXT ANALYSIS</h6></legend>
             <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="context_analysis">Parcel Number:</label>
+                  <div class="text-muted">{{ item.parcel!.number }}</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="context_analysis">Size:</label>
+                  <div class="text-muted">{{ item.parcel.acres }} acres</div>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="context_analysis">Context Analysis (500m radius context analysis):</label>

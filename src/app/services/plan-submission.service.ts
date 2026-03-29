@@ -57,4 +57,12 @@ export class PlanSubmissionService {
     return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
   }
 
+
+
+
+  getParcelItem(id:any){
+    const url = `${environment.base_url}/parcels-plan-submissions/${id}`;
+    return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
 }

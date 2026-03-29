@@ -5,6 +5,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from 'ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { PlanSubmissionService } from '../../../services/plan-submission.service';
+import { PlanSubmission } from '../../../interfaces/plan-submission';
 
 @Component({
   selector: 'app-show',
@@ -30,7 +31,7 @@ export class ShowComponent {
 
   public mEditor: any = ClassicEditor;
 
-  item:any;
+  item:any ={};
   id:any;
 
 
