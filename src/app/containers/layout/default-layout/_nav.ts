@@ -25,7 +25,11 @@ export const navItems: INavData[] = [
       {
         name: 'Masterplan submission',
         url: '/plan-submissions',
-        icon: 'nav-icon-bullet'
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'NEW'
+        },
       },
       {
         name: 'Variation/Land use planning',
@@ -36,10 +40,6 @@ export const navItems: INavData[] = [
         name: 'Design submission',
         url: '/design-submissions',
         icon: 'nav-icon-bullet',
-        badge: {
-          color: 'danger',
-          text: 'NEW'
-        },
       },
     ]
   },
