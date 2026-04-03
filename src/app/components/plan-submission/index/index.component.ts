@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 // Import
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import swal from 'sweetalert2';
 import { PlanSubmissionService } from '../../../services/plan-submission.service';
 

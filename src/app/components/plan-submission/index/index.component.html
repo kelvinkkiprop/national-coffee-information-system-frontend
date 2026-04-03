@@ -70,7 +70,16 @@
                 <td>
                   <div class="text-nowrap">
                     <a routerLink="/plan-submissions/show/{{item.id}}" cButton color="dark" variant="outline" size="sm"><svg cIcon name="cilLowVision" class="btn-icon"></svg></a>
-                    <a routerLink="/plan-submissions/edit/{{item.id}}" cButton color="dark" size="sm"><svg cIcon name="cilPencil" class="btn-icon"></svg></a>
+                    <!-- <a routerLink="/plan-submissions/edit/{{item.id}}" cButton color="dark" size="sm"><svg cIcon name="cilPencil" class="btn-icon"></svg></a> -->
+                    <c-dropdown style="display: inline;">
+                      <button cButton cDropdownToggle color="dark" size="sm">
+                        <svg cIcon name="cilPencil" class="btn-icon"></svg>
+                      </button>
+                      <ul cDropdownMenu>
+                        <li><a routerLink="/plan-submissions/edit/{{item.id}}" cDropdownItem><svg cIcon name="cilPen" class="btn-icon"></svg> Edit</a></li>
+                        <li><a routerLink="/plan-submissions/process/{{item.id}}" cDropdownItem><svg cIcon name="cilList" class="btn-icon"></svg> Process</a></li>
+                      </ul>
+                    </c-dropdown>
                     <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><svg cIcon name="cilTrash" class="btn-icon"></svg></button>
                   </div>
                 </td>

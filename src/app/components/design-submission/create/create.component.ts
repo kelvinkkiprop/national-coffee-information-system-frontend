@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { PlanSubmissionService } from '../../../services/plan-submission.service';
 import { AppContextService } from '../../../core/app-context.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 
 @Component({
   selector: 'app-create',

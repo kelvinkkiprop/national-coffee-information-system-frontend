@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '@coreui/angular';
+// import
+import { AppInfoService } from '../../../../core/app-info.service';
 
 @Component({
   selector: 'app-default-footer',
@@ -7,7 +9,10 @@ import { FooterComponent } from '@coreui/angular';
   styleUrls: ['./default-footer.component.scss']
 })
 export class DefaultFooterComponent extends FooterComponent {
-  constructor() {
+
+  constructor(
+    public mAppInfoService: AppInfoService,
+  ) {
     super();
   }
 }

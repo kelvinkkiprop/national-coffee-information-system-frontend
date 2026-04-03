@@ -1,26 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IndexComponent } from './index/index.component';
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { NgModule } from '@angular/core';
 import {
+  CalloutComponent,
   CardBodyComponent,
   CardComponent,
   ColComponent,
   ContainerComponent,
   GutterDirective,
-  ProgressComponent,
-  RowComponent,
-  TableDirective,
-
-  ButtonDirective,
-  DropdownComponent,
-  DropdownDividerDirective,
-  DropdownItemDirective,
-  DropdownMenuDirective,
-  DropdownToggleDirective,
-  TemplateIdDirective,
-  WidgetStatAComponent
+  RowComponent
 } from '@coreui/angular';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { IndexComponent } from './index/index.component';
 
 
 
@@ -39,15 +29,7 @@ import {
     RowComponent,
     CardComponent,
     CardBodyComponent,
-
-      ButtonDirective,
-      DropdownComponent,
-      DropdownDividerDirective,
-      DropdownItemDirective,
-      DropdownMenuDirective,
-      DropdownToggleDirective,
-      TemplateIdDirective,
-      WidgetStatAComponent
+    CalloutComponent
   ]
 })
 export class DashboardModule { }

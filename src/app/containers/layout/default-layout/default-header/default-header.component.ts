@@ -23,7 +23,7 @@ import {
 
 import { IconDirective } from '@coreui/icons-angular';
 import { AuthService } from '../../../../services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { environment } from '../../../../../environments/environment';
 
 @Component({

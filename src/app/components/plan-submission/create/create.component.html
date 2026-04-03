@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                   <div class="form-group mb-3">
                     <label for="investor_id" class="col-form-label required">Company:</label>
-                    <select formControlName="investor_id" [ngClass]="{'is-invalid': itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)}" type="text" class="form-control">
+                    <select (change)="onInvestorChange($event)" formControlName="investor_id" [ngClass]="{'is-invalid': itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)}" type="text" class="form-control">
                       <option value="" disabled="true" selected="true">--- Select investor ---</option>
                       <option *ngFor="let item of mInvestors" value="{{item.id}}">{{item.name}}</option>
                     </select>
@@ -130,7 +130,7 @@
                   <label for="parcel_id" class="col-form-label required">Parcel Number:</label>
                   <select (change)="onParcelChange($event)" formControlName="parcel_id" [ngClass]="{'is-invalid': itemForm.get('parcel_id')?.invalid && (itemForm.get('parcel_id')?.dirty || itemForm.get('parcel_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select Parcel ---</option>
-                    <option *ngFor="let item of mParcels" value="{{item.id}}">{{item.number}}</option>
+                    <option *ngFor="let item of mParcels" value="{{item.parcel_id}}">{{item.allocation_worksheet?.number}}</option>
                   </select>
                   <div *ngIf="itemForm.get('parcel_id').invalid && (itemForm.get('parcel_id').dirty || itemForm.get('parcel_id').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('parcel_id').errors?.['required']">This field is required.</div>
@@ -288,7 +288,7 @@
                     <div class="col-md-6">
                       <div class="form-group mb-3">
                         <label for="percentage_of_site_covered_by_existing_building" class="col-form-label required1">Percentage of site covered by existing building(s):</label>
-                        <input formControlName="percentage_of_site_covered_by_existing_building" [ngClass]="{'is-invalid': itemForm.get('percentage_of_site_covered_by_existing_building').invalid && (itemForm.get('percentage_of_site_covered_by_existing_building').dirty || itemForm.get('percentage_of_site_covered_by_existing_building').touched)}" type="number" class="form-control"/>
+                        <input [(ngModel)]="mParcelInfo.plot_coverage" formControlName="percentage_of_site_covered_by_existing_building" [ngClass]="{'is-invalid': itemForm.get('percentage_of_site_covered_by_existing_building').invalid && (itemForm.get('percentage_of_site_covered_by_existing_building').dirty || itemForm.get('percentage_of_site_covered_by_existing_building').touched)}" type="number" class="form-control"/>
                         <div *ngIf="itemForm.get('percentage_of_site_covered_by_existing_building').invalid && (itemForm.get('percentage_of_site_covered_by_existing_building').dirty || itemForm.get('percentage_of_site_covered_by_existing_building').touched)" class="invalid-feedback" role="alert">
                           <div *ngIf="itemForm.get('percentage_of_site_covered_by_existing_building').errors?.['required']">This field is required.</div>
                         </div>
@@ -297,7 +297,7 @@
                     <div class="col-md-6">
                       <div class="form-group mb-3">
                         <label for="percentage_of_site_covered_by_proposed_building" class="col-form-label required1">Percentage of site covered by proposed building(s):</label>
-                        <input formControlName="percentage_of_site_covered_by_proposed_building" [ngClass]="{'is-invalid': itemForm.get('percentage_of_site_covered_by_proposed_building').invalid && (itemForm.get('percentage_of_site_covered_by_proposed_building').dirty || itemForm.get('percentage_of_site_covered_by_proposed_building').touched)}" type="number" class="form-control"/>
+                        <input [(ngModel)]="mParcelInfo.plot_coverage" formControlName="percentage_of_site_covered_by_proposed_building" [ngClass]="{'is-invalid': itemForm.get('percentage_of_site_covered_by_proposed_building').invalid && (itemForm.get('percentage_of_site_covered_by_proposed_building').dirty || itemForm.get('percentage_of_site_covered_by_proposed_building').touched)}" type="number" class="form-control"/>
                         <div *ngIf="itemForm.get('percentage_of_site_covered_by_proposed_building').invalid && (itemForm.get('percentage_of_site_covered_by_proposed_building').dirty || itemForm.get('percentage_of_site_covered_by_proposed_building').touched)" class="invalid-feedback" role="alert">
                           <div *ngIf="itemForm.get('percentage_of_site_covered_by_proposed_building').errors?.['required']">This field is required.</div>
                         </div>

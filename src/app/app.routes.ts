@@ -79,6 +79,11 @@ export const routes: Routes = [
           import('./components/parcel-allocation-worksheet/parcel-allocation-worksheet.module').then((m) => m.ParcelAllocationWorksheetModule)
       },
       {
+        path: 'downloads',
+        loadChildren: () =>
+          import('./components/downloads/download.module').then((m) => m.DownloadModule)
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('./components/profiles/profile.module').then((m) => m.ProfileModule)

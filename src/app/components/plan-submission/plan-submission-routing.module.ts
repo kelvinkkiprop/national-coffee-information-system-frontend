@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
+import { ProcessComponent } from './process/process.component';
 
 
 //Routes
@@ -42,6 +43,15 @@ const routes: Routes = [
       title: 'Plan Submission / Show',
     }
   },
+
+  {
+    path: 'process/:id',
+    component: ProcessComponent,
+    data: {
+      title: 'Plan Submission / Process',
+    }
+  },
+
 ];
 
 

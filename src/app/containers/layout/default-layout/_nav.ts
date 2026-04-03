@@ -61,10 +61,14 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' },
   },
   {
-
     name: 'Compliance & Enforcement ',
     url: '/compliance-and-enforcement',
     iconComponent: { name: 'cil-list' },
+  },
+  {
+    name: 'Guidelines,Codes&Templates',
+    url: '/downloads',
+    iconComponent: { name: 'cil-book' },
   },
 
 

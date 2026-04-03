@@ -1,0 +1,37 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<div>
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group mb-3">
+        <label for="status_id" class="col-form-label required">Company:</label>
+        <select formControlName="status_id" [ngClass]="{'is-invalid': itemForm.get('status_id')?.invalid && (itemForm.get('status_id')?.dirty || itemForm.get('status_id')?.touched)}" type="text" class="form-control">
+          <option value="" disabled="true" selected="true">--- Select status ---</option>
+          <option *ngFor="let item of mNextPreviousStatuses" value="{{item.id}}">{{item.alias }}</option>
+        </select>
+        <div *ngIf="itemForm.get('status_id')?.invalid && (itemForm.get('status_id')?.dirty || itemForm.get('status_id')?.touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('status_id')?.errors?.['required']">This field is required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group mb-3">
+        <label for="remarks" class="col-form-label required1">Remarks:</label>
+        <textarea formControlName="remarks" [ngClass]="{'is-invalid': itemForm.get('remarks').invalid && (itemForm.get('remarks').dirty || itemForm.get('remarks').touched)}" type="text" class="form-control"></textarea>
+
+        <div *ngIf="itemForm.get('remarks').invalid && (itemForm.get('remarks').dirty || itemForm.get('remarks').touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('remarks').errors?.['required']">This field is required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 text-right">
+    <button routerLink="/plan-submissions" cButton color="danger" class="me-2">Cancel</button>
+    <button [disabled]="itemForm.invalid" type="submit" cButton color="success">Submit</button>
+  </div>
+
+</form>
+</div>

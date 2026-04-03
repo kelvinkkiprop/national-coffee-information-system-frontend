@@ -193,7 +193,7 @@
 
           <div class="mt-3 text-right">
             <button routerLink="/plan-submissions" cButton color="danger">Cancel</button>
-            <button [disabled]="itemForm.invalid" type="submit" cButton color="success">Submit</button>
+            <a routerLink="/plan-submissions/process/{{item.id}}" cButton color="success" class="text-light">Process</a>
           </div>
 
         </form>

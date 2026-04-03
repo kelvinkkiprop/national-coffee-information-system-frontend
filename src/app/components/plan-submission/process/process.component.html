@@ -1,0 +1,35 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="item.investor" class="form-group mb-3">
+              <label for="investor_id" class="col-form-label required">Company:</label>
+              <div class="text-muted">{{ item.investor?.name }}</div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group mb-3">
+              <label for="project_brief" class="col-form-label required">Project Brief:</label>
+              <div class="text-muted">{{ item.project_brief }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="mAppContextService.hasRoles([1])">
+              <app-review/>
+            </div>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

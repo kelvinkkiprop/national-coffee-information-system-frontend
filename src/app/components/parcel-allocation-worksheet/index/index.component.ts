@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 // Import
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import swal from 'sweetalert2';
 import { ParcelAllocationWorksheetService } from '../../../services/parcel-allocation-worksheet.service';
 

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { PlanSubmissionService } from '../../../services/plan-submission.service';
 import { ProfileService } from '../../../services/profile.service';
@@ -209,7 +209,7 @@ export class CreateComponent {
         }
       },
       error: (error ) => {
-        // console.log(error);
+        console.log(error);
         if(error.error.message){
           this.mToastrService.error(error.error.message);
         }
@@ -324,6 +324,30 @@ export class CreateComponent {
     if (event.target.value) {
       const file = event.target.files[0];
       this.sustainability_report_file = file;
+    }
+  }
+
+
+
+  // onInvestorChange
+  onInvestorChange(event:any) {
+    if (event.target.value) {
+      const mInvestorId = event.target.value;
+      this.mProgress.set(true);
+      this.mPlanSubmissionService.getInvestorParcelsItems(mInvestorId).subscribe({
+        next: (response) => {
+          if(response){
+            this.mParcels = response as any;
+            this.mProgress.set(false);
+          }
+        },
+        error: (error ) => {
+          if(error.error.message){
+            this.mToastrService.error(error.error.message)
+          }
+          this.mProgress.set(false);
+        }
+      });
     }
   }
 

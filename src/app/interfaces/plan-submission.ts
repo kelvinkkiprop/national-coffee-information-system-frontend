@@ -56,4 +56,5 @@ export interface PlanSubmission {
 
 
   status?: any,
+  investor?: any,
 }

@@ -38,6 +38,7 @@ export class PlanSubmissionService {
     return this.http.put<PlanSubmission>(url, item, this.mAppContextService.getHttpOptions());
   }
 
+
   deleteItem(item: PlanSubmission): Observable<PlanSubmission>{
     const url = `${environment.base_url}/plan-submissions/${item.id}`;
     return this.http.delete<PlanSubmission>(url, this.mAppContextService.getHttpOptions());
@@ -63,6 +64,22 @@ export class PlanSubmissionService {
   getParcelItem(id:any){
     const url = `${environment.base_url}/parcels-plan-submissions/${id}`;
     return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
+  }
+  getInvestorParcelsItems(id:any){
+    const url = `${environment.base_url}/investor-parcels-plan-submissions/${id}`;
+    return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+
+
+  nextPreviousStatusItem(id:any){
+    const url = `${environment.base_url}/next-previous-status-approval-plan-submissions/${id}`;
+    return this.http.get<PlanSubmission[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+  processItemPlanner(item: any): Observable<PlanSubmission>{
+    const url = `${environment.base_url}/planner-process-plan-submissions/${item.id}`;
+    return this.http.post<PlanSubmission>(url, item, this.mAppContextService.getHttpOptions());
   }
 
 }

@@ -2,10 +2,9 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { PlanSubmissionService } from '../../../services/plan-submission.service';
-import { PlanSubmission } from '../../../interfaces/plan-submission';
 
 @Component({
   selector: 'app-show',
@@ -67,7 +66,7 @@ export class ShowComponent {
     this.getItem();
   }
 
-  //loadUnpaginatedItems
+  // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
     this.mPlanSubmissionService.unpaginatedItems().subscribe({
