@@ -47,6 +47,17 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="mb-3">
+                  <label for="context_analysis">Parcels:</label>
+                  <div *ngIf="item.investor" class="text-muted">
+                    <!-- {{ item.investor | json }} -->
+                      <span *ngIf="item.investor.parcels">
+                        <span *ngFor="let mItem of item.investor.parcels; let j = index; let last = last" class="text-muted"> {{ mItem.allocation_worksheet?.number }}<span *ngIf="!last">,</span></span>
+                      </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
                   <label for="context_analysis">Require Variations:</label>
                   <div class="text-muted">{{ item.require_variations }}</div>
                 </div>
@@ -77,13 +88,23 @@
                       <div class="callout callout-danger">
                           <h6 class="text-danger fw-bold">Proposed</h6>
                           <!-- <div> {{ mItem | json }} </div> -->
-                          <small>
+                          <!-- <small>
                             Acres: {{mItem.size}} <br>
                             Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
                             Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
                             Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
                             Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
                             Plot Coverage: {{mItem.plot_coverage}}% <br>
+                            Use: {{mItem.description}} <br>
+                          </small> -->
+                          <small>
+                            Acres: {{mItem.acres}} <br>
+                            Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
+                            Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
+                            Min/Max Floors: {{mItem.min_number_of_floors}}-{{mItem.max_number_of_floors}}<br>
+                            Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
+                            Plot Coverage (Proposed/Existing): {{mItem.percentage_of_site_covered_by_proposed_building}}-{{mItem.percentage_of_site_covered_by_existing_building}}% <br>
+                            Number of Units to be Developed: {{mItem.number_of_units_to_be_developed}} <br>
                             Use: {{mItem.description}} <br>
                           </small>
                       </div>
@@ -188,8 +209,8 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="sustainability_reportsustainability_report" class="col-form-label required">Sustainability Report (upload a report on design, materials and utility management, i.e., water and electricity):</label>
-                  <div *ngIf="item.sustainability_reportsustainability_report">
-                    <a href="{{item.sustainability_reportsustainability_report_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  <div *ngIf="item.sustainability_report">
+                    <a href="{{item.sustainability_report_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
                   </div>
                 </div>
               </div>
