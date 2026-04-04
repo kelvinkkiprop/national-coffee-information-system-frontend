@@ -18,7 +18,7 @@ export class IndexComponent {
   // variables
   mDevelopmentCodes: any = {}
   mDevelopmentGuidelines: any = {}
-  mTemplates: any = {}
+  mForms: any = {}
 
   mProgress = signal(false);
 
@@ -42,7 +42,7 @@ export class IndexComponent {
         if(response){
           this.mDevelopmentCodes =(response as any).data.development_codes;
           this.mDevelopmentGuidelines =(response as any).data.development_guidelines;
-          this.mTemplates =(response as any).data.templates;
+          this.mForms =(response as any).data.forms;
         }
         this.mProgress.set(false);
       },

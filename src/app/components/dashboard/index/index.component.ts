@@ -13,12 +13,12 @@ import { DashboardService } from '../../../services/dashboard.service';
 export class IndexComponent {
 
   // variables
-  mPlanSubmissions:any;
+  mConstructionPermits:any;
   mAdvertisingApplications:any;
   mConstructionSiteBoards:any;
   mComplianceAndEnforcements:any;
 
-  myPlanSubmissions:any;
+  myConstructionPermits:any;
   myComplianceAndEnforcements:any;
 
   mProgress = signal(false);
@@ -41,11 +41,11 @@ export class IndexComponent {
       next: (response) => {
           // console.log(response)
         if(response){
-          this.mPlanSubmissions =(response as any).data.plan_submissions;
+          this.mConstructionPermits =(response as any).data.construction_permits;
           this.mAdvertisingApplications =(response as any).data.advertising_applications;
           this.mConstructionSiteBoards =(response as any).data.construction_site_boards;
           this.mComplianceAndEnforcements =(response as any).data.compliance_and_enforcements;
-          this.myPlanSubmissions =(response as any).data.my_plan_submissions;
+          this.myConstructionPermits =(response as any).data.my_construction_permits;
           this.myComplianceAndEnforcements =(response as any).data.my_compliance_and_enforcements;
         }
         this.mProgress.set(false);

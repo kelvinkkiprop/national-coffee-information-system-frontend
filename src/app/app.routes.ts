@@ -44,19 +44,9 @@ export const routes: Routes = [
       },
       {
         // canActivate: [withProfileOnlyGuard],
-        path: 'plan-submissions',
+        path: 'construction-permits',
         loadChildren: () =>
-          import('./components/plan-submission/plan-submission.module').then((m) => m.PlanSubmissionModule)
-      },
-      {
-        path: 'variations',
-        loadChildren: () =>
-          import('./components/variations/variation.module').then((m) => m.VariationModule)
-      },
-      {
-        path: 'design-submissions',
-        loadChildren: () =>
-          import('./components/design-submission/design-submission.module').then((m) => m.DesignSubmissionModule)
+          import('./components/construction-permits/construction-permit.module').then((m) => m.ConstructionPermitModule)
       },
       {
         path: 'construction-site-board',

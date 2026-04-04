@@ -66,13 +66,13 @@
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
-        <div class="card-title text-muted"><strong>Templates</strong></div>
+        <div class="card-title text-muted"><strong>Forms</strong></div>
       </c-card-header>
       <c-card-body>
         <div class="mb-3">
-          <div *ngIf="mTemplates.length>0; else noItemsTemplate">
+          <div *ngIf="mForms.length>0; else noItemsTemplate">
             <div class="row">
-              <div *ngFor="let item of mTemplates" class="col-md-3 mb-3">
+              <div *ngFor="let item of mForms" class="col-md-3 mb-3">
                 <div class="card shadow h-100">
                   <div class="card-body text-center">
                     <div class="text-danger"><svg cIcon name="cilFile" class="btn-icon text-warning"></svg></div>

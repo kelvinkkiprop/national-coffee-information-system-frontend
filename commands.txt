@@ -38,21 +38,21 @@ ng generate component components/dashboard/index
 ng generate module components/dashboard/dashboard
 ng generate module components/dashboard/dashboardRouting
 
-ng generate component components/plan-submission/index
-ng generate component components/plan-submission/create
-ng generate component components/plan-submission/edit
-ng generate component components/plan-submission/show
-ng generate module components/plan-submission/plan-submission
-ng generate module components/plan-submission/plan-submission-routing
-ng generate component components/plan-submission/process
-ng generate component components/plan-submission/process/inc/review
-ng generate component components/plan-submission/process/inc/technicalTeam
-ng generate component components/plan-submission/process/inc/technicalReportConsideration
-ng generate component components/plan-submission/process/inc/pitching
-ng generate component components/plan-submission/process/inc/revenueShare
-ng generate component components/plan-submission/process/inc/contracting
-ng generate component components/plan-submission/process/inc/offerAcceptance
-ng generate component components/plan-submission/process/inc/sendNotification
+ng generate component components/construction-permits/index
+ng generate component components/construction-permits/create
+ng generate component components/construction-permits/edit
+ng generate component components/construction-permits/show
+ng generate module components/construction-permits/construction-permit
+ng generate module components/construction-permits/construction-permit-routing
+ng generate component components/construction-permits/process
+ng generate component components/construction-permits/process/inc/review
+ng generate component components/construction-permits/process/inc/technicalTeam
+ng generate component components/construction-permits/process/inc/technicalReportConsideration
+ng generate component components/construction-permits/process/inc/pitching
+ng generate component components/construction-permits/process/inc/revenueShare
+ng generate component components/construction-permits/process/inc/contracting
+ng generate component components/construction-permits/process/inc/offerAcceptance
+ng generate component components/construction-permits/process/inc/sendNotification
 
 ng generate component components/profiles/index
 ng generate component components/profiles/create
@@ -60,20 +60,6 @@ ng generate component components/profiles/edit
 ng generate component components/profiles/show
 ng generate module components/profiles/profile
 ng generate module components/profiles/profileRouting
-
-ng generate component components/variations/index
-ng generate component components/variations/create
-ng generate component components/variations/edit
-ng generate component components/variations/show
-ng generate module components/variations/variation
-ng generate module components/variations/variationRouting
-
-ng generate component components/design-submission/index
-ng generate component components/design-submission/create
-ng generate component components/design-submission/edit
-ng generate component components/design-submission/show
-ng generate module components/design-submission/designSubmission
-ng generate module components/design-submission/designSubmissionRouting
 
 ng generate component components/reports/index
 ng generate component components/reports/show
@@ -143,8 +129,7 @@ ng generate interceptor interceptors/RoleChange
 7. Services
 ng generate service services/auth
 ng generate service services/user
-ng generate service services/planSubmission
-ng generate service services/investorApplication
+ng generate service services/constructionPermit
 ng generate service services/profile
 ng generate service services/dashboard
 ng generate service services/parcelAllocationWorksheet
@@ -157,11 +142,9 @@ ng generate service core/app-context
 9. Interfaces
 ng generate interface interfaces/user
 ng generate interface interfaces/role
-ng generate interface interfaces/planSubmission
-ng generate interface interfaces/areaOfCollaboration
-ng generate interface interfaces/investorApplication
-ng generate interface interfaces/profile
+ng generate interface interfaces/constructionPermit
 ng generate interface interfaces/parcelAllocationWorksheet
+ng generate interface interfaces/profile
 
 10. Guards
 ng generate guard guards/auth

@@ -1,0 +1,204 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">GENERAL INFORMATION</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Company:</label>
+                  <div class="text-muted">{{ item.investor!.name }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Nature of Application:</label>
+                  <div class="text-muted">{{ item.type!.name }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROJECT BRIEF AND PURPOSE</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Project Brief and Purpose (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                  <div class="text-muted">{{ item.project_brief }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Project Purpose (State the specific purpose of the proposed development e.g., Where the land use is education, the purpose may be the development of a primary school):</label>
+                  <div class="text-muted">{{ item.project_purpose }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PARCEL & CONTEXT ANALYSIS</h6></legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="context_analysis">Parcel Number:</label>
+                  <div class="text-muted">{{ item.parcel!.number }}</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="context_analysis">Size:</label>
+                  <div class="text-muted">{{ item.parcel.acres }} acres</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="context_analysis">Context Analysis (500m radius context analysis):</label>
+                  <div *ngIf="item.context_analysis">
+                    <a href="{{item.context_analysis_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DEVELOPMENT DATA</h6></legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="concept_plan">Concept Plan (Elevations, concept images and massing model and Building footprint anticipated for your site):</label>
+                  <div *ngIf="item.concept_plan">
+                    <a href="{{item.concept_plan_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="concept_plan">Geotechnical Report (Signed and stamped by a geologist or civil structural engineer):</label>
+                  <div *ngIf="item.geotechnical_report">
+                    <a href="{{item.geotechnical_report_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="topographical_survey">Topographical Survey:</label>
+                  <div *ngIf="item.topographical_survey">
+                    <a href="{{item.topographical_survey_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">ACCESS ANALYSIS PLAN</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="parking_strategy">Parking Strategy (Using <a routerLink="/reference-materials" target="_blank" rel="noopener noreferrer">Reference Materials</a> on parking e.g., Streetscape and Mobility Guidelines Chapter 3.6):</label>
+                  <div *ngIf="item.parking_strategy">
+                    <a href="{{item.parking_strategy_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="traffic_management_plan">Traffic Management Plan (Access to the site diagram, vehicle trip generation and traffic management strategy):</label>
+                  <div *ngIf="item.traffic_management_plan">
+                    <a href="{{item.traffic_management_plan_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">INFRASTRUCTURE</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="concept_plan">Estimated utility demand requirements (i.e., For Water, Sewer, Electricity, Internet requirement, solid waste, storm water, Irrigation/recycled water, Industrial waste, Glass, E-waste, Medical and hazardous waste):</label>
+                  <div *ngIf="item.estimated_utility_demand_requirements">
+                    <a href="{{item.estimated_utility_demand_requirements_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROJECT SUSTAINABILITY</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="concept_plan">Estimated utility demand requirements (i.e., For Water, Sewer, Electricity, Internet requirement, solid waste, storm water, Irrigation/recycled water, Industrial waste, Glass, E-waste, Medical and hazardous waste):</label>
+                  <div class="text-muted">{{ item.project_sustainability_brief }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                  <div class="mb-3">
+                    <label for="investor_id">Green Certification:</label>
+                    <div class="text-muted">{{ item.green_certification?.name }}</div>
+                  </div>
+              </div>
+              <div *ngIf="item.green_certification_id===4" class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="other_green_certification">Specify Other:</label>
+                  <div class="text-muted">{{ item.other_green_certification }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="sustainability_reportsustainability_report" class="col-form-label required">Sustainability Report (upload a report on design, materials and utility management, i.e., water and electricity):</label>
+                  <div *ngIf="item.sustainability_reportsustainability_report">
+                    <a href="{{item.sustainability_reportsustainability_report_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">CONCLUSIONS</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Variations (Does Your Project Require any Variation?):</label>
+                  <div class="text-muted">{{ item.require_variations }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Estimated Project Duration (In months):</label>
+                  <div class="text-muted">{{ item.estimated_project_duration }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Estimated Project Construction Cost (In USD):</label>
+                  <div class="text-muted">{{ item.estimated_project_construction_cost | currency:'USD':'symbol':'1.2-2' }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Commitment to comply with development codes and guidelines:</label>
+                  <div class="text-muted">{{ item.commitment_to_comply_with_development_codes_and_guidelines }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-3 text-right">
+            <button routerLink="/construction-permits" cButton color="danger">Cancel</button>
+            <a routerLink="/construction-permits/process/{{item.id}}" cButton color="success" class="text-light">Process</a>
+          </div>
+
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -189,10 +189,12 @@ input[readonly] {
     .nav-link.active {
       background-color: $white !important;
       color: $green !important;
-    }
-
-    .nav-link.active {
-      color: $green !important;
+      img, svg {
+        color: $green !important;
+      }
+      .nav-icon-bullet{
+        color: $green !important;
+      }
     }
   }
   // .header {
@@ -201,7 +203,6 @@ input[readonly] {
   //     background-color: $green;
   //   }
   // }
-
   .wrapper {
     .breadcrumb {
       color: $green !important;

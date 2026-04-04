@@ -23,36 +23,36 @@
         <h5 class="mt-2 text-muted">Quick Links</h5>
       </c-col>
       <c-col xs="6" md="4">
-        <a routerLink="/plan-submissions" class="text-decoration-none">
+        <a routerLink="/construction-permits" class="text-decoration-none">
           <c-card class="h-100 shadow-sm hover-shadow">
             <c-card-body>
-              <h6 class="card-title">Masterplan Submission</h6>
+              <h6 class="card-title">Construction Permit</h6>
               <p class="card-text text-medium-emphasis">
-                Submit and manage masterplan applications.
+                Apply for approval to begin construction after meeting all requirements.
               </p>
             </c-card-body>
           </c-card>
         </a>
       </c-col>
       <c-col xs="6" md="4">
-        <a routerLink="/variations" class="text-decoration-none">
+        <a routerLink="/parcel-allocation-worksheet" class="text-decoration-none">
           <c-card class="h-100 shadow-sm hover-shadow">
             <c-card-body>
-              <h6 class="card-title">Land Use Planning</h6>
+              <h6 class="card-title">Parcel Application Worksheet (PAW)</h6>
               <p class="card-text text-medium-emphasis">
-                Apply for change of use, subdivision, amalgamation, or extensions.
+                Request changes to land use, subdivision, or property extensions.
               </p>
             </c-card-body>
           </c-card>
         </a>
       </c-col>
       <c-col xs="6" md="4">
-        <a routerLink="/design-submissions" class="text-decoration-none">
+        <a routerLink="/downloads" class="text-decoration-none">
           <c-card class="h-100 shadow-sm hover-shadow">
             <c-card-body>
-              <h6 class="card-title">Design Submission</h6>
+              <h6 class="card-title">Guidelines, Codes & Forms</h6>
               <p class="card-text text-medium-emphasis">
-                Submit architectural and structural designs for approval.
+                Access planning guidelines, building codes, and application forms.
               </p>
             </c-card-body>
           </c-card>
@@ -106,10 +106,10 @@
 
     <c-row>
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">General</h6>
+        <h6 class="mt-2 text-muted">Internal</h6>
       </c-col>
       <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Plan Submissions'" class="mb-4" color="info" inverse1 value="{{ mPlanSubmissions || 0 }}">
+        <c-widget-stat-c [title]="'Construction Permits'" class="mb-4" color="info" inverse1 value="{{ mConstructionPermits || 0 }}">
           <ng-template cTemplateId="widgetIconTemplate">
             <svg cIcon height="36" name="cilPuzzle"></svg>
           </ng-template>
@@ -140,10 +140,10 @@
 
     <c-row [gutter]="{ gx: 3, gy: 3 }">
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">Investor</h6>
+        <h6 class="mt-2 text-muted">External</h6>
       </c-col>
       <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Plan Submissions'" value="{{ myPlanSubmissions }}" class="mb-4">
+        <c-widget-stat-e [title]="'Construction Permits'" value="{{ myConstructionPermits }}" class="mb-4">
           <svg cIcon name="cilPuzzle" size="xl"></svg>
         </c-widget-stat-e>
       </c-col>

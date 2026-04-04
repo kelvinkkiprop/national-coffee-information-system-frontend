@@ -23,8 +23,8 @@ export const navItems: INavData[] = [
     attributes: { class: 'nav-group' },
     children: [
       {
-        name: 'Masterplan submission',
-        url: '/plan-submissions',
+        name: 'Submit application',
+        url: '/construction-permits/create',
         icon: 'nav-icon-bullet',
         badge: {
           color: 'danger',
@@ -32,13 +32,8 @@ export const navItems: INavData[] = [
         },
       },
       {
-        name: 'Variation/Land use planning',
-        url: '/variations',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Design submission',
-        url: '/design-submissions',
+        name: 'Applications list',
+        url: '/construction-permits',
         icon: 'nav-icon-bullet',
       },
     ]
@@ -66,7 +61,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-list' },
   },
   {
-    name: 'Guidelines,Codes&Templates',
+    name: 'Guidelines, Codes & Forms',
     url: '/downloads',
     iconComponent: { name: 'cil-book' },
   },
