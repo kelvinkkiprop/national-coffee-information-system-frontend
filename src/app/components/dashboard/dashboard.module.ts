@@ -7,10 +7,18 @@ import {
   ColComponent,
   ContainerComponent,
   GutterDirective,
-  RowComponent
+  RowComponent,
+  ProgressComponent,
+  WidgetStatBComponent,
+  WidgetStatCComponent,
+  TemplateIdDirective,
+  WidgetStatFComponent,
 } from '@coreui/angular';
+
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { IndexComponent } from './index/index.component';
+import { IconDirective } from '@coreui/icons-angular';
+import { ProgressModule } from '../progress/progress.module';
 
 
 
@@ -20,8 +28,11 @@ import { IndexComponent } from './index/index.component';
   ],
   imports: [
     CommonModule,
+
     // import
     DashboardRoutingModule,
+    ProgressModule,
+
     // add
     ColComponent,
     ContainerComponent,
@@ -29,7 +40,14 @@ import { IndexComponent } from './index/index.component';
     RowComponent,
     CardComponent,
     CardBodyComponent,
-    CalloutComponent
+    CalloutComponent,
+
+    ProgressComponent,
+    WidgetStatBComponent,
+    WidgetStatCComponent,
+    TemplateIdDirective,
+    WidgetStatFComponent,
+    IconDirective,
   ]
 })
 export class DashboardModule { }

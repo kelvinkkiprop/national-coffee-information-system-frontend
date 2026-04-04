@@ -1,11 +1,9 @@
 import { Component, signal } from '@angular/core';
 // Import
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import swal from 'sweetalert2';
-import { DownloadService } from '../../../services/download.service';
 import { environment } from 'src/environments/environment';
+import { DownloadService } from '../../../services/download.service';
 
 
 @Component({

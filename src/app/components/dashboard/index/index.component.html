@@ -1,89 +1,175 @@
-<c-row [gutter]="{ gx: 3, gy: 3 }">
-  <c-col xs="12">
-    <c-callout color="danger" class="d-flex align-items-center justify-content-between">
-      <span>
-        Looking for guidelines or templates? Explore our resources to get started quickly and efficiently.
-      </span>
-      <a routerLink="/downloads" class="btn btn-success btn-sm ms-3">
-        Learn More
-      </a>
-    </c-callout>
-  </c-col>
+<app-progress *ngIf="mProgress()" />
 
-  <c-col xs="12">
-    <h5 class="mt-2 text-muted">Quick Links</h5>
-  </c-col>
-  <c-col xs="6" md="4">
-    <a routerLink="/plan-submissions" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Masterplan Submission</h6>
-          <p class="card-text text-medium-emphasis">
-            Submit and manage masterplan applications.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
-  <c-col xs="6" md="4">
-    <a routerLink="/variations" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Land Use Planning</h6>
-          <p class="card-text text-medium-emphasis">
-            Apply for change of use, subdivision, amalgamation, or extensions.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
-  <c-col xs="6" md="4">
-    <a routerLink="/design-submissions" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Design Submission</h6>
-          <p class="card-text text-medium-emphasis">
-            Submit architectural and structural designs for approval.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
-   <c-col xs="6" md="4">
-    <a routerLink="/advertising-application" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Advertising Application</h6>
-          <p class="card-text text-medium-emphasis">
-            Apply for billboard and signage approvals.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
-  <c-col xs="6" md="4">
-    <a routerLink="/construction-site-board" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Construction Site Board</h6>
-          <p class="card-text text-medium-emphasis">
-            Apply and manage construction site board permits.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
-  <c-col xs="6" md="4">
-    <a routerLink="/compliance-and-enforcement" class="text-decoration-none">
-      <c-card class="h-100 shadow-sm hover-shadow">
-        <c-card-body>
-          <h6 class="card-title">Compliance and Enforcement</h6>
-          <p class="card-text text-medium-emphasis">
-            Monitor compliance, conduct inspections, and enforce regulations on approved developments.
-          </p>
-        </c-card-body>
-      </c-card>
-    </a>
-  </c-col>
+<div ngPreserveWhitespaces>
 
-</c-row>
+  <div class="mb-3">
+    <c-row [gutter]="{ gx: 3, gy: 3 }">
+      <c-col xs="12">
+        <c-callout color="danger" class="d-flex align-items-center justify-content-between">
+          <span>
+            Looking for guidelines or templates? Explore our resources to get started quickly and efficiently.
+          </span>
+          <a routerLink="/downloads" class="btn btn-success btn-sm ms-3">
+            Learn More
+          </a>
+        </c-callout>
+      </c-col>
+    </c-row>
+  </div>
+
+  <div class="mb-3">
+    <c-row [gutter]="{ gx: 3, gy: 3 }">
+      <c-col xs="12">
+        <h5 class="mt-2 text-muted">Quick Links</h5>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/plan-submissions" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Masterplan Submission</h6>
+              <p class="card-text text-medium-emphasis">
+                Submit and manage masterplan applications.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/variations" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Land Use Planning</h6>
+              <p class="card-text text-medium-emphasis">
+                Apply for change of use, subdivision, amalgamation, or extensions.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/design-submissions" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Design Submission</h6>
+              <p class="card-text text-medium-emphasis">
+                Submit architectural and structural designs for approval.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/advertising-application" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Advertising Application</h6>
+              <p class="card-text text-medium-emphasis">
+                Apply for billboard and signage approvals.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/construction-site-board" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Construction Site Board</h6>
+              <p class="card-text text-medium-emphasis">
+                Apply and manage construction site board permits.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+      <c-col xs="6" md="4">
+        <a routerLink="/compliance-and-enforcement" class="text-decoration-none">
+          <c-card class="h-100 shadow-sm hover-shadow">
+            <c-card-body>
+              <h6 class="card-title">Compliance and Enforcement</h6>
+              <p class="card-text text-medium-emphasis">
+                Monitor compliance, conduct inspections, and enforce regulations on approved developments.
+              </p>
+            </c-card-body>
+          </c-card>
+        </a>
+      </c-col>
+    </c-row>
+  </div>
+
+  <div class="mb-3">
+    <c-row [gutter]="{ gx: 3, gy: 3 }">
+      <c-col xs="12">
+        <h5 class="mt-2 text-muted">System Insights</h5>
+      </c-col>
+    </c-row>
+
+    <c-row>
+      <c-col xs="12">
+        <h6 class="mt-2 text-muted">General</h6>
+      </c-col>
+      <c-col md="3" xl="3">
+        <c-widget-stat-c [title]="'Plan Submissions'" class="mb-4" color="info" inverse value="{{ mPlanSubmissions || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon height="36" name="cilPuzzle"></svg>
+          </ng-template>
+          <ng-template cTemplateId="widgetProgressTemplate">
+            <c-progress class="mt-3 mb-0" thin white [value]="25" />
+          </ng-template>
+        </c-widget-stat-c>
+      </c-col>
+      <c-col md="3" xl="3">
+        <c-widget-stat-c [title]="'Construction Site Boards'" class="mb-4" color="warning" inverse value="{{ mConstructionSiteBoards || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon height="36" name="cilDescription"></svg>
+          </ng-template>
+          <ng-template cTemplateId="widgetProgressTemplate">
+            <c-progress class="mt-3 mb-0" thin white [value]="50" />
+          </ng-template>
+        </c-widget-stat-c>
+      </c-col>
+      <c-col md="3" xl="3">
+        <c-widget-stat-c [title]="'Advertising Applications'" class="mb-4" color="success" inverse value="{{ mAdvertisingApplications || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon height="36" name="cilCursor"></svg>
+          </ng-template>
+          <ng-template cTemplateId="widgetProgressTemplate">
+            <c-progress class="mt-3 mb-0" thin white [value]="75" />
+          </ng-template>
+        </c-widget-stat-c>
+      </c-col>
+      <c-col md="3" xl="3">
+        <c-widget-stat-c [title]="'Compliance & Enforcements'" class="mb-4" color="danger" inverse value="{{ mComplianceAndEnforcements || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon height="36" name="cilList"></svg>
+          </ng-template>
+          <ng-template cTemplateId="widgetProgressTemplate">
+            <c-progress class="mt-3 mb-0" thin white [value]="100" />
+          </ng-template>
+        </c-widget-stat-c>
+      </c-col>
+    </c-row>
+
+    <c-row [gutter]="{ gx: 3, gy: 3 }">
+      <c-col xs="12">
+        <h6 class="mt-2 text-muted">Investor</h6>
+      </c-col>
+      <c-col md="6" xl="6">
+        <c-widget-stat-f [title]="'Plan Submissions'" class="mb-3" color="danger" textColor="light" padding value="{{ myPlanSubmissions || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon name="cilPuzzle" size="xl" height="36" width="24"></svg>
+          </ng-template>
+        </c-widget-stat-f>
+      </c-col>
+      <c-col md="6" xl="6">
+        <c-widget-stat-f [title]="'Compliance & Enforcements'" class="mb-3" color="success" textColor="light" padding value="{{ myComplianceAndEnforcements || 0 }}">
+          <ng-template cTemplateId="widgetIconTemplate">
+            <svg cIcon name="cilList" size="xl" height="36" width="24"></svg>
+          </ng-template>
+        </c-widget-stat-f>
+      </c-col>
+    </c-row>
+
+  </div>
+
+</div>
