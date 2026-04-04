@@ -18,7 +18,7 @@ export class IndexComponent {
 
 
   //variables
-  mSolutionDefinitions: any = {}
+  mConstructionPermits: any = {}
   links:any= []
   mPageFrom: any
 
@@ -54,7 +54,7 @@ export class IndexComponent {
           console.log(response)
         if(response){
           this.mPageFrom = (response as any).from
-          this.mSolutionDefinitions =(response as any).data;
+          this.mConstructionPermits =(response as any).data;
           this.links = (response as any).links;
         }
         this.mProgress.set(false);
@@ -82,7 +82,7 @@ export class IndexComponent {
         if(response){
           // console.log(response)
           this.mPageFrom = (response as any).from
-          this.mSolutionDefinitions =(response as any).data;
+          this.mConstructionPermits =(response as any).data;
           this.links = (response as any).links;
           this.mProgress.set(false);;
         }
@@ -128,7 +128,7 @@ export class IndexComponent {
               next: (response) => {
                 if(response){
                   // console.log(response)
-                  this.mSolutionDefinitions = this.mSolutionDefinitions.filter((items: { id: any; })=>items.id !== item.id);
+                  this.mConstructionPermits = this.mConstructionPermits.filter((items: { id: any; })=>items.id !== item.id);
                   this.mToastrService.error((response as any).message);
                   this.mProgress.set(false);
                 }
@@ -153,7 +153,7 @@ export class IndexComponent {
     this.mConstructionPermitService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mSolutionDefinitions = (response as any).salutations
+          this.mConstructionPermits = (response as any).salutations
           // console.log(response);
           this.mToastrService.success((response as any).message);
           this.mProgress.set(false);
@@ -175,7 +175,7 @@ export class IndexComponent {
     this.mConstructionPermitService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mSolutionDefinitions = (response as any).data
+          this.mConstructionPermits = (response as any).data
           // console.log(response)
           this.mToastrService.success((response as any).message)
           this.mProgress.set(false);

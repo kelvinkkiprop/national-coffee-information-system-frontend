@@ -20,7 +20,7 @@
                     <svg cIcon name="cilSearch" class="btn-icon text-light"></svg>
                   </button>
                 </div>
-                <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="alert">
+                <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="chip">
                   <div *ngIf="search_term.errors?.['required']">This field is required.</div>
                 </div>
               </div>
@@ -30,7 +30,7 @@
       </c-card-header>
       <c-card-body>
 
-        <div *ngIf="mSolutionDefinitions.length>0; else noItemsTemplate" class="table-responsive">
+        <div *ngIf="mConstructionPermits.length>0; else noItemsTemplate" class="table-responsive">
           <table cTable striped>
             <thead cTableColor="light1">
               <tr>
@@ -40,7 +40,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Has Variations</th>
                 <th scope="col">Duration (Months)</th>
-                <th scope="col">Estimated Cost (USD)</th>
+                <th scope="col">Estimated Cost</th>
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
@@ -48,14 +48,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of mSolutionDefinitions; index as i">
+              <tr *ngFor="let item of mConstructionPermits; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.project_brief }}</td>
                 <td>{{ item.investor.name }}</td>
                 <td>
-                  <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.plan_submission_type_id==1,'bg-secondary':item.plan_submission_type_id==2, 'bg-success':item.plan_submission_type_id==3, 'bg-danger':item.plan_submission_type_id==4,'bg-warning text-dark':item.status_id==5,'bg-info':item.plan_submission_type_id==6,'bg-dark':item.plan_submission_type_id==7}">
+                  <small class="chip chip-sm" [ngClass]="{'chip-primary':item.type_id==1,'chip-secondary':item.type_id==2, 'chip-success':item.type_id==3, 'bg-danger':item.type_id==4,'chip-warning text-dark':item.status_id==5,'chip-info':item.type_id==6,'chip-dark':item.type_id==7}">
                     {{ item.type?.name }}
-                  </span>
+                  </small>
                 </td>
                 <td>{{ item.require_variations }}</td>
                 <td>{{ item.estimated_project_duration }}</td>

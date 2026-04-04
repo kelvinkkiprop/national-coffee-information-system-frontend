@@ -99,6 +99,7 @@ import {
   // Add
   cilSearch,
   cilPlus,
+  cilMinus,
   cilLowVision,
   cilBook,
   cilFolder,
@@ -212,6 +213,7 @@ export const iconSubset = {
   // Add
   cilSearch,
   cilPlus,
+  cilMinus,
   cilLowVision,
   cilBook,
   cilFolder,
@@ -321,6 +323,7 @@ export enum IconSubset {
   // Add
   cilSearch = 'cilSearch',
   cilPlus = 'cilPlus',
+  cilMinus = 'cilMinus',
   cilLowVision = 'cilLowVision',
   cilBook = 'cilBook',
   cilFolder = 'cilFolder',

@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
@@ -21,7 +21,7 @@ export class CreateComponent {
   mProfessionalBodies:any;
   mPermitTypes:any;
   mPlannedLandUses:any;
-  mParcels:any;
+  mInvestorParcels:any = {};
   mGreenCertifications:any;
 
   itemForm:any
@@ -44,6 +44,8 @@ export class CreateComponent {
   estimated_utility_demand_requirements_file:any;
   sustainability_report_file:any;
 
+  mVariations?:any=[]
+  mItemForm?:any
 
   constructor(
    private mConstructionPermitService: ConstructionPermitService,
@@ -68,27 +70,6 @@ export class CreateComponent {
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
 
-      parcel_id: ['', Validators.required],
-      latitute: ['', Validators.nullValidator],
-      longitude: ['', Validators.nullValidator],
-      min_density: ['', Validators.nullValidator],
-      max_density: ['', Validators.nullValidator],
-      size: ['', Validators.required],
-      min_floor_area: ['', Validators.nullValidator],
-      max_floor_area: ['', Validators.nullValidator],
-      min_far: ['', Validators.nullValidator],
-      max_far: ['', Validators.nullValidator],
-      minimum_setback: ['', Validators.nullValidator],
-      min_floor_to_floor_height: ['', Validators.nullValidator],
-      max_floor_to_floor_height: ['', Validators.nullValidator],
-      min_number_of_floors: ['', Validators.nullValidator],
-      max_number_of_floors: ['', Validators.nullValidator],
-      percentage_of_site_covered_by_existing_building: ['', Validators.nullValidator],
-      percentage_of_site_covered_by_proposed_building: ['', Validators.nullValidator],
-      number_of_units_to_be_developed: ['', Validators.nullValidator],
-      planned_land_use_id: ['', Validators.required],
-      primary_secondary_and_preferred_ground_floor_use: ['', Validators.nullValidator],
-
       site_plan_and_analysis: ['', Validators.nullValidator],
       context_analysis: ['', Validators.nullValidator],
       concept_plan: ['', Validators.nullValidator],
@@ -103,10 +84,33 @@ export class CreateComponent {
       other_green_certification: ['', Validators.nullValidator],
       sustainability_report: ['', Validators.nullValidator],
 
-      require_variations: ['', Validators.required],
+      require_variations: ['no', Validators.required],
       estimated_project_duration: ['', Validators.required],
       estimated_project_construction_cost: ['', Validators.required],
       commitment_to_comply_with_development_codes_and_guidelines : [false, Validators.requiredTrue],
+    });
+
+    // mItemForm
+    this.mItemForm = this.fb.group({
+        parcel_number: ['', Validators.required],
+        min_density: ['', Validators.nullValidator],
+        max_density: ['', Validators.nullValidator],
+        min_floor_area: ['', Validators.nullValidator],
+        max_floor_area: ['', Validators.nullValidator],
+        min_far: ['', Validators.nullValidator],
+        max_far: ['', Validators.nullValidator],
+        minimum_setback: ['', Validators.nullValidator],
+        min_floor_to_floor_height: ['', Validators.nullValidator],
+        max_floor_to_floor_height: ['', Validators.nullValidator],
+        min_number_of_floors: ['', Validators.required],
+        max_number_of_floors: ['', Validators.required],
+        percentage_of_site_covered_by_existing_building: ['', Validators.required],
+        percentage_of_site_covered_by_proposed_building: ['', Validators.nullValidator],
+        number_of_units_to_be_developed: ['', Validators.required],
+        planned_land_use_id: ['', Validators.required],
+        primary_land_use_id: ['', Validators.required],
+        secondary_land_use_id: ['', Validators.nullValidator],
+        preferred_ground_floor_use_id: ['', Validators.nullValidator],
     });
 
    }
@@ -126,7 +130,7 @@ export class CreateComponent {
           this.mInvestors = (response as any).data.investors;
           this.mProfessionalBodies = (response as any).data.professional_bodies;
           this.mPermitTypes = (response as any).data.permit_types;
-          this.mParcels = (response as any).data.parcels;
+          // this.mInvestorParcels = (response as any).data.investor_parcels;
           this.mPlannedLandUses = (response as any).data.planned_land_uses;
           this.mGreenCertifications = (response as any).data.green_certifications;
           this.mProgress.set(false);
@@ -143,6 +147,8 @@ export class CreateComponent {
 
   // onSubmit
   onSubmit(formValues: any){
+    const mVariationsJsonArrayItems = JSON.stringify(Object.assign({}, this.mVariations))
+
     let formData:any = new FormData();
     formData.append('investor_id', formValues.investor_id);
     formData.append('type_id', formValues.type_id);
@@ -154,32 +160,32 @@ export class CreateComponent {
     formData.append('citizenship', formValues.citizenship);
     formData.append('project_brief', formValues.project_brief);
     formData.append('project_purpose', formValues.project_purpose);
+    formData.append('require_variations', formValues.require_variations);
+    formData.append('variations', mVariationsJsonArrayItems)
+    // formData.append('parcel_number', formValues.parcel_number);
+    // formData.append('latitute', formValues.latitute);
+    // formData.append('longitude', formValues.longitude);
+    // formData.append('min_density', formValues.min_density);
+    // formData.append('max_density', formValues.max_density);
+    // formData.append('size', formValues.size);
+    // formData.append('min_floor_area', formValues.min_floor_area);
+    // formData.append('max_floor_area', formValues.max_floor_area);
+    // formData.append('min_far', formValues.min_far);
+    // formData.append('max_far', formValues.max_far);
+    // formData.append('minimum_setback', formValues.minimum_setback);
+    // formData.append('min_floor_to_floor_height', formValues.min_floor_to_floor_height);
+    // formData.append('max_floor_to_floor_height', formValues.max_floor_to_floor_height);
+    // formData.append('min_number_of_floors', formValues.min_number_of_floors);
+    // formData.append('max_number_of_floors', formValues.max_number_of_floors);
+    // formData.append('percentage_of_site_covered_by_existing_building', formValues.percentage_of_site_covered_by_existing_building);
+    // formData.append('percentage_of_site_covered_by_proposed_building', formValues.percentage_of_site_covered_by_proposed_building);
+    // formData.append('number_of_units_to_be_developed', formValues.number_of_units_to_be_developed);
+    // formData.append('planned_land_use_id', formValues.planned_land_use_id);
+    // formData.append('primary_secondary_and_preferred_ground_floor_use', formValues.primary_secondary_and_preferred_ground_floor_use);
+
     formData.append('project_sustainability_brief', formValues.project_sustainability_brief);
     formData.append('green_certification_id', formValues.green_certification_id);
-    formData.append('parcel_id', formValues.parcel_id);
-    formData.append('latitute', formValues.latitute);
-    formData.append('longitude', formValues.longitude);
-    formData.append('min_density', formValues.min_density);
-    formData.append('max_density', formValues.max_density);
-    formData.append('size', formValues.size);
-    formData.append('min_floor_area', formValues.min_floor_area);
-    formData.append('max_floor_area', formValues.max_floor_area);
-    formData.append('min_far', formValues.min_far);
-    formData.append('max_far', formValues.max_far);
-    formData.append('minimum_setback', formValues.minimum_setback);
-    formData.append('min_floor_to_floor_height', formValues.min_floor_to_floor_height);
-    formData.append('max_floor_to_floor_height', formValues.max_floor_to_floor_height);
-    formData.append('min_number_of_floors', formValues.min_number_of_floors);
-    formData.append('max_number_of_floors', formValues.max_number_of_floors);
-    formData.append('percentage_of_site_covered_by_existing_building', formValues.percentage_of_site_covered_by_existing_building);
-    formData.append('percentage_of_site_covered_by_proposed_building', formValues.percentage_of_site_covered_by_proposed_building);
-    formData.append('number_of_units_to_be_developed', formValues.number_of_units_to_be_developed);
-    formData.append('planned_land_use_id', formValues.planned_land_use_id);
-    formData.append('primary_secondary_and_preferred_ground_floor_use', formValues.primary_secondary_and_preferred_ground_floor_use);
-
     formData.append('other_green_certification', formValues.other_green_certification);
-    // formData.append('sustainability_report', formValues.project_purpose);
-    formData.append('require_variations', formValues.require_variations);
     formData.append('estimated_project_duration',formValues.estimated_project_duration);
     formData.append('estimated_project_construction_cost', formValues.estimated_project_construction_cost);
     formData.append('commitment_to_comply_with_development_codes_and_guidelines', formValues.commitment_to_comply_with_development_codes_and_guidelines);
@@ -209,7 +215,7 @@ export class CreateComponent {
         }
       },
       error: (error ) => {
-        console.log(error);
+        // console.log(error);
         if(error.error.message){
           this.mToastrService.error(error.error.message);
         }
@@ -337,7 +343,7 @@ export class CreateComponent {
       this.mConstructionPermitService.getInvestorParcelsItems(mInvestorId).subscribe({
         next: (response) => {
           if(response){
-            this.mParcels = response as any;
+            this.mInvestorParcels = response as any;
             this.mProgress.set(false);
           }
         },
@@ -351,27 +357,70 @@ export class CreateComponent {
     }
   }
 
-  // onParcelChange
-  onParcelChange(event:any) {
-    if (event.target.value) {
-      const mParcelNumber = event.target.value;
-      this.mProgress.set(true);
-      this.mConstructionPermitService.getParcelItem(mParcelNumber).subscribe({
-        next: (response) => {
-          if(response){
-            this.mParcelInfo = response as any;
-            // console.log(this.mParcelInfo)
-            this.mProgress.set(false);
-          }
-        },
-        error: (error ) => {
-          if(error.error.message){
-            this.mToastrService.error(error.error.message)
-          }
-          this.mProgress.set(false);
-        }
-      });
+  // onVariationsChange
+  onVariationsChange() {
+    const value = this.itemForm.get('require_variations')?.value;
+    // console.log(value);
+    if (value === 'no') {
+      this.mVariations = []; //Empty
     }
+  }
+
+
+  // // onParcelChange
+  // onParcelChange(event:any) {
+  //   if (event.target.value) {
+  //     const mParcelNumber = event.target.value;
+  //     this.mProgress.set(true);
+  //     this.mConstructionPermitService.getParcelItem(mParcelNumber).subscribe({
+  //       next: (response) => {
+  //         if(response){
+  //           this.mParcelInfo = response as any;
+  //           // console.log(this.mParcelInfo)
+  //           this.mProgress.set(false);
+  //         }
+  //       },
+  //       error: (error ) => {
+  //         if(error.error.message){
+  //           this.mToastrService.error(error.error.message)
+  //         }
+  //         this.mProgress.set(false);
+  //       }
+  //     });
+  //   }
+  // }
+
+
+
+
+  // addItem
+  addItem(){
+    // this.mVariations.push(this.mItemForm.value)
+    // this.mItemForm.reset();
+
+    const newItem = this.mItemForm.value;
+    console.log(newItem);
+    const exists = this.mVariations.some((item: any) =>
+      item.parcel_number === newItem.parcel_number
+    );
+    if (!exists) {
+      this.mVariations.push(newItem);
+      this.mItemForm.reset();
+    } else {
+      this.mToastrService.error('Item already exists');
+    }
+  }
+  // resetItemsForm
+  resetItemsForm(){
+    this.mItemForm.reset();
+  }
+  // removeItem
+  removeItem(element:any){
+    this.mVariations.forEach((value:any, index:any)=>{
+      if(value===element){
+        this.mVariations.splice(index, 1)
+      }
+    });
   }
 
 }
