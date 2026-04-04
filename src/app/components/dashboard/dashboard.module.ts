@@ -13,6 +13,7 @@ import {
   WidgetStatCComponent,
   TemplateIdDirective,
   WidgetStatFComponent,
+  WidgetStatEComponent,
 } from '@coreui/angular';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -48,6 +49,7 @@ import { ProgressModule } from '../progress/progress.module';
     TemplateIdDirective,
     WidgetStatFComponent,
     IconDirective,
+    WidgetStatEComponent
   ]
 })
 export class DashboardModule { }
