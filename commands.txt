@@ -208,3 +208,41 @@ export const appConfig: ApplicationConfig = {
   ],
 };
 ===================================./Toastr2===================================
+
+
+
+
+===================================Deployment===================================
+J. Deploy Angular App to Apache Server
+1. Install Apache2:
+-Install from here: http://httpd.apache.org/docs/current/install.htm
+
+2. Copy the dist/ folder in /var/www/ folder.
+
+3. Create Apache configuration file for angular app:
+$ sudo vim /etc/apache2/sites-available/angular_konza_oss_permitting_management_system.conf
+<VirtualHost *:80>
+  ServerName permitting-management-system.oss.konza.go.ke
+  ServerAdmin kkiprop@konza.go.ke
+  DocumentRoot /var/www/html/permitting-management-system-frontend/dist/permitting-management-system-frontend/browser
+  <Directory “/var/www/html/permitting-management-system-frontend/dist/permitting-management-system-frontend/browser”>
+    AllowOverride All
+    Require all granted
+  </Directory>
+</VirtualHost>
+
+4. Enable angular.conf file using the following command:
+$ a2ensite angular_konza_oss_permitting_management_system.conf
+
+sudo chown -R username:groupname /path/to/angular/project
+
+4. Permissions
+chmod -R 755 /var/www/html/permitting-management-system-frontend
+
+5. Restart the apache service:
+sudo systemctl restart apache2
+sudo systemctl reload apache2
+
+6. Reference
+===================================./Deployment===================================
+
