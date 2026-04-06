@@ -6,13 +6,17 @@ import { IconDirective, IconModule } from '@coreui/icons-angular';
 import { ProgressModule } from '../progress/progress.module';
 import { ConstructionPermitRoutingModule } from './construction-permit-routing.module';
 import { CreateComponent } from './create/create.component';
+import { DetailedPlanComponent } from './detailed-plan/detailed-plan.component';
 import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
-import { VariationComponent } from './variation/variation.component';
+import { CmApprovalComponent } from './process/inc/cm-approval/cm-approval.component';
+import { ReviewComponent } from './process/inc/review/review.component';
 import { ProcessComponent } from './process/process.component';
 import { ShowComponent } from './show/show.component';
-import { ReviewComponent } from './process/inc/review/review.component';
-import { CmApprovalComponent } from './process/inc/cm-approval/cm-approval.component';
+import { VariationComponent } from './variation/variation.component';
+import { SubmissionComponent } from './detailed-plan/inc/submission/submission.component';
+import { PlannerReviewComponent } from './detailed-plan/inc/planner-review/planner-review.component';
+import { ProfessionalRecommendationComponent } from './detailed-plan/inc/professional-recommendation/professional-recommendation.component';
 
 
 @NgModule({
@@ -25,7 +29,12 @@ import { CmApprovalComponent } from './process/inc/cm-approval/cm-approval.compo
     ProcessComponent,
     VariationComponent,
     ReviewComponent,
-    CmApprovalComponent
+    CmApprovalComponent,
+
+    DetailedPlanComponent,
+    SubmissionComponent,
+    PlannerReviewComponent,
+    ProfessionalRecommendationComponent,
   ],
   imports: [
     CommonModule,

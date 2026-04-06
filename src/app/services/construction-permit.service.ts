@@ -72,12 +72,15 @@ export class ConstructionPermitService {
 
 
 
-  nextPreviousStatusItem(id:any){
-    const url = `${environment.base_url}/next-previous-status-process-construction-permits/${id}`;
-    return this.http.get<ConstructionPermit[]>(url, this.mAppContextService.getHttpOptions());
-  }
+
+
+  // Process
   processUnpaginatedItems():Observable<ConstructionPermit[]>{
     const url = `${environment.base_url}/unpaginated-items-process-construction-permits`;
+    return this.http.get<ConstructionPermit[]>(url, this.mAppContextService.getHttpOptions());
+  }
+  nextPreviousStatusItem(id:any){
+    const url = `${environment.base_url}/next-previous-status-process-construction-permits/${id}`;
     return this.http.get<ConstructionPermit[]>(url, this.mAppContextService.getHttpOptions());
   }
   processItemVariations(id:any, item: any): Observable<ConstructionPermit>{
@@ -85,7 +88,6 @@ export class ConstructionPermitService {
     // return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<ConstructionPermit>(url, item);
   }
-
   processItemPlanner(item: any): Observable<ConstructionPermit>{
     const url = `${environment.base_url}/planner-process-construction-permits/${item.id}`;
     return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
@@ -93,6 +95,34 @@ export class ConstructionPermitService {
   cmItemPlanner(item: any): Observable<ConstructionPermit>{
     const url = `${environment.base_url}/cm-process-construction-permits/${item.id}`;
     return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+  }
+
+
+
+
+  // DetailedPlan
+  unpaginatedDetailedPlanItems():Observable<ConstructionPermit[]>{
+    const url = `${environment.base_url}/unpaginated-items-detailed-plan-construction-permits`;
+    return this.http.get<ConstructionPermit[]>(url, this.mAppContextService.getHttpOptions());
+  }
+  nextPreviousStatusDetailedPlanItem(id:any){
+    const url = `${environment.base_url}/next-previous-status-detailed-plan-construction-permits/${id}`;
+    return this.http.get<ConstructionPermit[]>(url, this.mAppContextService.getHttpOptions());
+  }
+  detailedPlanItem(id:any, item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/detailed-plan-construction-permits/${id}`;
+    // return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<ConstructionPermit>(url, item);
+  }
+  plannerDetailedPlanItem(item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/planner-detailed-plan-construction-permits/${item.id}`;
+    // return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<ConstructionPermit>(url, item);
+  }
+  professionalRecommendationsDetailedPlanItem(item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/professional-recommendations-detailed-plan-construction-permits/${item.id}`;
+    return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+    // return this.http.post<ConstructionPermit>(url, item);
   }
 
 }

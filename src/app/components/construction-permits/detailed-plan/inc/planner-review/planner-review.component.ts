@@ -7,13 +7,14 @@ import { ConstructionPermitService } from '../../../../../services/construction-
 
 
 @Component({
-  selector: 'app-review',
+  selector: 'app-planner-review',
   // imports: [],
-  templateUrl: './review.component.html',
-  styleUrl: './review.component.scss',
+  templateUrl: './planner-review.component.html',
+  styleUrl: './planner-review.component.scss',
   standalone: false
 })
-export class ReviewComponent {
+export class PlannerReviewComponent {
+
 
   // variables
   itemForm: any;
@@ -33,7 +34,7 @@ export class ReviewComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      status_id: ['', Validators.required],
+      detailed_plan_status_id: ['', Validators.required],
       remarks: ['', Validators.required],
     });
   }
@@ -51,7 +52,7 @@ export class ReviewComponent {
         if(response){
           this.item = response as any;
           // call
-          this.getNextPreviousStatus();
+          this.getNextPreviousDetailedPlanStatus();
           this.mProgress = signal(false);
         }
       },
@@ -69,21 +70,15 @@ export class ReviewComponent {
   onSubmit(formValues: any){
     const item: any = {
       id: this.id,
-      status_id: formValues.status_id,
+      detailed_plan_status_id: formValues.detailed_plan_status_id,
       remarks: formValues.remarks,
     }
     this.mProgress = signal(true);
-    this.mConstructionPermitService.processItemPlanner(item).subscribe({
+    this.mConstructionPermitService.plannerDetailedPlanItem(item).subscribe({
       next: (response) => {
-        if((response as any).status === 'success'){
-          this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/construction-permits');
-          this.mProgress = signal(false);
-        }else{
-          this.mToastrService.error((response as any).message);
-          this.router.navigateByUrl('/construction-permits/variations/' + this.id);
-          this.mProgress = signal(false);
-        }
+        this.mToastrService.success((response as any).message);
+        this.router.navigateByUrl('/construction-permits');
+        this.mProgress = signal(false);
       },
       error: (error ) => {
         // console.log(error.error);
@@ -96,10 +91,10 @@ export class ReviewComponent {
 
   }
 
-  // getNextPreviousStatus
-  getNextPreviousStatus() {
+  // getNextPreviousDetailedPlanStatus
+  getNextPreviousDetailedPlanStatus() {
     this.mProgress = signal(true);
-    this.mConstructionPermitService.nextPreviousStatusItem(this.item.status_id).subscribe({
+    this.mConstructionPermitService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
       next: (response) => {
         if(response){
           this.mNextPreviousStatuses = response;
@@ -114,7 +109,6 @@ export class ReviewComponent {
       }
     });
   }
-
 
 
 }

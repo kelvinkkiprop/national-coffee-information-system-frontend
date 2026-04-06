@@ -6,13 +6,14 @@ import { ConstructionPermit } from '../../../interfaces/construction-permit';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
 
 @Component({
-  selector: 'app-process',
+  selector: 'app-detailed-plan',
   // imports: [],
-  templateUrl: './process.component.html',
-  styleUrl: './process.component.scss',
+  templateUrl: './detailed-plan.component.html',
+  styleUrl: './detailed-plan.component.scss',
   standalone: false
 })
-export class ProcessComponent {
+export class DetailedPlanComponent {
+
 
   // variables
   item:ConstructionPermit = {};

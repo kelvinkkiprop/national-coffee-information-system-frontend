@@ -55,8 +55,52 @@ export interface ConstructionPermit {
   commitment_to_comply_with_development_codes_and_guidelines?: any,
 
 
+  // variations
+  variation_status_id?: any,
+  variation_comments?: any,
+  variation_evidence?: any,
+
+  // detailed_plan
+  indemnity_form?: any,
+  architectural_design?: any,
+  structural_design?: any,
+  electrical_design?: any,
+  ict_design?: any,
+  mechanical_design?: any,
+  landscaping_design?: any,
+  signage_design?: any,
+  other_necessary_drawings?: any,
+  green_certification_registration?: any,
+  nema_project_report?: any,
+
+  indemnity_form_url?: any,
+  architectural_design_url?: any,
+  structural_design_url?: any,
+  electrical_design_url?: any,
+  ict_design_url?: any,
+  mechanical_design_url?: any,
+  landscaping_design_url?: any,
+  signage_design_url?: any,
+  other_necessary_drawings_url?: any,
+  green_certification_registration_url?: any,
+  nema_project_report_url?: any,
+
+  // Professionals_reviews
+  architect_report?: any,
+  structural_engineer_report?: any,
+  electrical_engineer_report?: any,
+  ict_engineer_report?: any,
+  mechanical_engineer_report?: any,
+  environment_health_and_safety_report?: any,
+  professional_sustainability_report?: any,
+
+  construction_permit?: any,
+  detailed_plan_status_id?: any,
+
+
   status_id?: any,
 
-  status?: any,
   investor?: any,
+  status?: any,
+  detailed_plan_status?: any,
 }

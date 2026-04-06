@@ -39,6 +39,7 @@
                 <th scope="col">Phase</th>
                 <th scope="col">Size</th>
                 <th scope="col">Floors</th>
+                <th scope="col">Description</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -51,6 +52,7 @@
                 <td>{{ item.phase }}</td>
                 <td>{{ item.acres }} acres</td>
                 <td>{{ item.min_floors}} min/{{ item.max_floors }} max</td>
+                <td>{{ item.description }}</td>
                 <td>
                   <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.status_id==1,'bg-warning text-dark':item.status_id==2, 'bg-secondary':item.status_id==3, 'bg-info text-dark':item.status_id==4,'bg-light text-dark':item.status_id==5,'bg-dark':item.status_id==6,'bg-white  text-dark':item.status_id==7,'bg-danger':item.status_id==8, 'bg-success':item.status_id==9}">
                     {{ item.status?.name }}

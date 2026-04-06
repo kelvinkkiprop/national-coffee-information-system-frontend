@@ -4,16 +4,19 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
+import { AppContextService } from '../../../../../core/app-context.service';
 
 
 @Component({
-  selector: 'app-review',
+  selector: 'app-professional-recommendation',
   // imports: [],
-  templateUrl: './review.component.html',
-  styleUrl: './review.component.scss',
+  templateUrl: './professional-recommendation.component.html',
+  styleUrl: './professional-recommendation.component.scss',
   standalone: false
 })
-export class ReviewComponent {
+export class ProfessionalRecommendationComponent {
+
+
 
   // variables
   itemForm: any;
@@ -27,14 +30,20 @@ export class ReviewComponent {
   constructor(
     public mToastrService: ToastrService,
     public mConstructionPermitService: ConstructionPermitService,
+    public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
   ) {
     // validation
     this.itemForm = this.fb.group({
-      status_id: ['', Validators.required],
-      remarks: ['', Validators.required],
+      architect_report: ['', Validators.nullValidator],
+      structural_engineer_report: ['', Validators.nullValidator],
+      electrical_engineer_report: ['', Validators.nullValidator],
+      ict_engineer_report: ['', Validators.nullValidator],
+      mechanical_engineer_report: ['', Validators.nullValidator],
+      environment_health_and_safety_report: ['', Validators.nullValidator],
+      professional_sustainability_report: ['', Validators.nullValidator],
     });
   }
 
@@ -50,8 +59,6 @@ export class ReviewComponent {
       next: (response) => {
         if(response){
           this.item = response as any;
-          // call
-          this.getNextPreviousStatus();
           this.mProgress = signal(false);
         }
       },
@@ -69,21 +76,20 @@ export class ReviewComponent {
   onSubmit(formValues: any){
     const item: any = {
       id: this.id,
-      status_id: formValues.status_id,
-      remarks: formValues.remarks,
+      architect_report: formValues.architect_report,
+      structural_engineer_report: formValues.structural_engineer_report,
+      electrical_engineer_report: formValues.electrical_engineer_report,
+      ict_engineer_report: formValues.ict_engineer_report,
+      mechanical_engineer_report: formValues.mechanical_engineer_report,
+      environment_health_and_safety_report: formValues.environment_health_and_safety_report,
+      professional_sustainability_report: formValues.professional_sustainability_report,
     }
     this.mProgress = signal(true);
-    this.mConstructionPermitService.processItemPlanner(item).subscribe({
+    this.mConstructionPermitService.professionalRecommendationsDetailedPlanItem(item).subscribe({
       next: (response) => {
-        if((response as any).status === 'success'){
-          this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/construction-permits');
-          this.mProgress = signal(false);
-        }else{
-          this.mToastrService.error((response as any).message);
-          this.router.navigateByUrl('/construction-permits/variations/' + this.id);
-          this.mProgress = signal(false);
-        }
+        this.mToastrService.success((response as any).message);
+        this.router.navigateByUrl('/construction-permits');
+        this.mProgress = signal(false);
       },
       error: (error ) => {
         // console.log(error.error);
@@ -95,26 +101,5 @@ export class ReviewComponent {
     });
 
   }
-
-  // getNextPreviousStatus
-  getNextPreviousStatus() {
-    this.mProgress = signal(true);
-    this.mConstructionPermitService.nextPreviousStatusItem(this.item.status_id).subscribe({
-      next: (response) => {
-        if(response){
-          this.mNextPreviousStatuses = response;
-          this.mProgress = signal(false);
-        }
-      },
-      error: (error ) => {
-        if(error.error.message){
-          this.mToastrService.error(error.error.message)
-        }
-        this.mProgress = signal(false);
-      }
-    });
-  }
-
-
 
 }

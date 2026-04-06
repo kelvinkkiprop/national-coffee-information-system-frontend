@@ -7,6 +7,7 @@ import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
 import { ProcessComponent } from './process/process.component';
 import { VariationComponent } from './variation/variation.component';
+import { DetailedPlanComponent } from './detailed-plan/detailed-plan.component';
 
 
 //Routes
@@ -42,6 +43,13 @@ const routes: Routes = [
     component: ShowComponent,
     data: {
       title: 'Construction Permits / Show',
+    }
+  },
+  {
+    path: 'detailed-designs/:id',
+    component: DetailedPlanComponent,
+    data: {
+      title: 'Construction Permits / Detailed Designs',
     }
   },
 
