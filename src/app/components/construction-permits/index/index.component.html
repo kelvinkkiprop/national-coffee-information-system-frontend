@@ -89,7 +89,7 @@
                         <li *ngIf="(!mAppContextService.hasRoles([2]) && item.require_variations=='yes')"><a routerLink="/construction-permits/variations/{{item.id}}" cDropdownItem><svg cIcon name="cilApplications" class="btn-icon"></svg> Variations</a></li>
                       </ul>
                     </c-dropdown>
-                    <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><svg cIcon name="cilTrash" class="btn-icon"></svg></button>
+                    <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><svg cIcon name="cilTrash" class="btn-icon"></svg></button>
                   </div>
                 </td>
               </tr>
