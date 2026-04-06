@@ -16,7 +16,7 @@
                     <label for="investor_id" class="col-form-label required">Company:</label>
                     <select (change)="onInvestorChange($event)" formControlName="investor_id" [ngClass]="{'is-invalid': itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)}" type="text" class="form-control">
                       <option value="" disabled="true" selected="true">--- Select investor ---</option>
-                      <option *ngFor="let item of mInvestors" value="{{item.id}}">{{item.name}}</option>
+                      <option *ngFor="let item of mInvestors" value="{{item.user?.id}}">{{item.user?.name}}</option>
                     </select>
                     <div *ngIf="itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)" class="invalid-feedback" role="alert">
                       <div *ngIf="itemForm.get('investor_id')?.errors?.['required']">This field is required.</div>
