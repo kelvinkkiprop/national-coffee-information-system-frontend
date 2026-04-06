@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
@@ -61,7 +61,7 @@ export class CreateComponent {
       type_id: ['', Validators.required],
 
       professional_body_id: ['', Validators.nullValidator],
-      membership_number: ['', [Validators.nullValidator, Validators.minLength(9)]],
+      membership_number: ['', Validators.nullValidator],
       consultant_name: ['', Validators.nullValidator],
       address: ['', Validators.nullValidator],
       email: ['', Validators.nullValidator],

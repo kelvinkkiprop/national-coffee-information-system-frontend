@@ -6,6 +6,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
 import { ProcessComponent } from './process/process.component';
+import { VariationComponent } from './variation/variation.component';
 
 
 //Routes
@@ -44,6 +45,8 @@ const routes: Routes = [
     }
   },
 
+
+  // Process
   {
     path: 'process/:id',
     component: ProcessComponent,
@@ -51,6 +54,14 @@ const routes: Routes = [
       title: 'Construction Permits / Process',
     }
   },
+  {
+    path: 'variations/:id',
+    component: VariationComponent,
+    data: {
+      title: 'Construction Permits / Variations',
+    }
+  },
+
 
 ];
 

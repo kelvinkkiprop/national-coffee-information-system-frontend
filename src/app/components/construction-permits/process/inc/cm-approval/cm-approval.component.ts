@@ -5,15 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
 
-
 @Component({
-  selector: 'app-review',
+  selector: 'app-cm-approval',
   // imports: [],
-  templateUrl: './review.component.html',
-  styleUrl: './review.component.scss',
+  templateUrl: './cm-approval.component.html',
+  styleUrl: './cm-approval.component.scss',
   standalone: false
 })
-export class ReviewComponent {
+export class CmApprovalComponent {
 
   // variables
   itemForm: any;
@@ -73,17 +72,11 @@ export class ReviewComponent {
       remarks: formValues.remarks,
     }
     this.mProgress = signal(true);
-    this.mConstructionPermitService.processItemPlanner(item).subscribe({
+    this.mConstructionPermitService.cmItemPlanner(item).subscribe({
       next: (response) => {
-        if((response as any).status === 'success'){
-          this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/construction-permits');
-          this.mProgress = signal(false);
-        }else{
-          this.mToastrService.error((response as any).message);
-          this.router.navigateByUrl('/construction-permits/variations/' + this.id);
-          this.mProgress = signal(false);
-        }
+        this.mToastrService.success((response as any).message);
+        this.router.navigateByUrl('/construction-permits');
+        this.mProgress = signal(false);
       },
       error: (error ) => {
         // console.log(error.error);
@@ -118,3 +111,4 @@ export class ReviewComponent {
 
 
 }
+

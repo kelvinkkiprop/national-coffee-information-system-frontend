@@ -104,6 +104,7 @@ import {
   cilBook,
   cilFolder,
   cilFolderOpen,
+  cilApplications,
 
 } from '@coreui/icons';
 
@@ -218,6 +219,7 @@ export const iconSubset = {
   cilBook,
   cilFolder,
   cilFolderOpen,
+  cilApplications,
 };
 
 export enum IconSubset {
@@ -328,5 +330,6 @@ export enum IconSubset {
   cilBook = 'cilBook',
   cilFolder = 'cilFolder',
   cilFolderOpen = 'cilFolderOpen',
+  cilApplications = 'cilApplications',
 }
 

@@ -10,32 +10,32 @@
 
           <fieldset class="border p-2 mb-3">
             <legend class="float-none w-auto"><h6 class="text-bolder text-muted">GENERAL INFORMATION</h6></legend>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group mb-3">
-                    <label for="investor_id" class="col-form-label required">Company:</label>
-                    <select (change)="onInvestorChange($event)" formControlName="investor_id" [ngClass]="{'is-invalid': itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)}" type="text" class="form-control">
-                      <option value="" disabled="true" selected="true">--- Select investor ---</option>
-                      <option *ngFor="let item of mInvestors" value="{{item.id}}">{{item.name}}</option>
-                    </select>
-                    <div *ngIf="itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)" class="invalid-feedback" role="alert">
-                      <div *ngIf="itemForm.get('investor_id')?.errors?.['required']">This field is required.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group mb-3">
-                    <label for="type_id" class="col-form-label required">Nature of Application:</label>
-                    <select formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
-                      <option value="" disabled="true" selected="true">--- Select plan submission type ---</option>
-                      <option *ngFor="let item of mPermitTypes" value="{{item.id}}">{{item.name}}</option>
-                    </select>
-                    <div *ngIf="itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)" class="invalid-feedback" role="alert">
-                      <div *ngIf="itemForm.get('type_id')?.errors?.['required']">This field is required.</div>
-                    </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="investor_id" class="col-form-label required">Company:</label>
+                  <select (change)="onInvestorChange($event)" formControlName="investor_id" [ngClass]="{'is-invalid': itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)}" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select investor ---</option>
+                    <option *ngFor="let item of mInvestors" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="itemForm.get('investor_id')?.invalid && (itemForm.get('investor_id')?.dirty || itemForm.get('investor_id')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('investor_id')?.errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="type_id" class="col-form-label required">Nature of Application:</label>
+                  <select formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select plan submission type ---</option>
+                    <option *ngFor="let item of mPermitTypes" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('type_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </fieldset>
           <fieldset class="border p-2 mb-3">
             <legend class="float-none w-auto"><h6 class="text-bolder text-muted">CONSULTANT INFORMATION</h6></legend>

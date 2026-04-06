@@ -1,0 +1,156 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">GENERAL INFORMATION</h6></legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="investor_id">Company:</label>
+                  <div *ngIf="item.investor" class="text-muted">{{ item.investor?.name }}</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="investor_id">Nature of Application:</label>
+                  <div *ngIf="item.type" class="text-muted">{{ item.type?.name }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROJECT BRIEF AND PURPOSE</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Project Brief:</label>
+                  <div class="text-muted">{{ item.project_brief }}</div>
+                </div>
+              </div>
+              <!-- <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Project Purpose:</label>
+                  <div class="text-muted">{{ item.project_purpose }}</div>
+                </div>
+              </div> -->
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PARCEL & LAND USE VARIATIONS</h6></legend>
+            <div class="pb-2">
+              <div *ngFor="let mItem of item.variations; index as j" class="row">
+                <div class="col-md-12">
+                  <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel?.number }}</h6>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="callout callout-success h-100">
+                      <h6 class="text-success fw-bold">Initial</h6>
+                      <!-- <div> {{ mItem | json }} </div> -->
+                      <small>
+                        Acres: {{mItem.parcel?.acres}} <br>
+                        Min/Max Floors: {{mItem.parcel?.min_floors}}-{{mItem.parcel?.max_floors}}<br>
+                        Min/Max FAR: {{mItem.parcel?.min_far}}-{{mItem.parcel?.max_far}}<br>
+                        Min/Max Floors: {{mItem.parcel?.min_floors}}-{{mItem.parcel?.max_floors}}<br>
+                        Min/Max Floor Area: {{mItem.parcel?.min_floor_area}}-{{mItem.parcel?.max_floor_area}}<br>
+                        Plot Coverage: {{mItem.parcel?.plot_coverage}}% <br>
+                        Use: {{mItem.parcel?.description}} <br>
+                      </small>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="callout callout-danger h-100">
+                      <h6 class="text-danger fw-bold">Proposed</h6>
+                      <!-- <div> {{ mItem | json }} </div> -->
+                      <!-- <small>
+                        Acres: {{mItem.size}} <br>
+                        Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
+                        Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
+                        Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
+                        Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
+                        Plot Coverage: {{mItem.plot_coverage}}% <br>
+                        Use: {{mItem.description}} <br>
+                      </small> -->
+                      <small>
+                        Acres: {{mItem.acres}} <br>
+                        Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
+                        Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
+                        Min/Max Floors: {{mItem.min_number_of_floors}}-{{mItem.max_number_of_floors}}<br>
+                        Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
+                        Plot Coverage (Proposed/Existing): {{mItem.percentage_of_site_covered_by_proposed_building}}-{{mItem.percentage_of_site_covered_by_existing_building}}% <br>
+                        Number of Units to be Developed: {{mItem.number_of_units_to_be_developed}} <br>
+                        Use: {{mItem.description}} <br>
+                      </small>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                  <div class="mb-3">
+                    <label for="context_analysis">Variations Status:</label>
+                    <div *ngIf="item.variation_status" class="text-muted">{{ item.variation_status?.name }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROCESS</h6></legend>
+            <div *ngIf="mConstructionPermitVariationStatuses && mConstructionPermitVariationStatuses.length>0" class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="variation_status_id" class="col-form-label required">Variations status:</label>
+                  <!-- <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="variation_status_id" value="2" />
+                    <label class="form-check-label" for="variation_yes">Approved</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="variation_status_id" value="1"/>
+                    <label class="form-check-label" for="variation_no">Rejected</label>
+                  </div> -->
+                  <div *ngFor="let mStatus of mConstructionPermitVariationStatuses" class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="variation_status_id" value="{{ mStatus.id }}"/>
+                    <label class="form-check-label" for="variation_no">{{ mStatus.alias }}</label>
+                  </div>
+                  <div *ngIf="itemForm.get('variation_status_id').invalid && (itemForm.get('variation_status_id').dirty || itemForm.get('variation_status_id').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('variation_status_id').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="itemForm.get('variation_status_id').value==2" class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="variation_evidence" class="col-form-label required">Variation (Approval) Evidence:</label>
+                  <input (change)="onVariationEvidenceChange($event)" formControlName="variation_evidence" [ngClass]="{'is-invalid': itemForm.get('variation_evidence').invalid && (itemForm.get('variation_evidence').dirty || itemForm.get('variation_evidence').touched)}" type="file" class="form-control"/>
+                  <div *ngIf="itemForm.get('variation_evidence').invalid && (itemForm.get('variation_evidence').dirty || itemForm.get('variation_evidence').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('variation_evidence').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="variation_comments" class="col-form-label required">Variation Comments:</label>
+                  <textarea formControlName="variation_comments" [ngClass]="{'is-invalid': itemForm.get('variation_comments').invalid && (itemForm.get('variation_comments').dirty || itemForm.get('variation_comments').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('variation_comments').invalid && (itemForm.get('variation_comments').dirty || itemForm.get('variation_comments').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('variation_comments').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-3 text-right">
+            <button routerLink="/construction-permits" cButton color="danger">Cancel</button>
+            <button type="submit" cButton color="success" class="text-dark">Submit</button>
+          </div>
+
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

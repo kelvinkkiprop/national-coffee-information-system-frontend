@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import swal from 'sweetalert2';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
+import { AppContextService } from '../../../core/app-context.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class IndexComponent {
   constructor(
     private mConstructionPermitService: ConstructionPermitService,
     public mToastrService: ToastrService,
-    private router: Router
+    public mAppContextService: AppContextService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +44,6 @@ export class IndexComponent {
       search_term: this.search_term,
     });
 
-
   }
 
   // index
@@ -51,18 +51,15 @@ export class IndexComponent {
     this.mProgress.set(true);
     this.mConstructionPermitService.allItems().subscribe({
       next: (response) => {
-          console.log(response)
         if(response){
           this.mPageFrom = (response as any).from
           this.mConstructionPermits =(response as any).data;
           this.links = (response as any).links;
         }
         this.mProgress.set(false);
-        console.log(this.mProgress)
       },
       error: (error ) => {
         // console.log(error);
-          // console.log(error)
         if(error.error.message){
           this.mToastrService.error(error.error.message);
         }

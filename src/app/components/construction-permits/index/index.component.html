@@ -38,9 +38,9 @@
                 <th scope="col">Project</th>
                 <th scope="col">Investor</th>
                 <th scope="col">Type</th>
-                <th scope="col">Has Variations</th>
                 <th scope="col">Duration (Months)</th>
                 <th scope="col">Estimated Cost</th>
+                <th scope="col">Has Variations</th>
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
@@ -53,16 +53,23 @@
                 <td>{{ item.project_brief }}</td>
                 <td>{{ item.investor.name }}</td>
                 <td>
-                  <small class="chip chip-sm" [ngClass]="{'chip-primary':item.type_id==1,'chip-secondary':item.type_id==2, 'chip-success':item.type_id==3, 'bg-danger':item.type_id==4,'chip-warning text-dark':item.status_id==5,'chip-info':item.type_id==6,'chip-dark':item.type_id==7}">
+                  <small class="chip chip-sm" [ngClass]="{'chip-primary':item.type_id==1,'chip-secondary':item.type_id==2, 'chip-success':item.type_id==3, 'bg-danger':item.type_id==4,'chip-warning text-dark':item.type_id==5,'chip-info':item.type_id==6,'chip-dark':item.type_id==7}">
                     {{ item.type?.name }}
                   </small>
                 </td>
-                <td>{{ item.require_variations }}</td>
                 <td>{{ item.estimated_project_duration }}</td>
                 <td>{{ item.estimated_project_construction_cost | currency:'USD':'symbol':'1.2-2' }}</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-outline-link position-relative">
+                    {{ item.require_variations }}
+                    <c-badge *ngIf="item.variation_status" [ngClass]="{ 'bg-warning': item.variation_status_id == 1, 'bg-success': item.variation_status_id == 2, 'bg-danger': item.variation_status_id == 3 }" position="top-0 start-100 translate-middle" shape="rounded-pill">
+                      <small>{{ item.variation_status?.name }}</small>
+                    </c-badge>
+                  </button>
+                </td>
                 <td>{{ item.consultant.name }}</td>
                 <td>
-                  <span class="badge rounded-pill" [ngClass]="{'bg-primary':item.status_id==1,'bg-warning text-dark':item.status_id==2, 'bg-secondary':item.status_id==3, 'bg-info text-dark':item.status_id==4,'bg-light text-dark':item.status_id==5,'bg-dark':item.status_id==6,'bg-white  text-dark':item.status_id==7,'bg-danger':item.status_id==8, 'bg-success':item.status_id==9}">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-danger':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-warning text-dark':item.status_id==4,'bg-success':item.status_id==5}">
                     {{ item.status?.name }}
                   </span>
                 </td>
@@ -76,8 +83,10 @@
                         <svg cIcon name="cilPencil" class="btn-icon"></svg>
                       </button>
                       <ul cDropdownMenu>
-                        <li><a routerLink="/construction-permits/edit/{{item.id}}" cDropdownItem><svg cIcon name="cilPen" class="btn-icon"></svg> Edit</a></li>
-                        <li><a routerLink="/construction-permits/process/{{item.id}}" cDropdownItem><svg cIcon name="cilList" class="btn-icon"></svg> Process</a></li>
+                        <!-- Draft/Returned  -->
+                        <li *ngIf="(mAppContextService.hasRoles([1]) || (mAppContextService.hasRoles([2]) && (item.status_id==1 || item.status_id==2)))"><a routerLink="/construction-permits/edit/{{item.id}}" cDropdownItem><svg cIcon name="cilPen" class="btn-icon"></svg> Edit</a></li>
+                        <li *ngIf="(!mAppContextService.hasRoles([2]))"><a routerLink="/construction-permits/process/{{item.id}}" cDropdownItem><svg cIcon name="cilList" class="btn-icon"></svg> Process</a></li>
+                        <li *ngIf="(!mAppContextService.hasRoles([2]) && item.require_variations=='yes')"><a routerLink="/construction-permits/variations/{{item.id}}" cDropdownItem><svg cIcon name="cilApplications" class="btn-icon"></svg> Variations</a></li>
                       </ul>
                     </c-dropdown>
                     <button (click)="onDelete(item)" type="button" cButton color="danger" size="sm"><svg cIcon name="cilTrash" class="btn-icon"></svg></button>

@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertComponent, AlertHeadingDirective, ButtonDirective, ButtonModule, CardBodyComponent, CardModule, DropdownComponent, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
+import { AlertComponent, AlertHeadingDirective, BadgeComponent, ButtonDirective, ButtonModule, CardBodyComponent, CardModule, DropdownComponent, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
 import { IconDirective, IconModule } from '@coreui/icons-angular';
 import { ProgressModule } from '../progress/progress.module';
 import { ConstructionPermitRoutingModule } from './construction-permit-routing.module';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
-import { ReviewComponent } from './process/inc/review/review.component';
+import { VariationComponent } from './variation/variation.component';
 import { ProcessComponent } from './process/process.component';
 import { ShowComponent } from './show/show.component';
+import { ReviewComponent } from './process/inc/review/review.component';
+import { CmApprovalComponent } from './process/inc/cm-approval/cm-approval.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ShowComponent } from './show/show.component';
     ShowComponent,
 
     ProcessComponent,
+    VariationComponent,
     ReviewComponent,
+    CmApprovalComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +54,7 @@ import { ShowComponent } from './show/show.component';
     DropdownItemDirective,
     DropdownMenuDirective,
     DropdownToggleDirective,
+    BadgeComponent,
   ]
 })
 export class ConstructionPermitModule { }

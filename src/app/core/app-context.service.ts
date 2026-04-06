@@ -9,12 +9,11 @@
 // }
 
 // src/app/core/app-context.service.ts
-import { Injectable, Injector } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { catchError, debounceTime, first, map, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

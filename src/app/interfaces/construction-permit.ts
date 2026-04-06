@@ -55,6 +55,8 @@ export interface ConstructionPermit {
   commitment_to_comply_with_development_codes_and_guidelines?: any,
 
 
+  status_id?: any,
+
   status?: any,
   investor?: any,
 }
