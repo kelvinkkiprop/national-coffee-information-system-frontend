@@ -124,5 +124,15 @@ export class ConstructionPermitService {
     return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
     // return this.http.post<ConstructionPermit>(url, item);
   }
+  detailedDesignReportRecommendationsDetailedPlanItem(item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/detailed-design-report-detailed-plan-construction-permits/${item.id}`;
+    return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+    // return this.http.post<ConstructionPermit>(url, item);
+  }
+  committeeStageDetailedPlanItem(id:any, item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/committee-stage-detailed-plan-construction-permits/${id}`;
+    // return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<ConstructionPermit>(url, item);
+  }
 
 }

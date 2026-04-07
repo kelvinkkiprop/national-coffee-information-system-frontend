@@ -4,17 +4,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
-import { AppContextService } from '../../../../../core/app-context.service';
-
 
 @Component({
-  selector: 'app-professional-recommendation',
+  selector: 'app-committee-stage',
   // imports: [],
-  templateUrl: './professional-recommendation.component.html',
-  styleUrl: './professional-recommendation.component.scss',
+  templateUrl: './committee-stage.component.html',
+  styleUrl: './committee-stage.component.scss',
   standalone: false
 })
-export class ProfessionalRecommendationComponent {
+export class CommitteeStageComponent {
 
 
   // variables
@@ -25,24 +23,20 @@ export class ProfessionalRecommendationComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+  construction_permit_file:any;
 
   constructor(
     public mToastrService: ToastrService,
     public mConstructionPermitService: ConstructionPermitService,
-    public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
   ) {
     // validation
     this.itemForm = this.fb.group({
-      architect_report: ['', Validators.nullValidator],
-      structural_engineer_report: ['', Validators.nullValidator],
-      electrical_engineer_report: ['', Validators.nullValidator],
-      ict_engineer_report: ['', Validators.nullValidator],
-      mechanical_engineer_report: ['', Validators.nullValidator],
-      environment_health_and_safety_report: ['', Validators.nullValidator],
-      professional_sustainability_report: ['', Validators.nullValidator],
+      detailed_plan_status_id: ['', Validators.required],
+      construction_permit: ['', Validators.nullValidator],
+      remarks: ['', Validators.required],
     });
   }
 
@@ -58,6 +52,8 @@ export class ProfessionalRecommendationComponent {
       next: (response) => {
         if(response){
           this.item = response as any;
+          // call
+          this.getNextPreviousDetailedPlanStatus();
           this.mProgress = signal(false);
         }
       },
@@ -73,18 +69,16 @@ export class ProfessionalRecommendationComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    const item: any = {
-      id: this.id,
-      architect_report: formValues.architect_report,
-      structural_engineer_report: formValues.structural_engineer_report,
-      electrical_engineer_report: formValues.electrical_engineer_report,
-      ict_engineer_report: formValues.ict_engineer_report,
-      mechanical_engineer_report: formValues.mechanical_engineer_report,
-      environment_health_and_safety_report: formValues.environment_health_and_safety_report,
-      professional_sustainability_report: formValues.professional_sustainability_report,
-    }
-    this.mProgress = signal(true);
-    this.mConstructionPermitService.professionalRecommendationsDetailedPlanItem(item).subscribe({
+    let formData:any = new FormData();
+    // attachments
+    formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
+    // formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
+    formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    formData.append('remarks', formValues.remarks);
+    formData.append('_method', 'POST')
+
+    this.mProgress.set(true);
+    this.mConstructionPermitService.committeeStageDetailedPlanItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
         this.router.navigateByUrl('/construction-permits');
@@ -101,4 +95,34 @@ export class ProfessionalRecommendationComponent {
 
   }
 
+  // getNextPreviousDetailedPlanStatus
+  getNextPreviousDetailedPlanStatus() {
+    this.mProgress = signal(true);
+    this.mConstructionPermitService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mNextPreviousStatuses = response;
+          this.mProgress = signal(false);
+        }
+      },
+      error: (error ) => {
+        if(error.error.message){
+          this.mToastrService.error(error.error.message)
+        }
+        this.mProgress = signal(false);
+      }
+    });
+  }
+
+
+  // onConstructionPermitChange
+  onConstructionPermitChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.construction_permit_file = file;
+    }
+  }
+
 }
+
+

@@ -17,6 +17,8 @@ import { VariationComponent } from './variation/variation.component';
 import { SubmissionComponent } from './detailed-plan/inc/submission/submission.component';
 import { PlannerReviewComponent } from './detailed-plan/inc/planner-review/planner-review.component';
 import { ProfessionalRecommendationComponent } from './detailed-plan/inc/professional-recommendation/professional-recommendation.component';
+import { DesignReportComponent } from './detailed-plan/inc/design-report/design-report.component';
+import { CommitteeStageComponent } from './detailed-plan/inc/committee-stage/committee-stage.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { ProfessionalRecommendationComponent } from './detailed-plan/inc/profess
     SubmissionComponent,
     PlannerReviewComponent,
     ProfessionalRecommendationComponent,
+    DesignReportComponent,
+    CommitteeStageComponent
   ],
   imports: [
     CommonModule,

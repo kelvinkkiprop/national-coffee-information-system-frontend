@@ -130,6 +130,14 @@
             <div *ngIf="(item.detailed_plan_status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([11,12,13,14,15,16])))">
               <app-professional-recommendation/>
             </div>
+            <!-- Planner  -->
+            <div *ngIf="(item.detailed_plan_status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10])))">
+              <app-design-report/>
+            </div>
+            <!-- Planner/CM  -->
+            <div *ngIf="(item.detailed_plan_status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,17])))">
+              <app-committee-stage/>
+            </div>
           </div>
         </div>
 

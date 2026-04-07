@@ -52,6 +52,8 @@ ng generate component components/construction-permits/process/inc/cm-approval
 ng generate component components/construction-permits/detailed-plan/inc/submission
 ng generate component components/construction-permits/detailed-plan/inc/planner-review
 ng generate component components/construction-permits/detailed-plan/inc/professional-recommendation
+ng generate component components/construction-permits/detailed-plan/inc/design-report
+ng generate component components/construction-permits/detailed-plan/inc/committee-stage
 
 ng generate component components/profiles/index
 ng generate component components/profiles/create

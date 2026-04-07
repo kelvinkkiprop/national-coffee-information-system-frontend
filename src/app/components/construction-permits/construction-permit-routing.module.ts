@@ -45,13 +45,6 @@ const routes: Routes = [
       title: 'Construction Permits / Show',
     }
   },
-  {
-    path: 'detailed-designs/:id',
-    component: DetailedPlanComponent,
-    data: {
-      title: 'Construction Permits / Detailed Designs',
-    }
-  },
 
 
   // Process
@@ -67,6 +60,15 @@ const routes: Routes = [
     component: VariationComponent,
     data: {
       title: 'Construction Permits / Variations',
+    }
+  },
+
+  // DetailedDesigns
+  {
+    path: 'detailed-designs/:id',
+    component: DetailedPlanComponent,
+    data: {
+      title: 'Construction Permits / Detailed Designs',
     }
   },
 
