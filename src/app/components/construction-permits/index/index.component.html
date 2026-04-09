@@ -76,7 +76,7 @@
                 </td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
-                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.detailed_plan_status_id==1,'bg-light text-dark':item.detailed_plan_status_id==2, 'bg-dark':item.detailed_plan_status_id==3, 'bg-warning text-dark':item.detailed_plan_status_id==4,'bg-info':item.detailed_plan_status_id==5,'bg-danger':item.detailed_plan_status_id==6,'bg-success':item.detailed_plan_status_id==7}">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.detailed_plan_status_id==1,'bg-primary text-dark':item.detailed_plan_status_id==2, 'bg-dark':item.detailed_plan_status_id==3, 'bg-warning text-dark':item.detailed_plan_status_id==4,'bg-info':item.detailed_plan_status_id==5,'bg-danger':item.detailed_plan_status_id==6,'bg-success':item.detailed_plan_status_id==7}">
                     {{ item.detailed_plan_status?.name }}
                   </span>
                 </td>
