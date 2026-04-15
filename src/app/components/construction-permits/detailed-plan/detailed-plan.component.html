@@ -127,15 +127,15 @@
               <app-planner-review/>
             </div>
             <!-- Professionals  -->
-            <div *ngIf="(item.detailed_plan_status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([11,12,13,14,15,16])))">
+            <div *ngIf="(item.detailed_plan_status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([9,12,13,14,15,16])))">
               <app-professional-recommendation/>
             </div>
-            <!-- Planner  -->
+            <!-- Planner/Surveyor  -->
             <div *ngIf="(item.detailed_plan_status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10])))">
               <app-design-report/>
             </div>
-            <!-- Planner/CM  -->
-            <div *ngIf="(item.detailed_plan_status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,17])))">
+            <!-- Planner/Surveyor/CM  -->
+            <div *ngIf="(item.detailed_plan_status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,17])))">
               <app-committee-stage/>
             </div>
           </div>
