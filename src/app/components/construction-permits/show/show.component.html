@@ -57,60 +57,100 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="context_analysis">Require Variations:</label>
-                  <div class="text-muted">{{ item.require_variations }}</div>
-                </div>
-              </div>
-              <div *ngIf="item.require_variations=='yes' " class="col-md-12">
                 <fieldset class="border mb-3 p-3">
-                  <legend class="float-none w-auto"><h6 class="text-bold text-muted">Variations</h6></legend>
-                  <div *ngFor="let mItem of item.variations; index as j" class="row mb-2">
+                  <legend class="float-none w-auto"><h6 class="text-bold text-muted">Land Use Plan</h6></legend>
+                  <div *ngFor="let mItem of item.land_use_plans; index as j" class="row mb-2">
                     <div class="col-12">
-                      <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel?.number }}</h6>
-                    </div>
-                    <div class="col-6">
-                      <div class="callout callout-success h-100">
-                          <h6 class="text-success fw-bold">Initial</h6>
-                          <!-- <div> {{ mItem | json }} </div> -->
-                          <small>
-                            Acres: {{mItem.parcel?.acres}} <br>
-                            Min/Max Floors: {{mItem.parcel?.min_floors}}-{{mItem.parcel?.max_floors}}<br>
-                            Min/Max FAR: {{mItem.parcel?.min_far}}-{{mItem.parcel?.max_far}}<br>
-                            Min/Max Floors: {{mItem.parcel?.min_floors}}-{{mItem.parcel?.max_floors}}<br>
-                            Min/Max Floor Area: {{mItem.parcel?.min_floor_area}}-{{mItem.parcel?.max_floor_area}}<br>
-                            Plot Coverage: {{mItem.parcel?.plot_coverage}}% <br>
-                            Use: {{mItem.parcel?.description}} <br>
-                          </small>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="callout callout-danger h-100">
-                          <h6 class="text-danger fw-bold">Proposed</h6>
-                          <!-- <div> {{ mItem | json }} </div> -->
-                          <!-- <small>
-                            Acres: {{mItem.size}} <br>
-                            Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
-                            Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
-                            Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
-                            Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
-                            Plot Coverage: {{mItem.plot_coverage}}% <br>
-                            Use: {{mItem.description}} <br>
-                          </small> -->
-                          <small>
-                            Acres: {{mItem.acres}} <br>
-                            Min/Max Floors: {{mItem.min_floors}}-{{mItem.max_floors}}<br>
-                            Min/Max FAR: {{mItem.min_far}}-{{mItem.max_far}}<br>
-                            Min/Max Floors: {{mItem.min_number_of_floors}}-{{mItem.max_number_of_floors}}<br>
-                            Min/Max Floor Area: {{mItem.min_floor_area}}-{{mItem.max_floor_area}}<br>
-                            Plot Coverage (Proposed/Existing): {{mItem.percentage_of_site_covered_by_proposed_building}}-{{mItem.percentage_of_site_covered_by_existing_building}}% <br>
-                            Number of Units to be Developed: {{mItem.number_of_units_to_be_developed}} <br>
-                            Use: {{mItem.description}} <br>
-                          </small>
+                      <div class="callout callout-danger">
+                        <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel_number }}</h6>                      
+                        <table class="table table-bordered table-danger1">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Planned</th>
+                              <th scope="col">Proposed</th>
+                              <th scope="col">Variance</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Planned Land Use:</th>
+                              <td>{{ mItem.parcel?.name }}</td>
+                              <td class="text-success">{{ mItem.planned_land_use?.name }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Primary Land Use:</th>
+                              <td>{{ mItem.parcel?.predominant_land }}</td>
+                              <td class="text-success">{{ mItem.primary_land_use.name }}</td>
+                              <td class="text-success">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Secondary Land Use:</th>
+                              <td>{{ mItem.parcel?.secondary_use }}</td>
+                              <td class="text-success">{{ mItem.secondary_land_use.name }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Preferred Ground Land Use:</th>
+                              <td>{{ mItem.parcel?.preferred_ground_floor_use }}</td>
+                              <td class="text-success">{{ mItem.preferred_ground_floor_use.name }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Number of Units to be Developed:</th>
+                              <td>{{ mItem.parcel?.number_of_units_to_be_developed }}</td>
+                              <td class="text-success">{{ mItem.number_of_units_to_be_developed }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Plot Coverage % (Proposed/Existing):</th>
+                              <td>{{ mItem.parcel?.percentage_of_site_covered_by_proposed_building}}-{{mItem.parcel?.percentage_of_site_covered_by_existing_building }}</td>
+                              <td class="text-success">{{ mItem.percentage_of_site_covered_by_proposed_building}}-{{mItem.percentage_of_site_covered_by_existing_building }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Min/Max Floors:</th>
+                              <td>{{ mItem.parcel?.min_floors }}-{{ mItem.parcel?.max_floors }}</td>
+                              <td class="text-success">{{ mItem.min_number_of_floors }}-{{ mItem.max_number_of_floors }}</td>
+                              <td class="text-danger">{{ mItem.min_number_of_floors - mItem.parcel?.min_floors }} / {{ mItem.max_number_of_floors - mItem.parcel?.max_floors }}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Min/Max Floor Area:</th>
+                              <td>{{ mItem.parcel?.min_floor_area }}-{{ mItem.parcel?.min_floor_area }}</td>
+                              <td class="text-success">{{ mItem.min_floor_area }}-{{ mItem.min_floor_area }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Min/Max Floor-to-Floor Height:</th>
+                              <td>{{ mItem.parcel?.min_floor_to_floor_height }}-{{ mItem.parcel?.max_floor_to_floor_height }}</td>
+                              <td class="text-success">{{ mItem.min_floor_to_floor_height }}-{{ mItem.max_floor_to_floor_height }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Min/Max FAR:</th>
+                              <td>{{ mItem.parcel?.min_far }}-{{ mItem.parcel?.max_far }}</td>
+                              <td class="text-success">{{ mItem.min_far }}-{{ mItem.max_far }}</td>
+                              <td class="text-danger">-</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Minimum Setback:</th>
+                              <td>{{ mItem.parcel?.minimum_setback }}</td>
+                              <td class="text-success">{{ mItem.minimum_setback }}</td>
+                              <td class="text-danger">{{ mItem.minimum_setback - mItem.parcel?.minimum_setback }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </fieldset>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="context_analysis">Require Variations:</label>
+                  <div class="text-muted">{{ item.has_variations }}</div>
+                </div>
               </div>
               <div class="col-md-12">
                 <div class="mb-3">

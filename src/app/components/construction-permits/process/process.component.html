@@ -24,11 +24,11 @@
         <div class="row">
           <div class="col-md-12">
             <!-- Planner  -->
-            <div *ngIf="(item.status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10])))">
+            <div *ngIf="(item?.status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10])))">
               <app-review/>
             </div>
             <!-- CM  -->
-            <div *ngIf="(item.status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17])))">
+            <div *ngIf="(item?.status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17])))">
               <app-cm-approval/>
             </div>
           </div>

@@ -3,8 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { AppContextService } from '../../../core/app-context.service';
-import { ConstructionPermitService } from '../../../services/construction-permit.service';
+import { AppContextService } from '../../../../../core/app-context.service';
+import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
 
 @Component({
   selector: 'app-variation',

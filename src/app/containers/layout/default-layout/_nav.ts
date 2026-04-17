@@ -23,18 +23,22 @@ export const navItems: INavData[] = [
     attributes: { class: 'nav-group' },
     children: [
       {
-        name: 'Submit application',
-        url: '/construction-permits/create',
-        icon: 'nav-icon-bullet',
-        badge: {
-          color: 'danger',
-          text: 'NEW'
-        },
-      },
-      {
-        name: 'Applications list',
+        name: 'Masterplan Submission',
         url: '/construction-permits',
         icon: 'nav-icon-bullet',
+        // badge: {
+        //   color: 'danger',
+        //   text: 'NEW'
+        // },
+      },
+      {
+        name: 'Plan Submission',
+      url: '/detailed-plans',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'dark',
+          text: 'Detailed Plan'
+        },
       },
     ]
   },

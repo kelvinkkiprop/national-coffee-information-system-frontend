@@ -20,7 +20,7 @@ export class CreateComponent {
   mInvestors:any;
   mProfessionalBodies:any;
   mPermitTypes:any;
-  mPlannedLandUses:any;
+  mParcelLandUseGroups:any;
   mInvestorParcels:any = {};
   mGreenCertifications:any;
 
@@ -44,8 +44,9 @@ export class CreateComponent {
   estimated_utility_demand_requirements_file:any;
   sustainability_report_file:any;
 
-  mVariations?:any=[]
-  mItemForm?:any
+  mLandUsePlans?:any=[];
+  mHasVariation?:any= 'no';
+  mItemForm?:any;
 
   constructor(
    private mConstructionPermitService: ConstructionPermitService,
@@ -69,6 +70,7 @@ export class CreateComponent {
 
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
+      has_variations: ['no', Validators.required],
 
       site_plan_and_analysis: ['', Validators.nullValidator],
       context_analysis: ['', Validators.nullValidator],
@@ -84,7 +86,6 @@ export class CreateComponent {
       other_green_certification: ['', Validators.nullValidator],
       sustainability_report: ['', Validators.nullValidator],
 
-      require_variations: ['no', Validators.required],
       estimated_project_duration: ['', Validators.required],
       estimated_project_construction_cost: ['', Validators.required],
       commitment_to_comply_with_development_codes_and_guidelines : [false, Validators.requiredTrue],
@@ -93,24 +94,24 @@ export class CreateComponent {
     // mItemForm
     this.mItemForm = this.fb.group({
         parcel_number: ['', Validators.required],
-        min_density: ['', Validators.nullValidator],
-        max_density: ['', Validators.nullValidator],
+        planned_land_use_id: ['', Validators.required],
+        primary_land_use_id: ['', Validators.required],
+        secondary_land_use_id: ['', Validators.nullValidator],
+        preferred_ground_floor_use_id: ['', Validators.nullValidator],
+        // min_density: ['', Validators.nullValidator],
+        // max_density: ['', Validators.nullValidator],
+        number_of_units_to_be_developed: ['', Validators.required],
+        percentage_of_site_covered_by_existing_building: ['', Validators.required],
+        percentage_of_site_covered_by_proposed_building: ['', Validators.nullValidator],
+        min_number_of_floors: ['', Validators.required],
+        max_number_of_floors: ['', Validators.required],
+        min_floor_to_floor_height: ['', Validators.nullValidator],
+        max_floor_to_floor_height: ['', Validators.nullValidator],
         min_floor_area: ['', Validators.nullValidator],
         max_floor_area: ['', Validators.nullValidator],
         min_far: ['', Validators.nullValidator],
         max_far: ['', Validators.nullValidator],
         minimum_setback: ['', Validators.nullValidator],
-        min_floor_to_floor_height: ['', Validators.nullValidator],
-        max_floor_to_floor_height: ['', Validators.nullValidator],
-        min_number_of_floors: ['', Validators.required],
-        max_number_of_floors: ['', Validators.required],
-        percentage_of_site_covered_by_existing_building: ['', Validators.required],
-        percentage_of_site_covered_by_proposed_building: ['', Validators.nullValidator],
-        number_of_units_to_be_developed: ['', Validators.required],
-        planned_land_use_id: ['', Validators.required],
-        primary_land_use_id: ['', Validators.required],
-        secondary_land_use_id: ['', Validators.nullValidator],
-        preferred_ground_floor_use_id: ['', Validators.nullValidator],
     });
 
    }
@@ -131,7 +132,7 @@ export class CreateComponent {
           this.mProfessionalBodies = (response as any).data.professional_bodies;
           this.mPermitTypes = (response as any).data.permit_types;
           // this.mInvestorParcels = (response as any).data.investor_parcels;
-          this.mPlannedLandUses = (response as any).data.planned_land_uses;
+          this.mParcelLandUseGroups = (response as any).data.parcel_land_use_groups;
           this.mGreenCertifications = (response as any).data.green_certifications;
           this.mProgress.set(false);
         }
@@ -147,7 +148,7 @@ export class CreateComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    const mVariationsJsonArrayItems = JSON.stringify(Object.assign({}, this.mVariations))
+    const mLandUsePlansJsonArrayItems = JSON.stringify(Object.assign({}, this.mLandUsePlans))
 
     let formData:any = new FormData();
     formData.append('investor_id', formValues.investor_id);
@@ -160,28 +161,9 @@ export class CreateComponent {
     formData.append('citizenship', formValues.citizenship);
     formData.append('project_brief', formValues.project_brief);
     formData.append('project_purpose', formValues.project_purpose);
-    formData.append('require_variations', formValues.require_variations);
-    formData.append('variations', mVariationsJsonArrayItems)
-    // formData.append('parcel_number', formValues.parcel_number);
-    // formData.append('latitute', formValues.latitute);
-    // formData.append('longitude', formValues.longitude);
-    // formData.append('min_density', formValues.min_density);
-    // formData.append('max_density', formValues.max_density);
-    // formData.append('size', formValues.size);
-    // formData.append('min_floor_area', formValues.min_floor_area);
-    // formData.append('max_floor_area', formValues.max_floor_area);
-    // formData.append('min_far', formValues.min_far);
-    // formData.append('max_far', formValues.max_far);
-    // formData.append('minimum_setback', formValues.minimum_setback);
-    // formData.append('min_floor_to_floor_height', formValues.min_floor_to_floor_height);
-    // formData.append('max_floor_to_floor_height', formValues.max_floor_to_floor_height);
-    // formData.append('min_number_of_floors', formValues.min_number_of_floors);
-    // formData.append('max_number_of_floors', formValues.max_number_of_floors);
-    // formData.append('percentage_of_site_covered_by_existing_building', formValues.percentage_of_site_covered_by_existing_building);
-    // formData.append('percentage_of_site_covered_by_proposed_building', formValues.percentage_of_site_covered_by_proposed_building);
-    // formData.append('number_of_units_to_be_developed', formValues.number_of_units_to_be_developed);
-    // formData.append('planned_land_use_id', formValues.planned_land_use_id);
-    // formData.append('primary_secondary_and_preferred_ground_floor_use', formValues.primary_secondary_and_preferred_ground_floor_use);
+    // formData.append('has_variations', formValues.has_variations);
+    formData.append('has_variations', this.mHasVariation);
+    formData.append('land_use_plans', mLandUsePlansJsonArrayItems)
 
     formData.append('project_sustainability_brief', formValues.project_sustainability_brief);
     formData.append('green_certification_id', formValues.green_certification_id);
@@ -357,13 +339,91 @@ export class CreateComponent {
     }
   }
 
-  // onVariationsChange
-  onVariationsChange() {
-    const value = this.itemForm.get('require_variations')?.value;
-    // console.log(value);
-    if (value === 'no') {
-      this.mVariations = []; //Empty
-    }
+  // onCheckVariations
+  onCheckVariations(item:any) {
+
+    const hasVariation = this.mInvestorParcels.some((mInvestorParcel: any) => {
+    const parcel_number = mInvestorParcel.allocation_worksheet.number;
+    const min_floors = Number(mInvestorParcel.allocation_worksheet.min_floors);
+    const max_floors = Number(mInvestorParcel.allocation_worksheet.max_floors);
+    
+    // console.log("mInvestorParcel "+JSON.stringify(mInvestorParcel));
+    // console.log("mItem "+JSON.stringify(item));
+    // console.log("min_number_of_floors "+item.min_number_of_floors+"min_number_of_floors "+mInvestorParcel.allocation_worksheet.min_floors);
+    
+    // console.log(item.min_number_of_floors < min_floors)
+    console.log(this.mHasVariation);
+    return (
+      item.parcel_number === parcel_number &&
+      (
+        item.min_number_of_floors < min_floors ||
+        item.max_number_of_floors > max_floors      
+      )
+    );
+  });
+
+  if(hasVariation==true && this.mHasVariation == 'no'){
+    this.mHasVariation = 'yes'; // AnySlightVariation
+  }
+  this.itemForm.get('has_variations')?.setValue(this.mHasVariation);
+  console.log(this.mHasVariation);
+
+
+
+            // "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
+            // "phase": 1,
+            // "number": "AN-005",
+            // "acres": "1.53",
+            // "parcel_land_use_group_id": 4,
+            // "predominant_land": null,
+            // "preferred_ground_floor_use": null,
+            // "secondary_use": null,
+            // "min_floors": "2",
+            // "max_floors": "6",
+            // "stand_premium": 10370000,
+            // "annual_ground_rent": 830000,
+            // "service_charge": 68827.5,
+            // "status_id": 4,
+            // "code": null,
+            // "description": null,
+            // "min_floor_area": null,
+            // "max_floor_area": null,
+            // "min_far": null,
+            // "max_far": null,
+            // "plot_coverage": null,
+            // "rings": null,
+            // "created_by": null,
+            // "updated_by": null,
+            // "created_at": null,
+            // "updated_at": "2026-04-15T15:19:39.000000Z",
+            // "deleted_at": null            "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
+            // "phase": 1,
+            // "number": "AN-005",
+            // "acres": "1.53",
+            // "parcel_land_use_group_id": 4,
+            // "predominant_land": null,
+            // "preferred_ground_floor_use": null,
+            // "secondary_use": null,
+            // "min_floors": "2",
+            // "max_floors": "6",
+            // "stand_premium": 10370000,
+            // "annual_ground_rent": 830000,
+            // "service_charge": 68827.5,
+            // "status_id": 4,
+            // "code": null,
+            // "description": null,
+            // "min_floor_area": null,
+            // "max_floor_area": null,
+            // "min_far": null,
+            // "max_far": null,
+            // "plot_coverage": null,
+            // "rings": null,
+            // "created_by": null,
+            // "updated_by": null,
+            // "created_at": null,
+            // "updated_at": "2026-04-15T15:19:39.000000Z",
+            // "deleted_at": null
+
   }
 
 
@@ -395,16 +455,18 @@ export class CreateComponent {
 
   // addItem
   addItem(){
-    // this.mVariations.push(this.mItemForm.value)
+    // this.mLandUsePlans.push(this.mItemForm.value)
     // this.mItemForm.reset();
 
     const newItem = this.mItemForm.value;
-    console.log(newItem);
-    const exists = this.mVariations.some((item: any) =>
+    // console.log(newItem);
+    const exists = this.mLandUsePlans.some((item: any) =>
       item.parcel_number === newItem.parcel_number
     );
     if (!exists) {
-      this.mVariations.push(newItem);
+      this.mLandUsePlans.push(newItem);
+      // call 
+      this.onCheckVariations(newItem);
       this.mItemForm.reset();
     } else {
       this.mToastrService.error('Item already exists');
@@ -416,9 +478,9 @@ export class CreateComponent {
   }
   // removeItem
   removeItem(element:any){
-    this.mVariations.forEach((value:any, index:any)=>{
+    this.mLandUsePlans.forEach((value:any, index:any)=>{
       if(value===element){
-        this.mVariations.splice(index, 1)
+        this.mLandUsePlans.splice(index, 1)
       }
     });
   }

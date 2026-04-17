@@ -6,7 +6,6 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
 import { ProcessComponent } from './process/process.component';
-import { VariationComponent } from './process/inc/variation/variation.component';
 
 
 //Routes
@@ -20,28 +19,28 @@ const routes: Routes = [
     path: 'index',
     component: IndexComponent,
     data: {
-      title: 'Construction Permits / Masterplan Submission'
+      title: 'Construction Permits / Detailed Plan'
     }
   },
   {
-    path: 'create',
+    path: 'create/:id',
     component: CreateComponent,
     data: {
-      title: 'Construction Permits / Masterplan Submission / Create',
+      title: 'Construction Permits / Detailed Plan / Create',
     }
   },
   {
     path: 'edit/:id',
     component: EditComponent,
     data: {
-      title: 'Construction Permits / Masterplan Submission / Edit',
+      title: 'Construction Permits / Detailed Plan / Edit',
     }
   },
   {
     path: 'show/:id',
     component: ShowComponent,
     data: {
-      title: 'Construction Permits / Masterplan Submission / Show',
+      title: 'Construction Permits / Detailed Plan / Show',
     }
   },
 
@@ -51,14 +50,7 @@ const routes: Routes = [
     path: 'process/:id',
     component: ProcessComponent,
     data: {
-      title: 'Construction Permits / Process',
-    }
-  },
-  {
-    path: 'variations/:id',
-    component: VariationComponent,
-    data: {
-      title: 'Construction Permits / Variations',
+      title: 'Construction Permits / Detailed Plan / Process',
     }
   },
 
@@ -76,4 +68,4 @@ const routes: Routes = [
   // Add
   exports: [RouterModule]
 })
-export class ConstructionPermitRoutingModule { }
+export class DetailedPlanRoutingModule { }

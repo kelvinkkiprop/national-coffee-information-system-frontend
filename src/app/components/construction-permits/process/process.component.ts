@@ -2,8 +2,8 @@ import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { ConstructionPermit } from '../../../interfaces/construction-permit';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
+import { ConstructionPermit } from '../../../interfaces/construction-permit';
 
 @Component({
   selector: 'app-process',
@@ -15,7 +15,7 @@ import { ConstructionPermitService } from '../../../services/construction-permit
 export class ProcessComponent {
 
   // variables
-  item:ConstructionPermit = {};
+  item:any = {};
   id:any;
 
   itemForm:any

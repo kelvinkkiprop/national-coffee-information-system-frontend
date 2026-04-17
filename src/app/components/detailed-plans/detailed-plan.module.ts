@@ -4,15 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent, AlertHeadingDirective, BadgeComponent, ButtonDirective, ButtonModule, CardBodyComponent, CardModule, DropdownComponent, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, FormModule, GridModule, ModalModule, PaginationModule, SharedModule, TableModule } from '@coreui/angular';
 import { IconDirective, IconModule } from '@coreui/icons-angular';
 import { ProgressModule } from '../progress/progress.module';
-import { ConstructionPermitRoutingModule } from './construction-permit-routing.module';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
-import { CmApprovalComponent } from './process/inc/cm-approval/cm-approval.component';
-import { ReviewComponent } from './process/inc/review/review.component';
 import { ProcessComponent } from './process/process.component';
 import { ShowComponent } from './show/show.component';
-import { VariationComponent } from './process/inc/variation/variation.component';
+import { DetailedPlanRoutingModule } from './detailed-plan-routing.module';
+import { PlannerReviewComponent } from './process/inc/planner-review/planner-review.component';
+import { ProfessionalRecommendationComponent } from './process/inc/professional-recommendation/professional-recommendation.component';
+import { DesignReportComponent } from './process/inc/design-report/design-report.component';
+import { CommitteeStageComponent } from './process/inc/committee-stage/committee-stage.component';
 
 
 @NgModule({
@@ -23,15 +24,16 @@ import { VariationComponent } from './process/inc/variation/variation.component'
     ShowComponent,
 
     ProcessComponent,
-    VariationComponent,
-    ReviewComponent,
-    CmApprovalComponent,
+    PlannerReviewComponent,
+    ProfessionalRecommendationComponent,
+    DesignReportComponent,
+    CommitteeStageComponent
   ],
   imports: [
     CommonModule,
 
     // import
-    ConstructionPermitRoutingModule,
+    DetailedPlanRoutingModule,
     ProgressModule,
 
     // add
@@ -57,4 +59,5 @@ import { VariationComponent } from './process/inc/variation/variation.component'
     BadgeComponent,
   ]
 })
-export class ConstructionPermitModule { }
+
+export class DetailedPlanModule { }

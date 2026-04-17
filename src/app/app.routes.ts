@@ -18,11 +18,6 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./components/auth/auth.module').then((m) => m.AuthModule)
       },
-      // {
-      //   path: 'proposal-response',
-      //   loadChildren: () =>
-      //     import('./components/proposalResponse/proposal-response.module').then((m) => m.ProposalResponseModule)
-      // },
     ]
   },
 
@@ -47,6 +42,11 @@ export const routes: Routes = [
         path: 'construction-permits',
         loadChildren: () =>
           import('./components/construction-permits/construction-permit.module').then((m) => m.ConstructionPermitModule)
+      },
+      {
+        path: 'detailed-plans',
+        loadChildren: () =>
+          import('./components/detailed-plans/detailed-plan.module').then((m) => m.DetailedPlanModule)
       },
       {
         path: 'construction-site-board',
