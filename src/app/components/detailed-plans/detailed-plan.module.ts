@@ -14,6 +14,7 @@ import { PlannerReviewComponent } from './process/inc/planner-review/planner-rev
 import { ProfessionalRecommendationComponent } from './process/inc/professional-recommendation/professional-recommendation.component';
 import { DesignReportComponent } from './process/inc/design-report/design-report.component';
 import { CommitteeStageComponent } from './process/inc/committee-stage/committee-stage.component';
+import { ConstructionPermitComponent } from './process/inc/construction-permit/construction-permit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CommitteeStageComponent } from './process/inc/committee-stage/committee
     PlannerReviewComponent,
     ProfessionalRecommendationComponent,
     DesignReportComponent,
-    CommitteeStageComponent
+    CommitteeStageComponent,
+    ConstructionPermitComponent
   ],
   imports: [
     CommonModule,

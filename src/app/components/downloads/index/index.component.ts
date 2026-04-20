@@ -2,8 +2,8 @@ import { Component, signal } from '@angular/core';
 // Import
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { environment } from 'src/environments/environment';
 import { DownloadService } from '../../../services/download.service';
+import { environment } from '../../../../environments/environment';
 
 
 @Component({
@@ -40,9 +40,9 @@ export class IndexComponent {
       next: (response) => {
           // console.log(response)
         if(response){
-          this.mDevelopmentCodes =(response as any).data.development_codes;
-          this.mDevelopmentGuidelines =(response as any).data.development_guidelines;
-          this.mForms =(response as any).data.forms;
+          this.mDevelopmentCodes = (response as any).data.development_codes;
+          this.mDevelopmentGuidelines = (response as any).data.development_guidelines;
+          this.mForms = (response as any).data.forms;
         }
         this.mProgress.set(false);
       },

@@ -3,7 +3,7 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
+import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
 
 @Component({
   selector: 'app-committee-stage',
@@ -27,7 +27,7 @@ export class CommitteeStageComponent {
 
   constructor(
     public mToastrService: ToastrService,
-    public mConstructionPermitService: ConstructionPermitService,
+    public mDetailedPlanService: DetailedPlanService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -48,7 +48,7 @@ export class CommitteeStageComponent {
   getItem(){
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress = signal(true);
-    this.mConstructionPermitService.getOneItem(this.id).subscribe({
+    this.mDetailedPlanService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any;
@@ -69,19 +69,17 @@ export class CommitteeStageComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    let formData:any = new FormData();
-    // attachments
-    formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
-    // formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
-    formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
-    formData.append('remarks', formValues.remarks);
-    formData.append('_method', 'POST')
-
+    const item: any = {
+      id: this.id,
+      detailed_plan_status_id: formValues.detailed_plan_status_id,
+      remarks: formValues.remarks,
+    }
+    
     this.mProgress.set(true);
-    this.mConstructionPermitService.committeeStageDetailedPlanItem(this.id, formData).subscribe({
+    this.mDetailedPlanService.committeeStageDetailedPlanItem(item).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
-        this.router.navigateByUrl('/construction-permits');
+        this.router.navigateByUrl('/detailed-plans');
         this.mProgress = signal(false);
       },
       error: (error ) => {
@@ -98,7 +96,7 @@ export class CommitteeStageComponent {
   // getNextPreviousDetailedPlanStatus
   getNextPreviousDetailedPlanStatus() {
     this.mProgress = signal(true);
-    this.mConstructionPermitService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
+    this.mDetailedPlanService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
       next: (response) => {
         if(response){
           this.mNextPreviousStatuses = response;

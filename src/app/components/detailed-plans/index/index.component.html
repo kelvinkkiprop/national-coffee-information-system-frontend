@@ -43,6 +43,7 @@
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
+                <th scope="col">Construction Permit</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -60,11 +61,16 @@
                 <td>{{ item.estimated_project_construction_cost | currency:'USD':'symbol':'1.2-2' }}</td> -->
                 <td>{{ item.consultant.name }}</td>
                 <td>
-                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.detailed_plan_status_id==1,'bg-primary text-dark':item.detailed_plan_status_id==2, 'bg-dark':item.detailed_plan_status_id==3, 'bg-warning text-dark':item.detailed_plan_status_id==4,'bg-info':item.detailed_plan_status_id==5,'bg-danger':item.detailed_plan_status_id==6,'bg-success':item.detailed_plan_status_id==7}">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.detailed_plan_status_id==1,'bg-primary text-dark':item.detailed_plan_status_id==2, 'bg-dark':item.detailed_plan_status_id==3, 'bg-warning text-dark':item.detailed_plan_status_id==4,'bg-info':item.detailed_plan_status_id==5,'bg-danger':item.detailed_plan_status_id==6,'bg-light text-dark':item.detailed_plan_status_id==7,'text-muted':item.detailed_plan_status_id==8,'bg-success':item.detailed_plan_status_id==9}">
                     {{ item.detailed_plan_status?.name }}
                   </span>
                 </td>
                 <td>{{ item.created_at|date }}</td>
+                <td>
+                  <span *ngIf="item.construction_permit_url">
+                    <a href="{{item.construction_permit_url}}" target="_blank" class="btn btn-link btn-sm">Download</a>
+                </span>
+                </td>
                 <td>
                   <div class="text-nowrap">
                     <a routerLink="/detailed-plans/show/{{item.id}}" cButton color="dark" variant="outline" size="sm"><svg cIcon name="cilLowVision" class="btn-icon"></svg></a>

@@ -1,11 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ConstructionPermitService } from '../../../services/construction-permit.service';
-import { ProfileService } from '../../../services/profile.service';
 import { AppContextService } from '../../../core/app-context.service';
+import { DetailedPlanService } from '../../../services/detailed-plan.service';
 
 @Component({
   selector: 'app-create',
@@ -37,7 +35,7 @@ export class CreateComponent {
   nema_project_report_file:any;
 
   constructor(
-    private mConstructionPermitService: ConstructionPermitService,
+    private mDetailedPlanService: DetailedPlanService,
     private router: Router,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
@@ -70,7 +68,7 @@ export class CreateComponent {
   getItem(){
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress = signal(true);
-    this.mConstructionPermitService.getOneItem(this.id).subscribe({
+    this.mDetailedPlanService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any;
@@ -92,6 +90,7 @@ export class CreateComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
+    formData.append('id', this.id);
     formData.append('indemnity_form', this.indemnity_form_file, this.indemnity_form_file.name);
     formData.append('architectural_design', this.architectural_design_file, this.architectural_design_file.name);
     formData.append('structural_design', this.structural_design_file, this.structural_design_file.name);
@@ -106,12 +105,12 @@ export class CreateComponent {
     formData.append('_method', 'POST')
 
     this.mProgress.set(true);
-    this.mConstructionPermitService.detailedPlanItem(this.id, formData).subscribe({
+    this.mDetailedPlanService.createItem(formData).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
           this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/construction-permits');
+          this.router.navigateByUrl('/detailed-plans');
           this.mProgress.set(false);
         }
       },

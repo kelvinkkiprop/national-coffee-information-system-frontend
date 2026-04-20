@@ -3,8 +3,8 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
 import { AppContextService } from '../../../../../core/app-context.service';
+import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class ProfessionalRecommendationComponent {
 
   constructor(
     public mToastrService: ToastrService,
-    public mConstructionPermitService: ConstructionPermitService,
+    public mDetailedPlanService: DetailedPlanService,
     public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
@@ -54,7 +54,7 @@ export class ProfessionalRecommendationComponent {
   getItem(){
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress = signal(true);
-    this.mConstructionPermitService.getOneItem(this.id).subscribe({
+    this.mDetailedPlanService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any;
@@ -84,10 +84,10 @@ export class ProfessionalRecommendationComponent {
       professional_sustainability_report: formValues.professional_sustainability_report,
     }
     this.mProgress = signal(true);
-    this.mConstructionPermitService.professionalRecommendationsDetailedPlanItem(item).subscribe({
+    this.mDetailedPlanService.professionalRecommendationsDetailedPlanItem(item).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
-        this.router.navigateByUrl('/construction-permits');
+        this.router.navigateByUrl('/detailed-plans');
         this.mProgress = signal(false);
       },
       error: (error ) => {

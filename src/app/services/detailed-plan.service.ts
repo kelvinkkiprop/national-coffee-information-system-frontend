@@ -15,7 +15,7 @@ export class DetailedPlanService {
     private http: HttpClient
 ) { }
 
-  //FUNCTIONS
+  // FUNCTIONS
   allItems():Observable<DetailedPlan[]>{
     const url = `${environment.base_url}/detailed-plan-construction-permits`;
     return this.http.get<DetailedPlan[]>(url, this.mAppContextService.getHttpOptions());
@@ -76,37 +76,42 @@ export class DetailedPlanService {
 
  
   nextPreviousStatusDetailedPlanItem(id:any){
-    const url = `${environment.base_url}/next-previous-status-detailed-plan-detailed-plan-construction-permits/${id}`;
+    const url = `${environment.base_url}/next-previous-status-detailed-plan-construction-permits/${id}`;
     return this.http.get<DetailedPlan[]>(url, this.mAppContextService.getHttpOptions());
   }
 
   // DetailedPlan
   unpaginatedDetailedPlanItems():Observable<DetailedPlan[]>{
-    const url = `${environment.base_url}/unpaginated-items-detailed-plan-detailed-plan-construction-permits`;
+    const url = `${environment.base_url}/unpaginated-items-detailed-plan-construction-permits`;
     return this.http.get<DetailedPlan[]>(url, this.mAppContextService.getHttpOptions());
   }
   detailedPlanItem(id:any, item: any): Observable<DetailedPlan>{
-    const url = `${environment.base_url}/detailed-plan-detailed-plan-construction-permits/${id}`;
+    const url = `${environment.base_url}/detailed-plan-construction-permits/${id}`;
     // return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedPlan>(url, item);
   }
   plannerDetailedPlanItem(item: any): Observable<DetailedPlan>{
-    const url = `${environment.base_url}/planner-detailed-plan-detailed-plan-construction-permits/${item.id}`;
+    const url = `${environment.base_url}/planner-detailed-plan-construction-permits/${item.id}`;
     // return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedPlan>(url, item);
   }
   professionalRecommendationsDetailedPlanItem(item: any): Observable<DetailedPlan>{
-    const url = `${environment.base_url}/professional-recommendations-detailed-plan-detailed-plan-construction-permits/${item.id}`;
+    const url = `${environment.base_url}/professional-recommendations-detailed-plan-construction-permits/${item.id}`;
     return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     // return this.http.post<DetailedPlan>(url, item);
   }
   detailedDesignReportRecommendationsDetailedPlanItem(item: any): Observable<DetailedPlan>{
-    const url = `${environment.base_url}/detailed-design-report-detailed-plan-detailed-plan-construction-permits/${item.id}`;
+    const url = `${environment.base_url}/detailed-design-report-detailed-plan-construction-permits/${item.id}`;
     return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     // return this.http.post<DetailedPlan>(url, item);
   }
-  committeeStageDetailedPlanItem(id:any, item: any): Observable<DetailedPlan>{
-    const url = `${environment.base_url}/committee-stage-detailed-plan-detailed-plan-construction-permits/${id}`;
+  committeeStageDetailedPlanItem(item: any): Observable<DetailedPlan>{
+    const url = `${environment.base_url}/committee-stage-detailed-plan-construction-permits/${item.id}`;
+    return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
+    // return this.http.post<DetailedPlan>(url, item);
+  }
+  constructionPermitItem(id:any, item: any): Observable<DetailedPlan>{
+    const url = `${environment.base_url}/construction-permit-detailed-plan-construction-permits/${id}`;
     // return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedPlan>(url, item);
   }

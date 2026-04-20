@@ -7,13 +7,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group mb-3">
-        <label for="detailed_plan_status_id" class="col-form-label required">Status:</label>
-        <select formControlName="detailed_plan_status_id" [ngClass]="{'is-invalid': itemForm.get('detailed_plan_status_id')?.invalid && (itemForm.get('detailed_plan_status_id')?.dirty || itemForm.get('detailed_plan_status_id')?.touched)}" type="text" class="form-control">
-          <option value="" disabled="true" selected="true">--- Select status ---</option>
-          <option *ngFor="let item of mNextPreviousStatuses" value="{{item.id}}">{{item.alias }}</option>
-        </select>
-        <div *ngIf="itemForm.get('detailed_plan_status_id')?.invalid && (itemForm.get('detailed_plan_status_id')?.dirty || itemForm.get('detailed_plan_status_id')?.touched)" class="invalid-feedback" role="alert">
-          <div *ngIf="itemForm.get('detailed_plan_status_id')?.errors?.['required']">This field is required.</div>
+        <label for="construction_permit" class="col-form-label required">Construction Permit:
+            <span *ngIf="item.construction_permit_url">
+                <a href="{{item.construction_permit_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+            </span>
+        </label>
+        <input (change)="onConstructionPermitChange($event)" formControlName="construction_permit" [ngClass]="{'is-invalid': itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)}" type="file" class="form-control"/>
+        <div *ngIf="itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('construction_permit').errors?.['required']">This field is required.</div>
         </div>
       </div>
     </div>
@@ -34,3 +35,4 @@
 
 </form>
 </div>
+

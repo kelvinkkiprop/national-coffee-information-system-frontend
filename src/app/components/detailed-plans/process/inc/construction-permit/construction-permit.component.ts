@@ -5,15 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
 
-
 @Component({
-  selector: 'app-design-report',
+  selector: 'app-construction-permit',
   // imports: [],
-  templateUrl: './design-report.component.html',
-  styleUrl: './design-report.component.scss',
+  templateUrl: './construction-permit.component.html',
+  styleUrl: './construction-permit.component.scss',
   standalone: false
 })
-export class DesignReportComponent {
+export class ConstructionPermitComponent {
 
 
   // variables
@@ -24,6 +23,7 @@ export class DesignReportComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+  construction_permit_file:any;
 
   constructor(
     public mToastrService: ToastrService,
@@ -34,7 +34,7 @@ export class DesignReportComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      detailed_plan_status_id: ['', Validators.required],
+      construction_permit: ['', Validators.required],
       remarks: ['', Validators.required],
     });
   }
@@ -52,7 +52,6 @@ export class DesignReportComponent {
         if(response){
           this.item = response as any;
           // call
-          this.getNextPreviousDetailedPlanStatus();
           this.mProgress = signal(false);
         }
       },
@@ -68,13 +67,15 @@ export class DesignReportComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    const item: any = {
-      id: this.id,
-      detailed_plan_status_id: formValues.detailed_plan_status_id,
-      remarks: formValues.remarks,
-    }
-    this.mProgress = signal(true);
-    this.mDetailedPlanService.detailedDesignReportRecommendationsDetailedPlanItem(item).subscribe({
+    let formData:any = new FormData();
+    // attachments
+    formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
+    // formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    formData.append('remarks', formValues.remarks);
+    formData.append('_method', 'POST')
+
+    this.mProgress.set(true);
+    this.mDetailedPlanService.constructionPermitItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
         this.router.navigateByUrl('/detailed-plans');
@@ -91,25 +92,16 @@ export class DesignReportComponent {
 
   }
 
-  // getNextPreviousDetailedPlanStatus
-  getNextPreviousDetailedPlanStatus() {
-    this.mProgress = signal(true);
-    this.mDetailedPlanService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
-      next: (response) => {
-        if(response){
-          this.mNextPreviousStatuses = response;
-          this.mProgress = signal(false);
-        }
-      },
-      error: (error ) => {
-        if(error.error.message){
-          this.mToastrService.error(error.error.message)
-        }
-        this.mProgress = signal(false);
-      }
-    });
+
+  // onConstructionPermitChange
+  onConstructionPermitChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.construction_permit_file = file;
+    }
   }
 
-
 }
+
+
 

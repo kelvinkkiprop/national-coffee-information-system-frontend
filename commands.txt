@@ -61,6 +61,7 @@ ng generate component components/detailed-plans/process/inc/planner-review
 ng generate component components/detailed-plans/process/inc/professional-recommendation
 ng generate component components/detailed-plans/process/inc/design-report
 ng generate component components/detailed-plans/process/inc/committee-stage
+ng generate component components/detailed-plans/process/inc/construction-permit
 
 ng generate component components/profiles/index
 ng generate component components/profiles/create
