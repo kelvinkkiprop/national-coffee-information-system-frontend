@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group mb-3">
-        <label for="status_id" class="col-form-label required">Company:</label>
+        <label for="status_id" class="col-form-label required">Status:</label>
         <select formControlName="status_id" [ngClass]="{'is-invalid': itemForm.get('status_id')?.invalid && (itemForm.get('status_id')?.dirty || itemForm.get('status_id')?.touched)}" type="text" class="form-control">
           <option value="" disabled="true" selected="true">--- Select status ---</option>
           <option *ngFor="let item of mNextPreviousStatuses" value="{{item.id}}">{{item.alias }}</option>

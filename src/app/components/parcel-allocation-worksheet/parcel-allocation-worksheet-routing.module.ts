@@ -18,28 +18,28 @@ const routes: Routes = [
     path: 'index',
     component: IndexComponent,
     data: {
-      title: 'Parcel Allocation Worksheet'
+      title: 'Parcel Development Parameters'
     }
   },
   {
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Parcel Allocation Worksheet / Create'
+      title: 'Parcel Development Parameters / Create'
     }
   },
   {
     path: 'edit/:id',
     component: EditComponent,
     data: {
-      title: 'Parcel Allocation Worksheet / Edit'
+      title: 'Parcel Development Parameters / Edit'
     }
   },
   {
     path: 'show/:id',
     component: ShowComponent,
     data: {
-      title: 'Parcel Allocation Worksheet / Show'
+      title: 'Parcel Development Parameters / Show'
     }
   },
 ];

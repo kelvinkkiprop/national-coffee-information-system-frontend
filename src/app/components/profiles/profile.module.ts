@@ -8,6 +8,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ShowComponent } from './show/show.component';
 import { ProgressModule } from '../progress/progress.module';
 import { IconModule } from '@coreui/icons-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -33,7 +34,8 @@ import { IconModule } from '@coreui/icons-angular';
     PaginationModule,
     SharedModule,
     TableModule,
-    // ReactiveFormsModule,
+    FormModule,
+    ReactiveFormsModule,
     AccordionModule,
     CalloutModule,
     ListGroupDirective,

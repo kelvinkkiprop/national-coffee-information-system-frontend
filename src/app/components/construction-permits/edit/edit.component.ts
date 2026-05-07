@@ -70,7 +70,7 @@ export class EditComponent {
       consultant_name: ['', Validators.nullValidator],
       address: ['', Validators.nullValidator],
       email: ['', Validators.nullValidator],
-      citizenship: ['', Validators.nullValidator],
+      nationality: ['', Validators.nullValidator],
 
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
@@ -186,7 +186,7 @@ export class EditComponent {
     formData.append('consultant_name', formValues.consultant_name);
     formData.append('address', formValues.address);
     formData.append('email', formValues.email);
-    formData.append('citizenship', formValues.citizenship);
+    formData.append('nationality', formValues.nationality);
     formData.append('project_brief', formValues.project_brief);
     formData.append('project_purpose', formValues.project_purpose);
     formData.append('has_variations', formValues.has_variations);
@@ -257,7 +257,7 @@ export class EditComponent {
             this.itemForm.get('consultant_name')?.setValue(mResponse.name);
             this.itemForm.get('address')?.setValue(mResponse.address);
             this.itemForm.get('email')?.setValue(mResponse.email);
-            this.itemForm.get('citizenship')?.setValue(mResponse.nationality);
+            this.itemForm.get('nationality')?.setValue(mResponse.nationality);
             if(mResponse.status == "Inactive"){
                 let mResponse = (response as any)
                 this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
@@ -416,7 +416,7 @@ export class EditComponent {
     );
     if (!exists) {
       this.mLandUsePlans.push(newItem);
-      // call 
+      // call
       this.onCheckVariations(newItem);
       this.mItemForm.reset();
     } else {

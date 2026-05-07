@@ -83,7 +83,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="email" class="col-form-label required1">Email:</label>
+                  <label for="email" class="col-form-label required">Email:</label>
                   <input [(ngModel)]="item.consultant.email" formControlName="email" [ngClass]="{'is-invalid': itemForm.get('email')?.invalid && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)}" type="text" class="form-control" readonly/>
                   <div *ngIf="itemForm.get('email')?.invalid && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('email')?.errors?.['required']">This field is required.</div>
@@ -92,10 +92,10 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="citizenship" class="col-form-label required1">Citizenship:</label>
-                  <input [(ngModel)]="item.consultant_profile.citizenship" formControlName="citizenship" [ngClass]="{'is-invalid': itemForm.get('citizenship')?.invalid && (itemForm.get('citizenship')?.dirty || itemForm.get('citizenship')?.touched)}" type="text" class="form-control" readonly/>
-                  <div *ngIf="itemForm.get('citizenship')?.invalid && (itemForm.get('citizenship')?.dirty || itemForm.get('citizenship')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('citizenship')?.errors?.['required']">This field is required.</div>
+                  <label for="nationality" class="col-form-label required">Citizenship:</label>
+                  <input [(ngModel)]="item.consultant_profile.nationality" formControlName="nationality" [ngClass]="{'is-invalid': itemForm.get('nationality')?.invalid && (itemForm.get('nationality')?.dirty || itemForm.get('nationality')?.touched)}" type="text" class="form-control" readonly/>
+                  <div *ngIf="itemForm.get('nationality')?.invalid && (itemForm.get('nationality')?.dirty || itemForm.get('nationality')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('nationality')?.errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -172,7 +172,7 @@
                 </div>
               </div>
               <div *ngIf="itemForm.get('has_variations').value=='yes'" class="col-md-12">
-                <fieldset class="border mb-3">                  
+                <fieldset class="border mb-3">
                   <legend class="float-none w-auto"><h6 class="text-bold text-muted">Land Use Planning</h6></legend>
                   <div [formGroup]="mItemForm">
                     <div class="row mb-3 px-3">
@@ -190,7 +190,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label for="min_density" class="col-form-label required1">Min density:</label>
+                          <label for="min_density" class="col-form-label required">Min density:</label>
                           <input formControlName="min_density" [ngClass]="{'is-invalid': mItemForm.get('min_density').invalid && (mItemForm.get('min_density').dirty || mItemForm.get('min_density').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('min_density').invalid && (mItemForm.get('min_density').dirty || mItemForm.get('min_density').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('min_density').errors?.['required']">This field is required.</div>
@@ -199,7 +199,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group mb-3">
-                          <label for="max_density" class="col-form-label required1">Max density:</label>
+                          <label for="max_density" class="col-form-label required">Max density:</label>
                           <input formControlName="max_density" [ngClass]="{'is-invalid': mItemForm.get('max_density').invalid && (mItemForm.get('max_density').dirty || mItemForm.get('max_density').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('max_density').invalid && (mItemForm.get('max_density').dirty || mItemForm.get('max_density').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('max_density').errors?.['required']">This field is required.</div>
@@ -208,7 +208,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group mb-3">
-                          <label for="min_floor_area" class="col-form-label required1">Min Floor Area:</label>
+                          <label for="min_floor_area" class="col-form-label required">Min Floor Area:</label>
                           <input formControlName="min_floor_area" [ngClass]="{'is-invalid': mItemForm.get('min_floor_area').invalid && (mItemForm.get('min_floor_area').dirty || mItemForm.get('min_floor_area').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('min_floor_area').invalid && (mItemForm.get('min_floor_area').dirty || mItemForm.get('min_floor_area').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('min_floor_area').errors?.['required']">This field is required.</div>
@@ -217,7 +217,7 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group mb-3">
-                          <label for="max_floor_area" class="col-form-label required1">Max Floor Area:</label>
+                          <label for="max_floor_area" class="col-form-label required">Max Floor Area:</label>
                           <input formControlName="max_floor_area" [ngClass]="{'is-invalid': mItemForm.get('max_floor_area').invalid && (mItemForm.get('max_floor_area').dirty || mItemForm.get('max_floor_area').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('max_floor_area').invalid && (mItemForm.get('max_floor_area').dirty || mItemForm.get('max_floor_area').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('max_floor_area').errors?.['required']">This field is required.</div>
@@ -226,7 +226,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="min_FAR" class="col-form-label required1">Min Floor Area Ratio (FAR):</label>
+                          <label for="min_FAR" class="col-form-label required">Min Floor Area Ratio (FAR):</label>
                           <input formControlName="min_far" [ngClass]="{'is-invalid': mItemForm.get('min_far').invalid && (mItemForm.get('min_far').dirty || mItemForm.get('min_far').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('min_far').invalid && (mItemForm.get('min_far').dirty || mItemForm.get('min_far').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('min_far').errors?.['required']">This field is required.</div>
@@ -235,7 +235,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="max_far" class="col-form-label required1">Max Floor Area Ratio (FAR):</label>
+                          <label for="max_far" class="col-form-label required">Max Floor Area Ratio (FAR):</label>
                           <input formControlName="max_far" [ngClass]="{'is-invalid': mItemForm.get('max_far').invalid && (mItemForm.get('max_far').dirty || mItemForm.get('max_far').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('max_far').invalid && (mItemForm.get('max_far').dirty || mItemForm.get('max_far').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('max_far').errors?.['required']">This field is required.</div>
@@ -253,7 +253,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="min_floor_to_floor_height" class="col-form-label required1">Min Floor-to-Floor Height:</label>
+                          <label for="min_floor_to_floor_height" class="col-form-label required">Min Floor-to-Floor Height:</label>
                           <input formControlName="min_floor_to_floor_height" [ngClass]="{'is-invalid': mItemForm.get('min_floor_to_floor_height').invalid && (mItemForm.get('min_floor_to_floor_height').dirty || mItemForm.get('min_floor_to_floor_height').touched)}" type="text" class="form-control"/>
                           <div *ngIf="mItemForm.get('min_floor_to_floor_height').invalid && (mItemForm.get('min_floor_to_floor_height').dirty || mItemForm.get('min_floor_to_floor_height').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('min_floor_to_floor_height').errors?.['required']">This field is required.</div>
@@ -262,7 +262,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="max_floor_to_floor_height" class="col-form-label required1">Max Floor-to-Floor Height:</label>
+                          <label for="max_floor_to_floor_height" class="col-form-label required">Max Floor-to-Floor Height:</label>
                           <input formControlName="max_floor_to_floor_height" [ngClass]="{'is-invalid': mItemForm.get('max_floor_to_floor_height').invalid && (mItemForm.get('max_floor_to_floor_height').dirty || mItemForm.get('max_floor_to_floor_height').touched)}" type="text" class="form-control"/>
                           <div *ngIf="mItemForm.get('max_floor_to_floor_height').invalid && (mItemForm.get('max_floor_to_floor_height').dirty || mItemForm.get('max_floor_to_floor_height').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('max_floor_to_floor_height').errors?.['required']">This field is required.</div>
@@ -289,7 +289,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="percentage_of_site_covered_by_existing_building" class="col-form-label required1">Percentage of site covered by existing building(s):</label>
+                          <label for="percentage_of_site_covered_by_existing_building" class="col-form-label required">Percentage of site covered by existing building(s):</label>
                           <input formControlName="percentage_of_site_covered_by_existing_building" [ngClass]="{'is-invalid': mItemForm.get('percentage_of_site_covered_by_existing_building').invalid && (mItemForm.get('percentage_of_site_covered_by_existing_building').dirty || mItemForm.get('percentage_of_site_covered_by_existing_building').touched)}" type="number" class="form-control"/>
                           <div *ngIf="mItemForm.get('percentage_of_site_covered_by_existing_building').invalid && (mItemForm.get('percentage_of_site_covered_by_existing_building').dirty || mItemForm.get('percentage_of_site_covered_by_existing_building').touched)" class="invalid-feedback" role="alert">
                             <div *ngIf="mItemForm.get('percentage_of_site_covered_by_existing_building').errors?.['required']">This field is required.</div>
@@ -340,7 +340,7 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group mb-3">
-                          <label for="secondary_land_use_id" class="col-form-label required1">Secondary Land Use:</label>
+                          <label for="secondary_land_use_id" class="col-form-label required">Secondary Land Use:</label>
                           <select formControlName="secondary_land_use_id" [ngClass]="{'is-invalid': mItemForm.get('secondary_land_use_id')?.invalid && (mItemForm.get('secondary_land_use_id')?.dirty || mItemForm.get('secondary_land_use_id')?.touched)}" type="text" class="form-control">
                             <option value="" disabled="true" selected="true">--- Select secondary land use ---</option>
                             <option *ngFor="let item of mParcelLandUseGroups" value="{{item.id}}">{{item.name}}</option>
@@ -352,7 +352,7 @@
                       </div>
                       <div class="col-md-4">
                         <div class="form-group mb-3">
-                          <label for="preferred_ground_floor_use_id" class="col-form-label required1">Preferred Ground Floor Use:</label>
+                          <label for="preferred_ground_floor_use_id" class="col-form-label required">Preferred Ground Floor Use:</label>
                           <select formControlName="preferred_ground_floor_use_id" [ngClass]="{'is-invalid': mItemForm.get('preferred_ground_floor_use_id')?.invalid && (mItemForm.get('preferred_ground_floor_use_id')?.dirty || mItemForm.get('preferred_ground_floor_use_id')?.touched)}" type="text" class="form-control">
                             <option value="" disabled="true" selected="true">--- Select ground floor use ---</option>
                             <option *ngFor="let item of mParcelLandUseGroups" value="{{item.id}}">{{item.name}}</option>

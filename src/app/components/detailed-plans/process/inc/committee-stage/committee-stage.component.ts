@@ -23,7 +23,7 @@ export class CommitteeStageComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
-  construction_permit_file:any;
+  letter_of_no_objection_file:any;
 
   constructor(
     public mToastrService: ToastrService,
@@ -35,7 +35,7 @@ export class CommitteeStageComponent {
     // validation
     this.itemForm = this.fb.group({
       detailed_plan_status_id: ['', Validators.required],
-      construction_permit: ['', Validators.nullValidator],
+      letter_of_no_objection: ['', Validators.nullValidator],
       remarks: ['', Validators.required],
     });
   }
@@ -69,14 +69,16 @@ export class CommitteeStageComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    const item: any = {
-      id: this.id,
-      detailed_plan_status_id: formValues.detailed_plan_status_id,
-      remarks: formValues.remarks,
-    }
-    
+
+    let formData:any = new FormData();
+    // attachments
+    formData.append('letter_of_no_objection', this.letter_of_no_objection_file || '', this.letter_of_no_objection_file?.name || '' );
+    formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
+    formData.append('remarks', formValues.remarks);
+    formData.append('_method', 'POST')
+
     this.mProgress.set(true);
-    this.mDetailedPlanService.committeeStageDetailedPlanItem(item).subscribe({
+    this.mDetailedPlanService.committeeStageDetailedPlanItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
         this.router.navigateByUrl('/detailed-plans');
@@ -113,11 +115,11 @@ export class CommitteeStageComponent {
   }
 
 
-  // onConstructionPermitChange
-  onConstructionPermitChange(event:any) {
+  // onLetterOfNoObjection
+  onLetterOfNoObjection(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.construction_permit_file = file;
+      this.letter_of_no_objection_file = file;
     }
   }
 

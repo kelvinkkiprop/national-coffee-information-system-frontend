@@ -25,14 +25,14 @@ const routes: Routes = [
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Profile / Create'
+      title: 'Profile / Consultant Verification'
     }
   },
   {
     path: 'edit/:id',
     component: EditComponent,
     data: {
-      title: 'Profile / Edit'
+      title: 'Profile / Consultant Details'
     }
   },
   {

@@ -23,7 +23,9 @@ export class ConstructionPermitComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+
   construction_permit_file:any;
+  notice_of_approval_file:any;
 
   constructor(
     public mToastrService: ToastrService,
@@ -34,6 +36,7 @@ export class ConstructionPermitComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
+      notice_of_approval: ['', Validators.required],
       construction_permit: ['', Validators.required],
       remarks: ['', Validators.required],
     });
@@ -69,8 +72,9 @@ export class ConstructionPermitComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
-    formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
     // formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    formData.append('notice_of_approval', this.notice_of_approval_file, this.notice_of_approval_file.name);
+    formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
 
@@ -98,6 +102,14 @@ export class ConstructionPermitComponent {
     if (event.target.value) {
       const file = event.target.files[0];
       this.construction_permit_file = file;
+    }
+  }
+
+  // onNoticeOfApprovalChange
+  onNoticeOfApprovalChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.notice_of_approval_file = file;
     }
   }
 

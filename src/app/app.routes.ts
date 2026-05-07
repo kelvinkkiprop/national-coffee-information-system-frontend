@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { AuthUIComponent } from './containers/auth-ui/auth-ui.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DefaultLayoutComponent } from './containers/layout';
+import { verifyConsultantGuard } from './guards/verify-consultant.guard';
 
 export const routes: Routes = [
 
@@ -32,18 +33,18 @@ export const routes: Routes = [
     },
     children: [
       {
-        // canActivate: [withProfileOnlyGuard],
         path: 'dashboard',
         loadChildren: () =>
           import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        // canActivate: [withProfileOnlyGuard],
+        canActivate: [verifyConsultantGuard],
         path: 'construction-permits',
         loadChildren: () =>
           import('./components/construction-permits/construction-permit.module').then((m) => m.ConstructionPermitModule)
       },
       {
+        canActivate: [verifyConsultantGuard],
         path: 'detailed-plans',
         loadChildren: () =>
           import('./components/detailed-plans/detailed-plan.module').then((m) => m.DetailedPlanModule)

@@ -18,12 +18,12 @@
       </div>
     </div>
     <!-- Approved -->
-    <div *ngIf="itemForm.get('detailed_plan_status_id').value==7" class="col-md-12">
+    <div *ngIf="itemForm.get('detailed_plan_status_id').value==9" class="col-md-12">
       <div class="form-group mb-3">
-        <label for="construction_permit" class="col-form-label required">Construction Permit:</label>
-        <input (change)="onConstructionPermitChange($event)" formControlName="construction_permit" [ngClass]="{'is-invalid': itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)}" type="file" class="form-control"/>
-        <div *ngIf="itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)" class="invalid-feedback" role="alert">
-          <div *ngIf="itemForm.get('construction_permit').errors?.['required']">This field is required.</div>
+        <label for="letter_of_no_objection" class="col-form-label required">Letter of No Objection:</label>
+        <input (change)="onLetterOfNoObjection($event)" formControlName="letter_of_no_objection" [ngClass]="{'is-invalid': itemForm.get('letter_of_no_objection').invalid && (itemForm.get('letter_of_no_objection').dirty || itemForm.get('letter_of_no_objection').touched)}" type="file" class="form-control"/>
+        <div *ngIf="itemForm.get('letter_of_no_objection').invalid && (itemForm.get('letter_of_no_objection').dirty || itemForm.get('letter_of_no_objection').touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('letter_of_no_objection').errors?.['required']">This field is required.</div>
         </div>
       </div>
     </div>

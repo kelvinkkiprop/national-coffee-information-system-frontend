@@ -159,11 +159,10 @@ ng generate interface interfaces/detailedPlan
 
 10. Guards
 ng generate guard guards/auth
-ng generate guard guards/verifyEmail
+ng generate guard guards/verifyConsultant
 ng generate guard guards/withProfileOnly
 ng generate guard guards/adminsOnly
 ng generate guard guards/activeAccountsOnly
-ng generate guard guards/notInvestorOnly
 
 11. Build
 ng build --configuration production

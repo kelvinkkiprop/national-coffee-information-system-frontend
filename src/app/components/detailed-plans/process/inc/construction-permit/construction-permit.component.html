@@ -7,6 +7,19 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group mb-3">
+        <label for="notice_of_approval" class="col-form-label required">Notice of Approval:
+            <span *ngIf="item.notice_of_approval_url">
+                <a href="{{item.notice_of_approval_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+            </span>
+        </label>
+        <input (change)="onNoticeOfApprovalChange($event)" formControlName="notice_of_approval" [ngClass]="{'is-invalid': itemForm.get('notice_of_approval').invalid && (itemForm.get('notice_of_approval').dirty || itemForm.get('notice_of_approval').touched)}" type="file" class="form-control"/>
+        <div *ngIf="itemForm.get('notice_of_approval').invalid && (itemForm.get('notice_of_approval').dirty || itemForm.get('notice_of_approval').touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('notice_of_approval').errors?.['required']">This field is required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group mb-3">
         <label for="construction_permit" class="col-form-label required">Construction Permit:
             <span *ngIf="item.construction_permit_url">
                 <a href="{{item.construction_permit_url}}" target="_blank" class="btn btn-link btn-sm">File</a>

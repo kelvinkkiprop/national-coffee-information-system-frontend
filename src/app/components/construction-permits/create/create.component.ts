@@ -23,13 +23,10 @@ export class CreateComponent {
   mParcelLandUseGroups:any;
   mInvestorParcels:any = {};
   mGreenCertifications:any;
+  mProfile: any = {};
 
   itemForm:any
   mProgress = signal(false);
-
-  mProfessionalStatus:any;
-  mProfessionalGoodStanding:any;
-  mProfessionalBalanceReason:any;
 
   mParcelInfo:any = {};
   public mEditor: any = ClassicEditor;
@@ -49,7 +46,7 @@ export class CreateComponent {
   mItemForm?:any;
 
   constructor(
-   private mConstructionPermitService: ConstructionPermitService,
+    private mConstructionPermitService: ConstructionPermitService,
     private mProfileService: ProfileService,
     private router: Router,
     private mToastrService: ToastrService,
@@ -66,7 +63,7 @@ export class CreateComponent {
       consultant_name: ['', Validators.nullValidator],
       address: ['', Validators.nullValidator],
       email: ['', Validators.nullValidator],
-      citizenship: ['', Validators.nullValidator],
+      nationality: ['', Validators.nullValidator],
 
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
@@ -122,7 +119,7 @@ export class CreateComponent {
   }
 
 
-  //loadUnpaginatedItems
+  // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
     this.mConstructionPermitService.unpaginatedItems().subscribe({
@@ -135,6 +132,8 @@ export class CreateComponent {
           // this.mInvestorParcels = (response as any).data.investor_parcels;
           this.mParcelLandUseGroups = (response as any).data.parcel_land_use_groups;
           this.mGreenCertifications = (response as any).data.green_certifications;
+          this.mProfile = (response as any).data.profile;
+          console.log(this.mProfile)
           this.mProgress.set(false);
         }
       },
@@ -159,7 +158,7 @@ export class CreateComponent {
     formData.append('consultant_name', formValues.consultant_name);
     formData.append('address', formValues.address);
     formData.append('email', formValues.email);
-    formData.append('citizenship', formValues.citizenship);
+    formData.append('nationality', formValues.nationality);
     formData.append('project_brief', formValues.project_brief);
     formData.append('project_purpose', formValues.project_purpose);
     // formData.append('has_variations', formValues.has_variations);
@@ -208,48 +207,48 @@ export class CreateComponent {
   }
 
 
-  // verifyProfessional
-  verifyProfessional(){
-    const item: any = {
-      professional_body_id: this.itemForm.get('professional_body_id')?.value,
-      membership_number: this.itemForm.get('membership_number')?.value,
-    }
-    if (!item.professional_body_id || !item.membership_number) {
-      return;
-    }
+  // // verifyProfessional
+  // verifyProfessional(){
+  //   const item: any = {
+  //     professional_body_id: this.itemForm.get('professional_body_id')?.value,
+  //     membership_number: this.itemForm.get('membership_number')?.value,
+  //   }
+  //   if (!item.professional_body_id || !item.membership_number) {
+  //     return;
+  //   }
 
-    this.mProgress.set(true);
-    this.mProfileService.professionalSearch(item).subscribe({
-      next: (response) => {
-        if(response){
-          if((response as any).status==="failed"){
-            // this.router.navigateByUrl('/construction-permits');
-            this.mToastrService.error((response as any).message);
-          }else{
-            // this.mToastrService.success((response as any).message);
-            const mResponse = response as any
-            this.itemForm.get('consultant_name')?.setValue(mResponse.name);
-            this.itemForm.get('address')?.setValue(mResponse.address);
-            this.itemForm.get('email')?.setValue(mResponse.email);
-            this.itemForm.get('citizenship')?.setValue(mResponse.nationality);
-            if(mResponse.status == "Inactive"){
-                let mResponse = (response as any)
-                this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
-                this.mProgress.set(false);
-                this.router.navigateByUrl('/construction-permits');
-            }
-          }
-          this.mProgress.set(false);
-        };
-      },
-      error: (error ) => {
-        if(error.error.message){
-        this.mToastrService.error(error.error.message);
-        }
-        this.mProgress.set(false);
-      }
-    });
-  }
+  //   this.mProgress.set(true);
+  //   this.mProfileService.professionalSearch(item).subscribe({
+  //     next: (response) => {
+  //       if(response){
+  //         if((response as any).status==="failed"){
+  //           // this.router.navigateByUrl('/construction-permits');
+  //           this.mToastrService.error((response as any).message);
+  //         }else{
+  //           // this.mToastrService.success((response as any).message);
+  //           const mResponse = response as any
+  //           this.itemForm.get('consultant_name')?.setValue(mResponse.name);
+  //           this.itemForm.get('address')?.setValue(mResponse.address);
+  //           this.itemForm.get('email')?.setValue(mResponse.email);
+  //           this.itemForm.get('nationality')?.setValue(mResponse.nationality);
+  //           if(mResponse.status == "Inactive"){
+  //               let mResponse = (response as any)
+  //               this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
+  //               this.mProgress.set(false);
+  //               this.router.navigateByUrl('/construction-permits');
+  //           }
+  //         }
+  //         this.mProgress.set(false);
+  //       };
+  //     },
+  //     error: (error ) => {
+  //       if(error.error.message){
+  //       this.mToastrService.error(error.error.message);
+  //       }
+  //       this.mProgress.set(false);
+  //     }
+  //   });
+  // }
 
 
   // onContextAnalysisChange
@@ -347,18 +346,18 @@ export class CreateComponent {
     const parcel_number = mInvestorParcel.allocation_worksheet.number;
     const min_floors = Number(mInvestorParcel.allocation_worksheet.min_floors);
     const max_floors = Number(mInvestorParcel.allocation_worksheet.max_floors);
-    
+
     // console.log("mInvestorParcel "+JSON.stringify(mInvestorParcel));
     // console.log("mItem "+JSON.stringify(item));
     // console.log("min_number_of_floors "+item.min_number_of_floors+"min_number_of_floors "+mInvestorParcel.allocation_worksheet.min_floors);
-    
+
     // console.log(item.min_number_of_floors < min_floors)
     console.log(this.mHasVariation);
     return (
       item.parcel_number === parcel_number &&
       (
         item.min_number_of_floors < min_floors ||
-        item.max_number_of_floors > max_floors      
+        item.max_number_of_floors > max_floors
       )
     );
   });
@@ -466,7 +465,7 @@ export class CreateComponent {
     );
     if (!exists) {
       this.mLandUsePlans.push(newItem);
-      // call 
+      // call
       this.onCheckVariations(newItem);
       this.mItemForm.reset();
     } else {
