@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -115,5 +115,16 @@ export class DetailedPlanService {
     // return this.http.post<DetailedPlan>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedPlan>(url, item);
   }
+
+
+
+  // onDownloadReport
+  onDownloadProfessionalReport(item: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/pdf');
+    const url = `${environment.base_url}/detailed-plan-construction-permits-generate-professional-report-pdf/${item.id}`;
+    return this.http.get(url, { headers: headers, responseType: 'blob' });
+  }
+
 
 }

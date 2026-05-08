@@ -1,1 +1,189 @@
-<p>show works!</p>
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+        <div>
+
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">GENERAL INFORMATION</h6></legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="investor_id">Company:</label>
+                  <div *ngIf="item.investor" class="text-muted">{{ item.investor?.name }}</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="investor_id">Nature of Application:</label>
+                  <div *ngIf="item.type" class="text-muted">{{ item.type?.name }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Project Brief:</label>
+                  <div class="text-muted">{{ item.project_brief }}</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DETAILED PLAN</h6></legend>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Indemnity Form:</label>
+                  <div *ngIf="item.indemnity_form">
+                    <a href="{{item.indemnity_form_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Architectural Design:</label>
+                  <div *ngIf="item.architectural_design">
+                    <a href="{{item.architectural_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Structural Design:</label>
+                  <div *ngIf="item.structural_design">
+                    <a href="{{item.structural_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Electrical Design:</label>
+                  <div *ngIf="item.electrical_design">
+                    <a href="{{item.electrical_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">ICT Design:</label>
+                  <div *ngIf="item.ict_design">
+                    <a href="{{item.ict_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Mechanical Design:</label>
+                  <div *ngIf="item.mechanical_design">
+                    <a href="{{item.mechanical_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Landscaping Design:</label>
+                  <div *ngIf="item.landscaping_design">
+                    <a href="{{item.landscaping_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Signage Design:</label>
+                  <div *ngIf="item.signage_design">
+                    <a href="{{item.signage_design_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Other Necessary Drawings:</label>
+                  <div *ngIf="item.other_necessary_drawings">
+                    <a href="{{item.other_necessary_drawings_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">Green Certification Registration:</label>
+                  <div *ngIf="item.green_certification_registration">
+                    <a href="{{item.green_certification_registration_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="context_analysis">NEMA Project Report:</label>
+                  <div *ngIf="item.nema_project_report">
+                    <a href="{{item.nema_project_report_url}}" target="_blank" class="btn btn-link btn-sm">View File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="border p-2 mb-3" *ngIf="(!mAppContextService.hasRoles([2]))">
+            <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROFESSIONAL RECOMMENDATIONS</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="investor_id">Architect Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.architect_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Structural Engineer Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.structural_engineer_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Electrical Engineer Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.electrical_engineer_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">ICT Engineer Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.ict_engineer_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Mechanical Engineer Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.mechanical_engineer_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Environment Health and Safety Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.environment_health_and_safety_report }}</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="estimated_project_duration">Professional Sustainability Report:</label>
+                  <div class="text-muted" style="text-align: justify; font-style: normal;">{{ item.professional_sustainability_report }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="mt-3 text-end">
+                <button (click)="onDownloadReport(item)" cButton color="light" class="text-dark btn-sm">Print Report</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-3 text-right">
+            <button routerLink="/construction-permits" cButton color="danger">Cancel</button>
+            <!-- <a routerLink="/construction-permits/print/{{item.id}}" cButton color="success" class="text-dark">Submit</a> -->
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -12,13 +12,13 @@
                     <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DETAILED PLAN</h6></legend>
                     <div class="row">
                         <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label for="indemnity_form" class="col-form-label required">Indemnity Form:</label>
-                            <input (change)="onIndemnityFormChange($event)" formControlName="indemnity_form" [ngClass]="{'is-invalid': itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)}" type="file" class="form-control"/>
-                            <div *ngIf="itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="itemForm.get('indemnity_form').errors?.['required']">This field is required.</div>
-                            </div>
-                        </div>
+                          <div class="form-group mb-3">
+                              <label for="indemnity_form" class="col-form-label required">Indemnity Form:</label>
+                              <input (change)="onIndemnityFormChange($event)" formControlName="indemnity_form" [ngClass]="{'is-invalid': itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)}" type="file" class="form-control"/>
+                              <div *ngIf="itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)" class="invalid-feedback" role="alert">
+                              <div *ngIf="itemForm.get('indemnity_form').errors?.['required']">This field is required.</div>
+                              </div>
+                          </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group mb-3">
