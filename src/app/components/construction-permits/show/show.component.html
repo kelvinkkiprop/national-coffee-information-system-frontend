@@ -30,14 +30,14 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label for="investor_id">Project Brief and Purpose (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                  <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
                   <div class="text-muted">{{ item.project_brief }}</div>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="investor_id">Project Purpose (State the specific purpose of the proposed development e.g., Where the land use is education, the purpose may be the development of a primary school):</label>
-                  <div class="text-muted">{{ item.project_purpose }}</div>
+                  <div class="text-muted" [innerHTML]="item.project_purpose"></div>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                   <div *ngFor="let mItem of item.land_use_plans; index as j" class="row mb-2">
                     <div class="col-12">
                       <div class="callout callout-danger">
-                        <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel_number }}</h6>                      
+                        <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel_number }}</h6>
                         <table class="table table-bordered table-danger1">
                           <thead>
                             <tr>
@@ -231,7 +231,7 @@
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="concept_plan">Estimated utility demand requirements (i.e., For Water, Sewer, Electricity, Internet requirement, solid waste, storm water, Irrigation/recycled water, Industrial waste, Glass, E-waste, Medical and hazardous waste):</label>
-                  <div class="text-muted">{{ item.project_sustainability_brief }}</div>
+                  <div class="text-muted" [innerHTML]="item.project_sustainability_brief"></div>
                 </div>
               </div>
               <div class="col-md-12">

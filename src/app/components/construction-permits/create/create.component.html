@@ -106,8 +106,8 @@
                 <div class="col-md-12">
                   <div class="form-group mb-3">
                     <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                    <textarea formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control"></textarea>
                     <!-- <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control1"></ckeditor> -->
-                    <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control1"></ckeditor>
                     <div *ngIf="itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)" class="invalid-feedback" role="alert">
                       <div *ngIf="itemForm.get('project_brief')?.errors?.['required']">This field is required.</div>
                     </div>

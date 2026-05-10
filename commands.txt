@@ -194,12 +194,15 @@ swal({
 
 ===================================Toastr2===================================
 1. Install
+npm install @iqx-limited/ngx-toastr@2.0.0 --save
 npm install @iqx-limited/ngx-toastr@^2.0.0 --save
 
 2. Add angular.json
 "styles": [
     "src/styles.scss",
-    "node_modules/@iqx-limited/ngx-toastr/toastr.css"
+    "node_modules/@iqx-limited/ngx-toastr/toastr.css",
+      "./node_modules/@iqx-limited/ngx-toastr/toastr.scss"
+
   ],
 
 2. Import in Component
