@@ -15,6 +15,7 @@ import { ProfessionalRecommendationComponent } from './process/inc/professional-
 import { DesignReportComponent } from './process/inc/design-report/design-report.component';
 import { CommitteeStageComponent } from './process/inc/committee-stage/committee-stage.component';
 import { ConstructionPermitComponent } from './process/inc/construction-permit/construction-permit.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -59,6 +60,9 @@ import { ConstructionPermitComponent } from './process/inc/construction-permit/c
     DropdownMenuDirective,
     DropdownToggleDirective,
     BadgeComponent,
+
+    // CKEditor
+    CKEditorModule
   ]
 })
 

@@ -1,18 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
 import { ProfileService } from '../../../services/profile.service';
+import { ClassicEditor } from 'ckeditor5';
 
 @Component({
   selector: 'app-create',
   // imports: [],
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
-  standalone: false
+  standalone: false,
+  encapsulation: ViewEncapsulation.None, // For_CKEditor_styles
 })
 export class CreateComponent {
 

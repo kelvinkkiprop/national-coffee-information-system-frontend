@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
+import { ClassicEditor } from 'ckeditor5';
+import { AppContextService } from '../../../../../core/app-context.service';
 
 
 @Component({
@@ -24,10 +26,12 @@ export class PlannerReviewComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+  public mEditor: any = ClassicEditor;
 
   constructor(
     public mToastrService: ToastrService,
     public mDetailedPlanService: DetailedPlanService,
+    public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,

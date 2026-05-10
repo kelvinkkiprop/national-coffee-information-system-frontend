@@ -42,7 +42,8 @@
               "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/sweetalert2/dist/sweetalert2.css",
               "src/scss/styles.scss",
-              "node_modules/@iqx-limited/ngx-toastr/toastr.css"
+              "node_modules/@iqx-limited/ngx-toastr/toastr.scss",
+              "ckeditor5/ckeditor5.css"
             ],
             "scripts": [
               "node_modules/sweetalert2/dist/sweetalert2.js"

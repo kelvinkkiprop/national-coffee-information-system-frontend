@@ -14,6 +14,20 @@ import { Injectable, Injector } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from '../services/auth.service';
+import {
+  Bold,
+  Essentials,
+  Heading,
+  Indent,
+  IndentBlock,
+  Italic,
+  Link,
+  List,
+  Paragraph,
+  Table,
+  Undo,
+} from 'ckeditor5';
+
 
 @Injectable({
   providedIn: 'root'
@@ -144,5 +158,24 @@ export class AppContextService {
     //  ["id"=>7, "name"=>"Expired", "alias"=>"Expired"],
     //  ["id"=>8, "name"=>"Terminated", "alias"=>"Terminate"],
   }
+
+
+  // ckEditorConfig
+  ckEditorConfig = {
+    licenseKey: 'GPL',   // use 'GPL' for the open-source version
+    plugins: [
+      Bold, Essentials, Heading,
+      Indent, IndentBlock, Italic,
+      Link, List, Paragraph, Table, Undo,
+    ],
+    toolbar: [
+      'undo', 'redo', '|',
+      'heading', '|',
+      'bold', 'italic', '|',
+      'link', 'insertTable', '|',
+      'bulletedList', 'numberedList',
+      'indent', 'outdent',
+    ],
+  };
 
 }

@@ -13,6 +13,7 @@ import { ReviewComponent } from './process/inc/review/review.component';
 import { ProcessComponent } from './process/process.component';
 import { ShowComponent } from './show/show.component';
 import { VariationComponent } from './process/inc/variation/variation.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -55,6 +56,9 @@ import { VariationComponent } from './process/inc/variation/variation.component'
     DropdownMenuDirective,
     DropdownToggleDirective,
     BadgeComponent,
+
+    // CKEditor
+    CKEditorModule
   ]
 })
 export class ConstructionPermitModule { }

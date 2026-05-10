@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
+import { AppContextService } from '../../../../../core/app-context.service';
+import { ClassicEditor } from 'ckeditor5';
 
 @Component({
   selector: 'app-committee-stage',
@@ -23,11 +25,14 @@ export class CommitteeStageComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+  public mEditor: any = ClassicEditor;
+
   letter_of_no_objection_file:any;
 
   constructor(
     public mToastrService: ToastrService,
     public mDetailedPlanService: DetailedPlanService,
+    public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,

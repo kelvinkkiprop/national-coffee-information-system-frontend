@@ -26,7 +26,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="architect_report" class="col-form-label required">Architect Report:</label>
-          <textarea [(ngModel)]="item.architect_report" formControlName="architect_report" [ngClass]="{'is-invalid': itemForm.get('architect_report').invalid && (itemForm.get('architect_report').dirty || itemForm.get('architect_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.architect_report" formControlName="architect_report" [ngClass]="{'is-invalid': itemForm.get('architect_report').invalid && (itemForm.get('architect_report').dirty || itemForm.get('architect_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('architect_report').invalid && (itemForm.get('architect_report').dirty || itemForm.get('architect_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('architect_report').errors?.['required']">This field is required.</div>
           </div>
@@ -41,7 +41,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="structural_engineer_report" class="col-form-label required">Structural Engineer Report:</label>
-          <textarea [(ngModel)]="item.structural_engineer_report" formControlName="structural_engineer_report" [ngClass]="{'is-invalid': itemForm.get('structural_engineer_report').invalid && (itemForm.get('structural_engineer_report').dirty || itemForm.get('structural_engineer_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.structural_engineer_report" formControlName="structural_engineer_report" [ngClass]="{'is-invalid': itemForm.get('structural_engineer_report').invalid && (itemForm.get('structural_engineer_report').dirty || itemForm.get('structural_engineer_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('structural_engineer_report').invalid && (itemForm.get('structural_engineer_report').dirty || itemForm.get('structural_engineer_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('structural_engineer_report').errors?.['required']">This field is required.</div>
           </div>
@@ -57,7 +57,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="electrical_engineer_report" class="col-form-label required">Electrical Engineer Report:</label>
-          <textarea [(ngModel)]="item.electrical_engineer_report" formControlName="electrical_engineer_report" [ngClass]="{'is-invalid': itemForm.get('electrical_engineer_report').invalid && (itemForm.get('electrical_engineer_report').dirty || itemForm.get('electrical_engineer_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.electrical_engineer_report" formControlName="electrical_engineer_report" [ngClass]="{'is-invalid': itemForm.get('electrical_engineer_report').invalid && (itemForm.get('electrical_engineer_report').dirty || itemForm.get('electrical_engineer_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('electrical_engineer_report').invalid && (itemForm.get('electrical_engineer_report').dirty || itemForm.get('electrical_engineer_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('electrical_engineer_report').errors?.['required']">This field is required.</div>
           </div>
@@ -72,7 +72,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="ict_engineer_report" class="col-form-label required">ICT Engineer Report:</label>
-          <textarea [(ngModel)]="item.ict_engineer_report" formControlName="ict_engineer_report" [ngClass]="{'is-invalid': itemForm.get('ict_engineer_report').invalid && (itemForm.get('ict_engineer_report').dirty || itemForm.get('ict_engineer_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.ict_engineer_report" formControlName="ict_engineer_report" [ngClass]="{'is-invalid': itemForm.get('ict_engineer_report').invalid && (itemForm.get('ict_engineer_report').dirty || itemForm.get('ict_engineer_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('ict_engineer_report').invalid && (itemForm.get('ict_engineer_report').dirty || itemForm.get('ict_engineer_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('ict_engineer_report').errors?.['required']">This field is required.</div>
           </div>
@@ -87,7 +87,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="mechanical_engineer_report" class="col-form-label required">Mechanical Engineer Report:</label>
-          <textarea [(ngModel)]="item.mechanical_engineer_report" formControlName="mechanical_engineer_report" [ngClass]="{'is-invalid': itemForm.get('mechanical_engineer_report').invalid && (itemForm.get('mechanical_engineer_report').dirty || itemForm.get('mechanical_engineer_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.mechanical_engineer_report" formControlName="mechanical_engineer_report" [ngClass]="{'is-invalid': itemForm.get('mechanical_engineer_report').invalid && (itemForm.get('mechanical_engineer_report').dirty || itemForm.get('mechanical_engineer_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('mechanical_engineer_report').invalid && (itemForm.get('mechanical_engineer_report').dirty || itemForm.get('mechanical_engineer_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('mechanical_engineer_report').errors?.['required']">This field is required.</div>
           </div>
@@ -102,7 +102,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="environment_health_and_safety_report" class="col-form-label required">Environment Health and Safety Report:</label>
-          <textarea [(ngModel)]="item.environment_health_and_safety_report" formControlName="environment_health_and_safety_report" [ngClass]="{'is-invalid': itemForm.get('environment_health_and_safety_report').invalid && (itemForm.get('environment_health_and_safety_report').dirty || itemForm.get('environment_health_and_safety_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.environment_health_and_safety_report" formControlName="environment_health_and_safety_report" [ngClass]="{'is-invalid': itemForm.get('environment_health_and_safety_report').invalid && (itemForm.get('environment_health_and_safety_report').dirty || itemForm.get('environment_health_and_safety_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('environment_health_and_safety_report').invalid && (itemForm.get('environment_health_and_safety_report').dirty || itemForm.get('environment_health_and_safety_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('environment_health_and_safety_report').errors?.['required']">This field is required.</div>
           </div>
@@ -111,7 +111,7 @@
       <div class="col-md-12">
         <div class="form-group mb-3">
           <label for="professional_sustainability_report" class="col-form-label required">Professional Sustainability Report:</label>
-          <textarea [(ngModel)]="item.professional_sustainability_report" formControlName="professional_sustainability_report" [ngClass]="{'is-invalid': itemForm.get('professional_sustainability_report').invalid && (itemForm.get('professional_sustainability_report').dirty || itemForm.get('professional_sustainability_report').touched)}" type="text" class="form-control"></textarea>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.professional_sustainability_report" formControlName="professional_sustainability_report" [ngClass]="{'is-invalid': itemForm.get('professional_sustainability_report').invalid && (itemForm.get('professional_sustainability_report').dirty || itemForm.get('professional_sustainability_report').touched)}" type="text" class="form-control1"></ckeditor>
           <div *ngIf="itemForm.get('professional_sustainability_report').invalid && (itemForm.get('professional_sustainability_report').dirty || itemForm.get('professional_sustainability_report').touched)" class="invalid-feedback" role="alert">
             <div *ngIf="itemForm.get('professional_sustainability_report').errors?.['required']">This field is required.</div>
           </div>

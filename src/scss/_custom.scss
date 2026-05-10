@@ -18,8 +18,6 @@
 
 
 
-
-
 // Here you can add other styles
 $green: #007A37;
 $teal: #00552d; //00695c;
@@ -31,15 +29,19 @@ $gray: #e9ecef;
 
 /*--------------------------------------body------------------------------------------*/
 @font-face {
-  // // Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
-  // font-family: 'TwCenMT';
-  // /*a name to be used later*/
-  // src: url(/assets/fonts/tw-cen-mt-std/TwCenMTStd.otf);
-  // /*URL to font*/
-  // // src:url(/assets/fonts/futura/futur.ttf);/*URL to font*/
-  // // font-family: 'Futura'; /*a name to be used later*/
-  // // src:url(/assets/fonts/futura.futur.tff);/*URL to font*/
+  // Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
+  font-family: 'TwCenMT';
+  /*a name to be used later*/
+  src: url(/assets/fonts/tw-cen-mt-std/TwCenMTStd.otf);
+  /*URL to font*/
+  // src:url(/assets/fonts/futura/futur.ttf);/*URL to font*/
+  // font-family: 'Futura'; /*a name to be used later*/
+  // src:url(/assets/fonts/futura.futur.tff);/*URL to font*/
 }
+
+// .ck-editor__editable_inline {
+//   min-height: 300px;
+// }
 
 body {
   // font-family: TwCenMT !important;

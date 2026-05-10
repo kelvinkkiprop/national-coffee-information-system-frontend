@@ -139,7 +139,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="variation_comments" class="col-form-label required">Variation Comments:</label>
-                  <textarea [(ngModel)]="item.variation_comments" formControlName="variation_comments" [ngClass]="{'is-invalid': itemForm.get('variation_comments').invalid && (itemForm.get('variation_comments').dirty || itemForm.get('variation_comments').touched)}" type="text" class="form-control"></textarea>
+                  <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.variation_comments" formControlName="variation_comments" [ngClass]="{'is-invalid': itemForm.get('variation_comments').invalid && (itemForm.get('variation_comments').dirty || itemForm.get('variation_comments').touched)}" type="text" class="form-control1"></ckeditor>
                   <div *ngIf="itemForm.get('variation_comments').invalid && (itemForm.get('variation_comments').dirty || itemForm.get('variation_comments').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('variation_comments').errors?.['required']">This field is required.</div>
                   </div>

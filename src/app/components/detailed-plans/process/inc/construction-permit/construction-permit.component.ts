@@ -1,16 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 // import
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { DetailedPlanService } from '../../../../../services/detailed-plan.service';
+import { ClassicEditor } from 'ckeditor5';
+import { AppContextService } from '../../../../../core/app-context.service';
 
 @Component({
   selector: 'app-construction-permit',
   // imports: [],
   templateUrl: './construction-permit.component.html',
   styleUrl: './construction-permit.component.scss',
-  standalone: false
+  standalone: false,
+  encapsulation: ViewEncapsulation.None, // For_CKEditor_styles
 })
 export class ConstructionPermitComponent {
 
@@ -23,6 +26,7 @@ export class ConstructionPermitComponent {
   item:any = {};
 
   mNextPreviousStatuses:any;
+  public mEditor: any = ClassicEditor;
 
   construction_permit_file:any;
   notice_of_approval_file:any;
@@ -33,6 +37,7 @@ export class ConstructionPermitComponent {
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    public mAppContextService: AppContextService,
   ) {
     // validation
     this.itemForm = this.fb.group({

@@ -107,7 +107,7 @@
                 <div class="col-md-12">
                   <div class="form-group mb-3">
                     <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
-                    <textarea [(ngModel)]="item.project_brief" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control"></textarea>
+                    <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.project_brief" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control1"></ckeditor>
                     <div *ngIf="itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)" class="invalid-feedback" role="alert">
                       <div *ngIf="itemForm.get('project_brief')?.errors?.['required']">This field is required.</div>
                     </div>
@@ -116,7 +116,7 @@
                 <div class="col-md-12">
                   <div class="form-group mb-3">
                     <label for="project_purpose" class="col-form-label required">Project Purpose (State the specific purpose of the proposed development e.g., Where the land use is education, the purpose may be the development of a primary school):</label>
-                    <textarea [(ngModel)]="item.project_purpose" formControlName="project_purpose" [ngClass]="{'is-invalid': itemForm.get('project_purpose')?.invalid && (itemForm.get('project_purpose')?.dirty || itemForm.get('project_purpose')?.touched)}" type="text" class="form-control"></textarea>
+                    <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.project_purpose" formControlName="project_purpose" [ngClass]="{'is-invalid': itemForm.get('project_purpose')?.invalid && (itemForm.get('project_purpose')?.dirty || itemForm.get('project_purpose')?.touched)}" type="text" class="form-control1"></ckeditor>
                     <div *ngIf="itemForm.get('project_purpose')?.invalid && (itemForm.get('project_purpose')?.dirty || itemForm.get('project_purpose')?.touched)" class="invalid-feedback" role="alert">
                       <div *ngIf="itemForm.get('project_purpose')?.errors?.['required']">This field is required.</div>
                     </div>
@@ -503,7 +503,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="project_sustainability_brief" class="col-form-label required">Project Sustainability Brief (What sustainability rating tool and level do you plan to use):</label>
-                  <textarea [(ngModel)]="item.project_sustainability_brief" formControlName="project_sustainability_brief" [ngClass]="{'is-invalid': itemForm.get('project_sustainability_brief').invalid && (itemForm.get('project_sustainability_brief').dirty || itemForm.get('project_sustainability_brief').touched)}" type="file" class="form-control"></textarea>
+                  <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.project_sustainability_brief" formControlName="project_sustainability_brief" [ngClass]="{'is-invalid': itemForm.get('project_sustainability_brief').invalid && (itemForm.get('project_sustainability_brief').dirty || itemForm.get('project_sustainability_brief').touched)}" type="file" class="form-control1"></ckeditor>
                   <div *ngIf="itemForm.get('project_sustainability_brief').invalid && (itemForm.get('project_sustainability_brief').dirty || itemForm.get('project_sustainability_brief').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('project_sustainability_brief').errors?.['required']">This field is required.</div>
                   </div>

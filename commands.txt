@@ -256,3 +256,98 @@ sudo systemctl reload apache2
 6. Reference
 ===================================./Deployment===================================
 
+
+===================================CKEditor===================================
+1. Installation
+npm install ckeditor5 @ckeditor/ckeditor5-angular --legacy-peer-deps
+
+2. Import the CKEditor in:
+
+a.styles.scss
+  "styles": [
+    "node_modules/sweetalert2/src/sweetalert2.scss",
+    "node_modules/sweetalert2/dist/sweetalert2.css",
+    "src/scss/styles.scss",
+    "node_modules/@iqx-limited/ngx-toastr/toastr.scss",
+    "ckeditor5/ckeditor5.css"
+  ],
+
+OR
+
+b. CSS globally (in src/styles.css or styles.scss):
+@import "ckeditor5/ckeditor5.css";
+
+3. Update
+// src/app/app.component.ts
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import {
+  ClassicEditor,
+  Bold,
+  Essentials,
+  Heading,
+  Indent,
+  IndentBlock,
+  Italic,
+  Link,
+  List,
+  Paragraph,
+  Table,
+  Undo,
+} from 'ckeditor5';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CKEditorModule, FormsModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None,   // ← required for CKEditor styles
+})
+export class AppComponent {
+  public Editor = ClassicEditor;
+
+  public editorData = '<p>Hello from <strong>CKEditor 5</strong>!</p>';
+
+  public config = {
+    licenseKey: 'GPL',   // use 'GPL' for the open-source version
+    plugins: [
+      Bold, Essentials, Heading,
+      Indent, IndentBlock, Italic,
+      Link, List, Paragraph, Table, Undo,
+    ],
+    toolbar: [
+      'undo', 'redo', '|',
+      'heading', '|',
+      'bold', 'italic', '|',
+      'link', 'insertTable', '|',
+      'bulletedList', 'numberedList',
+      'indent', 'outdent',
+    ],
+  };
+}
+
+.html
+<!-- src/app/app.component.html -->
+<h2>CKEditor 5 in Angular 21</h2>
+
+<ckeditor
+  [editor]="Editor"
+  [config]="config"
+  [(ngModel)]="editorData"
+>
+</ckeditor>
+
+<hr />
+<h3>Output (HTML):</h3>
+<pre>{{ editorData }}</pre>
+
+5. Optional: set editor height
+In app.component.css:
+css/* Target the editable area */
+.ck-editor__editable_inline {
+  min-height: 300px;
+}
+===================================./CKEditor===================================
+

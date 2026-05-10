@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
@@ -27,8 +26,6 @@ export class ShowComponent {
   mProfessionalStatus:any;
   mProfessionalGoodStanding:any;
   mProfessionalBalanceReason:any;
-
-  public mEditor: any = ClassicEditor;
 
   item:any ={};
   id:any;
