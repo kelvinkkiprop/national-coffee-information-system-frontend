@@ -4,6 +4,7 @@ import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ParcelAllocationWorksheetService } from '../../../services/parcel-allocation-worksheet.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from '../../../services/profile.service';
+import { RegisteredProfessionalService } from 'src/app/services/registered-professional.service';
 
 @Component({
   selector: 'app-create',
@@ -23,7 +24,7 @@ export class CreateComponent {
   item:any;
 
   constructor(
-    private mProfileService: ProfileService,
+    private mRegisteredProfessionalService: RegisteredProfessionalService,
     private router: Router,
     private mToastrService: ToastrService,
     private fb: FormBuilder
@@ -44,7 +45,7 @@ export class CreateComponent {
   //loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
-    this.mProfileService.unpaginatedItems().subscribe({
+    this.mRegisteredProfessionalService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
@@ -64,19 +65,23 @@ export class CreateComponent {
   // onSubmit
   onSubmit(formValues: any){
     this.mProgress.set(true);
-    this.mProfileService.createItem(formValues).subscribe({
+    this.mRegisteredProfessionalService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
-          this.mToastrService.success((response as any).message);
+          if(response.status==='success'){
 
-            let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-            user.profile = (response as any).data;
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.mToastrService.success((response as any).message);
+              let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+              user.profile = (response as any).data;
+              localStorage.setItem('currentUser', JSON.stringify(user));
 
-          this.item = (response as any).data;
-          this.mProgress.set(false);
-          this.router.navigateByUrl(`/profile/edit/${this.item.id}`);
+            this.item = (response as any).data;
+            this.mProgress.set(false);
+            this.router.navigateByUrl(`/profile/edit/${this.item.id}`);
+          }else{
+            this.mToastrService.error((response as any).message);
+          }
         }
       },
       error: (error ) => {

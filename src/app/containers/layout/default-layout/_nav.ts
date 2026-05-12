@@ -1,6 +1,15 @@
 import { INavData } from '@coreui/angular';
 
+// Roles
+const mAdmin = 1;
+const mInvestor = 2;
+
+// mCurrentUser
+const mCurrentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+// console.log(mCurrentUser.role_id);
+
 export const navItems: INavData[] = [
+
   {
     name: 'Dashboard',
     url: '/dashboard',
@@ -42,6 +51,15 @@ export const navItems: INavData[] = [
       },
     ]
   },
+
+  // NotInvestor
+  ...(mCurrentUser.role_id !== mInvestor ? [
+  {
+    name: 'Registered Professionals',
+    url: '/registered-professionals',
+    iconComponent: { name: 'cil-people' },
+  }] : []),
+
   {
     name: 'Advertising Application',
     url: '/advertising-application',

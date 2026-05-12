@@ -50,14 +50,19 @@ export const routes: Routes = [
           import('./components/detailed-plans/detailed-plan.module').then((m) => m.DetailedPlanModule)
       },
       {
-        path: 'construction-site-board',
+        path: 'registered-professionals',
         loadChildren: () =>
-          import('./components/construction-site-board/construction-site-board.module').then((m) => m.ConstructionSiteBoardModule)
+          import('./components/registered-professionals/registered-professional.module').then((m) => m.RegisteredProfessionalModule)
       },
       {
         path: 'advertising-application',
         loadChildren: () =>
           import('./components/advertising-application/advertising-application.module').then((m) => m.AdvertisingApplicationModule)
+      },
+      {
+        path: 'construction-site-board',
+        loadChildren: () =>
+          import('./components/construction-site-board/construction-site-board.module').then((m) => m.ConstructionSiteBoardModule)
       },
       {
         path: 'compliance-and-enforcement',

@@ -1,12 +1,9 @@
 import { Component, signal } from '@angular/core';
 // import
-import { Location } from '@angular/common';
-import { environment } from '../../../../environments/environment';
-import { AuthService } from '../../../services/auth.service';
-import { ProfileService } from '../../../services/profile.service';
-import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
+import { RegisteredProfessionalService } from 'src/app/services/registered-professional.service';
 
 @Component({
   selector: 'app-edit',
@@ -27,7 +24,7 @@ export class EditComponent {
   mProgress = signal(false);
 
 constructor(
-  private mProfileService: ProfileService,
+  private mRegisteredProfessionalService: RegisteredProfessionalService,
   private mToastrService: ToastrService,
   private route: ActivatedRoute,
   private fb: FormBuilder,
@@ -58,7 +55,7 @@ constructor(
   getItem(): void{
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress.set(true);
-    this.mProfileService.getOneItem(this.id).subscribe({
+    this.mRegisteredProfessionalService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any;
@@ -77,7 +74,7 @@ constructor(
   // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
-    this.mProfileService.unpaginatedItems().subscribe({
+    this.mRegisteredProfessionalService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
@@ -97,7 +94,7 @@ constructor(
     // onSubmit
   onSubmit(formValues: any){
     this.mProgress.set(true);
-    this.mProfileService.updateItem(formValues).subscribe({
+    this.mRegisteredProfessionalService.updateItem(this.id, formValues).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)

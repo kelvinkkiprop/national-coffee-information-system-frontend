@@ -70,6 +70,13 @@ ng generate component components/profiles/show
 ng generate module components/profiles/profile
 ng generate module components/profiles/profileRouting
 
+ng generate component components/registered-professionals/index
+ng generate component components/registered-professionals/create
+ng generate component components/registered-professionals/edit
+ng generate component components/registered-professionals/show
+ng generate module components/registered-professionals/registered-professional
+ng generate module components/registered-professionals/registered-professionalRouting
+
 ng generate component components/reports/index
 ng generate component components/reports/show
 ng generate component components/reports/edit
@@ -144,6 +151,7 @@ ng generate service services/profile
 ng generate service services/dashboard
 ng generate service services/parcelAllocationWorksheet
 ng generate service services/download
+ng generate service services/registeredProfessional
 
 8. Core
 ng generate service core/app-info
@@ -156,6 +164,7 @@ ng generate interface interfaces/constructionPermit
 ng generate interface interfaces/parcelAllocationWorksheet
 ng generate interface interfaces/profile
 ng generate interface interfaces/detailedPlan
+ng generate interface interfaces/registeredProfessional
 
 10. Guards
 ng generate guard guards/auth
