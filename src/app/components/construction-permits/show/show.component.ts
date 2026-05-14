@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-show',

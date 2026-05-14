@@ -12,7 +12,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from '../services/auth.service';
 import {
   Bold,
@@ -50,6 +50,10 @@ export class AppContextService {
   sanitizeVideoUrl(videoId: string): SafeResourceUrl {
     const url = `https://www.youtube.com/embed/${videoId}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  safeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   // getHttpOptions

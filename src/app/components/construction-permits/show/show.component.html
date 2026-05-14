@@ -231,7 +231,9 @@
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="concept_plan">Estimated utility demand requirements (i.e., For Water, Sewer, Electricity, Internet requirement, solid waste, storm water, Irrigation/recycled water, Industrial waste, Glass, E-waste, Medical and hazardous waste):</label>
-                  <div class="text-muted" [innerHTML]="item.project_sustainability_brief"></div>
+                  <div class="text-muted">
+                    <span [innerHTML]="mAppContextService.safeHtml(item.project_sustainability_brief)"></span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-12">
