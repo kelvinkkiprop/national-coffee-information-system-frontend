@@ -78,8 +78,8 @@ export class ConstructionPermitComponent {
     let formData:any = new FormData();
     // attachments
     // formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
-    formData.append('notice_of_approval', this.notice_of_approval_file, this.notice_of_approval_file.name);
-    formData.append('construction_permit', this.construction_permit_file, this.construction_permit_file.name);
+    formData.append('notice_of_approval', this.notice_of_approval_file || '', this.notice_of_approval_file?.name || '' );
+    formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
 
