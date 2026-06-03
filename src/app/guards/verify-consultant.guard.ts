@@ -31,9 +31,9 @@ export class verifyConsultantGuard implements CanActivate {
     // return true;
 
     const mCurrentUser = this.mAuthService.currentUser;
-    if (mCurrentUser.role_id === 1 || mCurrentUser.profile?.professional_body_status_id === 2) {
+    // if (mCurrentUser.role_id === 1 || mCurrentUser.profile?.professional_body_status_id === 2) {
     // console.log(mCurrentUser.profile?.professional_body_status_id === 2)
-    // if (mCurrentUser.profile?.professional_body_status_id == 2) {
+    if (mCurrentUser.profile?.professional_body_status_id === 2) {
         // verified
         return true;
     }
