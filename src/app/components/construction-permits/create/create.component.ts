@@ -2,10 +2,9 @@ import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
+import { ClassicEditor } from 'ckeditor5';
 import { AppContextService } from '../../../core/app-context.service';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
-import { ProfileService } from '../../../services/profile.service';
-import { ClassicEditor } from 'ckeditor5';
 
 @Component({
   selector: 'app-create',
@@ -37,6 +36,7 @@ export class CreateComponent {
   concept_plan_file:any;
   geotechnical_report_file:any;
   topographical_survey_file:any;
+  topographical_survey_cad_file:any;
   parking_strategy_file:any;
   traffic_management_plan_file:any;
   estimated_utility_demand_requirements_file:any;
@@ -48,7 +48,6 @@ export class CreateComponent {
 
   constructor(
     private mConstructionPermitService: ConstructionPermitService,
-    private mProfileService: ProfileService,
     private router: Router,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
@@ -69,12 +68,14 @@ export class CreateComponent {
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
       has_variations: ['no', Validators.required],
+      variation_justification_statement: ['', Validators.nullValidator],
 
       site_plan_and_analysis: ['', Validators.nullValidator],
       context_analysis: ['', Validators.nullValidator],
       concept_plan: ['', Validators.nullValidator],
       geotechnical_report: ['', Validators.nullValidator],
       topographical_survey: ['', Validators.nullValidator],
+      topographical_survey_cad: ['', Validators.nullValidator],
       parking_strategy: ['', Validators.nullValidator],
       traffic_management_plan: ['', Validators.nullValidator],
       estimated_utility_demand_requirements: ['', Validators.nullValidator],
@@ -164,6 +165,7 @@ export class CreateComponent {
     formData.append('project_purpose', formValues.project_purpose);
     // formData.append('has_variations', formValues.has_variations);
     formData.append('has_variations', this.mHasVariation);
+    formData.append('variation_justification_statement', formValues.variation_justification_statement);
     formData.append('land_use_plans', mLandUsePlansJsonArrayItems)
 
     formData.append('project_sustainability_brief', formValues.project_sustainability_brief);
@@ -179,6 +181,7 @@ export class CreateComponent {
     formData.append('concept_plan', this.concept_plan_file, this.concept_plan_file.name);
     formData.append('geotechnical_report', this.geotechnical_report_file, this.geotechnical_report_file.name);
     formData.append('topographical_survey', this.topographical_survey_file, this.topographical_survey_file.name);
+    formData.append('topographical_survey_cad', this.topographical_survey_cad_file, this.topographical_survey_cad_file.name);
     formData.append('parking_strategy', this.parking_strategy_file, this.parking_strategy_file.name);
     formData.append('traffic_management_plan', this.traffic_management_plan_file, this.traffic_management_plan_file.name);
     formData.append('estimated_utility_demand_requirements', this.estimated_utility_demand_requirements_file, this.estimated_utility_demand_requirements_file.name);
@@ -285,6 +288,13 @@ export class CreateComponent {
     if (event.target.value) {
       const file = event.target.files[0];
       this.topographical_survey_file = file;
+    }
+  }
+  // onTopographicalSurveyCadChange
+  onTopographicalSurveyCadChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.topographical_survey_cad_file = file;
     }
   }
   // onParkingStrategyChange

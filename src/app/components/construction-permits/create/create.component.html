@@ -105,7 +105,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group mb-3">
-                    <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                    <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):</label>
                     <textarea formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control"></textarea>
                     <!-- <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control1"></ckeditor> -->
                     <div *ngIf="itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)" class="invalid-feedback" role="alert">
@@ -408,6 +408,15 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-12" *ngIf="itemForm.get('has_variations').value==='yes'">
+                <div class="form-group mb-3">
+                  <label for="variation_justification_statement" class="col-form-label required">Variation Justification Statement (State the variation e.g. Request to vary number of floors from 4 to 8):</label>
+                  <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" formControlName="variation_justification_statement" [ngClass]="{'is-invalid': itemForm.get('variation_justification_statement')?.invalid && (itemForm.get('variation_justification_statement')?.dirty || itemForm.get('variation_justification_statement')?.touched)}" type="text" class="form-control1"></ckeditor>
+                  <div *ngIf="itemForm.get('variation_justification_statement')?.invalid && (itemForm.get('variation_justification_statement')?.dirty || itemForm.get('variation_justification_statement')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('variation_justification_statement')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="site_plan_and_analysis" class="col-form-label required">Site Plan and Analysis (Including Solar path and wind analysis, Roads for internal circulation in individual parcels, landscaped areas, building footprint, Easements and wayleaves, Separation distances (where applicable) (Where abutting land uses are divergent and there is a risk of pollution, separation distances should apply as per the NEMA provisions and buffers should be introduced where applicable)):</label>
@@ -449,12 +458,21 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="topographical_survey" class="col-form-label required">Topographical Survey:</label>
+                  <label for="topographical_survey" class="col-form-label required">Topographical Survey (PDF):</label>
                   <input (change)="onTopographicalSurveyChange($event)" formControlName="topographical_survey" [ngClass]="{'is-invalid': itemForm.get('topographical_survey').invalid && (itemForm.get('topographical_survey').dirty || itemForm.get('topographical_survey').touched)}" type="file" class="form-control"/>
                   <div *ngIf="itemForm.get('topographical_survey').invalid && (itemForm.get('topographical_survey').dirty || itemForm.get('topographical_survey').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('topographical_survey').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="topographical_survey_cad" class="col-form-label required">Topographical Survey (CAD):</label>
+                  <input (change)="onTopographicalSurveyCadChange($event)" formControlName="topographical_survey_cad" [ngClass]="{'is-invalid': itemForm.get('topographical_survey_cad').invalid && (itemForm.get('topographical_survey_cad').dirty || itemForm.get('topographical_survey_cad').touched)}" type="file" class="form-control"/>
+                  <div *ngIf="itemForm.get('topographical_survey_cad').invalid && (itemForm.get('topographical_survey_cad').dirty || itemForm.get('topographical_survey_cad').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('topographical_survey_cad').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -566,7 +584,7 @@
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" formControlName="commitment_to_comply_with_development_codes_and_guidelines" />
                   <label class="form-check-label" for="investorCommitment">
-                    By checking this, confirms the investor's commitment to comply with the <a routerLink="/downloads">Konza Technopolis Development Codes and Guidelines</a>
+                    By checking this, confirms the investor's commitment to comply with the <a routerLink="/downloads">Technopolis Development Authority Development Codes and Guidelines</a>
                   </label>
                 </div>
                 <div *ngIf="itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').invalid && (itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').dirty || itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').touched)" class="invalid-feedback" role="alert">

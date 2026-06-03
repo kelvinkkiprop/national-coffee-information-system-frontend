@@ -41,12 +41,13 @@ export const navItems: INavData[] = [
         // },
       },
       {
-        name: 'Plan Submission',
-      url: '/detailed-plans',
+        // name: 'Plan Submission',
+        name: 'Detailed Design',
+        url: '/detailed-designs',
         icon: 'nav-icon-bullet',
         badge: {
           color: 'dark',
-          text: 'Detailed Plan'
+          text: 'Submission'
         },
       },
     ]

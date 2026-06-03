@@ -37,7 +37,7 @@ export class CmApprovalComponent {
     // validation
     this.itemForm = this.fb.group({
       status_id: ['', Validators.required],
-      remarks: ['', Validators.required],
+      remarks: ['', Validators.nullValidator],
     });
   }
 

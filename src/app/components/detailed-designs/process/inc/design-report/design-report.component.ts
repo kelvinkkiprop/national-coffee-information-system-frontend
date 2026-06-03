@@ -3,19 +3,20 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ConstructionPermitService } from '../../../../../services/construction-permit.service';
 import { ClassicEditor } from 'ckeditor5';
 import { AppContextService } from '../../../../../core/app-context.service';
+import { DetailedDesignService } from '../../../../../services/detailed-design.service';
 
 
 @Component({
-  selector: 'app-review',
+  selector: 'app-design-report',
   // imports: [],
-  templateUrl: './review.component.html',
-  styleUrl: './review.component.scss',
+  templateUrl: './design-report.component.html',
+  styleUrl: './design-report.component.scss',
   standalone: false
 })
-export class ReviewComponent {
+export class DesignReportComponent {
+
 
   // variables
   itemForm: any;
@@ -29,7 +30,7 @@ export class ReviewComponent {
 
   constructor(
     public mToastrService: ToastrService,
-    public mConstructionPermitService: ConstructionPermitService,
+    public mDetailedDesignService: DetailedDesignService,
     public mAppContextService: AppContextService,
     private router: Router,
     private fb: FormBuilder,
@@ -37,7 +38,7 @@ export class ReviewComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      status_id: ['', Validators.required],
+      detailed_plan_status_id: ['', Validators.required],
       remarks: ['', Validators.nullValidator],
     });
   }
@@ -50,12 +51,12 @@ export class ReviewComponent {
   getItem(){
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress = signal(true);
-    this.mConstructionPermitService.getOneItem(this.id).subscribe({
+    this.mDetailedDesignService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any;
           // call
-          this.getNextPreviousStatus();
+          this.getNextPreviousDetailedPlanStatus();
           this.mProgress = signal(false);
         }
       },
@@ -73,21 +74,15 @@ export class ReviewComponent {
   onSubmit(formValues: any){
     const item: any = {
       id: this.id,
-      status_id: formValues.status_id,
+      detailed_plan_status_id: formValues.detailed_plan_status_id,
       remarks: formValues.remarks,
     }
     this.mProgress = signal(true);
-    this.mConstructionPermitService.processItemPlanner(item).subscribe({
+    this.mDetailedDesignService.detailedDesignReportRecommendationsDetailedPlanItem(item).subscribe({
       next: (response) => {
-        if((response as any).status === 'success'){
-          this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/construction-permits');
-          this.mProgress = signal(false);
-        }else{
-          this.mToastrService.error((response as any).message);
-          this.router.navigateByUrl('/construction-permits/variations/' + this.id);
-          this.mProgress = signal(false);
-        }
+        this.mToastrService.success((response as any).message);
+        this.router.navigateByUrl('/detailed-plans');
+        this.mProgress = signal(false);
       },
       error: (error ) => {
         // console.log(error.error);
@@ -100,10 +95,10 @@ export class ReviewComponent {
 
   }
 
-  // getNextPreviousStatus
-  getNextPreviousStatus() {
+  // getNextPreviousDetailedPlanStatus
+  getNextPreviousDetailedPlanStatus() {
     this.mProgress = signal(true);
-    this.mConstructionPermitService.nextPreviousStatusItem(this.item.status_id).subscribe({
+    this.mDetailedDesignService.nextPreviousStatusDetailedPlanItem(this.item.detailed_plan_status_id).subscribe({
       next: (response) => {
         if(response){
           this.mNextPreviousStatuses = response;
@@ -120,5 +115,5 @@ export class ReviewComponent {
   }
 
 
-
 }
+

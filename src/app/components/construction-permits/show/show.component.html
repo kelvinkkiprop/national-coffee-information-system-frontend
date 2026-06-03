@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                  <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):</label>
                   <div class="text-muted">{{ item.project_brief }}</div>
                 </div>
               </div>
@@ -152,6 +152,14 @@
                   <div class="text-muted">{{ item.has_variations }}</div>
                 </div>
               </div>
+              <div class="col-md-12" *ngIf="item.variation_justification_statement">
+                <div class="mb-3">
+                  <label for="context_analysis">Variation Justification Statement:</label>
+                  <div class="text-muted">
+                    <span [innerHTML]="mAppContextService.safeHtml(item.variation_justification_statement)"></span>
+                  </div>
+                </div>
+              </div>
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="context_analysis">Context Analysis (500m radius context analysis):</label>
@@ -181,11 +189,19 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="mb-3">
-                  <label for="topographical_survey">Topographical Survey:</label>
+                  <label for="topographical_survey">Topographical Survey (PDF):</label>
                   <div *ngIf="item.topographical_survey">
                     <a href="{{item.topographical_survey_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="topographical_survey_cad">Topographical Survey (CAD):</label>
+                  <div *ngIf="item.topographical_survey_cad">
+                    <a href="{{item.topographical_survey_cad_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
                   </div>
                 </div>
               </div>

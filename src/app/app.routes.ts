@@ -45,9 +45,9 @@ export const routes: Routes = [
       },
       {
         canActivate: [verifyConsultantGuard],
-        path: 'detailed-plans',
+        path: 'detailed-designs',
         loadChildren: () =>
-          import('./components/detailed-plans/detailed-plan.module').then((m) => m.DetailedPlanModule)
+          import('./components/detailed-designs/detailed-design.module').then((m) => m.DetailedDesignModule)
       },
       {
         path: 'registered-professionals',

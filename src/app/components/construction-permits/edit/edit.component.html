@@ -106,7 +106,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group mb-3">
-                    <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):</label>
+                    <label for="project_brief" class="col-form-label required">Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):</label>
                     <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.project_brief" formControlName="project_brief" [ngClass]="{'is-invalid': itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)}" type="text" class="form-control1"></ckeditor>
                     <div *ngIf="itemForm.get('project_brief')?.invalid && (itemForm.get('project_brief')?.dirty || itemForm.get('project_brief')?.touched)" class="invalid-feedback" role="alert">
                       <div *ngIf="itemForm.get('project_brief')?.errors?.['required']">This field is required.</div>
@@ -566,7 +566,7 @@
                 <div class="form-check">
                   <input [(ngModel)]="item.commitment_to_comply_with_development_codes_and_guidelines" class="form-check-input" type="checkbox" formControlName="commitment_to_comply_with_development_codes_and_guidelines" />
                   <label class="form-check-label" for="investorCommitment">
-                    By checking this, confirms the investor's commitment to comply with the <a routerLink="/downloads" target="_blank" rel="noopener noreferrer">Konza Technopolis Development Codes and Guidelines</a>
+                    By checking this, confirms the investor's commitment to comply with the <a routerLink="/downloads" target="_blank" rel="noopener noreferrer">Technopolis Development Authority Development Codes and Guidelines</a>
                   </label>
                 </div>
                 <div *ngIf="itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').invalid && (itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').dirty || itemForm.get('commitment_to_comply_with_development_codes_and_guidelines').touched)" class="invalid-feedback" role="alert">

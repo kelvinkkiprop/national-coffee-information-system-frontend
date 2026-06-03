@@ -76,7 +76,7 @@ export class CreateComponent {
               user.profile = (response as any).data;
               localStorage.setItem('currentUser', JSON.stringify(user));
 
-              // Update
+              // Update_instead_of_refresh
               this.mAuthService.updateUserProfile((response as any).data);
 
 

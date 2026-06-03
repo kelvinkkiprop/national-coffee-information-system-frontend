@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-12">
       <div class="form-group mb-3">
-        <label for="remarks" class="col-form-label required1">Remarks:</label>
+        <label for="remarks" class="col-form-label required1">Additional Remarks:</label>
         <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" formControlName="remarks" [ngClass]="{'is-invalid': itemForm.get('remarks').invalid && (itemForm.get('remarks').dirty || itemForm.get('remarks').touched)}" type="text" class="form-control1"></ckeditor>
 
         <div *ngIf="itemForm.get('remarks').invalid && (itemForm.get('remarks').dirty || itemForm.get('remarks').touched)" class="invalid-feedback" role="alert">
