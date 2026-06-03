@@ -117,6 +117,18 @@ export class AuthService {
 
   }
 
+  // updateUserProfile
+  updateUserProfile(profileData: any) {
+    const currentUser = this.currentUser;
+    if (currentUser) {
+      currentUser.profile = profileData;
+      // Update localStorage
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      // Update BehaviorSubject
+      this.mCurrentUserSubject.next(currentUser);
+    }
+  }
+
   // unpaginatedItems
   unpaginatedItems():Observable<any[]>{
     const url = `${environment.base_url}/unpaginated-items-register`;

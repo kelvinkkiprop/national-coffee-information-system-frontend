@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { ParcelAllocationWorksheetService } from '../../../services/parcel-allocation-worksheet.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ProfileService } from '../../../services/profile.service';
+import { Router } from '@angular/router';
+import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { RegisteredProfessionalService } from 'src/app/services/registered-professional.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -27,6 +26,7 @@ export class CreateComponent {
     private mRegisteredProfessionalService: RegisteredProfessionalService,
     private router: Router,
     private mToastrService: ToastrService,
+    private mAuthService: AuthService,
     private fb: FormBuilder
   ) {
     // validation
@@ -75,6 +75,10 @@ export class CreateComponent {
               let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
               user.profile = (response as any).data;
               localStorage.setItem('currentUser', JSON.stringify(user));
+
+              // Update
+              this.mAuthService.updateUserProfile((response as any).data);
+
 
             this.item = (response as any).data;
             this.mProgress.set(false);
