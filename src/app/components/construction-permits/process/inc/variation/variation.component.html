@@ -128,11 +128,21 @@
               </div>
               <div *ngIf="itemForm.get('variation_status_id').value==2" class="col-md-12">
                 <div class="form-group mb-3">
-                  <label for="variation_evidence" class="col-form-label required">Variation (Approval) Evidence:</label>
-                  <span *ngIf="item.variation_evidence"><a href="{{item.variation_evidence_url}}" target="_blank" class="btn btn-link btn-sm">File</a></span>
-                  <input (change)="onVariationEvidenceChange($event)" formControlName="variation_evidence" [ngClass]="{'is-invalid': itemForm.get('variation_evidence').invalid && (itemForm.get('variation_evidence').dirty || itemForm.get('variation_evidence').touched)}" type="file" class="form-control"/>
-                  <div *ngIf="itemForm.get('variation_evidence').invalid && (itemForm.get('variation_evidence').dirty || itemForm.get('variation_evidence').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('variation_evidence').errors?.['required']">This field is required.</div>
+                  <label for="conditions_of_approval" class="col-form-label required">Conditions of Approval (Evidence):</label>
+                  <span *ngIf="item.conditions_of_approval"><a href="{{item.conditions_of_approval_url}}" target="_blank" class="btn btn-link btn-sm">File</a></span>
+                  <input (change)="onConditionsOfApprovalEvidenceChange($event)" formControlName="conditions_of_approval" [ngClass]="{'is-invalid': itemForm.get('conditions_of_approval').invalid && (itemForm.get('conditions_of_approval').dirty || itemForm.get('conditions_of_approval').touched)}" type="file" class="form-control"/>
+                  <div *ngIf="itemForm.get('conditions_of_approval').invalid && (itemForm.get('conditions_of_approval').dirty || itemForm.get('conditions_of_approval').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('conditions_of_approval').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="itemForm.get('variation_status_id').value==3" class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="reasons_for_rejection" class="col-form-label required">Reasons for Rejection (Evidence):</label>
+                  <span *ngIf="item.reasons_for_rejection"><a href="{{item.reasons_for_rejection_url}}" target="_blank" class="btn btn-link btn-sm">File</a></span>
+                  <input (change)="onReasonsForRejectionEvidenceChange($event)" formControlName="reasons_for_rejection" [ngClass]="{'is-invalid': itemForm.get('reasons_for_rejection').invalid && (itemForm.get('reasons_for_rejection').dirty || itemForm.get('reasons_for_rejection').touched)}" type="file" class="form-control"/>
+                  <div *ngIf="itemForm.get('reasons_for_rejection').invalid && (itemForm.get('reasons_for_rejection').dirty || itemForm.get('reasons_for_rejection').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('reasons_for_rejection').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>

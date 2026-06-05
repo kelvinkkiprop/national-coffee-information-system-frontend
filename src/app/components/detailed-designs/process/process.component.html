@@ -135,7 +135,7 @@
               <app-design-report/>
             </div>
             <!-- Planner/Surveyor/Architect/CM  -->
-            <div *ngIf="(item.detailed_plan_status_id == 6 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,12,17])))">
+            <div *ngIf="((item.detailed_plan_status_id == 6 || item.detailed_plan_status_id == 8) && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,12,17])))">
               <app-committee-stage/>
             </div>
             <!-- Planner/Surveyor/Architect/CM  -->

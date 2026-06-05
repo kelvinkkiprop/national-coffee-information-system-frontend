@@ -35,7 +35,8 @@ export interface ConstructionPermit {
   // variations
   variation_status_id?: string,
   variation_comments?: string,
-  variation_evidence?: string,
+  conditions_of_approval?: string,
+  reasons_for_rejection?: string,
 
   construction_permit?: string,
   detailed_plan_status_id?: string,

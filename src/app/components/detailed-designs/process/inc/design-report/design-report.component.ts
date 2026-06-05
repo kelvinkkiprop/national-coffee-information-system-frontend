@@ -81,7 +81,7 @@ export class DesignReportComponent {
     this.mDetailedDesignService.detailedDesignReportRecommendationsDetailedPlanItem(item).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
-        this.router.navigateByUrl('/detailed-plans');
+        this.router.navigateByUrl('/detailed-designs');
         this.mProgress = signal(false);
       },
       error: (error ) => {

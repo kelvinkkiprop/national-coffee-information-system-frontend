@@ -77,8 +77,14 @@ export class CommitteeStageComponent {
 
     let formData:any = new FormData();
     // attachments
-    formData.append('letter_of_no_objection', this.letter_of_no_objection_file || '', this.letter_of_no_objection_file?.name || '' );
+    // formData.append('letter_of_no_objection', this.letter_of_no_objection_file || '', this.letter_of_no_objection_file?.name || '' );
     formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
+    // attachments
+    if (this.letter_of_no_objection_file) {
+      formData.append('letter_of_no_objection', this.letter_of_no_objection_file, this.letter_of_no_objection_file.name);
+    } else {
+      formData.append('letter_of_no_objection', ''); // or_empty_string ''
+    }
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
 
@@ -86,7 +92,7 @@ export class CommitteeStageComponent {
     this.mDetailedDesignService.committeeStageDetailedPlanItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
-        this.router.navigateByUrl('/detailed-plans');
+        this.router.navigateByUrl('/detailed-designs');
         this.mProgress = signal(false);
       },
       error: (error ) => {

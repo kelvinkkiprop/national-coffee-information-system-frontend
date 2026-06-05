@@ -25,7 +25,8 @@ export class VariationComponent {
   id:any;
 
   mConstructionPermitVariationStatuses:any;
-  variation_evidence_file:any;
+  conditions_of_approval_file:any;
+  reasons_for_rejection_file:any;
 
   constructor(
    private mConstructionPermitService: ConstructionPermitService,
@@ -38,7 +39,8 @@ export class VariationComponent {
     // validation
     this.itemForm = this.fb.group({
       variation_status_id: ['', Validators.required],
-      variation_evidence: ['', Validators.nullValidator],
+      conditions_of_approval: ['', Validators.nullValidator],
+      reasons_for_rejection: ['', Validators.nullValidator],
       variation_comments: ['', Validators.required],
     });
    }
@@ -56,10 +58,15 @@ export class VariationComponent {
     formData.append('variation_status_id', formValues.variation_status_id);
     formData.append('variation_comments', formValues.variation_comments);
     // attachments
-    if (this.variation_evidence_file) {
-      formData.append('variation_evidence', this.variation_evidence_file, this.variation_evidence_file.name);
+    if (this.conditions_of_approval_file) {
+      formData.append('conditions_of_approval', this.conditions_of_approval_file, this.conditions_of_approval_file.name);
     } else {
-      formData.append('variation_evidence', ''); // or_empty_string ''
+      formData.append('conditions_of_approval', ''); // or_empty_string ''
+    }
+    if (this.reasons_for_rejection_file) {
+      formData.append('reasons_for_rejection', this.reasons_for_rejection_file, this.reasons_for_rejection_file.name);
+    } else {
+      formData.append('reasons_for_rejection', ''); // or_empty_string ''
     }
     formData.append('_method', 'POST')
 
@@ -119,11 +126,18 @@ export class VariationComponent {
 
   }
 
-  // onVariationEvidenceChange
-  onVariationEvidenceChange(event:any) {
+  // onConditionsOfApprovalEvidenceChange
+  onConditionsOfApprovalEvidenceChange(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.variation_evidence_file = file;
+      this.conditions_of_approval_file = file;
+    }
+  }
+  // onReasonsForRejectionEvidenceChange
+  onReasonsForRejectionEvidenceChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.reasons_for_rejection_file = file;
     }
   }
 

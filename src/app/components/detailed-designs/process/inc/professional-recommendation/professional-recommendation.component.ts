@@ -90,7 +90,7 @@ export class ProfessionalRecommendationComponent {
     this.mDetailedDesignService.professionalRecommendationsDetailedPlanItem(item).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
-        this.router.navigateByUrl('/detailed-plans');
+        this.router.navigateByUrl('/detailed-designs');
         this.mProgress = signal(false);
       },
       error: (error ) => {
