@@ -142,9 +142,9 @@
                             <small>
                               Acres: {{item.allocation_worksheet?.acres}} <br>
                               Min/Max Floors: {{item.allocation_worksheet?.min_floors}}-{{item.allocation_worksheet?.max_floors}}<br>
-                              Min/Max FAR: {{item.allocation_worksheet?.min_far}}-{{item.allocation_worksheet?.max_far}}<br>
+                              Min/Max FAR: {{item.allocation_worksheet?.far}}-{{item.allocation_worksheet?.max_far}}<br>
                               Min/Max Floors: {{item.allocation_worksheet?.min_floors}}-{{item.allocation_worksheet?.max_floors}}<br>
-                              Min/Max Floor Area: {{item.allocation_worksheet?.min_floor_area}}-{{item.allocation_worksheet?.max_floor_area}}<br>
+                              Min/Max Floor Area: {{item.allocation_worksheet?.floor_area}}-{{item.allocation_worksheet?.max_floor_area}}<br>
                               Plot Coverage: {{item.allocation_worksheet?.plot_coverage}}% <br>
                               Use: {{item.allocation_worksheet?.description}} <br>
                             </small>
@@ -267,73 +267,37 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="min_number_of_floors" class="col-form-label required">Min No. of Floors:</label>
-                          <input formControlName="min_number_of_floors" [ngClass]="{'is-invalid': mItemForm.get('min_number_of_floors').invalid && (mItemForm.get('min_number_of_floors').dirty || mItemForm.get('min_number_of_floors').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('min_number_of_floors').invalid && (mItemForm.get('min_number_of_floors').dirty || mItemForm.get('min_number_of_floors').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('min_number_of_floors').errors?.['required']">This field is required.</div>
+                          <label for="number_of_floors" class="col-form-label required">Number of Floors:</label>
+                          <input formControlName="number_of_floors" [ngClass]="{'is-invalid': mItemForm.get('number_of_floors').invalid && (mItemForm.get('number_of_floors').dirty || mItemForm.get('number_of_floors').touched)}" type="number" class="form-control"/>
+                          <div *ngIf="mItemForm.get('number_of_floors').invalid && (mItemForm.get('number_of_floors').dirty || mItemForm.get('number_of_floors').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="mItemForm.get('number_of_floors').errors?.['required']">This field is required.</div>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="max_number_of_floors" class="col-form-label required">Max No. of Floors:</label>
-                          <input formControlName="max_number_of_floors" [ngClass]="{'is-invalid': mItemForm.get('max_number_of_floors').invalid && (mItemForm.get('max_number_of_floors').dirty || mItemForm.get('max_number_of_floors').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('max_number_of_floors').invalid && (mItemForm.get('max_number_of_floors').dirty || mItemForm.get('max_number_of_floors').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('max_number_of_floors').errors?.['required']">This field is required.</div>
+                          <label for="floor_to_floor_height" class="col-form-label required">Floor-to-Floor Height:</label>
+                          <input formControlName="floor_to_floor_height" [ngClass]="{'is-invalid': mItemForm.get('floor_to_floor_height').invalid && (mItemForm.get('floor_to_floor_height').dirty || mItemForm.get('floor_to_floor_height').touched)}" type="number" class="form-control"/>
+                          <div *ngIf="mItemForm.get('floor_to_floor_height').invalid && (mItemForm.get('floor_to_floor_height').dirty || mItemForm.get('floor_to_floor_height').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="mItemForm.get('floor_to_floor_height').errors?.['required']">This field is required.</div>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="min_floor_to_floor_height" class="col-form-label required">Min Floor-to-Floor Height:</label>
-                          <input formControlName="min_floor_to_floor_height" [ngClass]="{'is-invalid': mItemForm.get('min_floor_to_floor_height').invalid && (mItemForm.get('min_floor_to_floor_height').dirty || mItemForm.get('min_floor_to_floor_height').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('min_floor_to_floor_height').invalid && (mItemForm.get('min_floor_to_floor_height').dirty || mItemForm.get('min_floor_to_floor_height').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('min_floor_to_floor_height').errors?.['required']">This field is required.</div>
+                          <label for="floor_area" class="col-form-label required">Floor Area:</label>
+                          <input formControlName="floor_area" [ngClass]="{'is-invalid': mItemForm.get('floor_area').invalid && (mItemForm.get('floor_area').dirty || mItemForm.get('floor_area').touched)}" type="number" class="form-control"/>
+                          <div *ngIf="mItemForm.get('floor_area').invalid && (mItemForm.get('floor_area').dirty || mItemForm.get('floor_area').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="mItemForm.get('floor_area').errors?.['required']">This field is required.</div>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label for="max_floor_to_floor_height" class="col-form-label required">Max Floor-to-Floor Height:</label>
-                          <input formControlName="max_floor_to_floor_height" [ngClass]="{'is-invalid': mItemForm.get('max_floor_to_floor_height').invalid && (mItemForm.get('max_floor_to_floor_height').dirty || mItemForm.get('max_floor_to_floor_height').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('max_floor_to_floor_height').invalid && (mItemForm.get('max_floor_to_floor_height').dirty || mItemForm.get('max_floor_to_floor_height').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('max_floor_to_floor_height').errors?.['required']">This field is required.</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group mb-3">
-                          <label for="min_floor_area" class="col-form-label required">Min Floor Area:</label>
-                          <input formControlName="min_floor_area" [ngClass]="{'is-invalid': mItemForm.get('min_floor_area').invalid && (mItemForm.get('min_floor_area').dirty || mItemForm.get('min_floor_area').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('min_floor_area').invalid && (mItemForm.get('min_floor_area').dirty || mItemForm.get('min_floor_area').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('min_floor_area').errors?.['required']">This field is required.</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group mb-3">
-                          <label for="max_floor_area" class="col-form-label required">Max Floor Area:</label>
-                          <input formControlName="max_floor_area" [ngClass]="{'is-invalid': mItemForm.get('max_floor_area').invalid && (mItemForm.get('max_floor_area').dirty || mItemForm.get('max_floor_area').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('max_floor_area').invalid && (mItemForm.get('max_floor_area').dirty || mItemForm.get('max_floor_area').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('max_floor_area').errors?.['required']">This field is required.</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group mb-3">
-                          <label for="min_FAR" class="col-form-label required">Min Floor Area Ratio (FAR):</label>
-                          <input formControlName="min_far" [ngClass]="{'is-invalid': mItemForm.get('min_far').invalid && (mItemForm.get('min_far').dirty || mItemForm.get('min_far').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('min_far').invalid && (mItemForm.get('min_far').dirty || mItemForm.get('min_far').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('min_far').errors?.['required']">This field is required.</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group mb-3">
-                          <label for="max_far" class="col-form-label required">Max Floor Area Ratio (FAR):</label>
-                          <input formControlName="max_far" [ngClass]="{'is-invalid': mItemForm.get('max_far').invalid && (mItemForm.get('max_far').dirty || mItemForm.get('max_far').touched)}" type="number" class="form-control"/>
-                          <div *ngIf="mItemForm.get('max_far').invalid && (mItemForm.get('max_far').dirty || mItemForm.get('max_far').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="mItemForm.get('max_far').errors?.['required']">This field is required.</div>
+                          <label for="min_FAR" class="col-form-label required">Floor Area Ratio (FAR):</label>
+                          <input formControlName="far" [ngClass]="{'is-invalid': mItemForm.get('far').invalid && (mItemForm.get('far').dirty || mItemForm.get('far').touched)}" type="number" class="form-control"/>
+                          <div *ngIf="mItemForm.get('far').invalid && (mItemForm.get('far').dirty || mItemForm.get('far').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="mItemForm.get('far').errors?.['required']">This field is required.</div>
                           </div>
                         </div>
                       </div>
@@ -361,12 +325,13 @@
                                   <th>#</th>
                                   <th>Parcel</th>
                                   <!-- <th>Min/Max <br> Density</th> -->
-                                  <th>Min/Max <br> Floor Area</th>
-                                  <th>Minimum <br> Setback</th>
-                                  <th>Min/Max Floor <br> to Floor Height</th>
-                                  <th>Min/Max <br> No of Floors</th>
-                                  <th>Plot Coverage <br> (Existing/Proposed)</th>
-                                  <th>No. of Units to <br> be Developed</th>
+                                  <th>Floor Area</th>
+                                  <th>Floor to Floor Height</th>
+                                  <th>No of Floors</th>
+                                  <th>Existing Plot Coverage</th>
+                                  <th>Proposed Plot Coverage</th>
+                                  <th>No. of Units to be Developed</th>
+                                  <th>Minimum Setback</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
@@ -375,12 +340,13 @@
                                   <td>{{ i+1 }}.</td>
                                   <td>{{ item.parcel_number }}</td>
                                   <!-- <td>{{ item.min_density }}/{{ item.max_density }}</td> -->
-                                  <td>{{ item.min_floor_area }}/{{ item.max_floor_area }}</td>
-                                  <td>{{ item.minimum_setback }}</td>
-                                  <td>{{ item.min_floor_to_floor_height }}/{{ item.max_floor_to_floor_height }}</td>
-                                  <td>{{ item.min_number_of_floors }}/{{ item.max_number_of_floors }}</td>
-                                  <td>{{ item.percentage_of_site_covered_by_existing_building }}/{{ item.percentage_of_site_covered_by_proposed_building }}</td>
+                                  <td>{{ item.floor_area }}</td>
+                                  <td>{{ item.floor_to_floor_height }}</td>
+                                  <td>{{ item.number_of_floors }}</td>
+                                  <td>{{ item.percentage_of_site_covered_by_existing_building }}</td>
+                                  <td>{{ item.percentage_of_site_covered_by_proposed_building }}</td>
                                   <td>{{ item.number_of_units_to_be_developed }}</td>
+                                  <td>{{ item.minimum_setback }}</td>
                                   <td class="text-nowrap">
                                     <button (click)="removeItem(item)" type="button" class="btn btn-outline-dark btn-sm"><svg cIcon name="cilTrash" class="btn-icon"></svg>Remove</button>
                                   </td>
