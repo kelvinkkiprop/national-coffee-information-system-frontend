@@ -69,7 +69,7 @@
                 </td>
                 <td>{{ item.consultant.name }}</td>
                 <td>
-                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.status_id==1,'bg-danger':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-warning text-dark':item.status_id==4,'bg-success':item.status_id==5}">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary text-dark':item.status_id==1,'bg-danger':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-primary text-dark':item.status_id==5,'bg-success':item.status_id==6}">
                     {{ item.status?.name }}
                   </span>
                 </td>

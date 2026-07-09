@@ -14,6 +14,7 @@ import { ProcessComponent } from './process/process.component';
 import { ShowComponent } from './show/show.component';
 import { VariationComponent } from './process/inc/variation/variation.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ProfessionalReviewComponent } from './process/inc/professional-review/professional-review.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ProcessComponent,
     VariationComponent,
     ReviewComponent,
+    ProfessionalReviewComponent,
     CmApprovalComponent,
   ],
   imports: [

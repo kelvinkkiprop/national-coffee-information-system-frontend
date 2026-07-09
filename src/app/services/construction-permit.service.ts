@@ -92,6 +92,10 @@ export class ConstructionPermitService {
     const url = `${environment.base_url}/planner-process-construction-permits/${item.id}`;
     return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
   }
+  professionalReviewItem(item: any): Observable<ConstructionPermit>{
+    const url = `${environment.base_url}/professional-review-process-construction-permits/${item.id}`;
+    return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());
+  }
   cmItemPlanner(item: any): Observable<ConstructionPermit>{
     const url = `${environment.base_url}/cm-process-construction-permits/${item.id}`;
     return this.http.post<ConstructionPermit>(url, item, this.mAppContextService.getHttpOptions());

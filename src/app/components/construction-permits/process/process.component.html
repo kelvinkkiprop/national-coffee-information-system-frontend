@@ -27,8 +27,12 @@
             <div *ngIf="(item?.status_id == 3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10])))">
               <app-review/>
             </div>
+            <!-- ProfessionalReview : Surveyor, StructuralEngineer,StreetscapeEngineer -->
+            <div *ngIf="(item?.status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([11,13,18])))">
+              <app-professional-review/>
+            </div>
             <!-- CM  -->
-            <div *ngIf="(item?.status_id == 4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17])))">
+            <div *ngIf="(item?.status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17])))">
               <app-cm-approval/>
             </div>
           </div>

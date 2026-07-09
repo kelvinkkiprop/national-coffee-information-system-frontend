@@ -47,6 +47,7 @@ ng generate module components/construction-permits/construction-permit-routing
 ng generate component components/construction-permits/variation
 ng generate component components/construction-permits/process
 ng generate component components/construction-permits/process/inc/review
+ng generate component components/construction-permits/process/inc/professional-review
 ng generate component components/construction-permits/process/inc/cm-approval
 
 ng generate component components/detailed-plans/index
