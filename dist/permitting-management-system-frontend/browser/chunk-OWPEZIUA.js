@@ -1307,37 +1307,38 @@ import{a as H,b as ye,c as Gt}from"./chunk-5BMCX42T.js";import{a as Zt}from"./ch
                               `),e(129,`
                               `),i(130,"td",41),e(131),t(),e(132,`
                               `),e(133,`
-                              `),i(134,"td",42),e(135),t(),e(136,`
-                            `),t(),e(137,`
-                            `),i(138,"tr"),e(139,`
-                              `),i(140,"th",40),e(141,"Min/Max Floor Area:"),t(),e(142,`
-                              `),i(143,"td"),e(144),t(),e(145,`
-                              `),i(146,"td",41),e(147),t(),e(148,`
-                              `),i(149,"td",42),e(150,"-"),t(),e(151,`
-                            `),t(),e(152,`
-                            `),i(153,"tr"),e(154,`
-                              `),i(155,"th",40),e(156,"Min/Max Floor-to-Floor Height:"),t(),e(157,`
-                              `),i(158,"td"),e(159),t(),e(160,`
-                              `),i(161,"td",41),e(162),t(),e(163,`
-                              `),i(164,"td",42),e(165,"-"),t(),e(166,`
-                            `),t(),e(167,`
-                            `),i(168,"tr"),e(169,`
-                              `),i(170,"th",40),e(171,"Min/Max FAR:"),t(),e(172,`
-                              `),i(173,"td"),e(174),t(),e(175,`
-                              `),i(176,"td",41),e(177),t(),e(178,`
-                              `),i(179,"td",42),e(180,"-"),t(),e(181,`
-                            `),t(),e(182,`
-                            `),i(183,"tr"),e(184,`
-                              `),i(185,"th",40),e(186,"Minimum Setback:"),t(),e(187,`
-                              `),i(188,"td"),e(189),t(),e(190,`
-                              `),i(191,"td",41),e(192),t(),e(193,`
-                              `),i(194,"td",42),e(195),t(),e(196,`
-                            `),t(),e(197,`
-                          `),t(),e(198,`
-                        `),t(),e(199,`
-                      `),t(),e(200,`
-                    `),t(),e(201,`
-                  `),t()),o&2){let n=a.$implicit,r=a.index;l(7),E("",r+1,". ",n==null?null:n.parcel_number),l(30),v(n==null||n.parcel==null?null:n.parcel.name),l(3),v(n==null||n.planned_land_use==null?null:n.planned_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.predominant_land),l(3),v(n==null||n.primary_land_use==null?null:n.primary_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.secondary_use),l(3),v(n==null||n.secondary_land_use==null?null:n.secondary_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.preferred_ground_floor_use),l(3),v(n==null||n.preferred_ground_floor_use==null?null:n.preferred_ground_floor_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.number_of_units_to_be_developed),l(3),v(n.number_of_units_to_be_developed),l(12),E("",n==null||n.parcel==null?null:n.parcel.percentage_of_site_covered_by_proposed_building,"-",n==null||n.parcel==null?null:n.parcel.percentage_of_site_covered_by_existing_building),l(3),E("",n==null?null:n.percentage_of_site_covered_by_proposed_building,"-",n==null?null:n.percentage_of_site_covered_by_existing_building),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_floors,"-",n==null||n.parcel==null?null:n.parcel.max_floors),l(4),v(n==null?null:n.number_of_floors),l(4),E("",(n==null?null:n.min_number_of_floors)-(n==null||n.parcel==null?null:n.parcel.min_floors)," / ",n==null?null:n.number_of_floors),l(9),E("",n==null||n.parcel==null?null:n.parcel.min_floor_area,"-",n==null||n.parcel==null?null:n.parcel.min_floor_area),l(3),E("",n==null?null:n.min_floor_area,"-",n==null?null:n.min_floor_area),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_floor_to_floor_height,"-",n==null||n.parcel==null?null:n.parcel.max_floor_to_floor_height),l(3),E("",n==null?null:n.min_floor_to_floor_height,"-",n==null?null:n.max_floor_to_floor_height),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_far,"-",n==null||n.parcel==null?null:n.parcel.max_far),l(3),E("",n==null?null:n.min_far,"-",n==null?null:n.max_far),l(12),v(n==null||n.parcel==null?null:n.parcel.minimum_setback),l(3),v(n==null?null:n.minimum_setback),l(3),v((n==null?null:n.minimum_setback)-(n==null||n.parcel==null?null:n.parcel.minimum_setback))}}function fa(o,a){if(o&1&&(i(0,"div",8),e(1,`
+                              `),e(134,`
+                              `),i(135,"td",42),e(136),t(),e(137,`
+                            `),t(),e(138,`
+                            `),i(139,"tr"),e(140,`
+                              `),i(141,"th",40),e(142,"Min/Max Floor Area:"),t(),e(143,`
+                              `),i(144,"td"),e(145),t(),e(146,`
+                              `),i(147,"td",41),e(148),t(),e(149,`
+                              `),i(150,"td",42),e(151,"-"),t(),e(152,`
+                            `),t(),e(153,`
+                            `),i(154,"tr"),e(155,`
+                              `),i(156,"th",40),e(157,"Min/Max Floor-to-Floor Height:"),t(),e(158,`
+                              `),i(159,"td"),e(160),t(),e(161,`
+                              `),i(162,"td",41),e(163),t(),e(164,`
+                              `),i(165,"td",42),e(166,"-"),t(),e(167,`
+                            `),t(),e(168,`
+                            `),i(169,"tr"),e(170,`
+                              `),i(171,"th",40),e(172,"Min/Max FAR:"),t(),e(173,`
+                              `),i(174,"td"),e(175),t(),e(176,`
+                              `),i(177,"td",41),e(178),t(),e(179,`
+                              `),i(180,"td",42),e(181,"-"),t(),e(182,`
+                            `),t(),e(183,`
+                            `),i(184,"tr"),e(185,`
+                              `),i(186,"th",40),e(187,"Minimum Setback:"),t(),e(188,`
+                              `),i(189,"td"),e(190),t(),e(191,`
+                              `),i(192,"td",41),e(193),t(),e(194,`
+                              `),i(195,"td",42),e(196),t(),e(197,`
+                            `),t(),e(198,`
+                          `),t(),e(199,`
+                        `),t(),e(200,`
+                      `),t(),e(201,`
+                    `),t(),e(202,`
+                  `),t()),o&2){let n=a.$implicit,r=a.index;l(7),E("",r+1,". ",n==null?null:n.parcel_number),l(30),v(n==null||n.parcel==null?null:n.parcel.name),l(3),v(n==null||n.planned_land_use==null?null:n.planned_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.predominant_land),l(3),v(n==null||n.primary_land_use==null?null:n.primary_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.secondary_use),l(3),v(n==null||n.secondary_land_use==null?null:n.secondary_land_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.preferred_ground_floor_use),l(3),v(n==null||n.preferred_ground_floor_use==null?null:n.preferred_ground_floor_use.name),l(12),v(n==null||n.parcel==null?null:n.parcel.number_of_units_to_be_developed),l(3),v(n.number_of_units_to_be_developed),l(12),E("",n==null||n.parcel==null?null:n.parcel.percentage_of_site_covered_by_proposed_building,"-",n==null||n.parcel==null?null:n.parcel.percentage_of_site_covered_by_existing_building),l(3),E("",n==null?null:n.percentage_of_site_covered_by_proposed_building,"-",n==null?null:n.percentage_of_site_covered_by_existing_building),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_floors,"-",n==null||n.parcel==null?null:n.parcel.max_floors),l(4),v(n==null?null:n.number_of_floors),l(5),v(((n==null?null:n.min_number_of_floors)??0)-((n==null||n.parcel==null?null:n.parcel.min_floors)??0)+" / "+((n==null?null:n.number_of_floors)??"-")),l(9),E("",n==null||n.parcel==null?null:n.parcel.min_floor_area,"-",n==null||n.parcel==null?null:n.parcel.min_floor_area),l(3),E("",n==null?null:n.min_floor_area,"-",n==null?null:n.min_floor_area),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_floor_to_floor_height,"-",n==null||n.parcel==null?null:n.parcel.max_floor_to_floor_height),l(3),E("",n==null?null:n.min_floor_to_floor_height,"-",n==null?null:n.max_floor_to_floor_height),l(12),E("",n==null||n.parcel==null?null:n.parcel.min_far,"-",n==null||n.parcel==null?null:n.parcel.max_far),l(3),E("",n==null?null:n.min_far,"-",n==null?null:n.max_far),l(12),v(n==null||n.parcel==null?null:n.parcel.minimum_setback),l(3),v(n==null?null:n.minimum_setback),l(3),v((n==null?null:n.minimum_setback)-(n==null||n.parcel==null?null:n.parcel.minimum_setback))}}function fa(o,a){if(o&1&&(i(0,"div",8),e(1,`
                 `),i(2,"div",2),e(3,`
                   `),i(4,"label",14),e(5,"Variation Justification Statement:"),t(),e(6,`
                   `),i(7,"div",12),e(8,`
@@ -1420,7 +1421,7 @@ import{a as H,b as ye,c as Gt}from"./chunk-5BMCX42T.js";import{a as Zt}from"./ch
               `),i(95,"div",8),e(96,`
                 `),i(97,"fieldset",15),e(98,`
                   `),i(99,"legend",5)(100,"h6",16),e(101,"Land Use Plan"),t()(),e(102,`
-                  `),d(103,ua,202,36,"div",17),e(104,`
+                  `),d(103,ua,203,35,"div",17),e(104,`
                 `),t(),e(105,`
               `),t(),e(106,`
               `),i(107,"div",8),e(108,`
