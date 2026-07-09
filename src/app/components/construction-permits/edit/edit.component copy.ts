@@ -1,18 +1,17 @@
 import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ClassicEditor } from 'ckeditor5';
 import { AppContextService } from '../../../core/app-context.service';
-import { ConstructionPermitService } from '../../../services/construction-permit.service';;
+import { ConstructionPermitService } from '../../../services/construction-permit.service';
 
 @Component({
   selector: 'app-edit',
   // imports: [],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss',
-  standalone: false,
-  encapsulation: ViewEncapsulation.None, // For_CKEditor_styles
+  standalone: false
 })
 export class EditComponent {
 
@@ -23,10 +22,13 @@ export class EditComponent {
   mParcelLandUseGroups:any;
   mInvestorParcels:any = {};
   mGreenCertifications:any;
-  mProfile: any = {};
 
   itemForm:any
   mProgress = signal(false);
+
+  mProfessionalStatus:any;
+  mProfessionalGoodStanding:any;
+  mProfessionalBalanceReason:any;
 
   mParcelInfo:any = {};
   public mEditor: any = ClassicEditor;
@@ -36,22 +38,21 @@ export class EditComponent {
   concept_plan_file:any;
   geotechnical_report_file:any;
   topographical_survey_file:any;
-  topographical_survey_cad_file:any;
   parking_strategy_file:any;
   traffic_management_plan_file:any;
   estimated_utility_demand_requirements_file:any;
   sustainability_report_file:any;
 
-  mLandUsePlans?:any=[];
-  mHasVariation?:any= 'no';
-  mItemForm?:any;
+  mLandUsePlans?:any=[]
+  mItemForm?:any
 
   item:any;
   id:any;
 
 
   constructor(
-    private mConstructionPermitService: ConstructionPermitService,
+   private mConstructionPermitService: ConstructionPermitService,
+    private mProfileService: ProfileService,
     private router: Router,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
@@ -72,15 +73,12 @@ export class EditComponent {
 
       project_brief: ['', Validators.required],
       project_purpose: ['', Validators.required],
-      has_variations: ['no', Validators.required],
-      variation_justification_statement: ['', Validators.nullValidator],
 
       site_plan_and_analysis: ['', Validators.nullValidator],
       context_analysis: ['', Validators.nullValidator],
       concept_plan: ['', Validators.nullValidator],
       geotechnical_report: ['', Validators.nullValidator],
       topographical_survey: ['', Validators.nullValidator],
-      topographical_survey_cad: ['', Validators.nullValidator],
       parking_strategy: ['', Validators.nullValidator],
       traffic_management_plan: ['', Validators.nullValidator],
       estimated_utility_demand_requirements: ['', Validators.nullValidator],
@@ -90,6 +88,7 @@ export class EditComponent {
       other_green_certification: ['', Validators.nullValidator],
       sustainability_report: ['', Validators.nullValidator],
 
+      has_variations: ['no', Validators.required],
       estimated_project_duration: ['', Validators.required],
       estimated_project_construction_cost: ['', Validators.required],
       commitment_to_comply_with_development_codes_and_guidelines : [false, Validators.requiredTrue],
@@ -107,23 +106,16 @@ export class EditComponent {
         number_of_units_to_be_developed: ['', Validators.required],
         percentage_of_site_covered_by_existing_building: ['', Validators.required],
         percentage_of_site_covered_by_proposed_building: ['', Validators.nullValidator],
-        // min_number_of_floors: ['', Validators.required],
-        // max_number_of_floors: ['', Validators.required],
-        // min_floor_to_floor_height: ['', Validators.nullValidator],
-        // max_floor_to_floor_height: ['', Validators.nullValidator],
-        // min_floor_area: ['', Validators.nullValidator],
-        // max_floor_area: ['', Validators.nullValidator],
-        // min_far: ['', Validators.nullValidator],
-        // max_far: ['', Validators.nullValidator],
-
-        density: ['', Validators.nullValidator],
-        floor_area: ['', Validators.nullValidator],
-        far: ['', Validators.nullValidator],
+        min_number_of_floors: ['', Validators.required],
+        max_number_of_floors: ['', Validators.required],
+        min_floor_to_floor_height: ['', Validators.nullValidator],
+        max_floor_to_floor_height: ['', Validators.nullValidator],
+        min_floor_area: ['', Validators.nullValidator],
+        max_floor_area: ['', Validators.nullValidator],
+        min_far: ['', Validators.nullValidator],
+        max_far: ['', Validators.nullValidator],
         minimum_setback: ['', Validators.nullValidator],
-        floor_to_floor_height: ['', Validators.nullValidator],
-        number_of_floors: ['', Validators.nullValidator],
     });
-
    }
 
   ngOnInit(): void {
@@ -140,7 +132,7 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.item = response as any;
-          this.mLandUsePlans = this.item.land_use_plans;
+          this.mLandUsePlans = this.item.variations;
           this.mInvestorParcels = this.item.investor.parcels;
           this.mProgress.set(false);
         }
@@ -155,7 +147,8 @@ export class EditComponent {
   }
 
 
-  // loadUnpaginatedItems
+
+  //loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
     this.mConstructionPermitService.unpaginatedItems().subscribe({
@@ -168,8 +161,6 @@ export class EditComponent {
           // this.mInvestorParcels = (response as any).data.investor_parcels;
           this.mParcelLandUseGroups = (response as any).data.parcel_land_use_groups;
           this.mGreenCertifications = (response as any).data.green_certifications;
-          this.mProfile = (response as any).data.profile;
-          console.log(this.mProfile)
           this.mProgress.set(false);
         }
       },
@@ -187,7 +178,6 @@ export class EditComponent {
     const mLandUsePlansJsonArrayItems = JSON.stringify(Object.assign({}, this.mLandUsePlans))
 
     let formData:any = new FormData();
-    formData.append('id', this.id);
     formData.append('investor_id', formValues.investor_id);
     formData.append('type_id', formValues.type_id);
     formData.append('professional_body_id', formValues.professional_body_id);
@@ -198,9 +188,7 @@ export class EditComponent {
     formData.append('nationality', formValues.nationality);
     formData.append('project_brief', formValues.project_brief);
     formData.append('project_purpose', formValues.project_purpose);
-    // formData.append('has_variations', formValues.has_variations);
-    formData.append('has_variations', this.mHasVariation);
-    formData.append('variation_justification_statement', formValues.variation_justification_statement);
+    formData.append('has_variations', formValues.has_variations);
     formData.append('land_use_plans', mLandUsePlansJsonArrayItems)
 
     formData.append('project_sustainability_brief', formValues.project_sustainability_brief);
@@ -216,18 +204,16 @@ export class EditComponent {
     formData.append('concept_plan', this.concept_plan_file, this.concept_plan_file.name);
     formData.append('geotechnical_report', this.geotechnical_report_file, this.geotechnical_report_file.name);
     formData.append('topographical_survey', this.topographical_survey_file, this.topographical_survey_file.name);
-    formData.append('topographical_survey_cad', this.topographical_survey_cad_file, this.topographical_survey_cad_file.name);
     formData.append('parking_strategy', this.parking_strategy_file, this.parking_strategy_file.name);
     formData.append('traffic_management_plan', this.traffic_management_plan_file, this.traffic_management_plan_file.name);
     formData.append('estimated_utility_demand_requirements', this.estimated_utility_demand_requirements_file, this.estimated_utility_demand_requirements_file.name);
     formData.append('sustainability_report', this.sustainability_report_file, this.sustainability_report_file.name);
 
-    // formData.append('_method', 'POST')
     formData.append('_method', 'PUT')
 
 
     this.mProgress.set(true);
-    this.mConstructionPermitService.updateItem(this.id,formData).subscribe({
+    this.mConstructionPermitService.updateItem(this.id, formData).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
@@ -247,48 +233,48 @@ export class EditComponent {
   }
 
 
-  // // verifyProfessional
-  // verifyProfessional(){
-  //   const item: any = {
-  //     professional_body_id: this.itemForm.get('professional_body_id')?.value,
-  //     membership_number: this.itemForm.get('membership_number')?.value,
-  //   }
-  //   if (!item.professional_body_id || !item.membership_number) {
-  //     return;
-  //   }
+  // verifyProfessional
+  verifyProfessional(){
+    const item: any = {
+      professional_body_id: this.itemForm.get('professional_body_id')?.value,
+      membership_number: this.itemForm.get('membership_number')?.value,
+    }
+    if (!item.professional_body_id || !item.membership_number) {
+      return;
+    }
 
-  //   this.mProgress.set(true);
-  //   this.mProfileService.professionalSearch(item).subscribe({
-  //     next: (response) => {
-  //       if(response){
-  //         if((response as any).status==="failed"){
-  //           // this.router.navigateByUrl('/construction-permits');
-  //           this.mToastrService.error((response as any).message);
-  //         }else{
-  //           // this.mToastrService.success((response as any).message);
-  //           const mResponse = response as any
-  //           this.itemForm.get('consultant_name')?.setValue(mResponse.name);
-  //           this.itemForm.get('address')?.setValue(mResponse.address);
-  //           this.itemForm.get('email')?.setValue(mResponse.email);
-  //           this.itemForm.get('nationality')?.setValue(mResponse.nationality);
-  //           if(mResponse.status == "Inactive"){
-  //               let mResponse = (response as any)
-  //               this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
-  //               this.mProgress.set(false);
-  //               this.router.navigateByUrl('/construction-permits');
-  //           }
-  //         }
-  //         this.mProgress.set(false);
-  //       };
-  //     },
-  //     error: (error ) => {
-  //       if(error.error.message){
-  //       this.mToastrService.error(error.error.message);
-  //       }
-  //       this.mProgress.set(false);
-  //     }
-  //   });
-  // }
+    this.mProgress.set(true);
+    this.mProfileService.professionalSearch(item).subscribe({
+      next: (response) => {
+        if(response){
+          if((response as any).status==="failed"){
+            // this.router.navigateByUrl('/construction-permits');
+            this.mToastrService.error((response as any).message);
+          }else{
+            // this.mToastrService.success((response as any).message);
+            const mResponse = response as any
+            this.itemForm.get('consultant_name')?.setValue(mResponse.name);
+            this.itemForm.get('address')?.setValue(mResponse.address);
+            this.itemForm.get('email')?.setValue(mResponse.email);
+            this.itemForm.get('nationality')?.setValue(mResponse.nationality);
+            if(mResponse.status == "Inactive"){
+                let mResponse = (response as any)
+                this.mToastrService.error(mResponse.good_standing+" "+mResponse.balance_reason);
+                this.mProgress.set(false);
+                this.router.navigateByUrl('/construction-permits');
+            }
+          }
+          this.mProgress.set(false);
+        };
+      },
+      error: (error ) => {
+        if(error.error.message){
+        this.mToastrService.error(error.error.message);
+        }
+        this.mProgress.set(false);
+      }
+    });
+  }
 
 
   // onContextAnalysisChange
@@ -326,13 +312,6 @@ export class EditComponent {
       this.topographical_survey_file = file;
     }
   }
-  // onTopographicalSurveyCadChange
-  onTopographicalSurveyCadChange(event:any) {
-    if (event.target.value) {
-      const file = event.target.files[0];
-      this.topographical_survey_cad_file = file;
-    }
-  }
   // onParkingStrategyChange
   onParkingStrategyChange(event:any) {
     if (event.target.value) {
@@ -363,7 +342,6 @@ export class EditComponent {
   }
 
 
-
   // onInvestorChange
   onInvestorChange(event:any) {
     if (event.target.value) {
@@ -386,107 +364,13 @@ export class EditComponent {
     }
   }
 
-
   // onCheckVariations
   onCheckVariations(item:any) {
-
-  const hasVariation = this.mInvestorParcels.some((mInvestorParcel: any) => {
-    const parcel_number = mInvestorParcel.allocation_worksheet.number;
-    const toNumber = (value: any): number => {
-      return Number(String(value).replace(/,/g, ''));
-    };
-
-    const mAllocationWorksheet = mInvestorParcel.allocation_worksheet;
-    const min_floors = Number(mAllocationWorksheet.min_floors);
-    const max_floors = Number(mAllocationWorksheet.max_floors);
-
-    // const min_floors = toNumber(mAllocationWorksheet.min_floors);
-    // const max_floors = toNumber(mAllocationWorksheet.max_floors);
-    const min_floor_area = Number(mAllocationWorksheet.min_floor_area);
-    const max_floor_area = Number(mAllocationWorksheet.max_floor_area);
-    const min_far = Number(mAllocationWorksheet.min_far);
-    const max_far = Number(mAllocationWorksheet.max_far);
-    // console.log("mInvestorParcel "+JSON.stringify(mInvestorParcel));
-    // console.log("mItem "+JSON.stringify(item));
-    // console.log("min_number_of_floors "+item.min_number_of_floors+"min_number_of_floors "+mInvestorParcel.allocation_worksheet.min_floors);
-
-    // console.log(item.min_number_of_floors < min_floors)
-    console.log(this.mHasVariation);
-    return (
-      item.parcel_number === parcel_number &&
-      (
-        // floors_check
-        (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
-        // floor_area_check
-        (item.floor_area <= min_floor_area && item.floor_area >= max_floor_area) ||
-        // FAR_check
-        (item.far <= min_far && item.far >= max_far)
-      )
-    );
-  });
-
-  if(hasVariation==true && this.mHasVariation == 'no'){
-    this.mHasVariation = 'yes'; // AnySlightVariation
-  }
-  this.itemForm.get('has_variations')?.setValue(this.mHasVariation);
-  console.log(this.mHasVariation);
-
-
-
-            // "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
-            // "phase": 1,
-            // "number": "AN-005",
-            // "acres": "1.53",
-            // "parcel_land_use_group_id": 4,
-            // "predominant_land": null,
-            // "preferred_ground_floor_use": null,
-            // "secondary_use": null,
-            // "min_floors": "2",
-            // "max_floors": "6",
-            // "stand_premium": 10370000,
-            // "annual_ground_rent": 830000,
-            // "service_charge": 68827.5,
-            // "status_id": 4,
-            // "code": null,
-            // "description": null,
-            // "min_floor_area": null,
-            // "max_floor_area": null,
-            // "min_far": null,
-            // "max_far": null,
-            // "plot_coverage": null,
-            // "rings": null,
-            // "created_by": null,
-            // "updated_by": null,
-            // "created_at": null,
-            // "updated_at": "2026-04-15T15:19:39.000000Z",
-            // "deleted_at": null            "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
-            // "phase": 1,
-            // "number": "AN-005",
-            // "acres": "1.53",
-            // "parcel_land_use_group_id": 4,
-            // "predominant_land": null,
-            // "preferred_ground_floor_use": null,
-            // "secondary_use": null,
-            // "min_floors": "2",
-            // "max_floors": "6",
-            // "stand_premium": 10370000,
-            // "annual_ground_rent": 830000,
-            // "service_charge": 68827.5,
-            // "status_id": 4,
-            // "code": null,
-            // "description": null,
-            // "min_floor_area": null,
-            // "max_floor_area": null,
-            // "min_far": null,
-            // "max_far": null,
-            // "plot_coverage": null,
-            // "rings": null,
-            // "created_by": null,
-            // "updated_by": null,
-            // "created_at": null,
-            // "updated_at": "2026-04-15T15:19:39.000000Z",
-            // "deleted_at": null
-
+    const value = this.itemForm.get('has_variations')?.value;
+    console.log(value);
+    // if (value === 'no') {
+    //   this.mLandUsePlans = []; //Empty
+    // }
   }
 
 
@@ -513,6 +397,9 @@ export class EditComponent {
   //   }
   // }
 
+  getInvalidFields(): string[] {
+    return Object.keys(this.itemForm.controls).filter(key => this.itemForm.get(key)?.invalid);
+  }
 
 
 

@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { ConstructionPermitService } from '../../../services/construction-permit.service';
-import { ConstructionPermit } from '../../../interfaces/construction-permit';
 
 @Component({
   selector: 'app-process',
