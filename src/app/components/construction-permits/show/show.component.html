@@ -62,7 +62,7 @@
                   <div *ngFor="let mItem of item.land_use_plans; index as j" class="row mb-2">
                     <div class="col-12">
                       <div class="callout callout-danger">
-                        <h6 class="fw-bolder">{{j+1}}. {{ mItem.parcel_number }}</h6>
+                        <h6 class="fw-bolder">{{j+1}}. {{ mItem?.parcel_number }}</h6>
                         <table class="table table-bordered table-danger1">
                           <thead>
                             <tr>
@@ -75,69 +75,69 @@
                           <tbody>
                             <tr>
                               <th scope="row">Planned Land Use:</th>
-                              <td>{{ mItem.parcel?.name }}</td>
-                              <td class="text-success">{{ mItem.planned_land_use?.name }}</td>
+                              <td>{{ mItem?.parcel?.name }}</td>
+                              <td class="text-success">{{ mItem?.planned_land_use?.name }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Primary Land Use:</th>
-                              <td>{{ mItem.parcel?.predominant_land }}</td>
-                              <td class="text-success">{{ mItem.primary_land_use.name }}</td>
+                              <td>{{ mItem?.parcel?.predominant_land }}</td>
+                              <td class="text-success">{{ mItem?.primary_land_use?.name }}</td>
                               <td class="text-success">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Secondary Land Use:</th>
-                              <td>{{ mItem.parcel?.secondary_use }}</td>
-                              <td class="text-success">{{ mItem.secondary_land_use.name }}</td>
+                              <td>{{ mItem?.parcel?.secondary_use }}</td>
+                              <td class="text-success">{{ mItem?.secondary_land_use?.name }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Preferred Ground Land Use:</th>
-                              <td>{{ mItem.parcel?.preferred_ground_floor_use }}</td>
-                              <td class="text-success">{{ mItem.preferred_ground_floor_use.name }}</td>
+                              <td>{{ mItem?.parcel?.preferred_ground_floor_use }}</td>
+                              <td class="text-success">{{ mItem?.preferred_ground_floor_use?.name }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Number of Units to be Developed:</th>
-                              <td>{{ mItem.parcel?.number_of_units_to_be_developed }}</td>
+                              <td>{{ mItem?.parcel?.number_of_units_to_be_developed }}</td>
                               <td class="text-success">{{ mItem.number_of_units_to_be_developed }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Plot Coverage % (Proposed/Existing):</th>
-                              <td>{{ mItem.parcel?.percentage_of_site_covered_by_proposed_building}}-{{mItem.parcel?.percentage_of_site_covered_by_existing_building }}</td>
-                              <td class="text-success">{{ mItem.percentage_of_site_covered_by_proposed_building}}-{{mItem.percentage_of_site_covered_by_existing_building }}</td>
+                              <td>{{ mItem?.parcel?.percentage_of_site_covered_by_proposed_building}}-{{mItem?.parcel?.percentage_of_site_covered_by_existing_building }}</td>
+                              <td class="text-success">{{ mItem?.percentage_of_site_covered_by_proposed_building}}-{{mItem?.percentage_of_site_covered_by_existing_building }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max Floors:</th>
-                              <td>{{ mItem.parcel?.min_floors }}-{{ mItem.parcel?.max_floors }}</td>
-                              <td class="text-success">{{ mItem.min_number_of_floors }}-{{ mItem.max_number_of_floors }}</td>
-                              <td class="text-danger">{{ mItem.min_number_of_floors - mItem.parcel?.min_floors }} / {{ mItem.max_number_of_floors - mItem.parcel?.max_floors }}</td>
+                              <td>{{ mItem?.parcel?.min_floors }}-{{ mItem?.parcel?.max_floors }}</td>
+                              <td class="text-success">{{ mItem?.min_number_of_floors }}-{{ mItem?.max_number_of_floors }}</td>
+                              <td class="text-danger">{{ mItem?.min_number_of_floors - mItem?.parcel?.min_floors }} / {{ mItem?.max_number_of_floors - mItem?.parcel?.max_floors }}</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max Floor Area:</th>
-                              <td>{{ mItem.parcel?.min_floor_area }}-{{ mItem.parcel?.min_floor_area }}</td>
-                              <td class="text-success">{{ mItem.min_floor_area }}-{{ mItem.min_floor_area }}</td>
+                              <td>{{ mItem?.parcel?.min_floor_area }}-{{ mItem?.parcel?.min_floor_area }}</td>
+                              <td class="text-success">{{ mItem?.min_floor_area }}-{{ mItem?.min_floor_area }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max Floor-to-Floor Height:</th>
-                              <td>{{ mItem.parcel?.min_floor_to_floor_height }}-{{ mItem.parcel?.max_floor_to_floor_height }}</td>
-                              <td class="text-success">{{ mItem.min_floor_to_floor_height }}-{{ mItem.max_floor_to_floor_height }}</td>
+                              <td>{{ mItem?.parcel?.min_floor_to_floor_height }}-{{ mItem?.parcel?.max_floor_to_floor_height }}</td>
+                              <td class="text-success">{{ mItem?.min_floor_to_floor_height }}-{{ mItem?.max_floor_to_floor_height }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max FAR:</th>
-                              <td>{{ mItem.parcel?.min_far }}-{{ mItem.parcel?.max_far }}</td>
-                              <td class="text-success">{{ mItem.min_far }}-{{ mItem.max_far }}</td>
+                              <td>{{ mItem?.parcel?.min_far }}-{{ mItem?.parcel?.max_far }}</td>
+                              <td class="text-success">{{ mItem?.min_far }}-{{ mItem?.max_far }}</td>
                               <td class="text-danger">-</td>
                             </tr>
                             <tr>
                               <th scope="row">Minimum Setback:</th>
-                              <td>{{ mItem.parcel?.minimum_setback }}</td>
-                              <td class="text-success">{{ mItem.minimum_setback }}</td>
-                              <td class="text-danger">{{ mItem.minimum_setback - mItem.parcel?.minimum_setback }}</td>
+                              <td>{{ mItem?.parcel?.minimum_setback }}</td>
+                              <td class="text-success">{{ mItem?.minimum_setback }}</td>
+                              <td class="text-danger">{{ mItem?.minimum_setback - mItem?.parcel?.minimum_setback }}</td>
                             </tr>
                           </tbody>
                         </table>
