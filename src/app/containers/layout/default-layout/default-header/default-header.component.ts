@@ -50,12 +50,16 @@ export class DefaultHeaderComponent extends HeaderComponent {
  // variables
   mInitials:any
   mCurrentUser:any
+  ssoAccountUrl:any
+
 
   constructor(
     private mAuthService: AuthService,
     private mToastrService: ToastrService,
   ) {
     super();
+    // Set
+    this.ssoAccountUrl = environment.sso_account_url
   }
 
   sidebarId = input('sidebar1');

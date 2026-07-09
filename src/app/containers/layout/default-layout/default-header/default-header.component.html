@@ -16,7 +16,8 @@
         <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </c-nav-item>
       <c-nav-item>
-        <a cNavLink routerLink="" routerLinkActive="active">Account</a>
+        <!-- <a cNavLink routerLink="" href="{{sso_account_url}}/#/account/dashboard" routerLinkActive="active">Account</a> -->
+        <a cNavLink href="{{ssoAccountUrl}}/#/account/dashboard" routerLinkActive="active">Account</a>
       </c-nav-item>
       <c-nav-item>
         <a cNavLink routerLink="/profile" routerLinkActive="active">Settings</a>
@@ -82,7 +83,7 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="">
+        <a cDropdownItem routerLink="/profile">
           <svg cIcon class="me-2" name="cilSettings"></svg>
           Settings
         </a>
@@ -94,7 +95,7 @@
       </li>
       <li></li>
       <li>
-        <a cDropdownItem routerLink="">
+        <a cDropdownItem href="{{ssoAccountUrl}}/#/account/profile">
           <svg cIcon class="me-2" name="cilUser"></svg>
           Profile
         </a>
