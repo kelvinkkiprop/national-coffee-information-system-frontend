@@ -116,7 +116,8 @@
                               <td class="text-success">{{ mItem?.number_of_floors }}</td>
                               <!-- <td class="text-danger">{{ mItem?.min_number_of_floors - mItem?.parcel?.min_floors }} / {{ mItem?.max_number_of_floors - mItem?.parcel?.max_floors }}</td> -->
                               <!-- <td class="text-danger">{{ mItem?.min_number_of_floors - mItem?.parcel?.min_floors }} / {{ mItem?.number_of_floors }}</td> -->
-                              <td class="text-danger">{{ ((mItem?.min_number_of_floors ?? 0) - (mItem?.parcel?.min_floors ?? 0)) + ' / ' + (mItem?.number_of_floors ?? '-') }}</td>
+                              <!-- <td class="text-danger">{{ ((mItem?.min_number_of_floors ?? 0) - (mItem?.parcel?.min_floors ?? 0)) + ' / ' + (mItem?.number_of_floors ?? '-') }}</td> -->
+                              <td>{{ (mItem?.number_of_floors < mItem?.parcel?.min_floors) ? (mItem?.parcel?.min_floors -mItem?.number_of_floors) : (mItem?.parcel?.max_floors -mItem?.number_of_floors) }}</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max Floor Area:</th>
