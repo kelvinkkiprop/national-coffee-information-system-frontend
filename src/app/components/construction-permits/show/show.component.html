@@ -141,7 +141,7 @@
                               <th scope="row">Minimum Setback:</th>
                               <td>{{ mItem?.parcel?.minimum_setback }}</td>
                               <td class="text-success">{{ mItem?.minimum_setback }}</td>
-                              <td class="text-danger">{{ (mItem?.parcel?.minimum_setback ?? 0) - mItem?.minimum_setback }}</td>
+                              <td class="text-danger">{{ (+mItem?.minimum_setback || 0) - (+mItem?.parcel?.minimum_setback || 0) }}</td>
                             </tr>
                           </tbody>
                         </table>
