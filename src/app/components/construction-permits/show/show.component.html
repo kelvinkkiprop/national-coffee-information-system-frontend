@@ -117,7 +117,7 @@
                               <!-- <td class="text-danger">{{ mItem?.min_number_of_floors - mItem?.parcel?.min_floors }} / {{ mItem?.max_number_of_floors - mItem?.parcel?.max_floors }}</td> -->
                               <!-- <td class="text-danger">{{ mItem?.min_number_of_floors - mItem?.parcel?.min_floors }} / {{ mItem?.number_of_floors }}</td> -->
                               <!-- <td class="text-danger">{{ ((mItem?.min_number_of_floors ?? 0) - (mItem?.parcel?.min_floors ?? 0)) + ' / ' + (mItem?.number_of_floors ?? '-') }}</td> -->
-                              <td>{{mItem?.number_of_floors - mItem?.parcel?.min_floors}} | {{mItem?.number_of_floors - mItem?.parcel?.max_floors}}</td>
+                              <td class="text-danger">{{mItem?.number_of_floors - mItem?.parcel?.min_floors}} | {{mItem?.number_of_floors - mItem?.parcel?.max_floors}}</td>
                             </tr>
                             <tr>
                               <th scope="row">Min/Max Floor Area:</th>
@@ -141,7 +141,7 @@
                               <th scope="row">Minimum Setback:</th>
                               <td>{{ mItem?.parcel?.minimum_setback }}</td>
                               <td class="text-success">{{ mItem?.minimum_setback }}</td>
-                              <td class="text-danger">{{ mItem?.parcel?.minimum_setback - (mItem?.minimum_setback ?? 0) }}</td>
+                              <td class="text-danger">{{ (mItem?.parcel?.minimum_setback ?? 0) - mItem?.minimum_setback }}</td>
                             </tr>
                           </tbody>
                         </table>
