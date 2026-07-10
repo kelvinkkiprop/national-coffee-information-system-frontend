@@ -40,6 +40,7 @@ export class ProfessionalReviewComponent {
       topographical_survey_review: ['', Validators.nullValidator],
       geotechnical_survey_review: ['', Validators.nullValidator],
       traffic_management_plan_and_parking_strategy_review: ['', Validators.nullValidator],
+      utility_demand: ['', Validators.nullValidator],
     });
   }
 
@@ -75,6 +76,7 @@ export class ProfessionalReviewComponent {
       topographical_survey_review: formValues.topographical_survey_review,
       geotechnical_survey_review: formValues.geotechnical_survey_review,
       traffic_management_plan_and_parking_strategy_review: formValues.traffic_management_plan_and_parking_strategy_review,
+      utility_demand: formValues.utility_demand,
     }
     this.mProgress = signal(true);
     this.mConstructionPermitService.professionalReviewItem(item).subscribe({

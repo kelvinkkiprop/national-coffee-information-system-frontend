@@ -47,6 +47,14 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="utility_demand" class="col-form-label required1">Utility Demand:</label>
+                    <div *ngIf="item.utility_demand">
+                      <span [innerHTML]="mAppContextService.safeHtml(item.utility_demand)"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </fieldset>
           </div>
