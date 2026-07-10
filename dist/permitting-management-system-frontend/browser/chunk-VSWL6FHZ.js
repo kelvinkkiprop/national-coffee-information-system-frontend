@@ -194,7 +194,7 @@ import{a as H,b as xe,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as zt}from"./ch
                               Min/Max Floors: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floors,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floors),l(2),F(`
                               Min/Max FAR: `,r.allocation_worksheet==null?null:r.allocation_worksheet.far,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_far),l(2),F(`
                               Min/Max Floors: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floors,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floors),l(2),F(`
-                              Min/Max Floor Area: `,r.allocation_worksheet==null?null:r.allocation_worksheet.floor_area,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floor_area),l(2),D(`
+                              Min/Max Floor Area: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floor_area,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floor_area),l(2),D(`
                               Plot Coverage: `,r.allocation_worksheet==null?null:r.allocation_worksheet.plot_coverage,"% "),l(2),D(`
                               Use: `,r.allocation_worksheet==null?null:r.allocation_worksheet.description," ")}}function Ri(o,a){if(o&1&&(i(0,"div",120),e(1,`
                   `),i(2,"div",121),e(3,`
@@ -746,7 +746,7 @@ import{a as H,b as xe,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as zt}from"./ch
                               Min/Max Floors: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floors,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floors),l(2),F(`
                               Min/Max FAR: `,r.allocation_worksheet==null?null:r.allocation_worksheet.far,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_far),l(2),F(`
                               Min/Max Floors: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floors,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floors),l(2),F(`
-                              Min/Max Floor Area: `,r.allocation_worksheet==null?null:r.allocation_worksheet.floor_area,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floor_area),l(2),D(`
+                              Min/Max Floor Area: `,r.allocation_worksheet==null?null:r.allocation_worksheet.min_floor_area,"-",r.allocation_worksheet==null?null:r.allocation_worksheet.max_floor_area),l(2),D(`
                               Plot Coverage: `,r.allocation_worksheet==null?null:r.allocation_worksheet.plot_coverage,"% "),l(2),D(`
                               Use: `,r.allocation_worksheet==null?null:r.allocation_worksheet.description," ")}}function Pr(o,a){if(o&1&&(i(0,"div",120),e(1,`
                   `),i(2,"div",121),e(3,`
