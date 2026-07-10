@@ -418,8 +418,8 @@ export class EditComponent {
       item.parcel_number === parcel_number &&
       (
         // floors_check
-        (item.number_of_floors < min_floors || item.number_of_floors > max_floors) ||
-        // (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
+        // (item.number_of_floors < min_floors || item.number_of_floors > max_floors) ||
+        (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
         // floor_area_check
         (item.floor_area <= min_floor_area && item.floor_area >= max_floor_area) ||
         // FAR_check
