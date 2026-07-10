@@ -447,6 +447,7 @@ export class EditComponent {
 
   if(hasVariation==true && this.mHasVariation == 'no'){
     this.mHasVariation = 'yes'; // AnySlightVariation
+    this.mHasVariation = 'no'; // AnySlightVariationTODO
   }
   this.itemForm.get('has_variations')?.setValue(this.mHasVariation);
   console.log(this.mHasVariation);
