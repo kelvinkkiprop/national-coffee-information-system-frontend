@@ -19,6 +19,37 @@
               <div class="text-muted">{{ item.project_brief }}</div>
             </div>
           </div>
+          <div class="col-md-12">
+            <fieldset class="border p-2 mb-3">
+              <legend class="float-none w-auto"><h6 class="text-bolder text-muted">Professional Reviews</h6></legend>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="topographical_survey_review" class="col-form-label required1">Topographical Survey Review:</label>
+                    <div *ngIf="item.topographical_survey_review">
+                      <span [innerHTML]="mAppContextService.safeHtml(item.topographical_survey_review)"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="topographical_survey_review" class="col-form-label required1">Geotechnical Survey Review:</label>
+                    <div *ngIf="item.geotechnical_survey_review">
+                      <span [innerHTML]="mAppContextService.safeHtml(item.geotechnical_survey_review)"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="traffic_management_plan_and_parking_strategy_review" class="col-form-label required1">Traffic Management Plan and Parking Strategy Review:</label>
+                    <div *ngIf="item.traffic_management_plan_and_parking_strategy_review">
+                      <span [innerHTML]="mAppContextService.safeHtml(item.traffic_management_plan_and_parking_strategy_review)"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
         </div>
 
         <div class="row">
