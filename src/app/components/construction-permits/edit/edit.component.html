@@ -362,11 +362,11 @@
                 <div class="form-group mb-3">
                   <label for="has_variations" class="col-form-label required">Variations (Does Your Project Require any Variation?):</label>
                   <div class="form-check">
-                    <input [(ngModel)]="item.has_variations" class="form-check-input" type="radio" formControlName="has_variations" id="variation_no" value="no" readonly/>
+                    <input class="form-check-input" type="radio" formControlName="has_variations" id="variation_no" value="no" readonly/>
                     <label class="form-check-label" for="variation_no"> No</label>
                   </div>
                   <div class="form-check">
-                    <input [(ngModel)]="item.has_variations" class="form-check-input" type="radio" formControlName="has_variations" id="variation_yes" value="yes" readonly/>
+                    <input class="form-check-input" type="radio" formControlName="has_variations" id="variation_yes" value="yes" readonly/>
                     <label class="form-check-label" for="variation_yes"> Yes</label>
                   </div>
                   <div *ngIf="itemForm.get('has_variations').invalid && (itemForm.get('has_variations').dirty || itemForm.get('has_variations').touched)" class="invalid-feedback" role="alert">
