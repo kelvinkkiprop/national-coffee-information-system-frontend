@@ -6,57 +6,59 @@ import{a as Et,b as Y,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as At}from"./ch
                 `),n(2,"td"),e(3),i(),e(4,`
                 `),n(5,"td"),e(6),i(),e(7,`
                 `),n(8,"td"),e(9),i(),e(10,`
-                `),e(11,`
-                `),e(12,`
-                `),n(13,"td"),e(14),i(),e(15,`
-                `),n(16,"td"),e(17,`
-                  `),n(18,"span",20),e(19),i(),e(20,`
-                `),i(),e(21,`
-                `),n(22,"td"),e(23),Je(24,"date"),i(),e(25,`
-                `),n(26,"td"),e(27,`
-                  `),s(28,Lt,5,2,"span",1),e(29,`
-                `),i(),e(30,`
-                `),n(31,"td"),e(32,`
-                  `),n(33,"div",21),e(34,`
-                    `),n(35,"a",22),X(),u(36,"svg",23),i(),e(37,`
-                    `),e(38,`
-                    `),Ee(),n(39,"c-dropdown",24),e(40,`
-                      `),n(41,"button",25),e(42,`
-                        `),X(),u(43,"svg",26),e(44,`
-                      `),i(),e(45,`
-                      `),Ee(),n(46,"ul",27),e(47,`
-                        `),e(48,`
-                        `),s(49,Ht,4,2,"li",1),e(50,`
-                        `),s(51,Gt,4,2,"li",1),e(52,`
-                        `),s(53,zt,4,2,"li",1),e(54,`
-                      `),i(),e(55,`
-                    `),i(),e(56,`
-                    `),s(57,Ut,2,0,"button",28),e(58,`
-                  `),i(),e(59,`
-                `),i(),e(60,`
-              `),i()),o&2){let t=a.$implicit,r=a.index,d=p(2);m(3),Be("",d.mPageFrom+r,"."),m(3),y(t.project_brief),m(3),y(t.investor.name),m(5),y(t.consultant.name),m(4),l("ngClass",Ye(16,qt,[t.detailed_plan_status_id==1,t.detailed_plan_status_id==2,t.detailed_plan_status_id==3,t.detailed_plan_status_id==4,t.detailed_plan_status_id==5,t.detailed_plan_status_id==6,t.detailed_plan_status_id==7,t.detailed_plan_status_id==8,t.detailed_plan_status_id==9])),m(),Be(`
+                `),n(11,"td"),e(12),i(),e(13,`
+                `),e(14,`
+                `),e(15,`
+                `),n(16,"td"),e(17),i(),e(18,`
+                `),n(19,"td"),e(20,`
+                  `),n(21,"span",20),e(22),i(),e(23,`
+                `),i(),e(24,`
+                `),n(25,"td"),e(26),Je(27,"date"),i(),e(28,`
+                `),n(29,"td"),e(30,`
+                  `),s(31,Lt,5,2,"span",1),e(32,`
+                `),i(),e(33,`
+                `),n(34,"td"),e(35,`
+                  `),n(36,"div",21),e(37,`
+                    `),n(38,"a",22),X(),u(39,"svg",23),i(),e(40,`
+                    `),e(41,`
+                    `),Ee(),n(42,"c-dropdown",24),e(43,`
+                      `),n(44,"button",25),e(45,`
+                        `),X(),u(46,"svg",26),e(47,`
+                      `),i(),e(48,`
+                      `),Ee(),n(49,"ul",27),e(50,`
+                        `),e(51,`
+                        `),s(52,Ht,4,2,"li",1),e(53,`
+                        `),s(54,Gt,4,2,"li",1),e(55,`
+                        `),s(56,zt,4,2,"li",1),e(57,`
+                      `),i(),e(58,`
+                    `),i(),e(59,`
+                    `),s(60,Ut,2,0,"button",28),e(61,`
+                  `),i(),e(62,`
+                `),i(),e(63,`
+              `),i()),o&2){let t=a.$implicit,r=a.index,d=p(2);m(3),Be("",d.mPageFrom+r,"."),m(3),y(t.application_number),m(3),y(t.project_brief),m(3),y(t.investor.name),m(5),y(t.consultant.name),m(4),l("ngClass",Ye(17,qt,[t.detailed_plan_status_id==1,t.detailed_plan_status_id==2,t.detailed_plan_status_id==3,t.detailed_plan_status_id==4,t.detailed_plan_status_id==5,t.detailed_plan_status_id==6,t.detailed_plan_status_id==7,t.detailed_plan_status_id==8,t.detailed_plan_status_id==9])),m(),Be(`
                     `,t.detailed_plan_status==null?null:t.detailed_plan_status.name,`
-                  `),m(4),y(Qe(24,14,t.created_at)),m(5),l("ngIf",t.construction_permit_url),m(7),l("routerLink",ye("/detailed-designs/show/",t.id)),m(14),l("ngIf",d.mAppContextService.hasRoles(S(26,He))||d.mAppContextService.hasRoles(S(27,Ft))&&(t.status_id==1||t.status_id==2)),m(2),l("ngIf",d.mAppContextService.hasRoles(S(28,He))||t.status_id==5),m(2),l("ngIf",!d.mAppContextService.hasRoles(S(29,Ft))),m(4),l("ngIf",d.mAppContextService.hasRoles(S(30,He)))}}function Wt(o,a){if(o&1&&(n(0,"div",15),e(1,`
+                  `),m(4),y(Qe(27,15,t.created_at)),m(5),l("ngIf",t.construction_permit_url),m(7),l("routerLink",ye("/detailed-designs/show/",t.id)),m(14),l("ngIf",d.mAppContextService.hasRoles(S(27,He))||d.mAppContextService.hasRoles(S(28,Ft))&&(t.status_id==1||t.status_id==2)),m(2),l("ngIf",d.mAppContextService.hasRoles(S(29,He))||t.status_id==5),m(2),l("ngIf",!d.mAppContextService.hasRoles(S(30,Ft))),m(4),l("ngIf",d.mAppContextService.hasRoles(S(31,He)))}}function Wt(o,a){if(o&1&&(n(0,"div",15),e(1,`
           `),n(2,"table",16),e(3,`
             `),n(4,"thead",17),e(5,`
               `),n(6,"tr"),e(7,`
                 `),n(8,"th",18),e(9,"#"),i(),e(10,`
-                `),n(11,"th",18),e(12,"Project"),i(),e(13,`
-                `),n(14,"th",18),e(15,"Investor"),i(),e(16,`
-                `),e(17,`
-                `),e(18,`
-                `),n(19,"th",18),e(20,"Consultant"),i(),e(21,`
-                `),n(22,"th",18),e(23,"Status"),i(),e(24,`
-                `),n(25,"th",18),e(26,"Created"),i(),e(27,`
-                `),n(28,"th",18),e(29,"Construction Permit"),i(),e(30,`
-                `),n(31,"th",18),e(32,"Action"),i(),e(33,`
-              `),i(),e(34,`
-            `),i(),e(35,`
-            `),n(36,"tbody"),e(37,`
-              `),s(38,$t,61,31,"tr",19),e(39,`
-            `),i(),e(40,`
-          `),i(),e(41,`
-        `),i()),o&2){let t=p();m(38),l("ngForOf",t.mConstructionPermits)}}function Kt(o,a){if(o&1){let t=k();n(0,"li",38),e(1,`
+                `),n(11,"th",18),e(12,"Application No."),i(),e(13,`
+                `),n(14,"th",18),e(15,"Project"),i(),e(16,`
+                `),n(17,"th",18),e(18,"Investor"),i(),e(19,`
+                `),e(20,`
+                `),e(21,`
+                `),n(22,"th",18),e(23,"Consultant"),i(),e(24,`
+                `),n(25,"th",18),e(26,"Status"),i(),e(27,`
+                `),n(28,"th",18),e(29,"Created"),i(),e(30,`
+                `),n(31,"th",18),e(32,"Construction Permit"),i(),e(33,`
+                `),n(34,"th",18),e(35,"Action"),i(),e(36,`
+              `),i(),e(37,`
+            `),i(),e(38,`
+            `),n(39,"tbody"),e(40,`
+              `),s(41,$t,64,32,"tr",19),e(42,`
+            `),i(),e(43,`
+          `),i(),e(44,`
+        `),i()),o&2){let t=p();m(41),l("ngForOf",t.mConstructionPermits)}}function Kt(o,a){if(o&1){let t=k();n(0,"li",38),e(1,`
               `),n(2,"a",39),h("click",function(){let d=M(t).$implicit,c=p(2);return A(c.onChangePage(d.url))}),i(),e(3,`
             `),i()}if(o&2){let t=a.$implicit;l("ngClass",Ke(2,jt,t.active,!t.url)),m(2),l("innerHTML",t.label,$)}}function Yt(o,a){if(o&1&&(n(0,"div"),e(1,`
           `),n(2,"ul",36),e(3,`
@@ -89,7 +91,7 @@ import{a as Et,b as Y,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as At}from"./ch
       `),i(),e(37,`
       `),Ee(),n(38,"c-card-body"),e(39,`
 
-        `),s(40,Wt,42,1,"div",13),e(41,`
+        `),s(40,Wt,45,1,"div",13),e(41,`
 
         `),s(42,Yt,7,1,"div",1),e(43,`
 

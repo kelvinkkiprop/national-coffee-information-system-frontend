@@ -6,66 +6,68 @@ import{a as H,b as xe,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as zt}from"./ch
                 `),i(2,"td"),e(3),t(),e(4,`
                 `),i(5,"td"),e(6),t(),e(7,`
                 `),i(8,"td"),e(9),t(),e(10,`
-                `),i(11,"td"),e(12,`
-                  `),i(13,"small",22),e(14),t(),e(15,`
-                `),t(),e(16,`
-                `),i(17,"td"),e(18),t(),e(19,`
-                `),i(20,"td"),e(21),De(22,"currency"),t(),e(23,`
-                `),i(24,"td"),e(25,`
-                  `),i(26,"button",23),e(27),d(28,ti,5,6,"c-badge",24),e(29,`
-                  `),t(),e(30,`
-                `),t(),e(31,`
-                `),i(32,"td"),e(33),t(),e(34,`
-                `),i(35,"td"),e(36,`
-                  `),i(37,"span",25),e(38),t(),e(39,`
-                `),t(),e(40,`
-                `),i(41,"td"),e(42),De(43,"date"),t(),e(44,`
-                `),i(45,"td"),e(46,`
-                  `),i(47,"div",26),e(48,`
-                    `),i(49,"a",27),z(),f(50,"svg",28),t(),e(51,`
-                    `),e(52,`
-                    `),ye(),i(53,"c-dropdown",29),e(54,`
-                      `),i(55,"button",30),e(56,`
-                        `),z(),f(57,"svg",31),e(58,`
-                      `),t(),e(59,`
-                      `),ye(),i(60,"ul",32),e(61,`
-                        `),e(62,`
-                        `),d(63,ii,4,2,"li",1),e(64,`
-                        `),d(65,ni,4,2,"li",1),e(66,`
-                        `),d(67,ri,4,2,"li",1),e(68,`
-                      `),t(),e(69,`
-                    `),t(),e(70,`
-                    `),d(71,oi,2,0,"button",33),e(72,`
-                  `),t(),e(73,`
-                `),t(),e(74,`
-              `),t()),o&2){let r=a.$implicit,n=a.index,s=_(2);l(3),D("",s.mPageFrom+n,"."),l(3),g(r.project_brief),l(3),g(r.investor.name),l(4),m("ngClass",ut(26,Jt,r.type_id==1,r.type_id==2,r.type_id==3,r.type_id==4,r.type_id==5,r.type_id==6,r.type_id==7)),l(),D(`
+                `),i(11,"td"),e(12),t(),e(13,`
+                `),i(14,"td"),e(15,`
+                  `),i(16,"small",22),e(17),t(),e(18,`
+                `),t(),e(19,`
+                `),i(20,"td"),e(21),t(),e(22,`
+                `),i(23,"td"),e(24),De(25,"currency"),t(),e(26,`
+                `),i(27,"td"),e(28,`
+                  `),i(29,"button",23),e(30),d(31,ti,5,6,"c-badge",24),e(32,`
+                  `),t(),e(33,`
+                `),t(),e(34,`
+                `),i(35,"td"),e(36),t(),e(37,`
+                `),i(38,"td"),e(39,`
+                  `),i(40,"span",25),e(41),t(),e(42,`
+                `),t(),e(43,`
+                `),i(44,"td"),e(45),De(46,"date"),t(),e(47,`
+                `),i(48,"td"),e(49,`
+                  `),i(50,"div",26),e(51,`
+                    `),i(52,"a",27),z(),f(53,"svg",28),t(),e(54,`
+                    `),e(55,`
+                    `),ye(),i(56,"c-dropdown",29),e(57,`
+                      `),i(58,"button",30),e(59,`
+                        `),z(),f(60,"svg",31),e(61,`
+                      `),t(),e(62,`
+                      `),ye(),i(63,"ul",32),e(64,`
+                        `),e(65,`
+                        `),d(66,ii,4,2,"li",1),e(67,`
+                        `),d(68,ni,4,2,"li",1),e(69,`
+                        `),d(70,ri,4,2,"li",1),e(71,`
+                      `),t(),e(72,`
+                    `),t(),e(73,`
+                    `),d(74,oi,2,0,"button",33),e(75,`
+                  `),t(),e(76,`
+                `),t(),e(77,`
+              `),t()),o&2){let r=a.$implicit,n=a.index,s=_(2);l(3),D("",s.mPageFrom+n,"."),l(3),g(r.application_number),l(3),g(r.project_brief),l(3),g(r.investor.name),l(4),m("ngClass",ut(27,Jt,r.type_id==1,r.type_id==2,r.type_id==3,r.type_id==4,r.type_id==5,r.type_id==6,r.type_id==7)),l(),D(`
                     `,r.type==null?null:r.type.name,`
-                  `),l(4),g(r.estimated_project_duration),l(3),g(Ue(22,19,r.estimated_project_construction_cost,"USD","symbol","1.2-2")),l(6),D(`
+                  `),l(4),g(r.estimated_project_duration),l(3),g(Ue(25,20,r.estimated_project_construction_cost,"USD","symbol","1.2-2")),l(6),D(`
                     `,r.has_variations,`
-                    `),l(),m("ngIf",r.variation_status),l(5),g(r.consultant.name),l(4),m("ngClass",ct(34,Kt,r.status_id==1,r.status_id==2,r.status_id==3,r.status_id==4,r.status_id==5,r.status_id==6)),l(),D(`
+                    `),l(),m("ngIf",r.variation_status),l(5),g(r.consultant.name),l(4),m("ngClass",ct(35,Kt,r.status_id==1,r.status_id==2,r.status_id==3,r.status_id==4,r.status_id==5,r.status_id==6)),l(),D(`
                     `,r.status==null?null:r.status.name,`
-                  `),l(4),g(ft(43,24,r.created_at)),l(7),m("routerLink",je("/construction-permits/show/",r.id)),l(14),m("ngIf",s.mAppContextService.hasRoles(Y(41,Lt))||s.mAppContextService.hasRoles(Y(42,at))&&(r.status_id==1||r.status_id==2)),l(2),m("ngIf",!s.mAppContextService.hasRoles(Y(43,at))),l(2),m("ngIf",!s.mAppContextService.hasRoles(Y(44,at))&&r.has_variations=="yes"),l(4),m("ngIf",s.mAppContextService.hasRoles(Y(45,Lt)))}}function li(o,a){if(o&1&&(i(0,"div",17),e(1,`
+                  `),l(4),g(ft(46,25,r.created_at)),l(7),m("routerLink",je("/construction-permits/show/",r.id)),l(14),m("ngIf",s.mAppContextService.hasRoles(Y(42,Lt))||s.mAppContextService.hasRoles(Y(43,at))&&(r.status_id==1||r.status_id==2)),l(2),m("ngIf",!s.mAppContextService.hasRoles(Y(44,at))),l(2),m("ngIf",!s.mAppContextService.hasRoles(Y(45,at))&&r.has_variations=="yes"),l(4),m("ngIf",s.mAppContextService.hasRoles(Y(46,Lt)))}}function li(o,a){if(o&1&&(i(0,"div",17),e(1,`
           `),i(2,"table",18),e(3,`
             `),i(4,"thead",19),e(5,`
               `),i(6,"tr"),e(7,`
                 `),i(8,"th",20),e(9,"#"),t(),e(10,`
-                `),i(11,"th",20),e(12,"Project"),t(),e(13,`
-                `),i(14,"th",20),e(15,"Investor"),t(),e(16,`
-                `),i(17,"th",20),e(18,"Type"),t(),e(19,`
-                `),i(20,"th",20),e(21,"Duration (Months)"),t(),e(22,`
-                `),i(23,"th",20),e(24,"Estimated Cost"),t(),e(25,`
-                `),i(26,"th",20),e(27,"Has Variations"),t(),e(28,`
-                `),i(29,"th",20),e(30,"Consultant"),t(),e(31,`
-                `),i(32,"th",20),e(33,"Status"),t(),e(34,`
-                `),i(35,"th",20),e(36,"Created"),t(),e(37,`
-                `),i(38,"th",20),e(39,"Action"),t(),e(40,`
-              `),t(),e(41,`
-            `),t(),e(42,`
-            `),i(43,"tbody"),e(44,`
-              `),d(45,ai,75,46,"tr",21),e(46,`
-            `),t(),e(47,`
-          `),t(),e(48,`
-        `),t()),o&2){let r=_();l(45),m("ngForOf",r.mConstructionPermits)}}function mi(o,a){if(o&1){let r=B();i(0,"li",43),e(1,`
+                `),i(11,"th",20),e(12,"Application No."),t(),e(13,`
+                `),i(14,"th",20),e(15,"Project"),t(),e(16,`
+                `),i(17,"th",20),e(18,"Investor"),t(),e(19,`
+                `),i(20,"th",20),e(21,"Type"),t(),e(22,`
+                `),i(23,"th",20),e(24,"Duration (Months)"),t(),e(25,`
+                `),i(26,"th",20),e(27,"Estimated Cost"),t(),e(28,`
+                `),i(29,"th",20),e(30,"Has Variations"),t(),e(31,`
+                `),i(32,"th",20),e(33,"Consultant"),t(),e(34,`
+                `),i(35,"th",20),e(36,"Status"),t(),e(37,`
+                `),i(38,"th",20),e(39,"Created"),t(),e(40,`
+                `),i(41,"th",20),e(42,"Action"),t(),e(43,`
+              `),t(),e(44,`
+            `),t(),e(45,`
+            `),i(46,"tbody"),e(47,`
+              `),d(48,ai,78,47,"tr",21),e(49,`
+            `),t(),e(50,`
+          `),t(),e(51,`
+        `),t()),o&2){let r=_();l(48),m("ngForOf",r.mConstructionPermits)}}function mi(o,a){if(o&1){let r=B();i(0,"li",43),e(1,`
               `),i(2,"a",44),S("click",function(){let s=V(r).$implicit,p=_(2);return R(p.onChangePage(s.url))}),t(),e(3,`
             `),t()}if(o&2){let r=a.$implicit;m("ngClass",pt(2,Qt,r.active,!r.url)),l(2),m("innerHTML",r.label,Se)}}function di(o,a){if(o&1&&(i(0,"div"),e(1,`
           `),i(2,"ul",41),e(3,`
@@ -100,7 +102,7 @@ import{a as H,b as xe,c as Dt}from"./chunk-ASZCG3ZZ.js";import{a as zt}from"./ch
       `),t(),e(41,`
       `),ye(),i(42,"c-card-body"),e(43,`
 
-        `),d(44,li,49,1,"div",15),e(45,`
+        `),d(44,li,52,1,"div",15),e(45,`
 
         `),d(46,di,7,1,"div",1),e(47,`
 

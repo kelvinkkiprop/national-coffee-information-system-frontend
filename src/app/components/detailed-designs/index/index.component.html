@@ -35,6 +35,7 @@
             <thead cTableColor="light1">
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Application No.</th>
                 <th scope="col">Project</th>
                 <th scope="col">Investor</th>
                 <!-- <th scope="col">Type</th> -->
@@ -50,6 +51,7 @@
             <tbody>
               <tr *ngFor="let item of mConstructionPermits; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
+                <td>{{ item.application_number }}</td>
                 <td>{{ item.project_brief }}</td>
                 <td>{{ item.investor.name }}</td>
                 <!-- <td>
