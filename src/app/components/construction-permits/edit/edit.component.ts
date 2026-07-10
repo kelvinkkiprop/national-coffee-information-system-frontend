@@ -400,10 +400,12 @@ export class EditComponent {
     const min_floors = Number(mAllocationWorksheet.min_floors);
     const max_floors = Number(mAllocationWorksheet.max_floors);
 
-    // const min_floors = toNumber(mAllocationWorksheet.min_floors);
-    // const max_floors = toNumber(mAllocationWorksheet.max_floors);
-    const min_floor_area = Number(mAllocationWorksheet.min_floor_area);
-    const max_floor_area = Number(mAllocationWorksheet.max_floor_area);
+    // // const min_floors = toNumber(mAllocationWorksheet.min_floors);
+    // // const max_floors = toNumber(mAllocationWorksheet.max_floors);
+    // const min_floor_area = Number(mAllocationWorksheet.min_floor_area);
+    // const max_floor_area = Number(mAllocationWorksheet.max_floor_area);
+    const min_floor_area = Number(mAllocationWorksheet.min_floor_area.replace(/,/g, ""));
+    const max_floor_area = Number(mAllocationWorksheet.max_floor_area.replace(/,/g, ""));
     const min_far = Number(mAllocationWorksheet.min_far);
     const max_far = Number(mAllocationWorksheet.max_far);
     // console.log("mInvestorParcel "+JSON.stringify(mInvestorParcel));
@@ -416,7 +418,8 @@ export class EditComponent {
       item.parcel_number === parcel_number &&
       (
         // floors_check
-        (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
+        (item.number_of_floors < min_floors || item.number_of_floors > max_floors) ||
+        // (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
         // floor_area_check
         (item.floor_area <= min_floor_area && item.floor_area >= max_floor_area) ||
         // FAR_check
