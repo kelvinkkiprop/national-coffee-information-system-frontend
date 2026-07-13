@@ -11,6 +11,18 @@
                     <fieldset class="border p-2 mb-3">
                     <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DETAILED PLAN</h6></legend>
                     <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group mb-3">
+                            <label for="id" class="col-form-label required">Application Number:</label>
+                            <select formControlName="id" [ngClass]="{'is-invalid': itemForm.get('id')?.invalid && (itemForm.get('id')?.dirty || itemForm.get('id')?.touched)}" type="text" class="form-control">
+                              <option value="" disabled="true" selected="true">--- Select application ---</option>
+                              <option *ngFor="let item of mMasterplanSubmissions" [value]="item.id">{{item.application_number}}</option>
+                            </select>
+                            <div *ngIf="itemForm.get('id')?.invalid && (itemForm.get('id')?.dirty || itemForm.get('id')?.touched)" class="invalid-feedback" role="alert">
+                              <div *ngIf="itemForm.get('id')?.errors?.['required']">This field is required.</div>
+                            </div>
+                          </div>
+                        </div>
                         <div class="col-md-6">
                           <div class="form-group mb-3">
                               <label for="indemnity_form" class="col-form-label required">Indemnity Form:</label>

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { DetailedDesignService } from '../../../services/detailed-design.service';
@@ -14,13 +14,9 @@ import { DetailedDesignService } from '../../../services/detailed-design.service
 })
 export class CreateComponent {
 
-
   // variables
   itemForm:any
   mProgress = signal(false);
-
-  id:any;
-  item:any = {};
 
   indemnity_form_file:any;
   architectural_design_file:any;
@@ -34,16 +30,18 @@ export class CreateComponent {
   green_certification_registration_file:any;
   nema_project_report_file:any;
 
+  mMasterplanSubmissions:any;
+
   constructor(
     private mDetailedDesignService: DetailedDesignService,
     private router: Router,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
     private fb: FormBuilder,
-    private route: ActivatedRoute,
   ) {
     // validation
     this.itemForm = this.fb.group({
+      id: ['', Validators.required],
       indemnity_form: ['', Validators.required],
       architectural_design: ['', Validators.required],
       structural_design: ['', Validators.required],
@@ -60,29 +58,29 @@ export class CreateComponent {
 
   ngOnInit(): void {
     // Call
-    this.getItem();
+    this.loadUnpaginatedItems();
   }
 
 
-  // getItem
-  getItem(){
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.mProgress = signal(true);
-    this.mDetailedDesignService.getOneItem(this.id).subscribe({
+  // loadUnpaginatedItems
+  loadUnpaginatedItems(){
+    this.mProgress.set(true);
+    this.mDetailedDesignService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          this.item = response as any;
-          // call
-          this.mProgress = signal(false);
+          // console.log(response)
+          this.mMasterplanSubmissions = (response as any).data.masterplan_submissions;
+          // console.log(this.mProfile)
+          this.mProgress.set(false);
         }
       },
       error: (error ) => {
-        if(error.error.message){
-          this.mToastrService.error(error.error.message)
-        }
-        this.mProgress = signal(false);
+        // console.log(error.error);
+        this.mToastrService.error(error.error.message);
+        this.mProgress.set(false);
       }
     });
+
   }
 
 
@@ -90,7 +88,7 @@ export class CreateComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
-    formData.append('id', this.id);
+    formData.append('id', formValues.id);
     formData.append('indemnity_form', this.indemnity_form_file, this.indemnity_form_file.name);
     formData.append('architectural_design', this.architectural_design_file, this.architectural_design_file.name);
     formData.append('structural_design', this.structural_design_file, this.structural_design_file.name);

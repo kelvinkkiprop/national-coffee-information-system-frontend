@@ -7,9 +7,9 @@
       <c-card-header>
         <div class="d-flex justify-content-between align-items-center">
           <div class="card-title">
-            <!-- <a routerLink="/detailed-designs/create" class="btn btn-danger btn-sm text-light1">
+            <a routerLink="/detailed-designs/create" class="btn btn-danger btn-sm text-light1">
               <svg cIcon name="cilPlus" class="btn-icon"></svg> Add
-            </a> -->
+            </a>
           </div>
           <div>
             <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
@@ -84,7 +84,7 @@
                       <ul cDropdownMenu>
                         <!-- Draft/Returned  -->
                         <li *ngIf="(mAppContextService.hasRoles([1]) || (mAppContextService.hasRoles([2]) && (item.status_id==1 || item.status_id==2)))"><a routerLink="/detailed-designs/edit/{{item.id}}" cDropdownItem><svg cIcon name="cilPen" class="btn-icon"></svg> Edit</a></li>
-                        <li *ngIf="(mAppContextService.hasRoles([1]) || item.status_id==5)"><a routerLink="/detailed-designs/create/{{item.id}}" cDropdownItem><svg cIcon name="cilApplications" class="btn-icon"></svg> Detailed design</a></li>
+                        <!-- <li *ngIf="(mAppContextService.hasRoles([1]) || item.status_id==6)"><a routerLink="/detailed-designs/create/{{item.id}}" cDropdownItem><svg cIcon name="cilApplications" class="btn-icon"></svg> Detailed design</a></li> -->
                         <li *ngIf="(!mAppContextService.hasRoles([2]))"><a routerLink="/detailed-designs/process/{{item.id}}" cDropdownItem><svg cIcon name="cilList" class="btn-icon"></svg> Process</a></li>
                       </ul>
                     </c-dropdown>
