@@ -23,7 +23,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'create/:id',
+    path: 'create',
     component: CreateComponent,
     data: {
       title: 'Construction Permits / Detailed Designs / Create',
