@@ -32,8 +32,8 @@ export class SsoComponent {
     this.token = this.route.snapshot.params['token'];
     this.name = this.route.snapshot.params['name'];
 
-    console.log(this.token)
-      console.log(this.name)
+    // console.log(this.token)
+    // console.log(this.name)
   }
 
   /**
