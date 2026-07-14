@@ -34,13 +34,13 @@ export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unkn
             break;
           case 401:
             toastr.error('Unauthorized');
-            // authService.localSignOut();
-            // router.navigate(['/#/auth/login']);
+            authService.localSignOut();
+            router.navigate(['/#/auth/login']);
             break;
           case 403:
             toastr.error('Forbidden');
-            // authService.localSignOut();
-            // router.navigate(['/#/auth/login']);
+            authService.localSignOut();
+            router.navigate(['/#/auth/login']);
             break;
           case 404:
             toastr.error('Not found');
