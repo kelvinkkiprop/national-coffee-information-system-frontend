@@ -52,7 +52,7 @@ export class SsoComponent {
         // redirect to dashboard
         this.mProgress = false;
         // window.location.replace('/#/dashboard');
-        window.location.replace('/#/construction-permitting//dashboard');
+        window.location.replace('/construction-permitting/#/dashboard');
       },
       error: (error) => {
         this.mToastrService.error(error.error.message)
