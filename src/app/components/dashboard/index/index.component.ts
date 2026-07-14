@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 // Import
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { DashboardService } from '../../../services/dashboard.service';
+import { AppContextService } from '../../../core/app-context.service';
 
 @Component({
   selector: 'app-index',
@@ -27,6 +28,7 @@ export class IndexComponent {
   constructor(
     private mDownloadService: DashboardService,
     public mToastrService: ToastrService,
+    public mAppContextService: AppContextService,
   ) { }
 
   ngOnInit(): void {
