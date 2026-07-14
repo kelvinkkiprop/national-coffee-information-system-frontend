@@ -32,7 +32,8 @@ export class SsoComponent {
     this.token = this.route.snapshot.params['token'];
     this.name = this.route.snapshot.params['name'];
 
-    // console.log(this.token)
+    console.log(this.token)
+      console.log(this.name)
   }
 
   /**
@@ -54,10 +55,10 @@ export class SsoComponent {
       },
       error: (error) => {
         this.mToastrService.error(error.error.message)
-        console.log(error.error)
-        // localStorage.clear();
+        localStorage.clear();
         this.mProgress = false;
-        // window.location.href = environment.sso_account_url + '/#/auth/login';
+        window.location.href = environment.sso_account_url + '/#/auth/login';
+        // console.log(error.error)
       }
     });
 
