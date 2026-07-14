@@ -55,10 +55,10 @@ export class SsoComponent {
       },
       error: (error) => {
         this.mToastrService.error(error.error.message)
-        localStorage.clear();
+        // localStorage.clear();
         this.mProgress = false;
-        window.location.href = environment.sso_account_url + '/#/auth/login';
-        // console.log(error.error)
+        // window.location.href = environment.sso_account_url + '/#/auth/login';
+        console.log(error.error)
       }
     });
 
