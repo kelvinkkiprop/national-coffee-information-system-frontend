@@ -15,7 +15,7 @@ export class IndexComponent {
 
   // variables
   mMasterplanSubmissions:any;
-  mPlanSubmissions:any;
+  mDetailedDesignSubmissions:any;
   mAllocatedParcels:any;
   mConsultants:any;
 
@@ -44,7 +44,7 @@ export class IndexComponent {
           // console.log(response)
         if(response){
           this.mMasterplanSubmissions =(response as any).data.masterplan_submissions;
-          this.mPlanSubmissions =(response as any).data.plan_submissions;
+          this.mDetailedDesignSubmissions =(response as any).data.detailed_design_submissions;
           this.mAllocatedParcels =(response as any).data.allocated_parcels;
           this.mConsultants =(response as any).data.consultants;
           this.myConstructionPermits =(response as any).data.my_construction_permits;
