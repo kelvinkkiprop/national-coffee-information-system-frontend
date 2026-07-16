@@ -17,6 +17,7 @@ import { tap } from 'rxjs';
 // import
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 
 export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
@@ -34,13 +35,15 @@ export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unkn
             break;
           case 401:
             toastr.error('Unauthorized');
-            authService.localSignOut();
-            router.navigate(['/#/auth/login']);
+            // authService.localSignOut();
+            // router.navigate(['/#/auth/login']);
+            router.navigate([environment.sso_account_url+'/#/auth/login']);
             break;
           case 403:
             toastr.error('Forbidden');
-            authService.localSignOut();
-            router.navigate(['/#/auth/login']);
+            // authService.localSignOut();
+            // router.navigate(['/#/auth/login']);
+            router.navigate([environment.sso_account_url+'/#/auth/login']);
             break;
           case 404:
             toastr.error('Not found');

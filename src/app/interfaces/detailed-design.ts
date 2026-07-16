@@ -9,7 +9,7 @@ export interface DetailedDesign {
   mechanical_design?: string,
   landscaping_design?: string,
   signage_design?: string,
-  other_necessary_drawings?: string,
+  other_relevant_documents?: string,
   green_certification_registration?: string,
   nema_project_report?: string,
 
@@ -21,7 +21,7 @@ export interface DetailedDesign {
   mechanical_design_url?: string,
   landscaping_design_url?: string,
   signage_design_url?: string,
-  other_necessary_drawings_url?: string,
+  other_relevant_documents_url?: string,
   green_certification_registration_url?: string,
   nema_project_report_url?: string,
 

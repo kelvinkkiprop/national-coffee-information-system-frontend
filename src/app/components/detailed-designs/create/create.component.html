@@ -97,10 +97,10 @@
                         </div>
                         <div class="col-md-12">
                         <div class="form-group mb-3">
-                            <label for="other_necessary_drawings" class="col-form-label required1">Other Necessary Drawings:</label>
-                            <input (change)="onOtherNecessaryDrawingsChange($event)" formControlName="other_necessary_drawings" [ngClass]="{'is-invalid': itemForm.get('other_necessary_drawings').invalid && (itemForm.get('other_necessary_drawings').dirty || itemForm.get('other_necessary_drawings').touched)}" type="file" class="form-control"/>
-                            <div *ngIf="itemForm.get('other_necessary_drawings').invalid && (itemForm.get('other_necessary_drawings').dirty || itemForm.get('other_necessary_drawings').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="itemForm.get('other_necessary_drawings').errors?.['required']">This field is required.</div>
+                            <label for="other_relevant_documents" class="col-form-label required1">Other Relevant Documents:</label>
+                            <input (change)="onOtherNecessaryDrawingsChange($event)" formControlName="other_relevant_documents" [ngClass]="{'is-invalid': itemForm.get('other_relevant_documents').invalid && (itemForm.get('other_relevant_documents').dirty || itemForm.get('other_relevant_documents').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('other_relevant_documents').invalid && (itemForm.get('other_relevant_documents').dirty || itemForm.get('other_relevant_documents').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('other_relevant_documents').errors?.['required']">This field is required.</div>
                             </div>
                         </div>
                         </div>
