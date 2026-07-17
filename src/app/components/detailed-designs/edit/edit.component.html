@@ -1,1 +1,125 @@
-<p>edit works!</p>
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-3">
+      <c-card-body>
+
+            <div>
+                <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+                    <fieldset class="border p-2 mb-3">
+                    <legend class="float-none w-auto"><h6 class="text-bolder text-muted">DETAILED PLAN</h6></legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                              <label for="indemnity_form" class="col-form-label required">Indemnity Form:</label>
+                              <input (change)="onIndemnityFormChange($event)" formControlName="indemnity_form" [ngClass]="{'is-invalid': itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)}" type="file" class="form-control"/>
+                              <div *ngIf="itemForm.get('indemnity_form').invalid && (itemForm.get('indemnity_form').dirty || itemForm.get('indemnity_form').touched)" class="invalid-feedback" role="alert">
+                              <div *ngIf="itemForm.get('indemnity_form').errors?.['required']">This field is required.</div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="architectural_design" class="col-form-label required">Architectural Design:</label>
+                            <input (change)="onArchitecturalDesignChange($event)" formControlName="architectural_design" [ngClass]="{'is-invalid': itemForm.get('architectural_design').invalid && (itemForm.get('architectural_design').dirty || itemForm.get('architectural_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('architectural_design').invalid && (itemForm.get('architectural_design').dirty || itemForm.get('architectural_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('architectural_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="structural_design" class="col-form-label required">Structural Design:</label>
+                            <input (change)="onStructuralDesignChange($event)" formControlName="structural_design" [ngClass]="{'is-invalid': itemForm.get('structural_design').invalid && (itemForm.get('structural_design').dirty || itemForm.get('structural_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('structural_design').invalid && (itemForm.get('structural_design').dirty || itemForm.get('structural_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('structural_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="electrical_design" class="col-form-label required">Electrical Design:</label>
+                            <input (change)="onElectricalDesignChange($event)" formControlName="electrical_design" [ngClass]="{'is-invalid': itemForm.get('electrical_design').invalid && (itemForm.get('electrical_design').dirty || itemForm.get('electrical_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('electrical_design').invalid && (itemForm.get('electrical_design').dirty || itemForm.get('electrical_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('electrical_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="ict_design" class="col-form-label required">ICT Design:</label>
+                            <input (change)="onIctDesignChange($event)" formControlName="ict_design" [ngClass]="{'is-invalid': itemForm.get('ict_design').invalid && (itemForm.get('ict_design').dirty || itemForm.get('ict_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('ict_design').invalid && (itemForm.get('ict_design').dirty || itemForm.get('ict_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('ict_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="mechanical_design" class="col-form-label required">Mechanical Design:</label>
+                            <input (change)="onMechanicalDesignChange($event)" formControlName="mechanical_design" [ngClass]="{'is-invalid': itemForm.get('mechanical_design').invalid && (itemForm.get('mechanical_design').dirty || itemForm.get('mechanical_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('mechanical_design').invalid && (itemForm.get('mechanical_design').dirty || itemForm.get('mechanical_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('mechanical_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="landscaping_design" class="col-form-label required">Landscaping Design:</label>
+                            <input (change)="onLandscapingDesignChange($event)" formControlName="landscaping_design" [ngClass]="{'is-invalid': itemForm.get('landscaping_design').invalid && (itemForm.get('landscaping_design').dirty || itemForm.get('landscaping_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('landscaping_design').invalid && (itemForm.get('landscaping_design').dirty || itemForm.get('landscaping_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('landscaping_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="signage_design" class="col-form-label required">Signage Design:</label>
+                            <input (change)="onSignageDesignChange($event)" formControlName="signage_design" [ngClass]="{'is-invalid': itemForm.get('signage_design').invalid && (itemForm.get('signage_design').dirty || itemForm.get('signage_design').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('signage_design').invalid && (itemForm.get('signage_design').dirty || itemForm.get('signage_design').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('signage_design').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <label for="other_relevant_documents" class="col-form-label required1">Other Relevant Documents:</label>
+                            <input (change)="onOtherNecessaryDrawingsChange($event)" formControlName="other_relevant_documents" [ngClass]="{'is-invalid': itemForm.get('other_relevant_documents').invalid && (itemForm.get('other_relevant_documents').dirty || itemForm.get('other_relevant_documents').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('other_relevant_documents').invalid && (itemForm.get('other_relevant_documents').dirty || itemForm.get('other_relevant_documents').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('other_relevant_documents').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="green_certification_registration" class="col-form-label required">Green Certification Registration:</label>
+                            <input (change)="onGreenCertificationRegistrationChange($event)" formControlName="green_certification_registration" [ngClass]="{'is-invalid': itemForm.get('green_certification_registration').invalid && (itemForm.get('green_certification_registration').dirty || itemForm.get('green_certification_registration').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('green_certification_registration').invalid && (itemForm.get('green_certification_registration').dirty || itemForm.get('green_certification_registration').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('green_certification_registration').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="nema_project_report" class="col-form-label required">NEMA Project Report:</label>
+                            <input (change)="onNemaProjectReportChange($event)" formControlName="nema_project_report" [ngClass]="{'is-invalid': itemForm.get('nema_project_report').invalid && (itemForm.get('nema_project_report').dirty || itemForm.get('nema_project_report').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('nema_project_report').invalid && (itemForm.get('nema_project_report').dirty || itemForm.get('nema_project_report').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('nema_project_report').errors?.['required']">This field is required.</div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </fieldset>
+                    <div class="mt-3 text-right">
+                      <button routerLink="/construction-permits" cButton color="danger">Cancel</button>
+                      <button [disabled]="itemForm.invalid" type="submit" cButton color="success">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
