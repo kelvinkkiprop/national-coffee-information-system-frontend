@@ -46,7 +46,6 @@ export class EditComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      id: ['', Validators.required],
       indemnity_form: ['', Validators.required],
       architectural_design: ['', Validators.required],
       structural_design: ['', Validators.required],
@@ -113,7 +112,7 @@ export class EditComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
-    formData.append('id', this.item.id);
+    formData.append('id', this.id);
     formData.append('indemnity_form', this.indemnity_form_file, this.indemnity_form_file.name);
     formData.append('architectural_design', this.architectural_design_file, this.architectural_design_file.name);
     formData.append('structural_design', this.structural_design_file, this.structural_design_file.name);
@@ -128,7 +127,7 @@ export class EditComponent {
     formData.append('_method', 'POST')
 
     this.mProgress.set(true);
-    this.mDetailedDesignService.createItem(formData).subscribe({
+    this.mDetailedDesignService.updateItem(formData, this.id).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
