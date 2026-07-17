@@ -27,7 +27,7 @@ export class EditComponent {
   mechanical_design_file:any;
   landscaping_design_file:any;
   signage_design_file:any;
-  other_necessary_drawings_file:any;
+  other_relevant_documents_file:any;
   green_certification_registration_file:any;
   nema_project_report_file:any;
 
@@ -54,7 +54,7 @@ export class EditComponent {
       mechanical_design: ['', Validators.required],
       landscaping_design: ['', Validators.required],
       signage_design: ['', Validators.required],
-      other_necessary_drawings: ['', Validators.nullValidator],
+      other_relevant_documents: ['', Validators.nullValidator],
       green_certification_registration: ['', Validators.required],
       nema_project_report: ['', Validators.required],
     });
@@ -121,7 +121,7 @@ export class EditComponent {
     formData.append('mechanical_design', this.mechanical_design_file, this.mechanical_design_file.name);
     formData.append('landscaping_design', this.landscaping_design_file, this.landscaping_design_file.name);
     formData.append('signage_design', this.signage_design_file, this.signage_design_file.name);
-    formData.append('other_necessary_drawings', this.other_necessary_drawings_file, this.other_necessary_drawings_file.name);
+    formData.append('other_relevant_documents', this.other_relevant_documents_file, this.other_relevant_documents_file.name);
     formData.append('green_certification_registration', this.green_certification_registration_file, this.green_certification_registration_file.name);
     formData.append('nema_project_report', this.nema_project_report_file, this.nema_project_report_file.name);
     formData.append('_method', 'POST')
@@ -203,11 +203,11 @@ export class EditComponent {
       this.signage_design_file = file;
     }
   }
-  // onOtherNecessaryDrawingsChange
-  onOtherNecessaryDrawingsChange(event:any) {
+  // onOtherRelevantDocumentsChange
+  onOtherRelevantDocumentsChange(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.other_necessary_drawings_file = file;
+      this.other_relevant_documents_file = file;
     }
   }
   // onGreenCertificationRegistrationChange
