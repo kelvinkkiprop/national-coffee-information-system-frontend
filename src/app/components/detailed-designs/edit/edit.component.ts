@@ -124,7 +124,9 @@ export class EditComponent {
     formData.append('other_relevant_documents', this.other_relevant_documents_file, this.other_relevant_documents_file.name);
     formData.append('green_certification_registration', this.green_certification_registration_file, this.green_certification_registration_file.name);
     formData.append('nema_project_report', this.nema_project_report_file, this.nema_project_report_file.name);
-    formData.append('_method', 'POST')
+    // formData.append('_method', 'POST')
+    formData.append('_method', 'PUT')
+
 
     this.mProgress.set(true);
     this.mDetailedDesignService.updateItem(formData, this.id).subscribe({
