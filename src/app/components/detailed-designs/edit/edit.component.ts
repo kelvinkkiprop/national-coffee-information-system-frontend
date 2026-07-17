@@ -129,7 +129,7 @@ export class EditComponent {
 
 
     this.mProgress.set(true);
-    this.mDetailedDesignService.updateItem(formData, this.id).subscribe({
+    this.mDetailedDesignService.updateItem(this.id,formData).subscribe({
       next: (response) => {
         if(response){
           // console.log(response)
