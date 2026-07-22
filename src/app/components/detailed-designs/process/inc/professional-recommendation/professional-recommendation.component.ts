@@ -47,6 +47,8 @@ export class ProfessionalRecommendationComponent {
       environment_health_and_safety_report: ['', Validators.nullValidator],
       professional_sustainability_report: ['', Validators.nullValidator],
       landscaping_report: ['', Validators.nullValidator],
+      civil_works_design_report: ['', Validators.nullValidator],
+      water_and_sanitation_designs_report: ['', Validators.nullValidator],
     });
   }
 
@@ -87,6 +89,8 @@ export class ProfessionalRecommendationComponent {
       environment_health_and_safety_report: formValues.environment_health_and_safety_report,
       professional_sustainability_report: formValues.professional_sustainability_report,
       landscaping_report: formValues.landscaping_report,
+      civil_works_design_report: formValues.civil_works_design_report,
+      water_and_sanitation_designs_report: formValues.water_and_sanitation_designs_report,
     }
     this.mProgress = signal(true);
     this.mDetailedDesignService.professionalRecommendationsDetailedPlanItem(item).subscribe({
