@@ -46,6 +46,7 @@ export class ProfessionalRecommendationComponent {
       mechanical_engineer_report: ['', Validators.nullValidator],
       environment_health_and_safety_report: ['', Validators.nullValidator],
       professional_sustainability_report: ['', Validators.nullValidator],
+      landscaping_report: ['', Validators.nullValidator],
     });
   }
 
@@ -85,6 +86,7 @@ export class ProfessionalRecommendationComponent {
       mechanical_engineer_report: formValues.mechanical_engineer_report,
       environment_health_and_safety_report: formValues.environment_health_and_safety_report,
       professional_sustainability_report: formValues.professional_sustainability_report,
+      landscaping_report: formValues.landscaping_report,
     }
     this.mProgress = signal(true);
     this.mDetailedDesignService.professionalRecommendationsDetailedPlanItem(item).subscribe({

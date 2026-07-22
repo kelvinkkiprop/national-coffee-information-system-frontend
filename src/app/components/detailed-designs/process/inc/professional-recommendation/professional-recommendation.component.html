@@ -117,6 +117,15 @@
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="form-group mb-3">
+          <label for="landscaping_report" class="col-form-label required">Landscaping Report:</label>
+          <ckeditor [editor]="mEditor" [config]="mAppContextService.ckEditorConfig" [(ngModel)]="item.landscaping_report" formControlName="landscaping_report" [ngClass]="{'is-invalid': itemForm.get('landscaping_report').invalid && (itemForm.get('landscaping_report').dirty || itemForm.get('landscaping_report').touched)}" type="text" class="form-control1"></ckeditor>
+          <div *ngIf="itemForm.get('landscaping_report').invalid && (itemForm.get('landscaping_report').dirty || itemForm.get('landscaping_report').touched)" class="invalid-feedback" role="alert">
+            <div *ngIf="itemForm.get('landscaping_report').errors?.['required']">This field is required.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
