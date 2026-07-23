@@ -27,7 +27,8 @@ export class ProfessionalRecommendationComponent {
   item:any = {};
 
   public mEditor: any = ClassicEditor;
-  mNextPreviousStatuses:any;
+  mProfessionalReviewStatuses:any;
+  mProfessionals:any;
 
   constructor(
     public mToastrService: ToastrService,
@@ -39,21 +40,39 @@ export class ProfessionalRecommendationComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      architect_report: ['', Validators.nullValidator],
-      structural_engineer_report: ['', Validators.nullValidator],
-      electrical_engineer_report: ['', Validators.nullValidator],
-      ict_engineer_report: ['', Validators.nullValidator],
-      mechanical_engineer_report: ['', Validators.nullValidator],
-      environment_health_and_safety_report: ['', Validators.nullValidator],
+      architect_report: ['', Validators.nullValidator], //Architect
+      architect_reviewer_id: ['', Validators.nullValidator],
+      architect_status_id: ['', Validators.nullValidator],
+      structural_engineer_report: ['', Validators.nullValidator], //StructuralEngineer
+      structural_engineer_reviewer_id: ['', Validators.nullValidator],
+      structural_engineer_status_id: ['', Validators.nullValidator],
+      electrical_engineer_report: ['', Validators.nullValidator],//ElectricalEngineer
+      electrical_engineer_reviewer_id: ['', Validators.nullValidator],
+      electrical_engineer_status_id: ['', Validators.nullValidator],
+      ict_engineer_report: ['', Validators.nullValidator],//ICTEngineer
+      ict_engineer_reviewer_id: ['', Validators.nullValidator],
+      ict_engineer_status_id: ['', Validators.nullValidator],
+      mechanical_engineer_report: ['', Validators.nullValidator],//MechanicalEngineer
+      mechanical_engineer_reviewer_id: ['', Validators.nullValidator],
+      mechanical_engineer_status_id: ['', Validators.nullValidator],
+      environment_health_and_safety_report: ['', Validators.nullValidator],//Environment Health and Safety Officer
       professional_sustainability_report: ['', Validators.nullValidator],
       landscaping_report: ['', Validators.nullValidator],
-      civil_works_design_report: ['', Validators.nullValidator],
-      water_and_sanitation_designs_report: ['', Validators.nullValidator],
+      environment_officer_reviewer_id: ['', Validators.nullValidator],
+      environment_officer_status_id: ['', Validators.nullValidator],
+      civil_works_design_report: ['', Validators.nullValidator],//Streetscape Engineer
+      streetscape_engineer_reviewer_id: ['', Validators.nullValidator],
+      streetscape_engineer_status_id: ['', Validators.nullValidator],
+      water_and_sanitation_designs_report: ['', Validators.nullValidator],//Water & Sanitation Engineer
+      water_engineer_reviewer_id: ['', Validators.nullValidator],
+      water_engineer_status_id: ['', Validators.nullValidator],
     });
   }
 
   ngOnInit(): void {
+    // call
     this.getItem();
+    this.loadUnpaginatedItems();
   }
 
   // getItem
@@ -74,6 +93,28 @@ export class ProfessionalRecommendationComponent {
         this.mProgress = signal(false);
       }
     });
+  }
+
+  // loadUnpaginatedItems
+  loadUnpaginatedItems(){
+    this.mProgress.set(true);
+    this.mDetailedDesignService.unpaginatedItems().subscribe({
+      next: (response) => {
+        if(response){
+          // console.log(response)
+          this.mProfessionalReviewStatuses = (response as any).data.professional_review_statuses;
+          this.mProfessionals = (response as any).data.professionals;
+          // console.log(this.mProfile)
+          this.mProgress.set(false);
+        }
+      },
+      error: (error ) => {
+        // console.log(error.error);
+        this.mToastrService.error(error.error.message);
+        this.mProgress.set(false);
+      }
+    });
+
   }
 
 
