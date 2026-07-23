@@ -76,10 +76,10 @@
                         </div>
                         <div class="col-md-6">
                         <div class="form-group mb-3">
-                            <label for="signage_design" class="col-form-label required">Signage Design:</label>
-                            <input (change)="onSignageDesignChange($event)" formControlName="signage_design" [ngClass]="{'is-invalid': itemForm.get('signage_design').invalid && (itemForm.get('signage_design').dirty || itemForm.get('signage_design').touched)}" type="file" class="form-control"/>
-                            <div *ngIf="itemForm.get('signage_design').invalid && (itemForm.get('signage_design').dirty || itemForm.get('signage_design').touched)" class="invalid-feedback" role="alert">
-                            <div *ngIf="itemForm.get('signage_design').errors?.['required']">This field is required.</div>
+                            <label for="site_access_plan" class="col-form-label required">Site Access Plan:</label>
+                            <input (change)="onSignageDesignChange($event)" formControlName="site_access_plan" [ngClass]="{'is-invalid': itemForm.get('site_access_plan').invalid && (itemForm.get('site_access_plan').dirty || itemForm.get('site_access_plan').touched)}" type="file" class="form-control"/>
+                            <div *ngIf="itemForm.get('site_access_plan').invalid && (itemForm.get('site_access_plan').dirty || itemForm.get('site_access_plan').touched)" class="invalid-feedback" role="alert">
+                            <div *ngIf="itemForm.get('site_access_plan').errors?.['required']">This field is required.</div>
                             </div>
                         </div>
                         </div>

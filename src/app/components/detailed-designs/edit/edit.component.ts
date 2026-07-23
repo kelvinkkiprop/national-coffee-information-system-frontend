@@ -26,7 +26,7 @@ export class EditComponent {
   ict_design_file:any;
   mechanical_design_file:any;
   landscaping_design_file:any;
-  signage_design_file:any;
+  site_access_plan_file:any;
   other_relevant_documents_file:any;
   green_certification_registration_file:any;
   nema_project_report_file:any;
@@ -53,7 +53,7 @@ export class EditComponent {
       ict_design: ['', Validators.required],
       mechanical_design: ['', Validators.required],
       landscaping_design: ['', Validators.required],
-      signage_design: ['', Validators.required],
+      site_access_plan: ['', Validators.required],
       other_relevant_documents: ['', Validators.nullValidator],
       green_certification_registration: ['', Validators.required],
       nema_project_report: ['', Validators.required],
@@ -120,7 +120,7 @@ export class EditComponent {
     formData.append('ict_design', this.ict_design_file, this.ict_design_file.name);
     formData.append('mechanical_design', this.mechanical_design_file, this.mechanical_design_file.name);
     formData.append('landscaping_design', this.landscaping_design_file, this.landscaping_design_file.name);
-    formData.append('signage_design', this.signage_design_file, this.signage_design_file.name);
+    formData.append('site_access_plan', this.site_access_plan_file, this.site_access_plan_file.name);
     formData.append('other_relevant_documents', this.other_relevant_documents_file, this.other_relevant_documents_file.name);
     formData.append('green_certification_registration', this.green_certification_registration_file, this.green_certification_registration_file.name);
     formData.append('nema_project_report', this.nema_project_report_file, this.nema_project_report_file.name);
@@ -202,7 +202,7 @@ export class EditComponent {
   onSignageDesignChange(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.signage_design_file = file;
+      this.site_access_plan_file = file;
     }
   }
   // onOtherRelevantDocumentsChange
