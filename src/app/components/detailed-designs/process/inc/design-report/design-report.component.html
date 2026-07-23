@@ -2,53 +2,9 @@
 <app-progress *ngIf="mProgress()" />
 
 <div>
-  <fieldset class="border p-2 mb-3">
-    <legend class="float-none w-auto"><h6 class="text-bolder text-muted">PROFEFESSIONAL RECOMMENDATIONS</h6></legend>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="architect_report">Architect Report:</label>
-          <div class="text-muted">{{ item.architect_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="electrical_engineer_report">Electrical Engineer Report:</label>
-          <div class="text-muted">{{ item.electrical_engineer_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="electrical_engineer_report">Structural Engineer Report:</label>
-          <div class="text-muted">{{ item.structural_engineer_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="ict_engineer_report">ICT Engineer Report:</label>
-          <div class="text-muted">{{ item.ict_engineer_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="mechanical_engineer_report">Mechanical Engineer Report:</label>
-          <div class="text-muted">{{ item.mechanical_engineer_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="environment_health_and_safety_report">Environment Health and Safety Report:</label>
-          <div class="text-muted">{{ item.environment_health_and_safety_report }}</div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="professional_sustainability_report">Professional Sustainability Report:</label>
-          <div class="text-muted">{{ item.professional_sustainability_report }}</div>
-        </div>
-      </div>
-    </div>
-  </fieldset>
+
+  <app-show/>
+
 </div>
 
 <div>
