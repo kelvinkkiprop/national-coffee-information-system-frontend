@@ -142,6 +142,11 @@ export class EditComponent {
           this.item = response as any;
           this.mLandUsePlans = this.item.land_use_plans;
           this.mInvestorParcels = this.item.investor.parcels;
+
+          // set
+          this.itemForm.get('has_variations')?.setValue(this.item.has_variations);
+          this.mHasVariation = this.item.has_variations;
+
           this.mProgress.set(false);
         }
       },
@@ -390,124 +395,56 @@ export class EditComponent {
   // onCheckVariations
   onCheckVariations(item:any) {
 
-  const hasVariation = this.mInvestorParcels.some((mInvestorParcel: any) => {
-    const parcel_number = mInvestorParcel.allocation_worksheet.number;
-    // const toNumber = (value: any): number => {
-    //   return Number(String(value).replace(/,/g, ""));
-    // };
+    let mAllocationWorksheet:any;
+    this.mInvestorParcels.some((mInvestorParcel: any) => {
+      mAllocationWorksheet = mInvestorParcel.allocation_worksheet;
+      // const parcelNumber = mAllocationWorksheet.number;
+    });
+    const toNumber=(value:any):number=>Number(String(value).replace(/,/g, ''));
+    // console.log("mAllocationWorksheet "+toNumber(mAllocationWorksheet.plot_coverage) + "item "+toNumber(item.percentage_of_site_covered_by_existing_building)+toNumber(item.percentage_of_site_covered_by_proposed_building));
 
-    const toNumber = (value: any): number => {
-      if (value === null || value === undefined || value === '') {
-        return 0;
-      }
+    const mPlotCoverage = Number(mAllocationWorksheet.plot_coverage);
+    const mProposedPlotCoverage = Number(item.percentage_of_site_covered_by_existing_building)+Number(item.percentage_of_site_covered_by_proposed_building);
 
-      const n = Number(String(value).replace(/,/g, ''));
-      return isNaN(n) ? 0 : n;
-    };
+    const mMinFloors = Number(mAllocationWorksheet.min_floors);
+    const mMaxFloors = Number(mAllocationWorksheet.max_floors);
+    const mProposedFloors = Number(item.number_of_floors);
 
-    const mAllocationWorksheet = mInvestorParcel.allocation_worksheet;
-    // const min_floors = Number(mAllocationWorksheet.min_floors);
-    // const max_floors = Number(mAllocationWorksheet.max_floors);
-    const min_floors = toNumber(mAllocationWorksheet.min_floors);
-    const max_floors = toNumber(mAllocationWorksheet.max_floors);
+    const mMinFloorArea = toNumber(mAllocationWorksheet.min_floor_area);
+    const mMaxFloorArea = toNumber(mAllocationWorksheet.max_floor_area);
+    const mProposedFloorArea = Number(item.floor_area);
 
-    // // const min_floors = toNumber(mAllocationWorksheet.min_floors);
-    // // const max_floors = toNumber(mAllocationWorksheet.max_floors);
-    // const min_floor_area = Number(mAllocationWorksheet.min_floor_area);
-    // const max_floor_area = Number(mAllocationWorksheet.max_floor_area);
-    const min_floor_area = toNumber(mAllocationWorksheet.min_floor_area);
-    const max_floor_area = toNumber(mAllocationWorksheet.max_floor_area);
-    // const min_far = Number(mAllocationWorksheet.min_far);
-    // const max_far = Number(mAllocationWorksheet.max_far);
-    const min_far = toNumber(mAllocationWorksheet.min_far);
-    const max_far = toNumber(mAllocationWorksheet.max_far);
-    // console.log("mInvestorParcel "+JSON.stringify(mInvestorParcel));
-    // console.log("mItem "+JSON.stringify(item));
-    // console.log("min_number_of_floors "+item.min_number_of_floors+"min_number_of_floors "+mInvestorParcel.allocation_worksheet.min_floors);
+    const mMinFAR = Number(mAllocationWorksheet.min_far);
+    const mMaxFAR = Number(mAllocationWorksheet.max_far);
+    const mProposedFAR = Number(item.far);
 
-    // console.log(item.min_number_of_floors < min_floors)
-    console.log(this.mHasVariation);
+    // console.log("mMinFloors "+mMinFloors);
+    // console.log("mMaxFloors "+mMaxFloors);
+    // console.log("mProposedFloors "+mProposedFloors);
+    // console.log("mMaxFloors "+mMaxFloors);
+    // console.log("mPlotCoverage "+mPlotCoverage);
+    // console.log("mProposedPlotCoverage "+mProposedPlotCoverage);
+    // console.log("mMinFloorArea "+mMinFloorArea);
+    // console.log("mMaxFloorArea "+mMaxFloorArea);
+    // console.log("mMaxFAR "+mMaxFAR);
+    // console.log("mProposedFloorArea "+mProposedFloorArea);
+    // console.log("mMinFAR "+mMinFAR);
+    // console.log("mMaxFAR "+mMaxFAR);
+    // console.log("mProposedFAR "+mProposedFAR);
 
-
-    return (
-      item.parcel_number === parcel_number &&
-      (
-        // floors_check
-        // (item.number_of_floors <= min_floors || item.number_of_floors >= max_floors) ||
-        (item.number_of_floors < min_floors || item.number_of_floors > max_floors) ||
-        // floor_area_check
-        // (item.floor_area <= min_floor_area && item.floor_area >= max_floor_area) ||
-        (item.floor_area < min_floor_area || item.floor_area > max_floor_area) ||
-        // FAR_check
-        (item.far < min_far || item.far > max_far)
-        // (item.far <= min_far && item.far >= max_far)
-      )
+    const mIsValid = (
+      (mProposedFloors>=mMinFloors) && (mProposedFloors<=mMaxFloors) &&
+      (mProposedFloorArea>=mMinFloorArea) && (mProposedFloorArea<=mMaxFloorArea) &&
+      (mProposedFAR>=mMinFAR) && (mProposedFAR<=mMaxFAR) &&
+      (mProposedPlotCoverage<=mPlotCoverage)
     );
-  });
-
-  if(hasVariation==true && this.mHasVariation == 'no'){
-    this.mHasVariation = 'yes'; // AnySlightVariation
-    this.mHasVariation = 'no'; // AnySlightVariationTODO
-  }
-  this.itemForm.get('has_variations')?.setValue(this.mHasVariation);
-  console.log(this.mHasVariation);
-
-
-
-            // "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
-            // "phase": 1,
-            // "number": "AN-005",
-            // "acres": "1.53",
-            // "parcel_land_use_group_id": 4,
-            // "predominant_land": null,
-            // "preferred_ground_floor_use": null,
-            // "secondary_use": null,
-            // "min_floors": "2",
-            // "max_floors": "6",
-            // "stand_premium": 10370000,
-            // "annual_ground_rent": 830000,
-            // "service_charge": 68827.5,
-            // "status_id": 4,
-            // "code": null,
-            // "description": null,
-            // "min_floor_area": null,
-            // "max_floor_area": null,
-            // "min_far": null,
-            // "max_far": null,
-            // "plot_coverage": null,
-            // "rings": null,
-            // "created_by": null,
-            // "updated_by": null,
-            // "created_at": null,
-            // "updated_at": "2026-04-15T15:19:39.000000Z",
-            // "deleted_at": null            "id": "4d927a3c-a3b2-44a5-a8b4-3070856e219f",
-            // "phase": 1,
-            // "number": "AN-005",
-            // "acres": "1.53",
-            // "parcel_land_use_group_id": 4,
-            // "predominant_land": null,
-            // "preferred_ground_floor_use": null,
-            // "secondary_use": null,
-            // "min_floors": "2",
-            // "max_floors": "6",
-            // "stand_premium": 10370000,
-            // "annual_ground_rent": 830000,
-            // "service_charge": 68827.5,
-            // "status_id": 4,
-            // "code": null,
-            // "description": null,
-            // "min_floor_area": null,
-            // "max_floor_area": null,
-            // "min_far": null,
-            // "max_far": null,
-            // "plot_coverage": null,
-            // "rings": null,
-            // "created_by": null,
-            // "updated_by": null,
-            // "created_at": null,
-            // "updated_at": "2026-04-15T15:19:39.000000Z",
-            // "deleted_at": null
-
+    console.log(mIsValid);
+    if(mIsValid===false && this.mHasVariation==='no'){
+      this.mHasVariation = 'yes'; // AnySlightVariation
+    }else{
+      this.mHasVariation = 'no';
+    }
+    this.itemForm.get('has_variations')?.setValue(this.mHasVariation);
   }
 
 

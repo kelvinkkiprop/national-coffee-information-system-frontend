@@ -17,7 +17,6 @@ import { DetailedDesignService } from '../../../../../services/detailed-design.s
 })
 export class ConstructionPermitComponent {
 
-
   // variables
   itemForm: any;
   mProgress = signal(false);
@@ -65,13 +64,12 @@ export class ConstructionPermitComponent {
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.error(error.error.message);
         }
         this.mProgress = signal(false);
       }
     });
   }
-
 
   // onSubmit
   onSubmit(formValues: any){
@@ -100,7 +98,6 @@ export class ConstructionPermitComponent {
     });
 
   }
-
 
   // onConstructionPermitChange
   onConstructionPermitChange(event:any) {

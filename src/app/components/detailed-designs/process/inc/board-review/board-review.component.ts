@@ -8,13 +8,13 @@ import { AppContextService } from '../../../../../core/app-context.service';
 import { DetailedDesignService } from '../../../../../services/detailed-design.service';
 
 @Component({
-  selector: 'app-committee-stage',
+  selector: 'app-board-review',
   // imports: [],
-  templateUrl: './committee-stage.component.html',
-  styleUrl: './committee-stage.component.scss',
+  templateUrl: './board-review.component.html',
+  styleUrl: './board-review.component.scss',
   standalone: false
 })
-export class CommitteeStageComponent {
+export class BoardReviewComponent {
 
 
   // variables
@@ -27,7 +27,7 @@ export class CommitteeStageComponent {
   mNextPreviousStatuses:any;
   public mEditor: any = ClassicEditor;
 
-  letter_of_no_objection_file:any;
+  board_resolution_file:any;
 
   constructor(
     public mToastrService: ToastrService,
@@ -40,7 +40,7 @@ export class CommitteeStageComponent {
     // validation
     this.itemForm = this.fb.group({
       detailed_plan_status_id: ['', Validators.required],
-      letter_of_no_objection: ['', Validators.nullValidator],
+      board_resolution: ['', Validators.nullValidator],
       remarks: ['', Validators.nullValidator],
     });
   }
@@ -77,13 +77,13 @@ export class CommitteeStageComponent {
 
     let formData:any = new FormData();
     // attachments
-    // formData.append('letter_of_no_objection', this.letter_of_no_objection_file || '', this.letter_of_no_objection_file?.name || '' );
+    // formData.append('board_resolution', this.board_resolution_file || '', this.board_resolution_file?.name || '' );
     formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
     // attachments
-    if (this.letter_of_no_objection_file) {
-      formData.append('letter_of_no_objection', this.letter_of_no_objection_file, this.letter_of_no_objection_file.name);
+    if (this.board_resolution_file) {
+      formData.append('board_resolution', this.board_resolution_file, this.board_resolution_file.name);
     } else {
-      formData.append('letter_of_no_objection', ''); // or_empty_string ''
+      formData.append('board_resolution', ''); // or_empty_string ''
     }
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
@@ -125,15 +125,12 @@ export class CommitteeStageComponent {
     });
   }
 
-
-  // onLetterOfNoObjection
-  onLetterOfNoObjection(event:any) {
+  // onBoardResolution
+  onBoardResolution(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.letter_of_no_objection_file = file;
+      this.board_resolution_file = file;
     }
   }
 
 }
-
-

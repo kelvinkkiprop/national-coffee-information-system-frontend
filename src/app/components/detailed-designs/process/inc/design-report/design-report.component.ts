@@ -7,7 +7,6 @@ import { ClassicEditor } from 'ckeditor5';
 import { AppContextService } from '../../../../../core/app-context.service';
 import { DetailedDesignService } from '../../../../../services/detailed-design.service';
 
-
 @Component({
   selector: 'app-design-report',
   // imports: [],
@@ -16,7 +15,6 @@ import { DetailedDesignService } from '../../../../../services/detailed-design.s
   standalone: false
 })
 export class DesignReportComponent {
-
 
   // variables
   itemForm: any;
@@ -49,7 +47,7 @@ export class DesignReportComponent {
 
   // getItem
   getItem(){
-    this.id = this.route.snapshot.paramMap.get('id')
+    this.id = this.route.snapshot.paramMap.get('id');
     this.mProgress = signal(true);
     this.mDetailedDesignService.getOneItem(this.id).subscribe({
       next: (response) => {
@@ -68,7 +66,6 @@ export class DesignReportComponent {
       }
     });
   }
-
 
   // onSubmit
   onSubmit(formValues: any){
@@ -113,7 +110,6 @@ export class DesignReportComponent {
       }
     });
   }
-
 
 }
 

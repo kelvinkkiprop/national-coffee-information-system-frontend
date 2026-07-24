@@ -108,7 +108,7 @@ export class IndexComponent {
     //Show
     // swal.fire({
     swalWithBootstrapButtons.fire({
-      title: 'Remove "'+item.name+'"?',
+      title: 'Remove "'+item.application_number+'"?',
       text: "You won't be able to revert this!",
       icon: 'error',
       showCancelButton: true,

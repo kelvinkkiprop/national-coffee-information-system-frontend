@@ -14,7 +14,6 @@ import { DetailedDesignService } from '../../../services/detailed-design.service
 })
 export class EditComponent {
 
-
   // variables
   itemForm:any
   mProgress = signal(false);
@@ -79,7 +78,7 @@ export class EditComponent {
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.error(error.error.message);
         }
         this.mProgress.set(false);
       }
@@ -94,7 +93,7 @@ export class EditComponent {
         if(response){
           // console.log(response)
           this.mMasterplanSubmissions = (response as any).data.masterplan_submissions;
-          // console.log(this.mProfile)
+          // console.log(this.mProfile);
           this.mProgress.set(false);
         }
       },
@@ -125,8 +124,7 @@ export class EditComponent {
     formData.append('green_certification_registration', this.green_certification_registration_file, this.green_certification_registration_file.name);
     formData.append('nema_project_report', this.nema_project_report_file, this.nema_project_report_file.name);
     // formData.append('_method', 'POST')
-    formData.append('_method', 'PUT')
-
+    formData.append('_method', 'PUT');
 
     this.mProgress.set(true);
     this.mDetailedDesignService.updateItem(this.id,formData).subscribe({
@@ -134,7 +132,7 @@ export class EditComponent {
         if(response){
           // console.log(response)
           this.mToastrService.success((response as any).message);
-          this.router.navigateByUrl('/detailed-plans');
+          this.router.navigateByUrl('/detailed-designs');
           this.mProgress.set(false);
         }
       },

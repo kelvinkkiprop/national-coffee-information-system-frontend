@@ -50,19 +50,19 @@ ng generate component components/construction-permits/process/inc/review
 ng generate component components/construction-permits/process/inc/professional-review
 ng generate component components/construction-permits/process/inc/cm-approval
 
-ng generate component components/detailed-plans/index
-ng generate component components/detailed-plans/create
-ng generate component components/detailed-plans/edit
-ng generate component components/detailed-plans/show
-ng generate module components/detailed-plans/detailed-plan
-ng generate module components/detailed-plans/detailed-plan-routing
-ng generate component components/detailed-plans/process
-ng generate component components/detailed-plans/process/inc/submission
-ng generate component components/detailed-plans/process/inc/planner-review
-ng generate component components/detailed-plans/process/inc/professional-recommendation
-ng generate component components/detailed-plans/process/inc/design-report
-ng generate component components/detailed-plans/process/inc/committee-stage
-ng generate component components/detailed-plans/process/inc/construction-permit
+ng generate component components/detailed-designs/index
+ng generate component components/detailed-designs/create
+ng generate component components/detailed-designs/edit
+ng generate component components/detailed-designs/show
+ng generate module components/detailed-designs/detailed-plan
+ng generate module components/detailed-designs/detailed-plan-routing
+ng generate component components/detailed-designs/process
+ng generate component components/detailed-designs/process/inc/submission
+ng generate component components/detailed-designs/process/inc/planner-review
+ng generate component components/detailed-designs/process/inc/professional-recommendation
+ng generate component components/detailed-designs/process/inc/design-report
+ng generate component components/detailed-designs/process/inc/board-review
+ng generate component components/detailed-designs/process/inc/construction-permit
 
 ng generate component components/profiles/index
 ng generate component components/profiles/create
