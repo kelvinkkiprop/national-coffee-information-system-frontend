@@ -27,7 +27,7 @@ export class PermitComponent {
   mNextPreviousStatuses:any;
   public mEditor: any = ClassicEditor;
 
-  construction_permit_file:any;
+  permit_file:any;
   notice_of_approval_file:any;
 
   constructor(
@@ -75,14 +75,14 @@ export class PermitComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
-    // formData.append('permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    // formData.append('permit', this.permit_file || '', this.permit_file?.name || '' );
     formData.append('notice_of_approval', this.notice_of_approval_file || '', this.notice_of_approval_file?.name || '' );
-    formData.append('permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    formData.append('permit', this.permit_file || '', this.permit_file?.name || '' );
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
 
     this.mProgress.set(true);
-    this.mDetailedDesignService.constructionPermitItem(this.id, formData).subscribe({
+    this.mDetailedDesignService.permitItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
         this.router.navigateByUrl('/detailed-designs');
@@ -103,7 +103,7 @@ export class PermitComponent {
   onConstructionPermitChange(event:any) {
     if (event.target.value) {
       const file = event.target.files[0];
-      this.construction_permit_file = file;
+      this.permit_file = file;
     }
   }
 

@@ -89,7 +89,7 @@ export class BoardReviewComponent {
     formData.append('_method', 'POST')
 
     this.mProgress.set(true);
-    this.mDetailedDesignService.committeeStageDetailedPlanItem(this.id, formData).subscribe({
+    this.mDetailedDesignService.boardReviewDetailedPlanItem(this.id, formData).subscribe({
       next: (response) => {
         this.mToastrService.success((response as any).message);
         this.router.navigateByUrl('/detailed-designs');

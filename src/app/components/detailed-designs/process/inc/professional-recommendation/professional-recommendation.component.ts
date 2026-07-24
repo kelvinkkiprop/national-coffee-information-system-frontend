@@ -122,16 +122,32 @@ export class ProfessionalRecommendationComponent {
   onSubmit(formValues: any){
     const item: any = {
       id: this.id,
-      architect_report: formValues.architect_report,
-      structural_engineer_report: formValues.structural_engineer_report,
-      electrical_engineer_report: formValues.electrical_engineer_report,
-      ict_engineer_report: formValues.ict_engineer_report,
-      mechanical_engineer_report: formValues.mechanical_engineer_report,
-      environment_health_and_safety_report: formValues.environment_health_and_safety_report,
+      architect_report: formValues.architect_report, //Architect
+      architect_reviewer_id: formValues.architect_reviewer_id,
+      architect_status_id: formValues.architect_status_id,
+      structural_engineer_report: formValues.structural_engineer_report, //StructuralEngineer
+      structural_engineer_reviewer_id: formValues.structural_engineer_reviewer_id,
+      structural_engineer_status_id: formValues.structural_engineer_status_id,
+      electrical_engineer_report: formValues.electrical_engineer_report,//ElectricalEngineer
+      electrical_engineer_reviewer_id: formValues.electrical_engineer_reviewer_id,
+      electrical_engineer_status_id: formValues.electrical_engineer_status_id,
+      ict_engineer_report: formValues.ict_engineer_report,//ICTEngineer
+      ict_engineer_reviewer_id: formValues.ict_engineer_reviewer_id,
+      ict_engineer_status_id: formValues.ict_engineer_status_id,
+      mechanical_engineer_report: formValues.mechanical_engineer_report,//MechanicalEngineer
+      mechanical_engineer_reviewer_id: formValues.mechanical_engineer_reviewer_id,
+      mechanical_engineer_status_id: formValues.mechanical_engineer_status_id,
+      environment_health_and_safety_report: formValues.environment_health_and_safety_report,//Environment Health and Safety Officer
       professional_sustainability_report: formValues.professional_sustainability_report,
       landscaping_report: formValues.landscaping_report,
-      civil_works_design_report: formValues.civil_works_design_report,
-      water_and_sanitation_designs_report: formValues.water_and_sanitation_designs_report,
+      environment_officer_reviewer_id:formValues.environment_officer_reviewer_id,
+      environment_officer_status_id: formValues.environment_officer_status_id,
+      civil_works_design_report: formValues.civil_works_design_report,//Streetscape Engineer
+      streetscape_engineer_reviewer_id: formValues.streetscape_engineer_reviewer_id,
+      streetscape_engineer_status_id: formValues.streetscape_engineer_status_id,
+      water_and_sanitation_designs_report: formValues.water_and_sanitation_designs_report,//Water & Sanitation Engineer
+      water_engineer_reviewer_id: formValues.water_engineer_reviewer_id,
+      water_engineer_status_id: formValues.water_engineer_status_id,
     }
     this.mProgress = signal(true);
     this.mDetailedDesignService.professionalRecommendationsDetailedPlanItem(item).subscribe({

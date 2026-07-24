@@ -105,13 +105,13 @@ export class DetailedDesignService {
     return this.http.post<DetailedDesign>(url, item, this.mAppContextService.getHttpOptions());
     // return this.http.post<DetailedDesign>(url, item);
   }
-  committeeStageDetailedPlanItem(id:any, item: any): Observable<DetailedDesign>{
-    const url = `${environment.base_url}/committee-stage-detailed-designs-construction-permits/${id}`;
+  boardReviewDetailedPlanItem(id:any, item: any): Observable<DetailedDesign>{
+    const url = `${environment.base_url}/board-review-detailed-designs-construction-permits/${id}`;
     // return this.http.post<DetailedDesign>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedDesign>(url, item);
   }
-  constructionPermitItem(id:any, item: any): Observable<DetailedDesign>{
-    const url = `${environment.base_url}/construction-permit-detailed-designs-construction-permits/${id}`;
+  permitItem(id:any, item: any): Observable<DetailedDesign>{
+    const url = `${environment.base_url}/permit-detailed-designs-construction-permits/${id}`;
     // return this.http.post<DetailedDesign>(url, item, this.mAppContextService.getHttpOptions());
     return this.http.post<DetailedDesign>(url, item);
   }
