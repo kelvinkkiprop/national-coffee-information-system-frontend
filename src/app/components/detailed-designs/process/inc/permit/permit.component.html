@@ -20,14 +20,14 @@
     </div>
     <div class="col-md-12">
       <div class="form-group mb-3">
-        <label for="construction_permit" class="col-form-label required">Construction Permit:
-            <span *ngIf="item.construction_permit_url">
-                <a href="{{item.construction_permit_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+        <label for="permit" class="col-form-label required">Permit:
+            <span *ngIf="item.permit_url">
+                <a href="{{item.permit_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
             </span>
         </label>
-        <input (change)="onConstructionPermitChange($event)" formControlName="construction_permit" [ngClass]="{'is-invalid': itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)}" type="file" class="form-control"/>
-        <div *ngIf="itemForm.get('construction_permit').invalid && (itemForm.get('construction_permit').dirty || itemForm.get('construction_permit').touched)" class="invalid-feedback" role="alert">
-          <div *ngIf="itemForm.get('construction_permit').errors?.['required']">This field is required.</div>
+        <input (change)="onConstructionPermitChange($event)" formControlName="permit" [ngClass]="{'is-invalid': itemForm.get('permit').invalid && (itemForm.get('permit').dirty || itemForm.get('permit').touched)}" type="file" class="form-control"/>
+        <div *ngIf="itemForm.get('permit').invalid && (itemForm.get('permit').dirty || itemForm.get('permit').touched)" class="invalid-feedback" role="alert">
+          <div *ngIf="itemForm.get('permit').errors?.['required']">This field is required.</div>
         </div>
       </div>
     </div>

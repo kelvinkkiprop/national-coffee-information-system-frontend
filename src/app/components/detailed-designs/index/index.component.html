@@ -44,7 +44,7 @@
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
-                <th scope="col">Construction Permit</th>
+                <th scope="col">Permit</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -69,8 +69,8 @@
                 </td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
-                  <span *ngIf="item.construction_permit_url">
-                    <a href="{{item.construction_permit_url}}" target="_blank" class="btn btn-link btn-sm">Download</a>
+                  <span *ngIf="item.permit_url">
+                    <a href="{{item.permit_url}}" target="_blank" class="btn btn-link btn-sm">Download</a>
                 </span>
                 </td>
                 <td>

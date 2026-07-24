@@ -10,7 +10,7 @@ import { DetailedDesignRoutingModule } from './detailed-design-routing.module';
 import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { BoardReviewComponent } from './process/inc/board-review/board-review.component';
-import { ConstructionPermitComponent } from './process/inc/construction-permit/construction-permit.component';
+import { PermitComponent } from './process/inc/permit/permit.component';
 import { DesignReportComponent } from './process/inc/design-report/design-report.component';
 import { PlannerReviewComponent } from './process/inc/planner-review/planner-review.component';
 import { ProfessionalRecommendationComponent } from './process/inc/professional-recommendation/professional-recommendation.component';
@@ -30,7 +30,7 @@ import { ShowComponent } from './show/show.component';
     ProfessionalRecommendationComponent,
     DesignReportComponent,
     BoardReviewComponent,
-    ConstructionPermitComponent
+    PermitComponent
   ],
   imports: [
     CommonModule,

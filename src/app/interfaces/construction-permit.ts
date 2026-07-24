@@ -38,7 +38,7 @@ export interface ConstructionPermit {
   conditions_of_approval?: string,
   reasons_for_rejection?: string,
 
-  construction_permit?: string,
+  permit?: string,
   detailed_plan_status_id?: string,
   status_id?: number,
 

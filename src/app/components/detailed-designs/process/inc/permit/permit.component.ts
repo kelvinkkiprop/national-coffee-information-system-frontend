@@ -8,14 +8,14 @@ import { AppContextService } from '../../../../../core/app-context.service';
 import { DetailedDesignService } from '../../../../../services/detailed-design.service';
 
 @Component({
-  selector: 'app-construction-permit',
+  selector: 'app-permit',
   // imports: [],
-  templateUrl: './construction-permit.component.html',
-  styleUrl: './construction-permit.component.scss',
+  templateUrl: './permit.component.html',
+  styleUrl: './permit.component.scss',
   standalone: false,
   encapsulation: ViewEncapsulation.None, // For_CKEditor_styles
 })
-export class ConstructionPermitComponent {
+export class PermitComponent {
 
   // variables
   itemForm: any;
@@ -41,7 +41,7 @@ export class ConstructionPermitComponent {
     // validation
     this.itemForm = this.fb.group({
       notice_of_approval: ['', Validators.required],
-      construction_permit: ['', Validators.required],
+      permit: ['', Validators.required],
       remarks: ['', Validators.nullValidator],
     });
   }
@@ -75,9 +75,9 @@ export class ConstructionPermitComponent {
   onSubmit(formValues: any){
     let formData:any = new FormData();
     // attachments
-    // formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    // formData.append('permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
     formData.append('notice_of_approval', this.notice_of_approval_file || '', this.notice_of_approval_file?.name || '' );
-    formData.append('construction_permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
+    formData.append('permit', this.construction_permit_file || '', this.construction_permit_file?.name || '' );
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
 
@@ -116,6 +116,3 @@ export class ConstructionPermitComponent {
   }
 
 }
-
-
-

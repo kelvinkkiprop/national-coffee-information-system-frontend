@@ -140,7 +140,7 @@
             </div>
             <!-- Planner/Surveyor/Architect/CM  -->
             <div *ngIf="(item.detailed_plan_status_id == 9 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,12,17])))">
-              <app-construction-permit/>
+              <app-permit/>
             </div>
           </div>
         </div>
