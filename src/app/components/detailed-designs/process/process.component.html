@@ -136,7 +136,8 @@
             </div>
             <!-- Planner/Surveyor/Architect/CM  -->
             <div *ngIf="((item.detailed_plan_status_id == 6 || item.detailed_plan_status_id == 8) && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,12,17])))">
-              <app-board-review/>
+              <!-- <app-board-review/> -->
+                <app-professional-recommendation/>
             </div>
             <!-- Planner/Surveyor/Architect/CM  -->
             <div *ngIf="(item.detailed_plan_status_id == 9 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([10,11,12,17])))">
