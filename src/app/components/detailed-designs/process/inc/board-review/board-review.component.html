@@ -20,10 +20,10 @@
       <!-- Approved -->
       <div *ngIf="itemForm.get('detailed_plan_status_id').value==9" class="col-md-12">
         <div class="form-group mb-3">
-          <label for="board_resolution" class="col-form-label required">Board Resolution:</label>
-          <input (change)="onBoardResolution($event)" formControlName="board_resolution" [ngClass]="{'is-invalid': itemForm.get('board_resolution').invalid && (itemForm.get('board_resolution').dirty || itemForm.get('board_resolution').touched)}" type="file" class="form-control"/>
-          <div *ngIf="itemForm.get('board_resolution').invalid && (itemForm.get('board_resolution').dirty || itemForm.get('board_resolution').touched)" class="invalid-feedback" role="alert">
-            <div *ngIf="itemForm.get('board_resolution').errors?.['required']">This field is required.</div>
+          <label for="board_resolutions" class="col-form-label required">Board Resolutions:</label>
+          <input (change)="onBoardResolution($event)" formControlName="board_resolutions" [ngClass]="{'is-invalid': itemForm.get('board_resolutions').invalid && (itemForm.get('board_resolutions').dirty || itemForm.get('board_resolutions').touched)}" type="file" class="form-control"/>
+          <div *ngIf="itemForm.get('board_resolutions').invalid && (itemForm.get('board_resolutions').dirty || itemForm.get('board_resolutions').touched)" class="invalid-feedback" role="alert">
+            <div *ngIf="itemForm.get('board_resolutions').errors?.['required']">This field is required.</div>
           </div>
         </div>
       </div>

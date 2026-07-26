@@ -40,7 +40,7 @@ export class BoardReviewComponent {
     // validation
     this.itemForm = this.fb.group({
       detailed_plan_status_id: ['', Validators.required],
-      board_resolution: ['', Validators.nullValidator],
+      board_resolutions: ['', Validators.nullValidator],
       remarks: ['', Validators.nullValidator],
     });
   }
@@ -77,13 +77,13 @@ export class BoardReviewComponent {
 
     let formData:any = new FormData();
     // attachments
-    // formData.append('board_resolution', this.board_resolution_file || '', this.board_resolution_file?.name || '' );
+    // formData.append('board_resolutions', this.board_resolution_file || '', this.board_resolution_file?.name || '' );
     formData.append('detailed_plan_status_id', formValues.detailed_plan_status_id);
     // attachments
     if (this.board_resolution_file) {
-      formData.append('board_resolution', this.board_resolution_file, this.board_resolution_file.name);
+      formData.append('board_resolutions', this.board_resolution_file, this.board_resolution_file.name);
     } else {
-      formData.append('board_resolution', ''); // or_empty_string ''
+      formData.append('board_resolutions', ''); // or_empty_string ''
     }
     formData.append('remarks', formValues.remarks);
     formData.append('_method', 'POST')
