@@ -66,7 +66,7 @@ export class AuthService {
     const url = `${environment.base_url}/logout`;
     return this.http.post<any>(url, null, this.mAppContextService.getHttpOptions())
     .pipe(map(response => {
-      //Remove
+      // Remove
       localStorage.removeItem('currentUser');
       localStorage.clear();
       // sessionStorage.removeItem('currentUser')
