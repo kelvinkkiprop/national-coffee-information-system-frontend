@@ -71,7 +71,7 @@
               <app-professional-review/>
             </div>
             <!-- CM  -->
-            <div *ngIf="(item?.status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17])))">
+            <div *ngIf="(item?.status_id == 5 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([17,10,11])))">
               <app-cm-approval/>
             </div>
           </div>
