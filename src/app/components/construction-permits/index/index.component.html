@@ -39,9 +39,9 @@
                 <th scope="col">Project</th>
                 <th scope="col">Investor</th>
                 <th scope="col">Type</th>
-                <th scope="col">Duration (Months)</th>
+                <th scope="col">Duration</th>
                 <!-- <th scope="col">Estimated Cost</th> -->
-                <th scope="col">Has Variations</th>
+                <th scope="col">Variations</th>
                 <th scope="col">Consultant</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
@@ -59,7 +59,7 @@
                     {{ item.type?.name }}
                   </small>
                 </td>
-                <td>{{ item.estimated_project_duration }}</td>
+                <td>{{ item.estimated_project_duration }} months</td>
                 <!-- <td>{{ item.estimated_project_construction_cost | currency:'USD':'symbol':'1.2-2' }}</td> -->
                 <td>
                   <button type="button" class="btn btn-sm btn-outline-link position-relative">

@@ -41,7 +41,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
                 `),t(),e(74,`
               `),t()),o&2){let r=a.$implicit,n=a.index,s=_(2);l(3),D("",s.mPageFrom+n,"."),l(3),g(r.application_number),l(3),g(r.project_brief),l(3),g(r.investor.name),l(4),m("ngClass",_t(21,Jt,r.type_id==1,r.type_id==2,r.type_id==3,r.type_id==4,r.type_id==5,r.type_id==6,r.type_id==7)),l(),D(`
                     `,r.type==null?null:r.type.name,`
-                  `),l(4),g(r.estimated_project_duration),l(6),D(`
+                  `),l(4),D("",r.estimated_project_duration," months"),l(6),D(`
                     `,r.has_variations,`
                     `),l(),m("ngIf",r.variation_status),l(5),g(r.consultant.name),l(4),m("ngClass",pt(29,Kt,r.status_id==1,r.status_id==2,r.status_id==3,r.status_id==4,r.status_id==5,r.status_id==6)),l(),D(`
                     `,r.status==null?null:r.status.name,`
@@ -54,9 +54,9 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
                 `),i(14,"th",20),e(15,"Project"),t(),e(16,`
                 `),i(17,"th",20),e(18,"Investor"),t(),e(19,`
                 `),i(20,"th",20),e(21,"Type"),t(),e(22,`
-                `),i(23,"th",20),e(24,"Duration (Months)"),t(),e(25,`
+                `),i(23,"th",20),e(24,"Duration"),t(),e(25,`
                 `),e(26,`
-                `),i(27,"th",20),e(28,"Has Variations"),t(),e(29,`
+                `),i(27,"th",20),e(28,"Variations"),t(),e(29,`
                 `),i(30,"th",20),e(31,"Consultant"),t(),e(32,`
                 `),i(33,"th",20),e(34,"Status"),t(),e(35,`
                 `),i(36,"th",20),e(37,"Created"),t(),e(38,`
