@@ -48,7 +48,7 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 ## Versions
 
 * [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
-* [CoreUI Free Angular Admin Template](https://github.com/coreui/permitting-management-system-frontend)
+* [CoreUI Free Angular Admin Template](https://github.com/coreui/national-coffee-information-system-frontend)
 * [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
 * [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
 
@@ -72,8 +72,8 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 
 ## Quick Start
 
-- [Download the latest release](https://github.com/coreui/permitting-management-system-frontend/)
-- Clone the repo: `git clone https://github.com/coreui/permitting-management-system-frontend.git`
+- [Download the latest release](https://github.com/coreui/national-coffee-information-system-frontend/)
+- Clone the repo: `git clone https://github.com/coreui/national-coffee-information-system-frontend.git`
 
 #### <i>Prerequisites</i>
 
@@ -125,7 +125,7 @@ Within the download you'll find the following directories and files, logically g
 You'll see something like this:
 
 ```
-permitting-management-system-frontend
+national-coffee-information-system-frontend
 ├── src/                         # project root
 │   ├── app/                     # main app directory
 |   │   ├── icons/               # icons set for the app
@@ -154,7 +154,7 @@ The documentation for the CoreUI Admin Template is hosted at our website [CoreUI
 For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained
 under [the Semantic Versioning guidelines](http://semver.org/).
 
-See [the Releases section of our project](https://github.com/coreui/permitting-management-system-frontend/releases) for changelogs for each release version.
+See [the Releases section of our project](https://github.com/coreui/national-coffee-information-system-frontend/releases) for changelogs for each release version.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
 

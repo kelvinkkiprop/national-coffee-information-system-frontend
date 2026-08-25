@@ -31,3 +31,26 @@
   height: 100vh;
   color: var(--cui-body-color);
 }
+
+
+
+
+// Animation for the progress bar
+// .loading-progress {
+//   width: 0%;
+//   animation: loading 3s linear infinite;
+// }
+.loading-progress {
+  width: 0%;
+  // animation: loading 0.6s linear infinite;
+  animation: loading 1s linear infinite;
+}
+@keyframes loading {
+  0% {
+    width: 1%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+

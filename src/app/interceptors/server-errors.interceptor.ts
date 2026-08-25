@@ -21,6 +21,7 @@ import { environment } from '../../environments/environment';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 
 export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
+
   const authService = inject(AuthService);
   const router = inject(Router);
   const toastr = inject(ToastrService);
@@ -30,20 +31,21 @@ export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unkn
       next: () => {},
       error: (error: HttpErrorResponse) => {
         switch (error.status) {
+          case 0:
+            router.navigateByUrl(`/error/${500}/${'Internal server error'}`);
+            break;
           case 400:
             toastr.error('Bad request');
             break;
           case 401:
             toastr.error('Unauthorized');
-            // authService.localSignOut();
-            // router.navigate(['/#/auth/login']);
-            router.navigate([environment.sso_account_url+'/#/auth/login']);
+            authService.localSignOut();
+            router.navigate(['/#/auth/login']);
             break;
           case 403:
             toastr.error('Forbidden');
-            // authService.localSignOut();
-            // router.navigate(['/#/auth/login']);
-            router.navigate([environment.sso_account_url+'/#/auth/login']);
+            authService.localSignOut();
+            router.navigate(['/#/auth/login']);
             break;
           case 404:
             toastr.error('Not found');
@@ -55,13 +57,14 @@ export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unkn
             toastr.error('Unprocessed content');
             break;
           case 500:
-            toastr.error('Internal server error');
+            router.navigateByUrl(`/error/${500}/${'Internal server error'}`);
             break;
           default:
-            router.navigateByUrl(`/error/common/${error.status}/${error.statusText}`);
+            router.navigateByUrl(`/error/${error.status}/${error.statusText}`);
             break;
         }
       },
     })
   );
+
 };

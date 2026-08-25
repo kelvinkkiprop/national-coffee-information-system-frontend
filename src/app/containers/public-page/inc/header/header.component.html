@@ -1,0 +1,52 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<section id="header">
+  <nav class="navbar navbar-expand-lg shadow-lg fixed-top bg-body">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">
+          <img src="assets/images/logo-main.png" height="48"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+            </ul>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/about">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/pathways">Pathways</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/help">Help & Support</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              @if (!mCurrentUser) {
+                <li class="nav-item">
+                    <a class="nav-link me-2" routerLink="/auth/login">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info rounded-pill text-light" routerLink="/auth/register">Register</a>
+                </li>
+              }
+              @if (mCurrentUser) {
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Welcome, {{mCurrentUser.name}}</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
+                    <li> <a (click)="onLogout()" class="dropdown-item">Logout</a></li>
+                  </ul>
+                </li>
+              }
+            </ul>
+        </div>
+    </div>
+  </nav>
+</section>

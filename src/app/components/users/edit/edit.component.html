@@ -1,0 +1,42 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="id" class="col-form-label required">Id:</label>
+                <input [(ngModel)]="item.id" formControlName="id" [ngClass]="{'is-invalid': itemForm.get('id').invalid && (itemForm.get('id').dirty || itemForm.get('id').touched)}" type="number" class="form-control"/>
+                <div *ngIf="itemForm.get('id').invalid && (itemForm.get('id').dirty || itemForm.get('id').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('id').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="name" class="col-form-label required">Name:</label>
+                <input [(ngModel)]="item.name" formControlName="name" [ngClass]="{'is-invalid': itemForm.get('name').invalid && (itemForm.get('name').dirty || itemForm.get('name').touched)}" type="text" class="form-control"/>
+                <div *ngIf="itemForm.get('name').invalid && (itemForm.get('name').dirty || itemForm.get('name').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('name').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 text-right">
+            <a routerLink="/roles" class="btn btn-danger">Cancel</a>
+            <button [disabled]="itemForm.invalid" type="submit" class="btn btn-info">Submit</button>
+          </div>
+
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

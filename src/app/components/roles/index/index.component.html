@@ -1,0 +1,78 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-header>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="card-title">
+            <a routerLink="/roles/create" class="btn btn-danger btn-sm text-light1">
+              <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
+            </a>
+          </div>
+          <div>
+            <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
+              <div class="input-group input-group-sm"  style="width: 150px;">
+                <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-info btn-sm">
+                    <i class="fa-solid fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="chip">
+                  <div *ngIf="search_term.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </c-card-header>
+      <c-card-body>
+
+        <div *ngIf="mRoles.length>0; else noItemsTemplate" class="table-responsive">
+          <table cTable striped>
+            <thead cTableColor="light1">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created</th>
+                <th scope="col">Updated</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of mRoles; index as i">
+                <td>{{ this.mPageFrom+i }}.</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.created_at|date }}</td>
+                <td>{{ item.updated_at|date }}</td>
+                <td>
+                  <div class="text-nowrap">
+                    <a routerLink="/roles/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></a>
+                    <a routerLink="/roles/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></a>
+                    <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="links">
+          <ul class="pagination">
+            <li *ngFor="let item of links" [ngClass]="{'active': item.active, 'disabled': !item.url}" class="page-item">
+              <a class="page-link" (click)="onChangePage(item.url)" [innerHTML]="item.label"></a>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #noItemsTemplate>
+          <p class="p-5 text-center text-muted">No items</p>
+        </ng-template>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+

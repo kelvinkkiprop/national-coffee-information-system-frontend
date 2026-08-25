@@ -146,7 +146,7 @@ export class AppContextService {
   // getColorClass
   getColorClass(views: number): string {
     if (views > 87.5) return 'secondary';
-    if (views > 75) return ' bg-info text-dark';
+    if (views > 75) return ' bg-primary text-dark';
     if (views > 62.5) return 'primary danger';
     if (views > 50) return 'light text-dark';
     if (views > 37.5) return 'dark';

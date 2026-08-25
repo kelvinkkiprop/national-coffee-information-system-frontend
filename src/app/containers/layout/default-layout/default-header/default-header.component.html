@@ -1,3 +1,5 @@
+<app-progress *ngIf="mProgress()" />
+
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
 <ng-container>
   <c-container [fluid]="true" class="border-bottom px-4">
@@ -13,19 +15,15 @@
     </button>
     <c-header-nav class="d-none d-md-flex">
       <c-nav-item>
-        <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a cNavLink routerLink="/" routerLinkActive="active">Home</a>
       </c-nav-item>
       <c-nav-item>
-        <!-- <a cNavLink routerLink="" href="{{sso_account_url}}/#/account/dashboard" routerLinkActive="active">Account</a> -->
-        <a cNavLink href="{{ssoAccountUrl}}/#/account/dashboard" routerLinkActive="active">Account</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/profile" routerLinkActive="active">Settings</a>
+        <a cNavLink routerLink="/profile" routerLinkActive="active">Profile</a>
       </c-nav-item>
     </c-header-nav>
 
     <c-header-nav class="d-none d-md-flex ms-auto ">
-      <a cNavLink>
+      <!-- <a cNavLink>
         <svg cIcon class="my-1" name="cilBell" size="lg"></svg>
       </a>
       <a cNavLink>
@@ -33,7 +31,7 @@
       </a>
       <a cNavLink>
         <svg cIcon class="my-1" name="cilEnvelopeOpen" size="lg"></svg>
-      </a>
+      </a> -->
     </c-header-nav>
 
     <c-header-nav class="ms-auto ms-md-0">
@@ -83,30 +81,15 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="/profile">
-          <svg cIcon class="me-2" name="cilSettings"></svg>
-          Settings
-        </a>
-      </li>
-      <li>
         <h6 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2">
           Settings
         </h6>
       </li>
       <li></li>
       <li>
-        <a cDropdownItem href="{{ssoAccountUrl}}/#/account/profile">
+        <a cDropdownItem routerLink="/profile">
           <svg cIcon class="me-2" name="cilUser"></svg>
           Profile
-        </a>
-      </li>
-      <li>
-        <hr cDropdownDivider />
-      </li>
-      <li>
-        <a cDropdownItem routerLink="">
-          <svg cIcon class="me-2" name="cilLockLocked"></svg>
-          Lock Account
         </a>
       </li>
       <li>
@@ -126,12 +109,7 @@
     </button>
     <div cDropdownMenu>
       @for (mode of colorModes; track mode.name) {
-        <button
-          (click)="colorMode.set(mode.name)"
-          [active]="colorMode()===mode.name"
-          cDropdownItem
-          class="d-flex align-items-center"
-        >
+        <button (click)="colorMode.set(mode.name)" [active]="colorMode()===mode.name" cDropdownItem class="d-flex align-items-center">
           <svg cIcon class="me-2" [name]="mode.icon" size="lg"></svg>
           {{ mode.text }}
         </button>

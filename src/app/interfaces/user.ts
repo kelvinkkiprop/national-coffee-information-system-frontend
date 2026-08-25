@@ -5,14 +5,31 @@ export interface User {
   phone?: string,
   status_id?: any,
   role_id?: any,
+  created_at?: string,
+  updated_at?: string,
   token?: any,
-  member_of_a_committee?: any
 
-  committees?: committee,
-  profile?: profile,
   role?: role,
   status?: status,
+  profile?: profile,
 }
+
+export interface status {
+  id?: string,
+  name?: string,
+  alias?: string,
+  created_at?: Date,
+  updated_at?: Date,
+}
+
+export interface role {
+  id?: string,
+  name?: string,
+  alias?: string,
+  created_at?: Date,
+  updated_at?: Date,
+}
+
 
 export interface profile {
   id?: string,
@@ -30,30 +47,6 @@ export interface profile {
 
   professional_body_status_id?: number,
 }
-
-export interface status {
-  id?: string,
-  name?: string,
-  alias?: string,
-  created_at?: Date,
-  updated_at?: Date,
-}
-
-export interface committee {
-  id?: string,
-  name?: string,
-  created_at?: Date,
-  updated_at?: Date,
-}
-
-export interface role {
-  id?: string,
-  name?: string,
-  alias?: string,
-  created_at?: Date,
-  updated_at?: Date,
-}
-
 
 
 

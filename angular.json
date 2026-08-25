@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "permitting-management-system-frontend": {
+    "national-coffee-information-system-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/permitting-management-system-frontend",
+            "outputPath": "dist/national-coffee-information-system-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -41,11 +41,14 @@
             "styles": [
               "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/sweetalert2/dist/sweetalert2.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/scss/styles.scss",
               "ckeditor5/ckeditor5.css",
-               "node_modules/@iqx-limited/ngx-toastr/toastr.css"
+              "node_modules/@iqx-limited/ngx-toastr/toastr.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/sweetalert2/dist/sweetalert2.js"
             ],
             "allowedCommonJsDependencies": [],
@@ -89,10 +92,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "permitting-management-system-frontend:build:production"
+              "buildTarget": "national-coffee-information-system-frontend:build:production"
             },
             "development": {
-              "buildTarget": "permitting-management-system-frontend:build:development"
+              "buildTarget": "national-coffee-information-system-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +103,7 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "permitting-management-system-frontend:build"
+            "buildTarget": "national-coffee-information-system-frontend:build"
           }
         },
         "test": {

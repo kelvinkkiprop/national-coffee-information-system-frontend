@@ -27,67 +27,39 @@ export const navItems: INavData[] = [
     title: true
   },
   {
-    name: 'Permitting Services',
-    iconComponent: { name: 'cil-puzzle' },
-    attributes: { class: 'nav-group' },
-    children: [
-      {
-        name: 'Masterplan Submission',
-        url: '/construction-permits',
-        icon: 'nav-icon-bullet',
-        // badge: {
-        //   color: 'danger',
-        //   text: 'NEW'
-        // },
-      },
-      {
-        // name: 'Plan Submission',
-        name: 'Detailed Design',
-        url: '/detailed-designs',
-        icon: 'nav-icon-bullet',
-        badge: {
-          color: 'dark',
-          text: 'Submission'
-        },
-      },
-    ]
+    name: 'Placements',
+    url: '/placements',
+    iconComponent: { name: 'cil-description' },
   },
-
-  // NotInvestor
-  ...(mCurrentUser.role_id !== mInvestor ? [
   {
-    name: 'Registered Professionals',
-    url: '/registered-professionals',
-    iconComponent: { name: 'cil-people' },
-  }] : []),
-
-  {
-    name: 'Advertising Application',
-    url: '/advertising-application',
-    iconComponent: { name: 'cil-cursor' },
+    name: 'Selections ',
+    url: '/selections',
+    iconComponent: { name: 'cil-list' },
   },
-
 
   // Other
   {
     title: true,
     name: 'Other',
   },
+  ...(mCurrentUser.role_id === mAdmin ? [
   {
-    name: 'Construction Site Board',
-    url: '/construction-site-board',
-    iconComponent: { name: 'cil-description' },
-  },
-  {
-    name: 'Compliance & Enforcement ',
-    url: '/compliance-and-enforcement',
-    iconComponent: { name: 'cil-list' },
-  },
-  {
-    name: 'Guidelines, Codes & Forms',
-    url: '/downloads',
-    iconComponent: { name: 'cil-book' },
-  },
+    name: 'Users',
+    iconComponent: { name: 'cil-people' },
+    attributes: { class: 'nav-group' },
+    children: [
+      {
+        name: 'Create user',
+        url: '/users/create',
+        icon: 'nav-icon-bullet',
+      },
+      {
+        name: 'Users list',
+        url: '/users',
+        icon: 'nav-icon-bullet',
+      },
+    ]
+  }] : []),
 
 
   // Extras
@@ -96,10 +68,9 @@ export const navItems: INavData[] = [
     name: 'Extras',
   },
   {
-    // name: 'Parcel Allocation Worksheet',
-    name: 'Parcel Development Parameters',
-    url: '/parcel-allocation-worksheet',
-    iconComponent: { name: 'cil-map' },
+    name: 'Roles',
+    url: '/roles',
+    iconComponent: { name: 'cil-lock-locked' },
   },
   {
     name: 'Profile',

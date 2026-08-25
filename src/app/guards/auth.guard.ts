@@ -31,15 +31,12 @@ export class AuthGuard implements CanActivate {
 
     const currentUser = this.mAuthService.currentUser;
     if (currentUser) {
-        // logged in so return true
+        // Logged in
         return true;
     }
 
-    // not logged in so redirect to login page with the return url
-    // this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-    // this.router.navigate(['/auth/login']);
-    // this.router.navigateByUrl(environment.sso_account_url);
-    window.open(environment.sso_account_url+'/#/auth/login', '_self')
+    // Not logged in
+    this.router.navigate(['/auth/login']);
     return false;
 
   }

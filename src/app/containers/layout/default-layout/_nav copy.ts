@@ -6,7 +6,7 @@ export const navItems: INavData[] = [
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
     badge: {
-      color: 'info',
+      color: 'primary',
       text: 'NEW'
     }
   },
@@ -383,7 +383,7 @@ export const navItems: INavData[] = [
     url: '/widgets',
     iconComponent: { name: 'cil-calculator' },
     badge: {
-      color: 'info',
+      color: 'primary',
       text: 'NEW'
     }
   },

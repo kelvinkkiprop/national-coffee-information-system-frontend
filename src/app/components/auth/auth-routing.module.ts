@@ -1,21 +1,45 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 // import
 import { RouterModule, Routes } from '@angular/router';
-import { SsoComponent } from './sso/sso.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 
 //Routes
 const routes: Routes = [
-  {
+    {
     path: '',
-    redirectTo: ':token/:name',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: ':token/:name',
-    component: SsoComponent,
+    path: 'login',
+    component: LoginComponent,
     data: {
-      title: 'Single-Sign On (SSO)'
+      title: 'Login'
+    }
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      title: 'Register'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'Forgot Password'
+    }
+  },
+  {
+    path: 'recover-password/:id',
+    component: RecoverPasswordComponent,
+    data: {
+      title: 'Recover Password'
     }
   },
 ];

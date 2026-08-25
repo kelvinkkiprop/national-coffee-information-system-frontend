@@ -1,12 +1,32 @@
 import { Routes } from '@angular/router';
-// import { DefaultLayoutComponent } from './layout/default-layout';
+// import
 import { AuthUIComponent } from './containers/auth-ui/auth-ui.component';
-import { AuthGuard } from './guards/auth.guard';
+import { ErrPageComponent } from './containers/err-page/err-page.component';
 import { DefaultLayoutComponent } from './containers/layout';
-import { verifyConsultantGuard } from './guards/verify-consultant.guard';
+import { PublicPageComponent } from './containers/public-page/public-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  // PublicPage
+  {
+    path: '',
+    component: PublicPageComponent,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./components/home/home.module').then((m) => m.HomeModule)
+      },
+    ]
+  },
+
+  // AuthUI
   {
     path: '',
     component: AuthUIComponent,
@@ -21,7 +41,6 @@ export const routes: Routes = [
       },
     ]
   },
-
 
   // CoreUI
   {
@@ -38,56 +57,40 @@ export const routes: Routes = [
           import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        canActivate: [verifyConsultantGuard],
-        path: 'construction-permits',
+        path: 'users',
         loadChildren: () =>
-          import('./components/construction-permits/construction-permit.module').then((m) => m.ConstructionPermitModule)
+          import('./components/users/user.module').then((m) => m.UserModule)
       },
       {
-        canActivate: [verifyConsultantGuard],
-        path: 'detailed-designs',
+        path: 'roles',
         loadChildren: () =>
-          import('./components/detailed-designs/detailed-design.module').then((m) => m.DetailedDesignModule)
-      },
-      {
-        path: 'registered-professionals',
-        loadChildren: () =>
-          import('./components/registered-professionals/registered-professional.module').then((m) => m.RegisteredProfessionalModule)
-      },
-      {
-        path: 'advertising-application',
-        loadChildren: () =>
-          import('./components/advertising-application/advertising-application.module').then((m) => m.AdvertisingApplicationModule)
-      },
-      {
-        path: 'construction-site-board',
-        loadChildren: () =>
-          import('./components/construction-site-board/construction-site-board.module').then((m) => m.ConstructionSiteBoardModule)
-      },
-      {
-        path: 'compliance-and-enforcement',
-        loadChildren: () =>
-          import('./components/compliance-and-enforcement/compliance-and-enforcement.module').then((m) => m.ComplianceAndEnforcementModule)
-      },
-      {
-        path: 'parcel-allocation-worksheet',
-        loadChildren: () =>
-          import('./components/parcel-allocation-worksheet/parcel-allocation-worksheet.module').then((m) => m.ParcelAllocationWorksheetModule)
-      },
-      {
-        path: 'downloads',
-        loadChildren: () =>
-          import('./components/downloads/download.module').then((m) => m.DownloadModule)
+          import('./components/roles/role.module').then((m) => m.RoleModule)
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./components/profiles/profile.module').then((m) => m.ProfileModule)
+          import('./components/profile/profile.module').then((m) => m.ProfileModule)
+      }
+    ]
+  },
+
+  // ErrorLayout
+  {
+    path: '',
+    component: ErrPageComponent,
+    data: {
+      title: 'Error'
+    },
+    children: [
+      {
+        path: 'error',
+        loadChildren: () =>
+          import('./components/errors/error.module').then((m) => m.ErrorModule)
       },
     ]
   },
 
   // Other
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: '/home' }
 
 ];

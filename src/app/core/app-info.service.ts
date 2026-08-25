@@ -9,12 +9,12 @@ export class AppInfoService {
 
   // variables
   private readonly appInfo = {
-    name: 'Konza CPMS',
+    name: 'KEMIS | Selection & Placement',
     year: new Date().getFullYear(),
     version: packageInfo.version
   };
 
-  get info(): { name: string; year: number; version: string } {
+  get primary(): { name: string; year: number; version: string } {
     return this.appInfo;
   }
   get name(): string {

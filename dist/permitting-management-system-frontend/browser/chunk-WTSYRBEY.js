@@ -1,4 +1,4 @@
-import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./chunk-JYREPJ6U.js";import{b as He,c as he,d as c,e as ae,f as Z,g as At,h as Rt,i as $,j as ze,k as Ve,l as le,m as ee,n as Ce,o as Ee,p as Fe,q as me,s as Vt}from"./chunk-HGRQUFQJ.js";import{a as z,b as jt}from"./chunk-SJG5BJVG.js";import{b as ge,c as W,e as H}from"./chunk-FHELIIU2.js";import{Ba as m,Bc as Ge,Ca as i,Cb as te,Da as t,Db as ie,Ea as f,Eb as G,Fc as ue,Gb as vt,Gc as oe,Hb as gt,Hc as ht,Ib as Ue,Ic as Ct,M as Le,Mc as Et,Na as U,Nc as Ft,Oc as We,Pa as y,Pc as It,R,Ra as _,Rc as Tt,S as V,T as J,Tc as fe,U as ye,Ub as ne,Uc as ve,Wb as re,Wc as Pt,Xb as X,Ya as mt,_ as S,ab as e,bb as g,cb as D,cd as wt,db as T,dc as rt,dd as qt,e as Ht,eb as P,fa as Se,fb as w,ga as ce,gb as q,ha as l,hb as E,ib as je,kb as K,lb as v,mb as dt,nb as st,nd as Mt,oa as x,ob as pt,od as Nt,pa as O,pb as _t,pc as Re,pd as kt,qa as Be,qc as xt,rb as Oe,sb as ct,sc as yt,ta as d,tb as ut,ub as ft,wc as Q,xc as St,yc as bt}from"./chunk-RYSGXS5Z.js";var Ot=Ht(zt());var Yt=o=>({"is-invalid":o}),Jt=(o,a,r,n,s,p,b)=>({"chip-primary":o,"chip-secondary":a,"chip-success":r,"bg-danger":n,"chip-warning text-dark":s,"chip-info":p,"chip-dark":b}),Kt=(o,a,r,n,s,p)=>({"bg-secondary text-dark":o,"bg-danger":a,"bg-dark":r,"bg-info":n,"bg-primary text-dark":s,"bg-success":p}),Lt=()=>[1],ot=()=>[2],Xt=(o,a,r)=>({"bg-warning":o,"bg-success":a,"bg-danger":r}),Qt=(o,a)=>({active:o,disabled:a});function Zt(o,a){o&1&&f(0,"app-progress")}function $t(o,a){o&1&&(i(0,"div"),e(1,"This field is required."),t())}function ei(o,a){if(o&1&&(i(0,"div",16),e(1,`
+import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./chunk-JYREPJ6U.js";import{b as He,c as he,d as c,e as ae,f as Z,g as At,h as Rt,i as $,j as ze,k as Ve,l as le,m as ee,n as Ce,o as Ee,p as Fe,q as me,s as Vt}from"./chunk-HGRQUFQJ.js";import{a as z,b as jt}from"./chunk-SJG5BJVG.js";import{b as ge,c as W,e as H}from"./chunk-FHELIIU2.js";import{Ba as m,Bc as Ge,Ca as i,Cb as te,Da as t,Db as ie,Ea as f,Eb as G,Fc as ue,Gb as vt,Gc as oe,Hb as gt,Hc as ht,Ib as Ue,Ic as Ct,M as Le,Mc as Et,Na as U,Nc as Ft,Oc as We,Pa as y,Pc as It,R,Ra as _,Rc as Tt,S as V,T as J,Tc as fe,U as ye,Ub as ne,Uc as ve,Wb as re,Wc as Pt,Xb as X,Ya as mt,_ as S,ab as e,bb as g,cb as D,cd as wt,db as T,dc as rt,dd as qt,e as Ht,eb as P,fa as Se,fb as w,ga as ce,gb as q,ha as l,hb as E,ib as je,kb as K,lb as v,mb as dt,nb as st,nd as Mt,oa as x,ob as pt,od as Nt,pa as O,pb as _t,pc as Re,pd as kt,qa as Be,qc as xt,rb as Oe,sb as ct,sc as yt,ta as d,tb as ut,ub as ft,wc as Q,xc as St,yc as bt}from"./chunk-RYSGXS5Z.js";var Ot=Ht(zt());var Yt=o=>({"is-invalid":o}),Jt=(o,a,r,n,s,p,b)=>({"chip-primary":o,"chip-secondary":a,"chip-success":r,"bg-danger":n,"chip-warning text-dark":s,"chip-primary":p,"chip-dark":b}),Kt=(o,a,r,n,s,p)=>({"bg-secondary text-dark":o,"bg-danger":a,"bg-dark":r,"bg-primary":n,"bg-primary text-dark":s,"bg-success":p}),Lt=()=>[1],ot=()=>[2],Xt=(o,a,r)=>({"bg-warning":o,"bg-success":a,"bg-danger":r}),Qt=(o,a)=>({active:o,disabled:a});function Zt(o,a){o&1&&f(0,"app-progress")}function $t(o,a){o&1&&(i(0,"div"),e(1,"This field is required."),t())}function ei(o,a){if(o&1&&(i(0,"div",16),e(1,`
                   `),d(2,$t,2,0,"div",1),e(3,`
                 `),t()),o&2){let r=_();l(2),m("ngIf",r.search_term.errors==null?null:r.search_term.errors.required)}}function ti(o,a){if(o&1&&(i(0,"c-badge",34),e(1,`
                       `),i(2,"small"),e(3),t(),e(4,`
@@ -332,7 +332,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
               `),i(67,"div",7),e(68,`
                 `),i(69,"div",8),e(70,`
                   `),i(71,"div",9),e(72,`
-                    `),i(73,"label",18),e(74,"Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):"),t(),e(75,`
+                    `),i(73,"label",18),e(74,"Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):"),t(),e(75,`
                     `),f(76,"textarea",19),e(77,`
                     `),e(78,`
                     `),d(79,ki,4,1,"div",14),e(80,`
@@ -645,7 +645,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
                 `),i(666,"div",65),e(667,`
                   `),f(668,"input",101),e(669,`
                   `),i(670,"label",102),e(671,`
-                    By checking this, confirms the investor's commitment to comply with the `),i(672,"a",84),e(673,"Technopolis Development Authority Development Codes and Guidelines"),t(),e(674,`
+                    By checking this, confirms the investor's commitment to comply with the `),i(672,"a",84),e(673,"Konza Technopolis Development Codes and Guidelines"),t(),e(674,`
                   `),t(),e(675,`
                 `),t(),e(676,`
                 `),d(677,tr,4,1,"div",14),e(678,`
@@ -884,7 +884,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
               `),i(67,"div",7),e(68,`
                 `),i(69,"div",8),e(70,`
                   `),i(71,"div",9),e(72,`
-                    `),i(73,"label",18),e(74,"Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):"),t(),e(75,`
+                    `),i(73,"label",18),e(74,"Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):"),t(),e(75,`
                     `),i(76,"textarea",19),q("ngModelChange",function(p){return w(n.item.project_brief,p)||(n.item.project_brief=p),p}),t(),e(77,`
                     `),e(78,`
                     `),d(79,Er,4,1,"div",14),e(80,`
@@ -1197,7 +1197,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
                 `),i(666,"div",65),e(667,`
                   `),f(668,"input",101),e(669,`
                   `),i(670,"label",102),e(671,`
-                    By checking this, confirms the investor's commitment to comply with the `),i(672,"a",84),e(673,"Technopolis Development Authority Development Codes and Guidelines"),t(),e(674,`
+                    By checking this, confirms the investor's commitment to comply with the `),i(672,"a",84),e(673,"Konza Technopolis Development Codes and Guidelines"),t(),e(674,`
                   `),t(),e(675,`
                 `),t(),e(676,`
                 `),d(677,zo,4,1,"div",14),e(678,`
@@ -1367,7 +1367,7 @@ import{a as Y,b as xe,c as Dt}from"./chunk-N23QNFFO.js";import{a as zt}from"./ch
             `),i(49,"div",7),e(50,`
               `),i(51,"div",8),e(52,`
                 `),i(53,"div",2),e(54,`
-                  `),i(55,"label",11),e(56,"Project Brief (Description of the overall project concept and how it fits in the Technopolis Development Authority Vision):"),t(),e(57,`
+                  `),i(55,"label",11),e(56,"Project Brief (Description of the overall project concept and how it fits in the Konza Technopolis Vision):"),t(),e(57,`
                   `),i(58,"div",12),e(59),t(),e(60,`
                 `),t(),e(61,`
               `),t(),e(62,`

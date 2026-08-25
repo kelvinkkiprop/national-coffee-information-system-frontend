@@ -5,134 +5,39 @@
   <div class="mb-3">
     <c-row [gutter]="{ gx: 3, gy: 3 }">
       <c-col xs="12">
-        <c-callout color="danger" class="d-flex align-items-center justify-content-between">
-          <span>
-            Looking for guidelines or templates? Explore our resources to get started quickly and efficiently.
-          </span>
-          <a routerLink="/downloads" class="btn btn-success btn-sm ms-3">
-            Learn More
-          </a>
-        </c-callout>
-      </c-col>
-    </c-row>
-  </div>
-
-  <div class="mb-3">
-    <c-row [gutter]="{ gx: 3, gy: 3 }">
-      <c-col xs="12">
-        <h5 class="mt-2 text-muted">Quick Links</h5>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/construction-permits" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Construction Permit</h6>
-              <p class="card-text text-medium-emphasis">
-                Apply for approval to begin construction after meeting all requirements.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/parcel-allocation-worksheet" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Parcel Development Parameters</h6>
-              <p class="card-text text-medium-emphasis">
-                Key planning and zoning standards for land use and development on a specific parcels.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/downloads" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Guidelines, Codes & Forms</h6>
-              <p class="card-text text-medium-emphasis">
-                Access planning guidelines, building codes, and application forms.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/advertising-application" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Advertising Application</h6>
-              <p class="card-text text-medium-emphasis">
-                Apply for billboard and signage approvals.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/construction-site-board" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Construction Site Board</h6>
-              <p class="card-text text-medium-emphasis">
-                Apply and manage construction site board permits.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-      <c-col xs="6" md="4">
-        <a routerLink="/compliance-and-enforcement" class="text-decoration-none">
-          <c-card class="h-100 shadow-sm hover-shadow">
-            <c-card-body>
-              <h6 class="card-title">Compliance and Enforcement</h6>
-              <p class="card-text text-medium-emphasis">
-                Monitor compliance, conduct inspections, and enforce regulations on approved developments.
-              </p>
-            </c-card-body>
-          </c-card>
-        </a>
-      </c-col>
-    </c-row>
-  </div>
-
-  <div class="mb-3">
-    <c-row [gutter]="{ gx: 3, gy: 3 }">
-      <c-col xs="12">
         <h5 class="mt-2 text-muted">System Insights</h5>
       </c-col>
     </c-row>
 
-    <c-row *ngIf="(!mAppContextService.hasRoles([2]))"> <!-- !investor  -->
+    <c-row *ngIf="(!mAppContextService.hasRoles([2]))">
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">Internal</h6>
+        <h6 class="mt-2 text-muted">System Admin</h6>
       </c-col>
       <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Masterplan Submissions'" class="mb-4" color="info" inverse1 value="{{ mMasterplanSubmissions || 0 }}">
+        <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
           <ng-template cTemplateId="widgetIconTemplate">
-            <svg cIcon height="36" name="cilPuzzle"></svg>
+            <i class="fa-solid fa-users fs-1" aria-hidden="true"></i>
           </ng-template>
         </c-widget-stat-c>
       </c-col>
       <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Detailed Design Submissions'" class="mb-4" color="warning" inverse1 value="{{ mDetailedDesignSubmissions || 0 }}">
+        <c-widget-stat-c [title]="'Institutions'" class="mb-4" color="warning" inverse value="{{ mInstitutions || 0 }}">
           <ng-template cTemplateId="widgetIconTemplate">
-            <svg cIcon height="36" name="cilCursor"></svg>
+            <i class="fa-solid fa-institution fs-1" aria-hidden="true"></i>
           </ng-template>
         </c-widget-stat-c>
       </c-col>
       <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Parcels Parameters'" class="mb-4" color="success" inverse1 value="{{ mAllocatedParcels || 0 }}">
+        <c-widget-stat-c [title]="'Selections'" class="mb-4" color="success" inverse value="{{ mSelections || 0 }}">
           <ng-template cTemplateId="widgetIconTemplate">
-            <svg cIcon height="36" name="cilDescription"></svg>
+            <i class="fa-solid fa-check-to-slot fs-1" aria-hidden="true"></i>
           </ng-template>
         </c-widget-stat-c>
       </c-col>
       <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Consultants'" class="mb-4" color="danger" inverse1 value="{{ mConsultants || 0 }}">
+        <c-widget-stat-c [title]="'Placements'" class="mb-4" color="danger" inverse value="{{ mPlacements || 0 }}">
           <ng-template cTemplateId="widgetIconTemplate">
-            <svg cIcon height="36" name="cilList"></svg>
+            <i class="fa-solid fa-graduation-cap fs-1" aria-hidden="true"></i>
           </ng-template>
         </c-widget-stat-c>
       </c-col>
@@ -140,16 +45,16 @@
 
     <c-row [gutter]="{ gx: 3, gy: 3 }">
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">External</h6>
+        <h6 class="mt-2 text-muted">Institutions</h6>
       </c-col>
       <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Construction Permits'" value="{{ myConstructionPermits }}" class="mb-4">
-          <svg cIcon name="cilPuzzle" size="xl"></svg>
+        <c-widget-stat-e [title]="'Learners'" value="{{ myLearners }}" class="mb-4">
+          <i class="fa-solid fa-user-group fs-1" aria-hidden="true"></i>
         </c-widget-stat-e>
       </c-col>
       <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Compliance & Enforcements'" value="{{ myComplianceAndEnforcements }}" class="mb-4">
-          <svg cIcon name="cilList" size="xl"></svg>
+        <c-widget-stat-e [title]="'Selections'" value="{{ mySelections }}" class="mb-4">
+          <i class="fa-solid fa-check-to-slot fs-1" aria-hidden="true"></i>
         </c-widget-stat-e>
       </c-col>
     </c-row>

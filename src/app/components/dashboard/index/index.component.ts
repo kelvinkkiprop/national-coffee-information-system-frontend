@@ -14,13 +14,13 @@ import { AppContextService } from '../../../core/app-context.service';
 export class IndexComponent {
 
   // variables
-  mMasterplanSubmissions:any;
-  mDetailedDesignSubmissions:any;
-  mAllocatedParcels:any;
-  mConsultants:any;
+  mUsers:any;
+  mInstitutions:any;
+  mSelections:any;
+  mPlacements:any;
 
-  myConstructionPermits:any;
-  myComplianceAndEnforcements:any;
+  myLearners:any;
+  mySelections:any;
 
   mProgress = signal(false);
 
@@ -43,12 +43,12 @@ export class IndexComponent {
       next: (response) => {
           // console.log(response)
         if(response){
-          this.mMasterplanSubmissions =(response as any).data.masterplan_submissions;
-          this.mDetailedDesignSubmissions =(response as any).data.detailed_design_submissions;
-          this.mAllocatedParcels =(response as any).data.allocated_parcels;
-          this.mConsultants =(response as any).data.consultants;
-          this.myConstructionPermits =(response as any).data.my_construction_permits;
-          this.myComplianceAndEnforcements =(response as any).data.my_compliance_and_enforcements;
+          this.mUsers =(response as any).data.users
+          this.mInstitutions =(response as any).data.institutions
+          this.mSelections =(response as any).data.selections
+          this.mPlacements =(response as any).data.placements
+          this.myLearners =(response as any).data.my_learners
+          this.mySelections =(response as any).data.my_selections
         }
         this.mProgress.set(false);
       },

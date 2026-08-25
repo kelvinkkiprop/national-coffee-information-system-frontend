@@ -1,6 +1,6 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import {
   AvatarComponent,
@@ -8,7 +8,6 @@ import {
   ColorModeService,
   ContainerComponent,
   DropdownComponent,
-  DropdownDividerDirective,
   DropdownHeaderDirective,
   DropdownItemDirective,
   DropdownMenuDirective,
@@ -20,16 +19,37 @@ import {
   NavLinkDirective,
   SidebarToggleDirective
 } from '@coreui/angular';
-
 import { IconDirective } from '@coreui/icons-angular';
-import { AuthService } from '../../../../services/auth.service';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { environment } from '../../../../../environments/environment';
+import { ProgressModule } from '../../../../components/progress/progress.module';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-default-header',
   templateUrl: './default-header.component.html',
-  imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, DropdownDividerDirective]
+  imports: [
+    ContainerComponent,
+    HeaderTogglerDirective,
+    SidebarToggleDirective,
+    IconDirective,
+    HeaderNavComponent,
+    NavItemComponent,
+    NavLinkDirective,
+    RouterLink,
+    RouterLinkActive,
+    NgTemplateOutlet,
+    BreadcrumbRouterComponent,
+    DropdownComponent,
+    DropdownToggleDirective,
+    AvatarComponent,
+    DropdownMenuDirective,
+    DropdownHeaderDirective,
+    DropdownItemDirective,
+    // HeaderComponent,
+
+    ProgressModule,
+    CommonModule
+  ]
 })
 export class DefaultHeaderComponent extends HeaderComponent {
 
@@ -50,16 +70,15 @@ export class DefaultHeaderComponent extends HeaderComponent {
  // variables
   mInitials:any
   mCurrentUser:any
-  ssoAccountUrl:any
 
+  mProgress = signal(false)
 
   constructor(
     private mAuthService: AuthService,
     private mToastrService: ToastrService,
+    private router: Router,
   ) {
     super();
-    // Set
-    this.ssoAccountUrl = environment.sso_account_url
   }
 
   sidebarId = input('sidebar1');
@@ -71,19 +90,21 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   // onLogout
   onLogout(){
+    this.mProgress = signal(true)
     this.mAuthService.logout().subscribe({
       next: (response) => {
         if(response.status =='success'){
-          this.mToastrService.success(response.message);
-          window.location.href = window.location.href = environment.sso_account_url+"/#/auth/login";
+          this.mToastrService.error(response.message);
+          this.router.navigateByUrl('/auth/login');
         }else{
           this.mToastrService.error(response.message);
         }
-
+        this.mProgress = signal(false)
       },
       error: (error ) => {
         if(error.error.message){
           this.mToastrService.error(error.error.message)
+          this.mProgress = signal(false)
         }
       }
     });

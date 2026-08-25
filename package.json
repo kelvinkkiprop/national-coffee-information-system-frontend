@@ -1,5 +1,5 @@
 {
-  "name": "permitting-management-system-frontend",
+  "name": "national-coffee-information-system-frontend",
   "version": "5.6.21",
   "copyright": "Copyright 2026 creativeLabs Łukasz Holeczek",
   "license": "MIT",
@@ -38,9 +38,13 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-angular": "~5.6.21",
     "@coreui/utils": "^2.0.2",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@iqx-limited/ngx-toastr": "^2.0.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8",
     "chart.js": "^4.5.1",
     "ckeditor5": "^44.3.0",
+    "font-awesome": "^4.7.0",
     "ngx-scrollbar": "^13.0.3",
     "rxjs": "~7.8.2",
     "sweetalert2": "^11.26.24",
@@ -63,11 +67,11 @@
     "npm": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/coreui/permitting-management-system-frontend/issues"
+    "url": "https://github.com/coreui/national-coffee-information-system-frontend/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coreui/permitting-management-system-frontend.git"
+    "url": "git+https://github.com/coreui/national-coffee-information-system-frontend.git"
   },
   "overrides": {
     "undici": "^7.24.0"

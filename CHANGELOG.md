@@ -1,4 +1,4 @@
-### [permitting-management-system-frontend](https://coreui.io/angular/) changelog
+### [national-coffee-information-system-frontend](https://coreui.io/angular/) changelog
 
 ---
 
@@ -796,7 +796,7 @@ see: [Babel vulnerable to arbitrary code execution when compiling specifically c
 
 #### `4.3.13`
 
-- docs(LICENSE): add missing license info
+- docs(LICENSE): add missing license primary
 - chore(dependencies): update
 
 ---

@@ -2,7 +2,7 @@
 A. ANGULAR
 1. Installation
 Download: https://github.com/coreui/coreui-free-angular-admin-template
-ng new permitting-management-system-frontend
+ng new national-coffee-information-system-frontend
 2. Start server
 ng serve --open
 npm start
@@ -10,7 +10,8 @@ npm start
 
 3. Containers
 ng generate component containers/authUI
-ng generate component components/auth/sso
+ng generate component components/auth/login
+ng generate component components/auth/register
 ng generate module components/auth/auth
 ng generate module components/auth/authRouting
 ng generate component components/auth/login
@@ -20,18 +21,23 @@ ng generate component components/auth/recoverPassword
 ng generate component containers/inc/CommonProgress
 
 ng generate module components/container/container
+ng generate component containers/publicPage
+ng generate component containers/errPage
 
 ng generate component containers/coreUI
 ng generate class containers/inc/navItems
 ng generate class containers/index
 
-ng generate component containers/homeUI
 ng generate module components/home/home
 ng generate module components/home/homeRouting
 ng generate component components/home/index
 
-ng generate component containers/inc/default-header
-ng generate component containers/inc/default-footer
+ng generate module components/errors/error
+ng generate module components/errors/errorRouting
+ng generate component components/errors/index
+
+ng generate component containers/public-page/inc/header
+ng generate component containers/public-page/inc/footer
 
 4. Components
 ng generate component components/dashboard/index
@@ -50,19 +56,6 @@ ng generate component components/construction-permits/process/inc/review
 ng generate component components/construction-permits/process/inc/professional-review
 ng generate component components/construction-permits/process/inc/cm-approval
 
-ng generate component components/detailed-designs/index
-ng generate component components/detailed-designs/create
-ng generate component components/detailed-designs/edit
-ng generate component components/detailed-designs/show
-ng generate module components/detailed-designs/detailed-plan
-ng generate module components/detailed-designs/detailed-plan-routing
-ng generate component components/detailed-designs/process
-ng generate component components/detailed-designs/process/inc/submission
-ng generate component components/detailed-designs/process/inc/planner-review
-ng generate component components/detailed-designs/process/inc/professional-recommendation
-ng generate component components/detailed-designs/process/inc/design-report
-ng generate component components/detailed-designs/process/inc/board-review
-ng generate component components/detailed-designs/process/inc/permit
 
 ng generate component components/profiles/index
 ng generate component components/profiles/create
@@ -71,12 +64,12 @@ ng generate component components/profiles/show
 ng generate module components/profiles/profile
 ng generate module components/profiles/profileRouting
 
-ng generate component components/registered-professionals/index
-ng generate component components/registered-professionals/create
-ng generate component components/registered-professionals/edit
-ng generate component components/registered-professionals/show
-ng generate module components/registered-professionals/registered-professional
-ng generate module components/registered-professionals/registered-professionalRouting
+ng generate component components/users/index
+ng generate component components/users/create
+ng generate component components/users/edit
+ng generate component components/users/show
+ng generate module components/users/user
+ng generate module components/users/userRouting
 
 ng generate component components/reports/index
 ng generate component components/reports/show
@@ -88,33 +81,12 @@ ng generate component components/downloads/index
 ng generate module components/downloads/download
 ng generate module components/downloads/downloadRouting
 
-ng generate component components/construction-site-board/index
-ng generate component components/construction-site-board/create
-ng generate component components/construction-site-board/edit
-ng generate component components/construction-site-board/show
-ng generate module components/construction-site-board/constructionSiteBoard
-ng generate module components/construction-site-board/constructionSiteBoardRouting
-
-ng generate component components/advertising-application/index
-ng generate component components/advertising-application/create
-ng generate component components/advertising-application/edit
-ng generate component components/advertising-application/show
-ng generate module components/advertising-application/advertisingApplication
-ng generate module components/advertising-application/advertisingApplicationRouting
-
-ng generate component components/compliance-and-enforcement/index
-ng generate component components/compliance-and-enforcement/create
-ng generate component components/compliance-and-enforcement/edit
-ng generate component components/compliance-and-enforcement/show
-ng generate module components/compliance-and-enforcement/complianceAndEnforcement
-ng generate module components/compliance-and-enforcement/complianceAndEnforcementRouting
-
-ng generate component components/parcel-allocation-worksheet/index
-ng generate component components/parcel-allocation-worksheet/create
-ng generate component components/parcel-allocation-worksheet/edit
-ng generate component components/parcel-allocation-worksheet/show
-ng generate module components/parcel-allocation-worksheet/parcelAllocationWorksheet
-ng generate module components/parcel-allocation-worksheet/parcelAllocationWorksheetRouting
+ng generate component components/roles/index
+ng generate component components/roles/create
+ng generate component components/roles/edit
+ng generate component components/roles/show
+ng generate module components/roles/role
+ng generate module components/roles/roleRouting
 
 ng generate component components/auth/index
 ng generate component components/auth/create
@@ -146,7 +118,7 @@ ng generate interceptor interceptors/RoleChange
 7. Services
 ng generate service services/auth
 ng generate service services/user
-ng generate service services/constructionPermit
+ng generate service services/role
 ng generate service services/detailedPlan
 ng generate service services/profile
 ng generate service services/dashboard
@@ -206,6 +178,7 @@ swal({
 1. Install
 npm install @iqx-limited/ngx-toastr@2.0.0 --save
 npm install @iqx-limited/ngx-toastr@^2.0.0 --save
+npm install @iqx-limited/ngx-toastr --save
 
 2. Add angular.json
 "styles": [
@@ -247,8 +220,8 @@ $ sudo vim /etc/apache2/sites-available/angular_konza_oss_permitting_management_
 <VirtualHost *:80>
   ServerName permitting-management-system.oss.konza.go.ke
   ServerAdmin kkiprop@konza.go.ke
-  DocumentRoot /var/www/html/permitting-management-system-frontend/dist/permitting-management-system-frontend/browser
-  <Directory “/var/www/html/permitting-management-system-frontend/dist/permitting-management-system-frontend/browser”>
+  DocumentRoot /var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser
+  <Directory “/var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser”>
     AllowOverride All
     Require all granted
   </Directory>
@@ -260,7 +233,7 @@ $ a2ensite angular_konza_oss_permitting_management_system.conf
 sudo chown -R username:groupname /path/to/angular/project
 
 4. Permissions
-chmod -R 755 /var/www/html/permitting-management-system-frontend
+chmod -R 755 /var/www/html/national-coffee-information-system-frontend
 
 5. Restart the apache service:
 sudo systemctl restart apache2

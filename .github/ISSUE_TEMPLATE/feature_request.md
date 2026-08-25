@@ -9,8 +9,8 @@ assignees: ''
 
 Before opening:
 
-- [Search for duplicate or closed issues](https://github.com/coreui/permitting-management-system-frontend/issues?utf8=%E2%9C%93&q=is%3Aissue)
-- Read the [contributing guidelines](https://github.com/coreui/permitting-management-system-frontend/blob/main/.github/CONTRIBUTING.md)
+- [Search for duplicate or closed issues](https://github.com/coreui/national-coffee-information-system-frontend/issues?utf8=%E2%9C%93&q=is%3Aissue)
+- Read the [contributing guidelines](https://github.com/coreui/national-coffee-information-system-frontend/blob/main/.github/CONTRIBUTING.md)
 
 Feature requests must include:
 

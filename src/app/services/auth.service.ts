@@ -92,13 +92,12 @@ export class AuthService {
           phone: response.data.user.phone,
           status_id: response.data.user.status_id,
           role_id: response.data.user.role_id,
+          created_at: response.data.user.created_at,
           token: response.data.token,
-          member_of_a_committee: response.data.user.member_of_a_committee,
 
           status: response.data.user.status,
           role: response.data.user.role,
           profile: response.data.user.profile,
-          committees: response.data.user.committees,
         }
         // store
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -111,10 +110,8 @@ export class AuthService {
     const url = `${environment.base_url}/change-password`;
     return this.http.post<any>(url, formValues, this.mAppContextService.getHttpOptions())
     .pipe(map(response => {
-      // console.log(response);
-        return response;
+      return response;
     }));
-
   }
 
   // updateUserProfile
@@ -168,9 +165,9 @@ export class AuthService {
   }
 
   // recoverPassword
-  recoverPassword(formValues: any) {
-    const url = `${environment.base_url}/recover-password`;
-    return this.http.post<any>(url, formValues, this.mAppContextService.getHttpOptions());
+  recoverPassword(item: any) {
+    const url = `${environment.base_url}/recover-password/${item.id}`;
+    return this.http.post<any>(url, item, this.mAppContextService.getHttpOptions());
   }
 
 }

@@ -15,7 +15,7 @@ import { iconSubset } from './icons/icon-subset';
 })
 export class AppComponent implements OnInit {
 
-  title = 'KonzaOSS | CPMS';
+  title = 'KEMIS | Selection & Placement';
 
   readonly #destroyRef: DestroyRef = inject(DestroyRef);
   readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     // iconSet singleton
     this.#iconSetService.icons = { ...iconSubset };
 
-    this.#colorModeService.localStorageItemName.set('permitting-management-system-frontend-theme-default');
+    this.#colorModeService.localStorageItemName.set('national-coffee-information-system-frontend-theme-default');
     this.#colorModeService.eventName.set('ColorSchemeChange');
   }
 

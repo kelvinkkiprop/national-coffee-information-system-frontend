@@ -1,0 +1,18 @@
+<div ngPreserveWhitespaces>
+
+  <c-row class="justify-content-center">
+    <c-col md="6">
+      <span class="clearfix">
+        <h1 class="float-start display-3 me-4">{{ mParam1 }}</h1>
+        <h4 class="pt-3">Oops! {{ mParam2 }}!</h4>
+        <p class="text-body-secondary float-start">
+          The page you are looking for might be temporarily unavailable.
+        </p>
+      </span>
+      <c-input-group class="input-prepend text-center">
+         <button (click)="onGoBack()" class="btn btn-info text-light">Go Back</button>
+      </c-input-group>
+    </c-col>
+  </c-row>
+
+</div>
