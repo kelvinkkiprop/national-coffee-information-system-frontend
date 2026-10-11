@@ -2,7 +2,7 @@
 <app-progress *ngIf="mProgress()" />
 
 <section id="header">
-  <nav class="navbar navbar-expand-lg shadow-lg fixed-top bg-body">
+  <nav class="navbar navbar-expand-lg shadow-lg bg-body fixed-top1" [class.fixed-top]="mIsFixed"[class.header-fixed]="mIsFixed">
     <div class="container">
         <a class="navbar-brand" routerLink="/">
           <img src="assets/images/logo-main.png" height="48"/>
@@ -13,32 +13,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
             </ul>
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mx-auto  fw-bolder">
               <li class="nav-item">
                   <a class="nav-link" routerLink="/">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/about">About</a>
+                  <a class="nav-link" routerLink="/standards">Standards</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/pathways">Pathways</a>
+                  <a class="nav-link" routerLink="/how-it-works">How it Works</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/help">Help & Support</a>
+                  <a class="nav-link" routerLink="/support">Support</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
               @if (!mCurrentUser) {
                 <li class="nav-item">
-                    <a class="nav-link me-2" routerLink="/auth/login">Sign in</a>
+                    <a class="nav-link me-2" routerLink="/auth/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-info rounded-pill text-light" routerLink="/auth/register">Register</a>
+                    <a class="btn btn-success rounded-pill text-light" routerLink="/auth/register">Register</a>
                 </li>
               }
               @if (mCurrentUser) {
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Welcome, {{mCurrentUser.name}}</a>
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Welcome, <span class="fw-bold">{{mCurrentUser.name}}</span></a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
                     <li> <a (click)="onLogout()" class="dropdown-item">Logout</a></li>

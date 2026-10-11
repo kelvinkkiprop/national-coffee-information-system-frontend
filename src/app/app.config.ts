@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation(),
       withViewTransitions(),
-      withHashLocation()
+      // withHashLocation()
     ),
     // provideAnimationsAsync(),
     provideAnimations(),

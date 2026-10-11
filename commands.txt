@@ -148,6 +148,10 @@ ng generate guard guards/activeAccountsOnly
 
 11. Build
 ng build --configuration production
+
+12. Directives
+ng generate directive directives/animations
+
 ===================================./ANGULAR===================================
 
 

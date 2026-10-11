@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-index',
@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class IndexComponent {
+
+  isVisible = signal(true);
+
+  toggle(): void {
+    this.isVisible.update(value => !value);
+  }
 
 }

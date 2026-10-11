@@ -9,7 +9,8 @@ export class AppInfoService {
 
   // variables
   private readonly appInfo = {
-    name: 'KEMIS | Selection & Placement',
+    name: 'National Coffee Information System',
+    abbreviation: 'NCIS',
     year: new Date().getFullYear(),
     version: packageInfo.version
   };
@@ -19,6 +20,9 @@ export class AppInfoService {
   }
   get name(): string {
     return this.appInfo.name;
+  }
+  get abbreviation(): string {
+    return this.appInfo.abbreviation;
   }
   get version(): string {
     return this.appInfo.version;

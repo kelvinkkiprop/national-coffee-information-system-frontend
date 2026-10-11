@@ -1,0 +1,21 @@
+// smooth_transition
+#header .navbar {
+  transition:
+  box-shadow 300ms ease,
+  background-color 300ms ease;
+  z-index: 1030;
+}
+
+#header .navbar.header-fixed {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%) !important;
+  animation: headerSlideDown 300ms ease-out;
+}
+
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

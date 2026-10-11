@@ -1,0 +1,167 @@
+/* ================================================================================
+   COLORS
+================================================================================ */;
+$green: #224326; // 224326; //19311C; // Coffee_Leaf_Green
+$red: #E2251D;
+$brown: #593A2C; //6F4E37;
+$black: #2C1E15; // Deep_Espresso
+$white: #ffffff;
+$cream: #F4EBE1; //F4EBE1; //E5D3BD; // EADCC9;
+
+
+
+
+/* ================================================================================
+   FONTS
+================================================================================ */
+$font-family-sans-serif: 'DM Sans', sans-serif;
+$font-family-heading: 'Playfair Display', Georgia, serif;
+
+/* ========================================
+   DM SANS — BODY / UI FONT
+======================================== */
+// Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../assets/fonts/DM_Sans/DMSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../assets/fonts/DM_Sans/DMSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url(/fonts/DM_Sans/DMSans-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url(/fonts/DM_Sans/DMSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================
+   PLAYFAIR DISPLAY — HEADING FONT
+======================================== */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/playfair-display/PlayfairDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
+/* ========================================
+   GLOBAL TYPOGRAPHY
+======================================== */
+:root {
+  // Override_boostrap_colors
+  --bs-primary: $brown !important;
+  --bs-body-bg: $cream !important;
+  --bs-body-color: $black !important;
+  --bs-card-bg: $white !important;
+  --bs-border-color: $cream !important;
+
+  [data-coreui-theme='light'],
+[data-bs-theme='light'] {
+  --cui-body-bg: #F4EBE1;
+  --cui-body-color: #2C1E15;
+}
+
+[data-coreui-theme='dark'],
+[data-bs-theme='dark'] {
+  --cui-body-bg: #211C19;
+  --cui-body-color: #F4EBE1;
+}
+
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  --bs-body-font-family:  'DM Sans', sans-serif;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+button, input, select, textarea, .nav-link, .btn {
+  font-family: 'DM Sans', sans-serif;
+}
+
+// .btn-primary {
+//   --bs-btn-bg: #224326;
+//   --bs-btn-border-color: #224326;
+//   --bs-btn-hover-bg: #19311C;
+//   --bs-btn-hover-border-color: #19311C;
+//   --bs-btn-active-bg: #19311C;
+// }
+
+.bg-primary{
+  // background-color: #2C1E15 !important;
+  background-color: $brown !important;
+}
+// .bg-warning{
+//   background-color: $black !important;
+// }
+
+
+.text-success{
+  color: $green !important;
+}
+.dark-warning{
+  color: $brown !important;
+}
+
+
+
+
+
+// /* Custom App Background */
+// .bg-coffee-light {
+//     background-color: #F4EBE1 !important;
+// }
+
+// /* Deep Coffee Text (Better than pure black on cream backgrounds) */
+// .text-coffee-dark {
+//     color: #2C1E15 !important;
+// }
+
+// /* Custom Coffee Leaf Green Button */
+// .btn-coffee-leaf {
+//     background-color: #224326 !important;
+//     color: #FFFFFF !important;
+//     border: none;
+//     transition: background-color 0.2s ease-in-out;
+// }
+
+// .btn-coffee-leaf:hover {
+//     background-color: #19311C !important;
+//     color: #FFFFFF !important;
+// }
+
+// /* White Card/Container Adjustments for Contrast */
+// .card-coffee-ui {
+//     background-color: #FFFFFF !important;
+//     border: 1px solid #EFE6DD !important;
+//     border-radius: 12px;
+// }
+

@@ -1,4 +1,4 @@
-<section id="footer" class="bg-primary">
+<!-- <section id="footer" class="bg-warning">
   <div class="py-4">
     <div class="container">
       <div class="row">
@@ -64,29 +64,132 @@
   <div class="py-4">
     <div class="container">
       <hr class="text-light">
-      <div class="row">
-        <div class="col-md-6 col-6">
-            <ul class="nav justify-content-start">
-              <li class="nav-item">
-                <!-- <span class="nav-link pr-1 pl-0" href="#">&copy;&nbsp;2022&nbsp;-&nbsp;{{mCurrentDate | date:'yyyy'}} Jitume. All rights reserved</span> -->
-                <span class="nav-link pr-1 pl-0 text-light" href="#">&copy;&nbsp;2026 Ministry of Education, Republic of Kenya. All rights reserved.</span>
-              </li>
-            </ul>
+      <div class="row text-light align-items-center g-3">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">
+            &copy; 2026 Coffee House.
+            All rights reserved.
+          </p>
         </div>
-        <div class="col-md-6 col-6">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link pr-1 pl-1 text-light" routerLink="/home/privacy-policy">Privacy Policy</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link pr-1 pl-1" routerLink="#">|</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pr-0 pl-1 text-light" routerLink="/home/terms-and-conditions">Terms & Conditions</a>
-            </li>
-          </ul>
+        <div class="col-md-6 text-center text-md-end">
+          <a routerLink="/terms-and-conditions">
+            Terms &amp; Conditions
+          </a>
+          <span class="footer-divider">|</span>
+          <a routerLink="/privacy-policy">
+            Privacy
+          </a>
         </div>
       </div>
     </div>
   </div>
+</section> -->
+
+
+<section id="footer">
+  <footer class="coffee-footer">
+    <div class="container py-5">
+      <div class="row g-4">
+
+        <!-- Brand -->
+        <div class="col-lg-4 col-md-6">
+          <a routerLink="/" class="footer-brand text-decoration-none bg-light rounded-3 p-2">
+            <img src="assets/images/logo-main.png" alt="Coffee House Logo" height="55" class="mb-3"/>
+          </a>
+
+          <h5 class="footer-heading">Every coffee journey tells a story.</h5>
+
+          <p class="footer-text">
+            Discover Kenya's coffee journey, digitally connected to inspire transparency, growth, and excellence.
+          </p>
+
+          <div class="footer-socials mt-4">
+            <a href="#" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="X">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="#" aria-label="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Explore -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <h6 class="footer-title">Explore</h6>
+          <ul class="footer-links">
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/coffee">Our Coffee</a></li>
+            <li><a routerLink="/standards">Our Standards</a></li>
+            <li><a routerLink="/how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="col-6 col-lg-2 col-md-3">
+          <h6 class="footer-title">Stakeholders</h6>
+          <ul class="footer-links">
+            <li><a href="/https://www.nairobicoffeeexchange.co.ke/" target="_blank">Nairobi Coffee Exchange</a></li>
+            <li><a href="https://kenyaforestservice.org" target="_blank">Kenya Forest Service</a></li>
+            <li><a href="https://cog.go.ke" target="_blank">Council of Governors Kenya</a></li>
+            <li><a href="https://kentrade.go.ke" target="_blank">Kentrade</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-8">
+          <h6 class="footer-title">A little coffee in your inbox</h6>
+          <p class="footer-text">
+            Stay informed with the latest coffee updates, industry insights, and regulatory guidelines.
+          </p>
+
+          <form class="footer-newsletter"
+                (submit)="$event.preventDefault()">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Your email address"
+              aria-label="Your email address"
+              required
+            />
+
+            <button type="submit" aria-label="Subscribe">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+
+          <small class="footer-note">
+            Trusted updates. Better insights. No unnecessary emails.
+          </small>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom mt-5 pt-4">
+        <div class="row align-items-center g-3">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-0">
+              &copy;{{ mAppInfoService.year }}&nbsp;{{ mAppInfoService.name }}. All rights reserved.
+            </p>
+          </div>
+
+          <div class="col-md-6 text-center text-md-end">
+            <a routerLink="/terms-and-conditions">
+              Terms &amp; Conditions
+            </a>
+            <span class="footer-divider">|</span>
+            <a routerLink="/privacy-policy">
+              Privacy
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </section>

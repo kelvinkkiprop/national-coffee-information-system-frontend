@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 // import
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { ProgressComponent } from '../../../../components/progress/progress/progress.component';
@@ -9,7 +9,7 @@ import { ProgressModule } from '../../../../components/progress/progress.module'
 
 @Component({
   selector: 'app-header',
-  imports: [ RouterLink, CommonModule, ProgressModule ],
+  imports: [ RouterLink, CommonModule, ProgressModule, RouterModule ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -18,6 +18,13 @@ export class HeaderComponent {
   // variables
   mCurrentUser:any
   mProgress = signal(false)
+
+  // fixed_navbar
+  mIsFixed = false;
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    this.mIsFixed = window.scrollY > 50;
+  }
 
   constructor(
     private mAuthService: AuthService,

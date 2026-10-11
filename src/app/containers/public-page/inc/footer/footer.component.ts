@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppInfoService } from '../../../../core/app-info.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
-  // mCurrentDate = new Date();
+
+  constructor(
+    public mAppInfoService: AppInfoService,
+  ) { }
 
 }
