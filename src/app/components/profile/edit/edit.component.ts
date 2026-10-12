@@ -21,6 +21,9 @@ export class EditComponent {
   itemForm:any
   mProgress = signal(false)
 
+  mShowPassword = false
+  mShowPasswordConfirmation = false
+
 constructor(
   private mProfileService: AuthService,
   private mToastrService: ToastrService,
@@ -40,14 +43,14 @@ constructor(
     this.mProfileService.changePassword(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.info((response as any).message);
+          this.mToastrService.success((response as any).message);
           this.item = (response as any).data;
           this.mProgress.set(false);
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message);
+          this.mToastrService.warning(error.error.message);
         }
         this.mProgress.set(false);
       }

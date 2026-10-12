@@ -23,6 +23,8 @@ export class CreateComponent {
   itemForm:any
   mProgress = signal(false)
 
+  mRoleTypes:any
+
   constructor(
     private mRoleService: RoleService,
     private mToastrService: ToastrService,
@@ -34,12 +36,14 @@ export class CreateComponent {
     this.itemForm = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
+      type_id: ['', Validators.required],
     });
   }
 
 
   ngOnInit(): void {
     // Call
+    this.loadUnpaginatedItems()
   }
 
   // onSubmit
@@ -48,15 +52,32 @@ export class CreateComponent {
     this.mRoleService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.router.navigateByUrl('/roles')
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
+  // loadUnpaginatedItems
+  loadUnpaginatedItems(){
+    this.mProgress.set(true);
+    this.mRoleService.unpaginatedItems().subscribe({
+      next: (response) => {
+        if(response){
+          this.mRoleTypes = (response as any).data.role_types
+          this.mProgress.set(false)
+        }
+      },
+      error: (error ) => {
+        this.mToastrService.error(error.error.message)
         this.mProgress.set(false)
       }
     });

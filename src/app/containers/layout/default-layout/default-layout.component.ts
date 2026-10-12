@@ -17,6 +17,7 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from '.';
 import { navItems } from './_nav';
+import { AnimationsDirective } from '../../../directives/animations.directive';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -45,6 +46,9 @@ function isOverflown(element: HTMLElement) {
     RouterOutlet,
     RouterLink,
     ShadowOnScrollDirective,
+
+    // Add
+    AnimationsDirective,
   ]
 })
 export class DefaultLayoutComponent {

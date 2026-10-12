@@ -44,7 +44,7 @@ export class ShowComponent {
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false);
       }

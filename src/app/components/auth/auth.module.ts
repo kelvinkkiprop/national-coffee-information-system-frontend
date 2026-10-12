@@ -23,6 +23,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { RegisterComponent } from './register/register.component';
+import { AnimationsDirective } from '../../directives/animations.directive';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { RegisterComponent } from './register/register.component';
     // import
     AuthRoutingModule,
     ProgressModule,
+    AnimationsDirective,
 
     // add
     ContainerComponent,

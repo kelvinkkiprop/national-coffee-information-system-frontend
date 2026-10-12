@@ -21,6 +21,8 @@ export class LoginComponent {
   itemForm:any
   mProgress = signal(false)
 
+  mShowPassword= false
+
   constructor(
     private route: ActivatedRoute,
     private mAuthService: AuthService,
@@ -46,17 +48,17 @@ export class LoginComponent {
       next: (response) => {
         if(response){
           if(response.status =='success'){
-            this.mToastrService.error(response.message);
             this.router.navigateByUrl('/dashboard')
+            this.mToastrService.success(response.message);
           }else{
-            this.mToastrService.error(response.message);
+            this.mToastrService.warning(response.message);
           }
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }

@@ -57,7 +57,7 @@ export class IndexComponent {
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }
@@ -81,7 +81,7 @@ export class IndexComponent {
       error: (error ) => {
         // console.log(error)
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }
@@ -120,14 +120,14 @@ export class IndexComponent {
                 if(response){
                   // console.log(response)
                   this.mRoles = this.mRoles.filter((items: { id: any })=>items.id !== item.id)
-                  this.mToastrService.error((response as any).message)
+                  this.mToastrService.warning((response as any).message)
                   this.mProgress.set(false)
                 }
               },
               error: (error ) => {
                 // console.log(error)
                 if(error.error.message){
-                  this.mToastrService.error(error.error.message)
+                  this.mToastrService.warning(error.error.message)
                 }
                 this.mProgress.set(false)
               }
@@ -145,13 +145,13 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mRoles = (response as any).salutations
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }
@@ -165,13 +165,13 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mRoles = (response as any).data
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }

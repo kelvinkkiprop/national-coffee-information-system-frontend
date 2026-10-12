@@ -40,14 +40,14 @@ export class ForgotPasswordComponent {
     this.mAuthService.resetPassword(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.router.navigateByUrl('/dashboard')
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }

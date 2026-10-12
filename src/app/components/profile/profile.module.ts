@@ -8,6 +8,7 @@ import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ShowComponent } from './show/show.component';
+import { AnimationsDirective } from '../../directives/animations.directive';
 
 
 
@@ -23,6 +24,7 @@ import { ShowComponent } from './show/show.component';
     // import
     ProfileRoutingModule,
     ProgressModule,
+    AnimationsDirective,
 
     // add
     ButtonModule,

@@ -2,9 +2,8 @@
 @use "./variables";
 
 
-
 /* ================================================================================
-   PUBLIC_PAGE
+  PUBLIC_PAGE
 ================================================================================ */
 #public-page{
   #header {
@@ -41,314 +40,55 @@
       }
     }
   }
+}
 
-  /* Dark theme */
-  :host-context([data-bs-theme='dark']) #header,
-  [data-bs-theme='dark'] #header {
-    --nav-link-color: #F4EBE1;
-    --nav-link-hover-color: #A8C99A;
-    --nav-underline-color: #A8C99A;
+#public-page {
+  #header {
+    --nav-bg-color: #F4EBE1;
+    --nav-link-color: #2C1E15;
+    --nav-link-hover-color: #224326;
+    --nav-underline-color: #224326;
+
+    [data-coreui-theme="dark"] & {
+      --nav-bg-color: #2C1E15;
+      --nav-link-color: #F4EBE1;
+      --nav-link-hover-color: #A8D5AD;
+      --nav-underline-color: #A8D5AD;
+    }
+    .navbar {
+      background-color: var(--nav-bg-color) !important;
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      color: var(--nav-link-color);
+      transition: color 250ms ease;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        bottom: 2px;
+        width: 50%;
+        height: 2px;
+        background-color: var(--nav-underline-color);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 250ms ease;
+      }
+      &:hover, &:focus-visible, &.active {
+        color: var(--nav-link-hover-color) !important;
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
   }
 }
-// @font-face {
-//   // Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
-//   font-family: 'TwCenMT';
-//   /*a name to be used later*/
-//   src: url(/assets/fonts/tw-cen-mt-std/TwCenMTStd.otf);
-//   /*URL to font*/
-//   // src:url(/assets/fonts/futura/futur.ttf);/*URL to font*/
-//   // font-family: 'Futura'; /*a name to be used later*/
-//   // src:url(/assets/fonts/futura.futur.tff);/*URL to font*/
-// }
-
-// // .ck-editor__editable_inline {
-// //   min-height: 300px;
-// // }
-
-// body {
-//   // font-family: TwCenMT !important;
-
-//   // font-family: 'Futura' !important;
-//   // font-family:  "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif !important;
-//   //BGs
-//   .bg-success {
-//     background-color: variables.$green !important;
-//   }
-
-//   // .bg-warning{
-//   //   background-color: variables.$red !important;
-//   // }
-//   //Text
-//   .text-success {
-//     color: variables.$green !important;
-//   }
-
-//   // .text-warning {
-//   //   color: variables.$red !important;
-//   // }
-
-//   //Buttons
-//   .btn-success {
-//     background-color: variables.$green !important;
-//     border-color: variables.$green !important;
-//   }
-
-//   .btn-success:hover {
-//     background-color: variables.$green !important;
-//     border-color: variables.$green !important;
-//   }
-
-//   .btn-link {
-//     color: variables.$green;
-//     text-decoration: none;
-//   }
-
-//   .btn-link:hover {
-//     color: variables.$red;
-//   }
-
-//   .btn-warning {
-//     background-color: variables.$red !important;
-//     border-color: variables.$red !important;
-//   }
-
-//   .btn-warning:hover {
-//     background-color: $accent !important;
-//     border-color: $accent !important;
-//   }
-// }
-
-// html {
-//   //Smooth scroll
-//   scroll-behavior: smooth;
-// }
-
-// .required:after {
-//   content: " *";
-//   color: variables.$red;
-// }
-
-// input[readonly] {
-//   background-color: $gray !important;
-//   opacity: 1;
-//   pointer-events: none;
-// }
-
-// // input[readonly] {
-// //   background-color: var(--cui-gray-200); // Adjust_based_on_CoreUI_color_variables
-// //   pointer-events: none;
-// // }
-// /*--------------------------------------./body------------------------------------------*/
-
-// /*--------------------------------------HOME------------------------------------------*/
-// #homeUI {
-//   min-height: 100vh;
-
-//   .header1 {
-
-//     // min-height: 100vh;
-//     // background-image: linear-gradient(rgba(14, 171, 183, 0.6), rgba(14, 171, 183, 0.6)), url(/images/laptop.jpg);
-//     // background-size: cover;
-//     // background-position: center;
-//     nav {
-//       border-top: 1.5px solid variables.$red;
-
-//       //Dropdown menu
-//       .dropdown-menu {
-//         background-color: transparent;
-//         border: none;
-//         box-shadow: none;
-
-//         a {
-//           margin-top: 5px;
-//           background-color: variables.$white;
-//           color: variables.$green;
-//         }
-
-//         a:hover {
-//           border-left: 2px solid variables.$red;
-//         }
-//       }
-//     }
-//   }
-
-//   #hero {
-//     min-height: 50vh;
-//   }
-
-//   #quote {
-//     margin-top: -50px !important;
-//   }
-// }
-
-// /*--------------------------------------./HOME------------------------------------------*/
-
-
-// /*--------------------------------------FOOTER------------------------------------------*/
-// #footer {
-//   a {
-//     color: variables.$green;
-//     text-decoration: none;
-//   }
-
-//   a:hover {
-//     color: variables.$red;
-//   }
-// }
-
-// /*--------------------------------------./FOOTER------------------------------------------*/
-
-
-
 
 
 /* ================================================================================
-   CORE_UI
+  AUTH_UI
 ================================================================================ */
-// #coreUI {
-//   // min-height: 100vh;
-//   border-top: 2px variables.$red solid;
-//   #sidebar1 {
-//     background-color: variables.$black !important;
-//     .nav-link{
-//       color:  variables.$black !important;
-//       img, svg {
-//         color: variables.$black !important;
-//       }
-//       .nav-icon-bullet{
-//         color: variables.$black !important;
-//       }
-//     }
-//     .nav-link:hover {
-//       background-color: rgba(variables.$white, 0.3);
-//       border-left: 3px solid variables.$white;
-//     }
-//     .nav-link.active {
-//       background-color: variables.$white !important;
-//       color: variables.$green !important;
-//       img, svg {
-//         color: variables.$green !important;
-//       }
-//       .nav-icon-bullet{
-//         color: variables.$green !important;
-//       }
-//     }
-//   }
-//   // .header {
-//   //   .dropdown-item:hover{//,:visited{
-//   //     color: variables.$red;
-//   //     background-color: variables.$green;
-//   //   }
-//   // }
-//   .wrapper {
-//     .breadcrumb {
-//       color: variables.$green !important;
-//       .breadcrumb-item {
-//         a {
-//           color: variables.$green !important;
-//           text-decoration: none !important;
-//         }
-//         a:hover {
-//           color: variables.$red !important;
-//           text-decoration: none;
-//         }
-//       }
-//     }
-
-//     label {
-//       font-weight: bold !important;
-//     }
-
-//     .card {
-//       // box-shadow: none !important;
-//       // border-radius: 0 !important;
-//       // box-shadow: 2px 2px 2px 2px $body-bg;
-//       border: none;
-//       .card-header {
-//         border-bottom: 0;
-//       }
-//       .card-body {
-//         a {
-//           color: variables.$green;
-//           text-decoration: none;
-//         }
-//         a:hover {
-//           color: variables.$red;
-//           text-decoration: none;
-//         }
-//       }
-//     }
-
-//     .pagination {
-//       // Pagination
-//       .page-link {
-//         color: variables.$green;
-//       }
-//       .page-item.active .page-link {
-//         background-color: variables.$green;
-//         border-color: variables.$green;
-//         color: variables.$white !important;
-//       }
-//       .page-link:hover,
-//       .page-item.active:hover {
-//         background-color: variables.$red !important;
-//         border-color: variables.$red !important;
-//         color: variables.$white !important;
-//       }
-//     }
-
-//     .full-calendar {
-//       .fc-button-primary {
-//         background-color: variables.$green !important;
-//         border-color: variables.$green !important;
-//       }
-
-//       .fc-button-primary:hover {
-//         background-color: variables.$green !important;
-//         border-color: variables.$green !important;
-//       }
-
-//       a {
-//         color: variables.$green;
-//         text-decoration: none;
-//       }
-
-//       a:hover {
-//         color: variables.$red;
-//       }
-
-//       .fc-daygrid-event-dot {
-//         margin: 0 4px;
-//         box-sizing: content-box;
-//         width: 0;
-//         height: 0;
-//         border: 4px solid variables.$green !important;
-//         border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, variables.$green);
-//         border-radius: 4px;
-//         border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
-//       }
-//     }
-
-//     .footer {
-//       a {
-//         color: variables.$green;
-//         text-decoration: none;
-//       }
-
-//       a:hover {
-//         color: variables.$red;
-//       }
-//     }
-//   }
-// }
-
-
-
-/* ================================================================================
-   CORE_UI
-================================================================================ */
-#coreUI {
-// Dark-or_default_theme
+#auth {
   --sidebar-bg: #{variables.$black};
   --sidebar-text: #{variables.$cream};
   --sidebar-title: #{variables.$cream};
@@ -358,9 +98,56 @@
   --sidebar-active-text: #{variables.$green};
   --sidebar-border: #{variables.$green};
 
-  // --content-link: #{variables.$green};
-  // --content-link-hover: #{variables.$brown};
-  // --breadcrumb-color: #{variables.$green};
+  --content-link: #{variables.$green};
+  --content-link-hover: #{variables.$brown};
+  --breadcrumb-color: #{variables.$green};
+  a {
+    color: var(--breadcrumb-color) !important;
+    text-decoration: none;
+    font-weight: 400 !important;
+    &:hover {
+      color: var(--content-link-hover) !important;
+    }
+  }
+
+}
+
+
+
+/* ================================================================================
+   CORE_UI
+================================================================================ */
+[data-coreui-theme='dark'] #coreUI,
+[data-bs-theme='dark'] #coreUI {
+  --sidebar-bg: #211C19;
+  --sidebar-text: #F4EBE1;
+  --sidebar-title: #C8D8BE;
+  --sidebar-hover-bg: rgba(244, 235, 225, 0.08);
+  --sidebar-hover-text: #A8C99A;
+  --sidebar-active-bg: #3A302A;
+  --sidebar-active-text: #A8C99A;
+  --sidebar-border: #A8C99A;
+
+  --content-link: #A8C99A;
+  --content-link-hover: #F08A80;
+  --breadcrumb-color: #C8D8BE;
+}
+#coreUI {
+  --sidebar-bg: #{variables.$black};
+  --sidebar-text: #{variables.$cream};
+  --sidebar-title: #{variables.$cream};
+  --sidebar-hover-bg: #{rgba(244, 235, 225, 0.08)};
+  --sidebar-hover-text: #{variables.$cream};
+  --sidebar-active-bg: #{variables.$white};
+  --sidebar-active-text: #{variables.$green};
+  --sidebar-border: #{variables.$green};
+
+  --content-link: #{variables.$green};
+  --content-link-hover: #{variables.$brown};
+  --breadcrumb-color: #{variables.$green};
+
+
+  // sidebar
   #sidebar1 {
     background-color: var(--sidebar-bg) !important;
     color: var(--sidebar-text);
@@ -396,162 +183,74 @@
     }
   }
 
-  /* ================================================================================
-   COREUI HEADER — LIGHT / DARK MODE
-================================================================================ */
+  // wrapper
+  .wrapper {
+    --cui-wrapper-color: #F4EBE1;
+    [data-coreui-theme="dark"] & {
+      --cui-wrapper-color: #3A302A;
+    }
+    background-color: var(--cui-wrapper-color) !important;
+    .breadcrumb {
+      color: var(--breadcrumb-color) !important;
+      .breadcrumb-item a {
+        color: var(--breadcrumb-color) !important;
+        text-decoration: none;
+        &:hover {
+          color: var(--content-link-hover) !important;
+        }
+      }
+      label {
+        font-weight: bold !important;
+      }
+    }
 
-/* Light mode */
-.wrapper.d-flex.flex-column.min-vh-100 {
-  --wrapper-bg: #F4EBE1;
-  --wrapper-color: #2C1E15;
+    .card {
+      border: none;
+      .card-header {
+        border-bottom: 0;
+      }
+      // .card-body a {
+      //   color: var(--content-link);
+      //   text-decoration: none;
+      //   &:hover {
+      //     color: var(--content-link-hover);
+      //   }
+      // }
+    }
 
-  background-color: var(--wrapper-bg);
-  color: var(--wrapper-color);
+    .pagination {
+      .page-link {
+        color: var(--content-link);
+      }
 
+      .page-item.active .page-link {
+        background-color: variables.$brown;
+        border-color: variables.$brown;
+        color: variables.$white !important;
+      }
+
+      .page-link:hover {
+        background-color: variables.$green !important;
+        border-color: variables.$green !important;
+        color: variables.$white !important;
+      }
+    }
+
+    .footer a {
+      color: var(--content-link);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--content-link-hover);
+      }
+    }
+  }
+
+  // header
   .header {
-    --cui-header-bg: #F4EBE1;
-    --cui-header-color: #2C1E15;
-    --cui-header-border-color: rgba(89, 58, 44, 0.15);
-
-    --cui-header-brand-color: #593A2C;
-    --cui-header-brand-hover-color: #224326;
-
-    --cui-header-hover-color: #224326;
-    --cui-header-active-color: #224326;
-    --cui-header-disabled-color: rgba(44, 30, 21, 0.35);
-
-    --cui-header-toggler-color: #593A2C;
-    --cui-header-toggler-hover-color: #224326;
-
-    background: var(--cui-header-bg);
-    color: var(--cui-header-color);
+  .dropdown-item.active, .dropdown-item:active{
+      background-color: var(--cui-body-color);
+      color: var(--cui-body-bg);
+    }
   }
 }
-
-/* Dark mode */
-[data-coreui-theme='dark'] .wrapper.d-flex.flex-column.min-vh-100,
-[data-bs-theme='dark'] .wrapper.d-flex.flex-column.min-vh-100 {
-  --wrapper-bg: #211C19 !important;
-  --wrapper-color: #F4EBE1 !important;
-
-
-  background-color: var(--wrapper-bg) !important;
-  color: var(--wrapper-color) !important;
-
-  .header {
-    --cui-header-bg: #2C2520 !important;
-    --cui-header-color: #F4EBE1 !important;
-    --cui-header-border-color: rgba(244, 235, 225, 0.12);
-
-    --cui-header-brand-color: #F4EBE1;
-    --cui-header-brand-hover-color: #A8C99A;
-
-    --cui-header-hover-color: #A8C99A;
-    --cui-header-active-color: #A8C99A;
-    --cui-header-disabled-color: rgba(244, 235, 225, 0.35);
-
-    --cui-header-toggler-color: #F4EBE1;
-    --cui-header-toggler-hover-color: #A8C99A;
-
-    background: var(--cui-header-bg);
-    color: var(--cui-header-color);
-  }
-
-
-}
-
-
-  // .wrapper {
-  //   .breadcrumb {
-  //     color: var(--breadcrumb-color) !important;
-
-  //     .breadcrumb-item a {
-  //       color: var(--breadcrumb-color) !important;
-  //       text-decoration: none;
-
-  //       &:hover {
-  //         color: var(--content-link-hover) !important;
-  //       }
-  //     }
-
-  //     label {
-  //       font-weight: bold !important;
-  //     }
-  //   }
-
-  //   .card {
-  //     border: none;
-
-  //     .card-header {
-  //       border-bottom: 0;
-  //     }
-
-  //     .card-body a {
-  //       color: var(--content-link);
-  //       text-decoration: none;
-
-  //       &:hover {
-  //         color: var(--content-link-hover);
-  //       }
-  //     }
-  //   }
-
-  //   .pagination {
-  //     .page-link {
-  //       color: var(--content-link);
-  //     }
-
-  //     .page-item.active .page-link {
-  //       background-color: variables.$green;
-  //       border-color: variables.$green;
-  //       color: variables.$white !important;
-  //     }
-
-  //     .page-link:hover {
-  //       background-color: variables.$red !important;
-  //       border-color: variables.$red !important;
-  //       color: variables.$white !important;
-  //     }
-  //   }
-
-  //   .footer a {
-  //     color: var(--content-link);
-  //     text-decoration: none;
-
-  //     &:hover {
-  //       color: var(--content-link-hover);
-  //     }
-  //   }
-  // }
-
-}
-
-// Dark_theme
-[data-coreui-theme='dark'] #coreUI, [data-bs-theme='dark'] #coreUI {
-  --sidebar-bg: #211C19;
-  --sidebar-text: #F4EBE1;
-  --sidebar-title: #C8D8BE;
-  --sidebar-hover-bg: rgba(244, 235, 225, 0.08);
-  --sidebar-hover-text: #A8C99A;
-  --sidebar-active-bg: #3A302A;
-  --sidebar-active-text: #A8C99A;
-  --sidebar-border: #A8C99A;
-
-  --content-link: #A8C99A;
-  --content-link-hover: #F08A80;
-  --breadcrumb-color: #C8D8BE;
-}
-
-
-// /* Light mode */
-// .wrapper.d-flex.flex-column.min-vh-100 {
-//   background-color: #F4EBE1;
-//   color: #2C1E15;
-// }
-
-// /* Dark mode */
-// [data-coreui-theme='dark'] .wrapper.d-flex.flex-column.min-vh-100,
-// [data-bs-theme='dark'] .wrapper.d-flex.flex-column.min-vh-100 {
-//   background-color: #211C19;
-//   color: #F4EBE1;
-// }

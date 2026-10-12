@@ -11,7 +11,7 @@
 
     <c-row *ngIf="(!mAppContextService.hasRoles([2]))">
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">System Admin</h6>
+        <h6 class="mt-2 text-muted">Internal</h6>
       </c-col>
       <c-col md="3" xl="3">
         <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
@@ -45,15 +45,15 @@
 
     <c-row [gutter]="{ gx: 3, gy: 3 }">
       <c-col xs="12">
-        <h6 class="mt-2 text-muted">Institutions</h6>
+        <h6 class="mt-2 text-muted">External</h6>
       </c-col>
       <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Learners'" value="{{ myLearners }}" class="mb-4">
+        <c-widget-stat-e [title]="'Learners'" value="{{ myLearners }}" color="success" inverse class="mb-4">
           <i class="fa-solid fa-user-group fs-1" aria-hidden="true"></i>
         </c-widget-stat-e>
       </c-col>
       <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Selections'" value="{{ mySelections }}" class="mb-4">
+        <c-widget-stat-e [title]="'Selections'" value="{{ mySelections }}" color="warning" inverse class="mb-4">
           <i class="fa-solid fa-check-to-slot fs-1" aria-hidden="true"></i>
         </c-widget-stat-e>
       </c-col>

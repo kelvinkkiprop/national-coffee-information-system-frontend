@@ -66,8 +66,40 @@ $font-family-heading: 'Playfair Display', Georgia, serif;
 
 
 
+/* ================================================================================
+  LIGHT_AND_DARK_MODE
+================================================================================ */
+[data-coreui-theme='light'], [data-bs-theme='light'] {
+    --cui-body-bg: #F4EBE1;
+    --cui-body-color: #2C1E15;
+  }
 
-/* ========================================
+  [data-coreui-theme='dark'], [data-bs-theme='dark'] {
+    --cui-body-bg: #3A302A;//593A2C;
+    --cui-body-color: #F4EBE1;
+    // --cui-body-bg: $green;
+    // --cui-body-color: $green;
+
+
+  //   --sidebar-bg: #211C19;
+  // --sidebar-text: #F4EBE1;
+  // --sidebar-title: #C8D8BE;
+  // --sidebar-hover-bg: rgba(244, 235, 225, 0.08);
+  // --sidebar-hover-text: #A8C99A;
+  // --sidebar-active-bg: #3A302A;
+  // --sidebar-active-text: #A8C99A;
+  // --sidebar-border: #A8C99A;
+
+  // --content-link: #A8C99A;
+  // --content-link-hover: #F08A80;
+  // --breadcrumb-color: #C8D8BE;
+
+  }
+
+
+
+
+  /* ========================================
    GLOBAL TYPOGRAPHY
 ======================================== */
 :root {
@@ -78,25 +110,94 @@ $font-family-heading: 'Playfair Display', Georgia, serif;
   --bs-card-bg: $white !important;
   --bs-border-color: $cream !important;
 
-  [data-coreui-theme='light'],
-[data-bs-theme='light'] {
-  --cui-body-bg: #F4EBE1;
-  --cui-body-color: #2C1E15;
-}
+  // [data-coreui-theme='light'],
+  // [data-bs-theme='light'] {
+  //   --cui-body-bg: #F4EBE1;
+  //   --cui-body-color: #2C1E15;
+  // }
 
-[data-coreui-theme='dark'],
-[data-bs-theme='dark'] {
-  --cui-body-bg: #211C19;
-  --cui-body-color: #F4EBE1;
-}
+  // [data-coreui-theme='dark'],
+  // [data-bs-theme='dark'] {
+  //   --cui-body-bg: #211C19;
+  //   --cui-body-color: #F4EBE1;
+  // }
 
 }
 
 body {
   font-family: 'DM Sans', sans-serif;
   --bs-body-font-family:  'DM Sans', sans-serif;
-  color: var(--bs-body-color);
-  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color) !important;
+  background-color: var(--bs-body-bg) !important;
+
+  //   //BGs
+  //   .bg-success {
+  //     background-color: variables.$green !important;
+  //   }
+
+  //   // .bg-warning{
+  //   //   background-color: variables.$red !important;
+  //   // }
+  //   //Text
+  //   .text-success {
+  //     color: variables.$green !important;
+  //   }
+
+  //   // .text-warning {
+  //   //   color: variables.$red !important;
+  //   // }
+
+  //   //Buttons
+  //   .btn-success {
+  //     background-color: variables.$green !important;
+  //     border-color: variables.$green !important;
+  //   }
+
+  //   .btn-success:hover {
+  //     background-color: variables.$green !important;
+  //     border-color: variables.$green !important;
+  //   }
+
+  //   .btn-link {
+  //     color: variables.$green;
+  //     text-decoration: none;
+  //   }
+
+  //   .btn-link:hover {
+  //     color: variables.$red;
+  //   }
+
+  //   .btn-warning {
+  //     background-color: variables.$red !important;
+  //     border-color: variables.$red !important;
+  //   }
+
+  //   .btn-warning:hover {
+  //     background-color: $accent !important;
+  //     border-color: $accent !important;
+  //   }
+  // }
+
+  // html {
+  //   //Smooth scroll
+  //   scroll-behavior: smooth;
+  // }
+
+  .required:after {
+    content: " *";
+    color: $red;
+  }
+
+  // input[readonly] {
+  //   background-color: $gray !important;
+  //   opacity: 1;
+  //   pointer-events: none;
+  // }
+
+  // // input[readonly] {
+  // //   background-color: var(--cui-gray-200); // Adjust_based_on_CoreUI_color_variables
+  // //   pointer-events: none;
+  // // }
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
@@ -107,13 +208,13 @@ button, input, select, textarea, .nav-link, .btn {
   font-family: 'DM Sans', sans-serif;
 }
 
-// .btn-primary {
-//   --bs-btn-bg: #224326;
-//   --bs-btn-border-color: #224326;
-//   --bs-btn-hover-bg: #19311C;
-//   --bs-btn-hover-border-color: #19311C;
-//   --bs-btn-active-bg: #19311C;
-// }
+.btn-warning {
+  --bs-btn-bg: #224326 !important;
+  --bs-btn-border-color: #224326 !important;
+  --bs-btn-hover-bg: #19311C !important;
+  --bs-btn-hover-border-color: #19311C !important;
+  --bs-btn-active-bg: #19311C !important;
+}
 
 .bg-primary{
   // background-color: #2C1E15 !important;

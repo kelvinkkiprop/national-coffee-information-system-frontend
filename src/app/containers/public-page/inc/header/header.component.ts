@@ -53,7 +53,7 @@ export class HeaderComponent {
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }else{
           this.router.navigateByUrl('/auth/login')
         }

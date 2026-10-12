@@ -22,6 +22,9 @@ export class RegisterComponent {
   itemForm:any
   mProgress = signal(false)
 
+  mShowPassword = false
+  mShowPasswordConfirmation = false
+
   constructor(
     private mAuthService: AuthService,
     private mToastrService: ToastrService,
@@ -45,14 +48,14 @@ export class RegisterComponent {
     this.mAuthService.register(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.router.navigateByUrl('/auth/login')
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }

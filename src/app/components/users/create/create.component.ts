@@ -34,6 +34,7 @@ export class CreateComponent {
     this.itemForm = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
+      type_id: ['', Validators.required],
     });
   }
 
@@ -48,14 +49,14 @@ export class CreateComponent {
     this.mRoleService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.info((response as any).message)
+          this.mToastrService.success((response as any).message)
           this.router.navigateByUrl('/roles')
           this.mProgress.set(false)
         }
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
         }
         this.mProgress.set(false)
       }

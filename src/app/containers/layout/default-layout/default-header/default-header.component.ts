@@ -94,16 +94,16 @@ export class DefaultHeaderComponent extends HeaderComponent {
     this.mAuthService.logout().subscribe({
       next: (response) => {
         if(response.status =='success'){
-          this.mToastrService.error(response.message);
+          this.mToastrService.warning(response.message);
           this.router.navigateByUrl('/auth/login');
         }else{
-          this.mToastrService.error(response.message);
+          this.mToastrService.warning(response.message);
         }
         this.mProgress = signal(false)
       },
       error: (error ) => {
         if(error.error.message){
-          this.mToastrService.error(error.error.message)
+          this.mToastrService.warning(error.error.message)
           this.mProgress = signal(false)
         }
       }
