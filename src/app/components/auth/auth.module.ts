@@ -17,13 +17,15 @@ import {
   RowComponent
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
+import { AnimationsDirective } from '../../directives/animations.directive';
 import { ProgressModule } from '../progress/progress.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { RegisterComponent } from './register/register.component';
-import { AnimationsDirective } from '../../directives/animations.directive';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AnimationsDirective } from '../../directives/animations.directive';
     RegisterComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    VerifyEmailComponent,
+    VerifyOtpComponent,
   ],
   imports: [
     CommonModule,

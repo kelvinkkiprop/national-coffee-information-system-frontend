@@ -18,7 +18,8 @@ ng generate component components/auth/login
 ng generate component components/auth/register
 ng generate component components/auth/forgotPassword
 ng generate component components/auth/recoverPassword
-ng generate component containers/inc/CommonProgress
+ng generate component components/auth/verifyEmail
+ng generate component components/auth/verifyOtp
 
 ng generate module components/container/container
 ng generate component containers/publicPage
@@ -92,12 +93,6 @@ ng generate component components/roles/show
 ng generate module components/roles/role
 ng generate module components/roles/roleRouting
 
-ng generate component components/auth/index
-ng generate component components/auth/create
-ng generate component components/auth/edit
-ng generate component components/auth/show
-ng generate module components/auth/auth
-ng generate module components/auth/authRouting
 
 ng generate component components/progress/progress
 ng generate module components/progress/progress
@@ -145,6 +140,8 @@ ng generate interface interfaces/registeredProfessional
 
 10. Guards
 ng generate guard guards/auth
+ng generate guard guards/otpVerified
+ng generate guard guards/emailVerified
 ng generate guard guards/verifyConsultant
 ng generate guard guards/withProfileOnly
 ng generate guard guards/adminsOnly

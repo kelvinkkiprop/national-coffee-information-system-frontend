@@ -13,7 +13,8 @@ export const navItems: INavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' },
+    // iconComponent: { name: 'cil-speedometer' },
+    icon: 'fa-solid fa-gauge-high',
     badge: {
       color: 'warning',
       text: 'NEW'
@@ -27,25 +28,37 @@ export const navItems: INavData[] = [
     title: true
   },
   {
-    name: 'Placements',
-    url: '/placements',
-    iconComponent: { name: 'cil-description' },
+    name: 'Licenses',
+    url: '/licenses',
+    // iconComponent: { name: 'cil-description' },
+    // icon: 'fa-solid fa-clipboard-list'
+    icon: 'fa-solid fa-id-card'
   },
   {
-    name: 'Selections ',
-    url: '/selections',
-    iconComponent: { name: 'cil-list' },
+    name: 'Permits ',
+    url: '/permits',
+    // iconComponent: { name: 'cil-list' },
+    // icon: 'fa-solid fa-address-book'
+    icon: 'fa-solid fa-stamp'
   },
+
 
   // Other
   {
     title: true,
     name: 'Other',
   },
+  {
+    name: 'Payments ',
+    url: '/payments',
+    icon: 'fa-solid fa-wallet'
+    // iconComponent: { name: 'cil-money' },
+  },
   ...(mCurrentUser.role_id === mAdmin ? [
   {
     name: 'Users',
-    iconComponent: { name: 'cil-people' },
+    // iconComponent: { name: 'cil-people' },
+    icon: 'fa-solid fa-users',
     attributes: { class: 'nav-group' },
     children: [
       {
@@ -70,12 +83,14 @@ export const navItems: INavData[] = [
   {
     name: 'Roles',
     url: '/roles',
-    iconComponent: { name: 'cil-lock-locked' },
+    icon: 'fa-solid fa-lock',
+    // iconComponent: { name: 'cil-lock-locked' },
   },
   {
     name: 'Profile',
     url: '/profile',
-    iconComponent: { name: 'cil-user' },
+    // iconComponent: { name: 'cil-user' },
+    icon: 'fa-solid fa-user'
   },
 
 ];

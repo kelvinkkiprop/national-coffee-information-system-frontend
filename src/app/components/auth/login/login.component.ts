@@ -8,9 +8,9 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-login',
   // imports: [],
+  standalone: false,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  standalone: false
 })
 export class LoginComponent {
 
@@ -49,6 +49,7 @@ export class LoginComponent {
         if(response){
           if(response.status =='success'){
             this.router.navigateByUrl('/dashboard')
+            // this.router.navigateByUrl('/auth/verify-otp')
             this.mToastrService.success(response.message);
           }else{
             this.mToastrService.warning(response.message);

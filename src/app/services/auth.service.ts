@@ -92,6 +92,9 @@ export class AuthService {
           phone: response.data.user.phone,
           status_id: response.data.user.status_id,
           role_id: response.data.user.role_id,
+          email_verified_at: response.data.user.email_verified_at,
+          otp_verified: response.data.user.otp_verified,
+          otp_expires_at: response.data.user.otp_expires_at,
           created_at: response.data.user.created_at,
           token: response.data.token,
 
@@ -155,6 +158,26 @@ export class AuthService {
   // resendVerificationCode
   resendVerificationCode() {
     const url = `${environment.base_url}/resend-verification-code`;
+    return this.http.get<any>(url, this.mAppContextService.getHttpOptions());
+  }
+
+  // verifyOtp
+  verifyOtp(formValues: any) {
+    const url = `${environment.base_url}/verify-otp`;
+    return this.http.post<any>(url, formValues, this.mAppContextService.getHttpOptions())
+    .pipe(map(response => {
+      if(response.status==='success'){
+          //Call
+          this.saveUserLocally(response);
+        }
+        // console.log(response);
+        return response;
+    }));
+  }
+
+  // resendOTP
+  resendOTP() {
+    const url = `${environment.base_url}/resend-otp`;
     return this.http.get<any>(url, this.mAppContextService.getHttpOptions());
   }
 

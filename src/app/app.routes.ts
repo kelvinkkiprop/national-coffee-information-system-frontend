@@ -5,6 +5,8 @@ import { ErrPageComponent } from './containers/err-page/err-page.component';
 import { DefaultLayoutComponent } from './containers/layout';
 import { PublicPageComponent } from './containers/public-page/public-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { OtpVerifiedGuard } from './guards/otp-verified.guard';
+import { EmailVerifiedGuard } from './guards/email-verified.guard';
 
 export const routes: Routes = [
 
@@ -46,7 +48,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,EmailVerifiedGuard,OtpVerifiedGuard],
     data: {
       title: 'Dashboard',
     },

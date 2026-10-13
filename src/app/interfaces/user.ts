@@ -5,6 +5,9 @@ export interface User {
   phone?: string,
   status_id?: any,
   role_id?: any,
+  email_verified_at?: any,
+  otp_expires_at?:any,
+  otp_verified?:any,
   created_at?: string,
   updated_at?: string,
   token?: any,
@@ -25,6 +28,7 @@ export interface status {
 export interface role {
   id?: string,
   name?: string,
+  type_id?: any,
   alias?: string,
   created_at?: Date,
   updated_at?: Date,

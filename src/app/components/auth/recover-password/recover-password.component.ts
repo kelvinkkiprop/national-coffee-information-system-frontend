@@ -8,9 +8,9 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-recover-password',
   // imports: [],
+  standalone: false,
   templateUrl: './recover-password.component.html',
   styleUrl: './recover-password.component.scss',
-  standalone: false
 })
 export class RecoverPasswordComponent {
 
