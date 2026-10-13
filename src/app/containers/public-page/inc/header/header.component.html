@@ -15,16 +15,16 @@
             </ul>
             <ul class="navbar-nav mx-auto  fw-bolder">
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/">Home</a>
+                  <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/standards">Standards</a>
+                  <a class="nav-link" routerLink="/home/details/standards" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Standards</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/how-it-works">How it Works</a>
+                  <a class="nav-link" routerLink="/home/details/how-it-works" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">How it Works</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/support">Support</a>
+                  <a class="nav-link" routerLink="/home/details/support" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Support</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -33,7 +33,7 @@
                     <a class="nav-link me-2" routerLink="/auth/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-success rounded-pill text-light" routerLink="/auth/register">Register</a>
+                    <a class="btn btn-warning" routerLink="/auth/register">Register</a>
                 </li>
               }
               @if (mCurrentUser) {

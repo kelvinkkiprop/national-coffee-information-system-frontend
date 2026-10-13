@@ -14,63 +14,77 @@
           <img src="./assets/images/coffee-harvesting.png" class="d-block w-100 h-100 object-fit-cover" alt="Image">
         </div>
 
-      <div class="carousel-overlay d-flex align-items-end justify-content-center">
-        <div class="w-100 justify-content-center carousel-content">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-12 col-md-11">
-                <div class="w-100 justify-content-center">
-                    <div class="mb-4 text-light">
-                      <div class="row" appAnimations="animate-fade-in-up">
-                        <div class="col-md-9">
-                          <div class="display-4 fw-bolder">National Coffee Information System (NCIS)</div>
-                          <div class="fw-bold fs-3">Every Bean. Every Journey. One Trusted System</div>
+        <div class="carousel-overlay d-flex align-items-end justify-content-center">
+          <div class="w-100 justify-content-center carousel-content">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-11">
+                  <div class="w-100 justify-content-center">
+                      <div class="mb-4 text-light">
+                        <div class="row" appAnimations="animate-fade-in-up">
+                          <div class="col-md-9">
+                            <div class="display-4 fw-bolder">National Coffee Information System (NCIS)</div>
+                            <div class="fw-bold fs-3">Every Bean. Every Journey. One Trusted System</div>
+                          </div>
+                          <div class="col-md-3 d-none d-lg-block"></div>
                         </div>
-                        <div class="col-md-3 d-none d-lg-block"></div>
                       </div>
-                    </div>
-                    <div class="card w-100 bg-transparent border-0 shadow-none rounded-top--4">
-                      <div class="card-header bg-dark bg-opacity-75">
-                        <div class="container">
-                          <div class="py-4">
-                            <div class="form-group mb-3">
-                              <div class="input-group">
-                                <span class="input-group-text">
-                                  <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                                <input type="text" placeholder="Search to trace the source of your coffee..." class="form-control form-control-lg"/>
+                      <div class="card w-100 bg-transparent border-0 shadow-none rounded-top--4">
+                        <div class="card-header bg-dark bg-opacity-75">
+                          <div class="container">
+                            <div class="text-end">
+                              <h5 class="text-light fw-bold">
+                                Verify Your Coffee Mark of Origin
+                                <i class="fa-solid fa-certificate ms-1"></i>
+                              </h5>
+                              <p class="text-light opacity-75 mb-0">
+                                Discover the authenticity and origin of your coffee.
+                              </p>
+                            </div>
+                            <div class="py-4">
+                              <form [formGroup]="itemForm" (change)="onSearch(itemForm.value)">
+                              <div class="form-group mb-3">
+                                <div class="input-group">
+                                  <span class="input-group-text bg-body">
+                                    <i class="fa-solid fa-search" aria-hidden="true"></i>
+                                  </span>
+                                  <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control form-control-lg" placeholder="Serial number...">
+                                  <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="chip">
+                                    <div *ngIf="search_term.errors?.['required']">This field is required.</div>
+                                  </div>
+                                </div>
+                              </div>
+                              </form>
+                            </div>
+                            <div appAnimations="animate-flip-in-x" class="row p-2 text-light">
+                              <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
+                                <a>
+                                  <span class="my-1"><i class="fa-solid fa-list-check fs-1"></i></span>
+                                  <div class="my-1 fw-bold fs-5">Traceabiliy Compliance</div>
+                                </a>
+                              </div>
+                              <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
+                                <a>
+                                  <span><i class="fa-solid fa-route fs-1"></i></span>
+                                  <div class="my-1 fw-bold fs-5">Data Integrations</div>
+                                </a>
+                              </div>
+                              <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
+                                <a>
+                                  <span><i class="fa-solid fa-users fs-1"></i></span>
+                                  <div class="my-1 fw-bold fs-5">Key Stakeholders</div>
+                                </a>
                               </div>
                             </div>
                           </div>
-                          <div appAnimations="animate-flip-in-x" class="row p-2 text-light">
-                            <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
-                              <a>
-                                <span class="my-1"><i class="fa-solid fa-list-check fs-1"></i></span>
-                                <div class="my-1 fw-bold fs-5">Traceabiliy Compliance</div>
-                              </a>
-                            </div>
-                            <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
-                              <a>
-                                <span><i class="fa-solid fa-route fs-1"></i></span>
-                                <div class="my-1 fw-bold fs-5">Data Integrations</div>
-                              </a>
-                            </div>
-                            <div class="col-md-4 d-flex justify-content-center align-items-center text-center">
-                              <a>
-                                <span><i class="fa-solid fa-users fs-1"></i></span>
-                                <div class="my-1 fw-bold fs-5">Key Stakeholders</div>
-                              </a>
-                            </div>
-                          </div>
                         </div>
                       </div>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
       </div>
     </div>
@@ -78,9 +92,9 @@
 
   <section id="home">
     <div class="d-flex align-items-end justify-content-center mb-5">
-        <div class="w-100 justify-content-center carousel-content">
+      <div class="w-100 justify-content-center carousel-content">
 
-          <div class="container">
+        <div class="container">
             <div class="row justify-content-center">
               <div class="col-12 col-md-11">
 

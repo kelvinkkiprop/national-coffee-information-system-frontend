@@ -1,0 +1,62 @@
+<div class="row d-flex align-items-center mb-3">
+  <div appAnimations="animate-fade-in-left" class="col-md-12">
+
+    <div class="breadcrumb-banner">
+      <div class="container h-100 d-flex align-items-end">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item h3">
+              <a routerLink="/" class="text-light opacity-75 text-decoration-none">Home</a>
+            </li>
+            <li class="breadcrumb-item active text-light opacity-50 h3" aria-current="page">
+              {{ mTitle }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- <div class="overflow-hidden rounded-0" style="height: 140px;">
+      <img src="./assets/images/coffee-picking.png" class="w-100 h-100 object-fit-cover" name="coffee-picking"/>
+    </div> -->
+
+  </div>
+</div>
+
+<div appAnimations="animate-fade-in-right" class="container mb-3">
+  <div class="row">
+    <div class="col-12 col-md-9">
+      <div class="container">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <router-outlet/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 d-none d-md-block">
+      <div class="mb-4">
+        <h6>System Access</h6>
+        <div class="progress mb-4" style="height: 2px !important;">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div>
+          <p><a routerLink="/auth/register" class="btn btn-light w-50">REGISTER <i class="fa-regular fa-circle-right"></i></a></p>
+          <p><a routerLink="/auth/login" class="btn btn-warning w-50">SIGN IN <i class="fa-regular fa-circle-right"></i></a></p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <h6>Links &amp; Affiliates</h6>
+        <div class="progress mb-4" style="height: 1.5px !important;">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div>
+          <p><a href="https://coffeboard.go.ke" target="_blank" class="text-decoration-none text-reset"><i class="fa-solid fa-angle-right"></i> Our Website</a></p>
+          <p><a href="https://nairobicoffeeexchange.co.ke" target="_blank" class="text-decoration-none text-reset"><i class="fa-solid fa-angle-right"></i> Nairobi Coffee Exchange</a></p>
+          <p><a href="https://kentrade.go.ke" target="_blank" class="text-decoration-none text-reset"><i class="fa-solid fa-angle-right"></i> Kentrade</a></p>
+          <p><a href="https://ecitizen.go.ke" target="_blank" class="text-decoration-none text-reset"><i class="fa-solid fa-angle-right"></i> E-Citizen</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

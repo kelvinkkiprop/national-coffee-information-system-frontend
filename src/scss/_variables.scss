@@ -177,11 +177,10 @@ body {
   //     border-color: $accent !important;
   //   }
   // }
-
-  // html {
-  //   //Smooth scroll
-  //   scroll-behavior: smooth;
-  // }
+//
+  html {
+    scroll-behavior: smooth !important;
+  }
 
   .required:after {
     content: " *";

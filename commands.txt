@@ -31,6 +31,10 @@ ng generate class containers/index
 ng generate module components/home/home
 ng generate module components/home/homeRouting
 ng generate component components/home/index
+ng generate component components/home/show
+ng generate component components/home/show/inc/support
+ng generate component components/home/show/inc/standards
+ng generate component components/home/show/inc/how-it-works
 
 ng generate module components/errors/error
 ng generate module components/errors/errorRouting

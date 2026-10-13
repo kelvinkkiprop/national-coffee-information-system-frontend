@@ -1,0 +1,16 @@
+.breadcrumb-banner {
+  position: relative;
+  min-height: 160px;
+  background: linear-gradient(rgba(20, 30, 20, 0.45),rgba(20, 30, 20, 0.75)), url('/assets/images/coffee-picking.png') center 45% / cover no-repeat;
+  display: flex;
+  align-items: end;
+  padding-bottom: 1.5rem;
+}
+
+.breadcrumb-banner .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.breadcrumb-banner .breadcrumb-item.active {
+  font-weight: 600;
+}

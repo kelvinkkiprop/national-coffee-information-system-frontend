@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ContainerComponent } from '@coreui/angular';
-import { HeaderComponent } from './inc/header/header.component';
 import { FooterComponent } from './inc/footer/footer.component';
+import { HeaderComponent } from './inc/header/header.component';
 
 @Component({
   selector: 'app-public-page',
@@ -10,7 +9,7 @@ import { FooterComponent } from './inc/footer/footer.component';
     RouterOutlet,
     // ContainerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './public-page.component.html',
   styleUrl: './public-page.component.scss',
