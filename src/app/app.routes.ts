@@ -7,6 +7,7 @@ import { PublicPageComponent } from './containers/public-page/public-page.compon
 import { AuthGuard } from './guards/auth.guard';
 import { OtpVerifiedGuard } from './guards/otp-verified.guard';
 import { EmailVerifiedGuard } from './guards/email-verified.guard';
+import { WithProfileGuard } from './guards/with-profile.guard';
 
 export const routes: Routes = [
 
@@ -55,23 +56,23 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: () =>
-          import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule)
+        loadChildren: () => import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [WithProfileGuard],
       },
+
       {
         path: 'users',
-        loadChildren: () =>
-          import('./components/users/user.module').then((m) => m.UserModule)
+        loadChildren: () => import('./components/users/user.module').then((m) => m.UserModule),
+        canActivate: [WithProfileGuard],
       },
       {
         path: 'roles',
-        loadChildren: () =>
-          import('./components/roles/role.module').then((m) => m.RoleModule)
+        loadChildren: () => import('./components/roles/role.module').then((m) => m.RoleModule),
+        canActivate: [WithProfileGuard],
       },
       {
         path: 'profile',
-        loadChildren: () =>
-          import('./components/profile/profile.module').then((m) => m.ProfileModule)
+        loadChildren: () => import('./components/profile/profile.module').then((m) => m.ProfileModule),
       }
     ]
   },

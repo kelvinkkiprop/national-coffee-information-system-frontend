@@ -15,29 +15,29 @@ export class ProfileService {
     private http: HttpClient
 ) { }
 
-  //FUNCTIONS
+  // FUNCTIONS
   allItems():Observable<User[]>{
-    const url = `${environment.base_url}/profiles`;
+    const url = `${environment.base_url}/profile`;
     return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
   }
 
   createItem(item: User): Observable<User>{
-    const url = `${environment.base_url}/profiles`;
+    const url = `${environment.base_url}/profile`;
     return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
   }
 
   getOneItem(id:number){
-    const url = `${environment.base_url}/profiles/${id}`;
+    const url = `${environment.base_url}/profile/${id}`;
     return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
   }
 
   updateItem(item: User): Observable<User>{
-    const url = `${environment.base_url}/profiles/${item.id}`;
+    const url = `${environment.base_url}/profile/${item.id}`;
     return this.http.put<User>(url, item, this.mAppContextService.getHttpOptions());
   }
 
   deleteItem(item: User): Observable<User>{
-    const url = `${environment.base_url}/profiles/${item.id}`;
+    const url = `${environment.base_url}/profile/${item.id}`;
     return this.http.delete<User>(url, this.mAppContextService.getHttpOptions());
   }
 
@@ -46,21 +46,13 @@ export class ProfileService {
   }
 
   searchItems(item: User): Observable<User>{
-    const url = `${environment.base_url}/search-profiles`;
+    const url = `${environment.base_url}/search-profile`;
     return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
   }
 
   unpaginatedItems():Observable<User[]>{
-    const url = `${environment.base_url}/unpaginated-items-profiles`;
+    const url = `${environment.base_url}/unpaginated-items-profile`;
     return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
-  }
-
-
-
-
-  professionalSearch(item: User): Observable<User>{
-    const url = `${environment.base_url}/professional-search`;
-    return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
   }
 
 }

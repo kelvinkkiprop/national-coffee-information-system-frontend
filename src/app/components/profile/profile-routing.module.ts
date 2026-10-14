@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { ShowComponent } from './show/show.component';
+import { CreateComponent } from './create/create.component';
 
 
 // Routes
@@ -20,13 +21,13 @@ const routes: Routes = [
       title: 'Profile'
     }
   },
-  // {
-  //   path: 'create',
-  //   component: CreateComponent,
-  //   data: {
-  //     title: 'Profile / Create'
-  //   }
-  // },
+  {
+    path: 'create',
+    component: CreateComponent,
+    data: {
+      title: 'Profile / Create'
+    }
+  },
   {
     path: 'edit/:id',
     component: EditComponent,
