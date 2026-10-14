@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AppContextService } from '../core/app-context.service';
-import { User } from '../interfaces/user';
+import { Profile } from '../interfaces/profile';
 
 @Injectable({
   providedIn: 'root',
@@ -16,43 +16,56 @@ export class ProfileService {
 ) { }
 
   // FUNCTIONS
-  allItems():Observable<User[]>{
+  allItems():Observable<Profile[]>{
     const url = `${environment.base_url}/profile`;
-    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
   }
 
-  createItem(item: User): Observable<User>{
+  createItem(item: Profile): Observable<Profile>{
     const url = `${environment.base_url}/profile`;
-    return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<Profile>(url, item, this.mAppContextService.getHttpOptions());
   }
 
-  getOneItem(id:number){
+  getOneItem(id:any){
     const url = `${environment.base_url}/profile/${id}`;
-    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
   }
 
-  updateItem(item: User): Observable<User>{
+  updateItem(item: Profile): Observable<Profile>{
     const url = `${environment.base_url}/profile/${item.id}`;
-    return this.http.put<User>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.put<Profile>(url, item, this.mAppContextService.getHttpOptions());
   }
 
-  deleteItem(item: User): Observable<User>{
+  deleteItem(item: Profile): Observable<Profile>{
     const url = `${environment.base_url}/profile/${item.id}`;
-    return this.http.delete<User>(url, this.mAppContextService.getHttpOptions());
+    return this.http.delete<Profile>(url, this.mAppContextService.getHttpOptions());
   }
 
-  paginateItems(url:any):Observable<User[]>{
-    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+  paginateItems(url:any):Observable<Profile[]>{
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
   }
 
-  searchItems(item: User): Observable<User>{
+  searchItems(item: Profile): Observable<Profile>{
     const url = `${environment.base_url}/search-profile`;
-    return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<Profile>(url, item, this.mAppContextService.getHttpOptions());
   }
 
-  unpaginatedItems():Observable<User[]>{
+  unpaginatedItems():Observable<Profile[]>{
     const url = `${environment.base_url}/unpaginated-items-profile`;
-    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+
+
+
+  filterSubCounties(id:number){
+    const url = `${environment.base_url}/filter-sub-counties/${id}`;
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+  filterWards(id:number){
+    const url = `${environment.base_url}/filter-wards/${id}`;
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
   }
 
 }

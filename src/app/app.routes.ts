@@ -59,10 +59,24 @@ export const routes: Routes = [
         loadChildren: () => import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule),
         canActivate: [WithProfileGuard],
       },
-
       {
         path: 'users',
         loadChildren: () => import('./components/users/user.module').then((m) => m.UserModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'licenses',
+        loadChildren: () => import('./components/licenses/license.module').then((m) => m.LicenseModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'permits',
+        loadChildren: () => import('./components/permits/permit.module').then((m) => m.PermitModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'payments',
+        loadChildren: () => import('./components/payments/payment.module').then((m) => m.PaymentModule),
         canActivate: [WithProfileGuard],
       },
       {

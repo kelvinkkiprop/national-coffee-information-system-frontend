@@ -5,59 +5,146 @@
   <div class="mb-3">
     <c-row [gutter]="{ gx: 3, gy: 3 }">
       <c-col xs="12">
-        <h5 class="mt-2 text-muted">System Insights</h5>
+        <h5 class="mt-2 text-muted1">System Insights</h5>
       </c-col>
     </c-row>
 
-    <c-row *ngIf="(!mAppContextService.hasRoles([2]))">
-      <c-col xs="12">
-        <h6 class="mt-2 text-muted">Internal</h6>
-      </c-col>
-      <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
-          <ng-template cTemplateId="widgetIconTemplate">
-            <i class="fa-solid fa-users fs-1" aria-hidden="true"></i>
-          </ng-template>
-        </c-widget-stat-c>
-      </c-col>
-      <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Institutions'" class="mb-4" color="warning" inverse value="{{ mInstitutions || 0 }}">
-          <ng-template cTemplateId="widgetIconTemplate">
-            <i class="fa-solid fa-institution fs-1" aria-hidden="true"></i>
-          </ng-template>
-        </c-widget-stat-c>
-      </c-col>
-      <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Selections'" class="mb-4" color="success" inverse value="{{ mSelections || 0 }}">
-          <ng-template cTemplateId="widgetIconTemplate">
-            <i class="fa-solid fa-check-to-slot fs-1" aria-hidden="true"></i>
-          </ng-template>
-        </c-widget-stat-c>
-      </c-col>
-      <c-col md="3" xl="3">
-        <c-widget-stat-c [title]="'Placements'" class="mb-4" color="danger" inverse value="{{ mPlacements || 0 }}">
-          <ng-template cTemplateId="widgetIconTemplate">
-            <i class="fa-solid fa-graduation-cap fs-1" aria-hidden="true"></i>
-          </ng-template>
-        </c-widget-stat-c>
-      </c-col>
-    </c-row>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="alert alert-success border-0 rounded-3">
+            <div>
+              <div class="fw-bold">Welcome back, {{ mCurrentUser.name }}</div>
+              <span class="text-muted">{{ getDate() }}</span>
+            </div>
+        </div>
+      </div>
+    </div>
 
-    <c-row [gutter]="{ gx: 3, gy: 3 }">
-      <c-col xs="12">
-        <h6 class="mt-2 text-muted">External</h6>
-      </c-col>
-      <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Learners'" value="{{ myLearners }}" color="success" inverse class="mb-4">
-          <i class="fa-solid fa-user-group fs-1" aria-hidden="true"></i>
-        </c-widget-stat-e>
-      </c-col>
-      <c-col xs="12" lg="6">
-        <c-widget-stat-e [title]="'Selections'" value="{{ mySelections }}" color="warning" inverse class="mb-4">
-          <i class="fa-solid fa-check-to-slot fs-1" aria-hidden="true"></i>
-        </c-widget-stat-e>
-      </c-col>
-    </c-row>
+    <div>
+      <c-row *ngIf="(!mAppContextService.hasRoles([2]))">
+        <c-col xs="12">
+          <h6 class="mt-2 text-muted">Internal</h6>
+        </c-col>
+        <c-col md="3" xl="3">
+          <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
+            <ng-template cTemplateId="widgetIconTemplate">
+              <i class="fa-solid fa-users fs-1" aria-hidden="true"></i>
+            </ng-template>
+          </c-widget-stat-c>
+        </c-col>
+        <c-col md="3" xl="3">
+          <c-widget-stat-c [title]="'Licenses'" class="mb-4" color="warning" inverse value="{{ mLicenses || 0 }}">
+            <ng-template cTemplateId="widgetIconTemplate">
+              <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
+            </ng-template>
+          </c-widget-stat-c>
+        </c-col>
+        <c-col md="3" xl="3">
+          <c-widget-stat-c [title]="'Permits'" class="mb-4" color="success" inverse value="{{ mPermits || 0 }}">
+            <ng-template cTemplateId="widgetIconTemplate">
+              <i class="fa-solid fa-stamp fs-1" aria-hidden="true"></i>
+            </ng-template>
+          </c-widget-stat-c>
+        </c-col>
+        <c-col md="3" xl="3">
+          <c-widget-stat-c [title]="'Revenues'" class="mb-4" color="danger" inverse value="{{ (mRevenues || 0) | currency:'KES ':'symbol':'1.2-2' }}">
+            <ng-template cTemplateId="widgetIconTemplate">
+              <i class="fa-solid fa-coins fs-1" aria-hidden="true"></i>
+            </ng-template>
+          </c-widget-stat-c>
+        </c-col>
+      </c-row>
+      <div class="row">
+        <div class="col-md-12 mb-4 ">
+          <div class="card mb-4 h-100">
+            <div class="card-header border-01">
+              <h5 class="card-title text-muted1">Recent Users</h5>
+            </div>
+            <div class="card-body">
+              <div *ngIf="mRecentUsers && mRecentUsers.length>0; else noItemsTemplate" class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mRecentUsers; let i = index">
+                      <td>{{ i + 1 }}.</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.role?.name }}</td>
+                      <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
+                      <td>{{ item.created_at | date }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ng-template #noItemsTemplate>
+                <p class="text-center text-muted p-5">No items</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <c-row [gutter]="{ gx: 3, gy: 3 }">
+        <c-col xs="12">
+          <h6 class="mt-2 text-muted">External</h6>
+        </c-col>
+        <c-col xs="12" lg="6">
+          <c-widget-stat-e [title]="'My Licenses'" value="{{ myLicenses }}" color="success" inverse class="mb-4">
+            <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
+          </c-widget-stat-e>
+        </c-col>
+        <c-col xs="12" lg="6">
+          <c-widget-stat-e [title]="'My Permits'" value="{{ myPermits }}" color="warning" inverse class="mb-4">
+            <i class="fa-solid fa-stamp fs-1" aria-hidden="true"></i>
+          </c-widget-stat-e>
+        </c-col>
+      </c-row>
+      <div class="row">
+        <div class="col-md-12 mb-4 ">
+          <div class="card mb-4 h-100">
+            <div class="card-header border-01">
+              <h5 class="card-title text-muted1">Recent Licenses</h5>
+            </div>
+            <div class="card-body">
+              <div *ngIf="myRecentLicenses && myRecentLicenses.length>0; else noItemsTemplate" class="table-responsive">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mRecentUsers; let i = index">
+                      <td>{{ i + 1 }}.</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.role?.name }}</td>
+                      <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
+                      <td>{{ item.created_at | date }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ng-template #noItemsTemplate>
+                <p class="text-center text-muted p-5">No items</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 

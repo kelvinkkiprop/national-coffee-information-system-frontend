@@ -23,7 +23,7 @@
           <b>Joined:</b><span class="float-right">{{ mCurrentUser?.created_at | date }}</span>
         </li>
       </ul>
-      <a routerLink="/profile/edit/{{mCurrentUser.id}}" class="btn btn-outline-warning w-100">
+      <a routerLink="/profile/edit/{{mCurrentUser.profile.id}}" class="btn btn-outline-warning w-100">
         <i class="fa-solid fa-pencil me-2"></i>
         Update Profile
       </a>

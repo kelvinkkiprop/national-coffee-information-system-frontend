@@ -10,9 +10,9 @@ import { Role } from '../../../interfaces/role';
 @Component({
   selector: 'app-edit',
   // imports: [],
+  standalone: false,
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss',
-  standalone: false
 })
 export class EditComponent {
 

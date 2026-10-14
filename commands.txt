@@ -94,6 +94,26 @@ ng generate component components/roles/show
 ng generate module components/roles/role
 ng generate module components/roles/roleRouting
 
+ng generate component components/payments/index
+ng generate component components/payments/create
+ng generate component components/payments/edit
+ng generate component components/payments/show
+ng generate module components/payments/payment
+ng generate module components/payments/paymentRouting
+
+ng generate component components/licenses/index
+ng generate component components/licenses/create
+ng generate component components/licenses/edit
+ng generate component components/licenses/show
+ng generate module components/licenses/license
+ng generate module components/licenses/licenseRouting
+
+ng generate component components/permits/index
+ng generate component components/permits/create
+ng generate component components/permits/edit
+ng generate component components/permits/show
+ng generate module components/permits/permit
+ng generate module components/permits/permitRouting
 
 ng generate component components/progress/progress
 ng generate module components/progress/progress

@@ -10,6 +10,18 @@
           <fieldset class="border p-4 mb-4">
             <legend  class="float-none w-auto"><h6 class="text-bold1">Basic Information</h6></legend>
             <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="role_id" class="col-form-label required">Legal Status:</label>
+                  <select  formControlName="role_id" [ngClass]="{'is-invalid': itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)}" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select role ---</option>
+                    <option *ngFor="let item of mRoles" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('role_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
                <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="id_number" class="col-form-label required">ID Number:</label>
@@ -49,7 +61,7 @@
               <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="county_id" class="col-form-label required1">County:</label>
-                  <select  formControlName="county_id" [ngClass]="{'is-invalid': itemForm.get('county_id')?.invalid && (itemForm.get('county_id')?.dirty || itemForm.get('county_id')?.touched)}" type="text" class="form-control">
+                  <select (change)="onCountyChange($event.target)" formControlName="county_id" [ngClass]="{'is-invalid': itemForm.get('county_id')?.invalid && (itemForm.get('county_id')?.dirty || itemForm.get('county_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select county ---</option>
                     <option *ngFor="let item of mCounties" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -61,7 +73,7 @@
               <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="sub_county_id" class="col-form-label required1">Sub-County:</label>
-                  <select  formControlName="sub_county_id" [ngClass]="{'is-invalid': itemForm.get('sub_county_id')?.invalid && (itemForm.get('sub_county_id')?.dirty || itemForm.get('sub_county_id')?.touched)}" type="text" class="form-control">
+                  <select (change)="onSubCountyChange($event.target)" formControlName="sub_county_id" [ngClass]="{'is-invalid': itemForm.get('sub_county_id')?.invalid && (itemForm.get('sub_county_id')?.dirty || itemForm.get('sub_county_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select sub-county ---</option>
                     <option *ngFor="let item of mSubCounties" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -70,7 +82,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="ward_id" class="col-form-label required1">Ward:</label>
                   <select  formControlName="ward_id" [ngClass]="{'is-invalid': itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)}" type="text" class="form-control">
@@ -79,6 +91,24 @@
                   </select>
                   <div *ngIf="itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('ward_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
+                  <textarea formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="physical_address" class="col-form-label required">Physical Address:</label>
+                  <textarea formControlName="physical_address" [ngClass]="{'is-invalid': itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('physical_address').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>

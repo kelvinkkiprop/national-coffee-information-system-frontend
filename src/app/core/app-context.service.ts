@@ -143,24 +143,21 @@ export class AppContextService {
   }
 
 
-  // getColorClass
-  getColorClass(views: number): string {
-    if (views > 87.5) return 'secondary';
-    if (views > 75) return ' bg-primary text-dark';
-    if (views > 62.5) return 'primary danger';
-    if (views > 50) return 'light text-dark';
-    if (views > 37.5) return 'dark';
-    if (views > 25) return 'success';
-    if (views > 12.5) return 'bg-warning text-dark';
-    return 'danger';
-    //  ["id"=>1, "name"=>"Draft", "alias"=>"Send Back"],
-    //  ["id"=>2, "name"=>"Fowarded to HoD", "alias"=>"Send to HoD"],
-    //  ["id"=>3, "name"=>"Under Review", "alias"=>"Send to Legal"],
-    //  ["id"=>4, "name"=>"With Client", "alias"=>"Send to Client"],
-    //  ["id"=>5, "name"=>"Reviewed by Client", "alias"=>"Send to KoTDA with Final Comments"],
-    //  ["id"=>6, "name"=>"Active", "alias"=>"Active"],
-    //  ["id"=>7, "name"=>"Expired", "alias"=>"Expired"],
-    //  ["id"=>8, "name"=>"Terminated", "alias"=>"Terminate"],
+ // getColorClass
+  getColorClass(mStatusId: number): string {
+    switch (mStatusId) {
+      case 1:  return 'primary';
+      case 2:  return 'secondary';
+      case 3:  return 'info';
+      case 4:  return 'warning';
+      case 5:  return 'dark';
+      case 6:  return 'light';
+      case 7:  return 'primary';
+      case 8:  return 'warning';
+      case 9:  return 'success';   // Active
+      case 10: return 'danger';    // Expired
+      default: return 'secondary';
+    }
   }
 
 
