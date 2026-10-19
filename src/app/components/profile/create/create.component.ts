@@ -18,23 +18,11 @@ import { AuthService } from '../../../services/auth.service';
 export class CreateComponent {
 
   // variables
-  id:any
-  role_id:any
-  id_number:any
-  phone_number:any
-  country_id:any
-  // Location
-  county_id:any
-  sub_county_id:any
-  ward_id:any
-  postal_address:any
-  physical_address:any
-
-
   itemForm:any
   mProgress = signal(false)
 
   mRoles:any
+  mLegalStatuses:any
   mCountries:any
   mCounties:any
   mSubCounties:any
@@ -53,14 +41,27 @@ export class CreateComponent {
       // Basic
       role_id: ['', Validators.required],
       id_number: ['', Validators.nullValidator],
+      country_code: ['', Validators.required],
       phone_number: ['', Validators.required],
       country_id: ['', Validators.required],
+      // General
+      legal_status_id: ['', Validators.required],
+      company_registration_number: ['', Validators.nullValidator],
+      company_establishment_date: ['', Validators.nullValidator],
+      kra_pin: ['', Validators.nullValidator],
+      postal_address: ['', Validators.required],
+      physical_address: ['', Validators.required],
       // Location
       county_id: ['', Validators.nullValidator],
       sub_county_id: ['', Validators.nullValidator],
       ward_id: ['', Validators.nullValidator],
-      postal_address: ['', Validators.required],
-      physical_address: ['', Validators.required],
+      location: ['', Validators.nullValidator],
+      sub_location: ['', Validators.nullValidator],
+      village: ['', Validators.nullValidator],
+      town: ['', Validators.nullValidator],
+      street_name: ['', Validators.nullValidator],
+      building_name: ['', Validators.nullValidator],
+      plot_number: ['', Validators.nullValidator],
     });
   }
 
@@ -106,6 +107,7 @@ export class CreateComponent {
       next: (response) => {
         if(response){
           this.mRoles = (response as any).data.roles
+          this.mLegalStatuses = (response as any).data.legal_statuses
           this.mCountries = (response as any).data.countries
           this.mCounties = (response as any).data.counties
           this.mProgress.set(false)

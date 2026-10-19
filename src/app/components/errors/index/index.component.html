@@ -1,5 +1,4 @@
-<div ngPreserveWhitespaces>
-
+<!-- <div ngPreserveWhitespaces>
   <c-row class="justify-content-center">
     <c-col md="6">
       <span class="clearfix">
@@ -14,5 +13,25 @@
       </c-input-group>
     </c-col>
   </c-row>
-
 </div>
+ -->
+
+
+ <div ngPreserveWhitespaces>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+
+        <div class="text-center text-body my-5">
+          <div class="display-1">{{ mParam1 }}</div>
+          <h1>Oops!</h1>
+          <p>{{ mParam2 }}</p>
+          <button (click)="onGoBack()" class="btn btn-warning">
+            <i class="fa-solid fa-arrow-circle-left me-1"></i>Go Back
+          </button>
+        </div>
+
+			</div>
+		</div>
+	</div>
+ </div>

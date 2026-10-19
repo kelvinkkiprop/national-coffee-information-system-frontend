@@ -4,9 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { Role } from '../../../interfaces/role';
+import { AuthService } from '../../../services/auth.service';
 import { ProfileService } from '../../../services/profile.service';
-import { Profile } from '../../../interfaces/profile';
 
 @Component({
   selector: 'app-edit',
@@ -18,33 +17,24 @@ import { Profile } from '../../../interfaces/profile';
 export class EditComponent {
 
   // variables
-  id:any
-  role_id:any
-  id_number:any
-  phone_number:any
-  country_id:any
-  // Location
-  county_id:any
-  sub_county_id:any
-  ward_id:any
-  postal_address:any
-  physical_address:any
-
   itemForm:any
   mProgress = signal(false)
 
   mRoles:any
+  mLegalStatuses:any
   mCountries:any
   mCounties:any
   mSubCounties:any
   mWards:any
 
+  id:any
   item:any
 
   constructor(
     private mProfileService: ProfileService,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
+    public mAuthService: AuthService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -54,14 +44,27 @@ export class EditComponent {
       // Basic
       role_id: ['', Validators.required],
       id_number: ['', Validators.nullValidator],
+      country_code: ['', Validators.required],
       phone_number: ['', Validators.required],
       country_id: ['', Validators.required],
+      // General
+      legal_status_id: ['', Validators.required],
+      company_registration_number: ['', Validators.nullValidator],
+      company_establishment_date: ['', Validators.nullValidator],
+      kra_pin: ['', Validators.nullValidator],
+      postal_address: ['', Validators.required],
+      physical_address: ['', Validators.required],
       // Location
       county_id: ['', Validators.nullValidator],
       sub_county_id: ['', Validators.nullValidator],
       ward_id: ['', Validators.nullValidator],
-      postal_address: ['', Validators.required],
-      physical_address: ['', Validators.required],
+      location: ['', Validators.nullValidator],
+      sub_location: ['', Validators.nullValidator],
+      village: ['', Validators.nullValidator],
+      town: ['', Validators.nullValidator],
+      street_name: ['', Validators.nullValidator],
+      building_name: ['', Validators.nullValidator],
+      plot_number: ['', Validators.nullValidator],
     });
   }
 
@@ -80,6 +83,7 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.item = response as any
+          console.log(this.item)
           this.mProgress.set(false)
         }
       },
@@ -95,17 +99,8 @@ export class EditComponent {
   // onSubmit
   onSubmit(formValues: any){
     const item: any = {
+      ...formValues,
       id: this.item.id,
-      role_id: formValues.role_id,
-      id_number: formValues.id_number,
-      phone_number: formValues.phone_number,
-      country_id: formValues.country_id,
-      // Location
-      county_id: formValues.county_id,
-      sub_county_id: formValues.sub_county_id,
-      ward_id: formValues.ward_id,
-      postal_address: formValues.postal_address,
-      physical_address: formValues.physical_address,
     }
 
     this.mProgress.set(true);
@@ -113,6 +108,11 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
+              let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+              user.profile = (response as any).data;
+              localStorage.setItem('currentUser', JSON.stringify(user));
+              // Update_instead_of_refresh
+              this.mAuthService.updateUserProfile((response as any).data);
           this.router.navigateByUrl('/profile')
           this.mProgress.set(false)
         }
@@ -136,6 +136,7 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.mRoles = (response as any).data.roles
+          this.mLegalStatuses = (response as any).data.legal_statuses
           this.mCountries = (response as any).data.countries
           this.mCounties = (response as any).data.counties
           this.mSubCounties = (response as any).data.sub_counties

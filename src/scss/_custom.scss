@@ -3,6 +3,20 @@
 
 
 /* ================================================================================
+  ERROR
+================================================================================ */
+#error{
+  // https://www.shapedivider.app/
+  background-image: url('../assets/images/triangleAsymmetrical.svg') !important;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-body-color);
+}
+
+
+/* ================================================================================
   PUBLIC_PAGE
 ================================================================================ */
 #public-page{

@@ -12,7 +12,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group mb-3">
-                  <label for="role_id" class="col-form-label required">Legal Status:</label>
+                  <label for="role_id" class="col-form-label required">Role:</label>
                   <select [(ngModel)]="item.user.role_id" formControlName="role_id" [ngClass]="{'is-invalid': itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select role ---</option>
                     <option *ngFor="let item of mRoles" value="{{item.id}}">{{item.name}}</option>
@@ -22,7 +22,7 @@
                   </div>
                 </div>
               </div>
-               <div class="col-md-6">
+              <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="id_number" class="col-form-label required">ID Number:</label>
                   <input [(ngModel)]="item.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
@@ -34,7 +34,16 @@
               <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="phone_number" class="col-form-label required">Phone Number:</label>
-                  <input [(ngModel)]="item.phone_number" formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="text" class="form-control"/>
+                  <div class="input-group">
+                    <select  [(ngModel)]="item.country_code" formControlName="country_code" [ngClass]="{'is-invalid': itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)}" type="text" style="max-width:120px;"class="form-control">
+                      <option value="" disabled="true" selected="true">--- Select country code ---</option>
+                      <option *ngFor="let item of mCountries" value="{{item.code}}">+{{item.code}} ({{item.name}})</option>
+                    </select>
+                    <input [(ngModel)]="item.phone_number" formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="text" class="form-control"/>
+                  </div>
+                  <div *ngIf="itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('country_code')?.errors?.['required']">This field is required.</div>
+                  </div>
                   <div *ngIf="itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('phone_number').errors?.['required']">This field is required.</div>
                   </div>
@@ -43,12 +52,75 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="country_id" class="col-form-label required">Country:</label>
-                  <select [(ngModel)]="item.country_id"  formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
+                  <select [(ngModel)]="item.country_id" formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select country ---</option>
                     <option *ngFor="let item of mCountries" value="{{item.id}}">{{item.name}}</option>
                   </select>
                   <div *ngIf="itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('country_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="border p-4 mb-4">
+            <legend  class="float-none w-auto"><h6 class="text-bold1">General Information</h6></legend>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="legal_status_id" class="col-form-label required">Legal Status:</label>
+                  <select [(ngModel)]="item.legal_status_id" formControlName="legal_status_id" [ngClass]="{'is-invalid': itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)}" type="text" class="form-control">
+                    <option value="" disabled="true" selected="true">--- Select role ---</option>
+                    <option *ngFor="let item of mLegalStatuses" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                  <div *ngIf="itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('legal_status_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="company_registration_number" class="col-form-label required1">Company Registration Number:</label>
+                  <input [(ngModel)]="item.company_registration_number" formControlName="company_registration_number" [ngClass]="{'is-invalid': itemForm.get('company_registration_number').invalid && (itemForm.get('company_registration_number').dirty || itemForm.get('company_registration_number').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('company_registration_number').invalid && (itemForm.get('company_registration_number').dirty || itemForm.get('company_registration_number').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('company_registration_number').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="company_establishment_date" class="col-form-label required1">Company Establishment Date:</label>
+                  <input [(ngModel)]="item.company_establishment_date" formControlName="company_establishment_date" [ngClass]="{'is-invalid': itemForm.get('company_establishment_date').invalid && (itemForm.get('company_establishment_date').dirty || itemForm.get('company_establishment_date').touched)}" type="date" class="form-control"/>
+                  <div *ngIf="itemForm.get('company_establishment_date').invalid && (itemForm.get('company_establishment_date').dirty || itemForm.get('company_establishment_date').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('company_establishment_date').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="kra_pin" class="col-form-label required1">KRA Pin:</label>
+                  <input [(ngModel)]="item.kra_pin" formControlName="kra_pin" [ngClass]="{'is-invalid': itemForm.get('kra_pin').invalid && (itemForm.get('kra_pin').dirty || itemForm.get('kra_pin').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('kra_pin').invalid && (itemForm.get('kra_pin').dirty || itemForm.get('kra_pin').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('kra_pin').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
+                  <textarea [(ngModel)]="item.postal_address" formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="physical_address" class="col-form-label required">Physical Address:</label>
+                  <textarea [(ngModel)]="item.physical_address" formControlName="physical_address" [ngClass]="{'is-invalid': itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('physical_address').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -96,19 +168,64 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
-                  <textarea [(ngModel)]="item.postal_address" formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
+                  <label for="location" class="col-form-label required">Location:</label>
+                  <input [(ngModel)]="item.location" formControlName="location" [ngClass]="{'is-invalid': itemForm.get('location').invalid && (itemForm.get('location').dirty || itemForm.get('location').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('location').invalid && (itemForm.get('location').dirty || itemForm.get('location').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('location').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="physical_address" class="col-form-label required">Physical Address:</label>
-                  <textarea [(ngModel)]="item.physical_address" formControlName="physical_address" [ngClass]="{'is-invalid': itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('physical_address').errors?.['required']">This field is required.</div>
+                  <label for="sub_location" class="col-form-label required">Sub Location:</label>
+                  <input [(ngModel)]="item.sub_location" formControlName="sub_location" [ngClass]="{'is-invalid': itemForm.get('sub_location').invalid && (itemForm.get('sub_location').dirty || itemForm.get('sub_location').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('sub_location').invalid && (itemForm.get('sub_location').dirty || itemForm.get('sub_location').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('sub_location').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="village" class="col-form-label required">Village:</label>
+                  <input [(ngModel)]="item.village" formControlName="village" [ngClass]="{'is-invalid': itemForm.get('village').invalid && (itemForm.get('village').dirty || itemForm.get('village').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('village').invalid && (itemForm.get('village').dirty || itemForm.get('village').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('village').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="town" class="col-form-label required">City/Town:</label>
+                  <input [(ngModel)]="item.town" formControlName="town" [ngClass]="{'is-invalid': itemForm.get('town').invalid && (itemForm.get('town').dirty || itemForm.get('town').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('town').invalid && (itemForm.get('town').dirty || itemForm.get('town').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('town').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="street_name" class="col-form-label required">Street Name:</label>
+                  <input [(ngModel)]="item.street_name" formControlName="street_name" [ngClass]="{'is-invalid': itemForm.get('street_name').invalid && (itemForm.get('street_name').dirty || itemForm.get('street_name').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('street_name').invalid && (itemForm.get('street_name').dirty || itemForm.get('street_name').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('street_name').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="building_name" class="col-form-label required">Building Name:</label>
+                  <input [(ngModel)]="item.building_name" formControlName="building_name" [ngClass]="{'is-invalid': itemForm.get('building_name').invalid && (itemForm.get('building_name').dirty || itemForm.get('building_name').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('building_name').invalid && (itemForm.get('building_name').dirty || itemForm.get('building_name').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('building_name').errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="plot_number" class="col-form-label required1">Plot Number:</label>
+                  <input [(ngModel)]="item.plot_number" formControlName="plot_number" [ngClass]="{'is-invalid': itemForm.get('plot_number').invalid && (itemForm.get('plot_number').dirty || itemForm.get('plot_number').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('plot_number').invalid && (itemForm.get('plot_number').dirty || itemForm.get('plot_number').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('plot_number').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -125,4 +242,3 @@
     </c-card>
   </c-col>
 </c-row>
-

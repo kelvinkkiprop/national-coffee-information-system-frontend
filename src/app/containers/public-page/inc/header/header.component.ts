@@ -16,7 +16,7 @@ import { ProgressModule } from '../../../../components/progress/progress.module'
 export class HeaderComponent {
 
   // variables
-  mCurrentUser:any
+  mCurrentUser:any = null
   mProgress = signal(false)
 
   // fixed_navbar
