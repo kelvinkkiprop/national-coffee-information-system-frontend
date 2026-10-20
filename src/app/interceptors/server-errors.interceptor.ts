@@ -35,26 +35,26 @@ export const serverErrorsInterceptor: HttpInterceptorFn = (req: HttpRequest<unkn
             router.navigateByUrl(`/error/${500}/${'Internal server error'}`);
             break;
           case 400:
-            toastr.error('Bad request');
+            toastr.warning('Bad request');
             break;
           case 401:
-            toastr.error('Unauthorized');
+            toastr.warning('Unauthorized');
             authService.localSignOut();
             router.navigate(['/#/auth/login']);
             break;
           case 403:
-            toastr.error('Forbidden');
+            toastr.warning('Forbidden');
             authService.localSignOut();
             router.navigate(['/#/auth/login']);
             break;
           case 404:
-            toastr.error('Not found');
+            toastr.warning('Not found');
             break;
           case 408:
-            toastr.error('Time out');
+            toastr.warning('Time out');
             break;
           case 422:
-            toastr.error('Unprocessed content');
+            toastr.warning('Unprocessed content');
             break;
           case 500:
             router.navigateByUrl(`/error/${500}/${'Internal server error'}`);

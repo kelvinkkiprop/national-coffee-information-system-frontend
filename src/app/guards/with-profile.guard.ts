@@ -29,8 +29,8 @@ export class WithProfileGuard implements CanActivate {
     // return true;
 
     const mCurrentUser = this.mAuthService.currentUser;
-    // if (mCurrentUser.role?.type_id===2 && mCurrentUser.profile) {
-    if (mCurrentUser.profile) {
+    if ((mCurrentUser.role?.type_id===2 && mCurrentUser.profile) || mCurrentUser.role?.type_id===1) {
+    // if (mCurrentUser.profile) {
       return true;
     }
     this.router.navigateByUrl('profile/create');

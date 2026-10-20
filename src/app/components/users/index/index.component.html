@@ -7,7 +7,7 @@
       <c-card-header>
         <div class="d-flex justify-content-between align-items-center">
           <div class="card-title">
-            <a routerLink="/roles/create" class="btn btn-warning btn-sm text-light1">
+            <a routerLink="/users/create" class="btn btn-warning btn-sm text-light1">
               <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
             </a>
           </div>
@@ -30,7 +30,7 @@
       </c-card-header>
       <c-card-body>
 
-        <div *ngIf="mRoles.length>0; else noItemsTemplate" class="table-responsive">
+        <div *ngIf="mUsers.length>0; else noItemsTemplate" class="table-responsive">
           <table cTable striped>
             <thead cTableColor="light1">
               <tr>
@@ -43,7 +43,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of mRoles; index as i">
+              <tr *ngFor="let item of mUsers; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.email}}</td>
@@ -51,8 +51,8 @@
                 <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">
-                    <a routerLink="/roles/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></a>
-                    <a routerLink="/roles/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></a>
+                    <a routerLink="/users/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></a>
+                    <a routerLink="/users/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></a>
                     <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
                   </div>
                 </td>

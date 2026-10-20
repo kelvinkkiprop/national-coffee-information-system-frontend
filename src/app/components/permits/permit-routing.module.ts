@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
+import { ProcessComponent } from './process/process.component';
 
 
 // Routes
@@ -18,30 +19,38 @@ const routes: Routes = [
     path: 'index',
     component: IndexComponent,
     data: {
-      title: 'Permits'
+      title: 'Movement Permits'
     }
   },
   {
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Permits / Create'
+      title: 'Movement Permits / Create'
     }
   },
   {
     path: 'edit/:id',
     component: EditComponent,
     data: {
-      title: 'Permits / Edit'
+      title: 'Movement Permits / Edit'
     }
   },
   {
     path: 'show/:id',
     component: ShowComponent,
     data: {
-      title: 'Permits / Show'
+      title: 'Movement Permits / Show'
     }
   },
+
+  {
+    path: 'process/:id',
+    component: ProcessComponent,
+    data: {
+      title: 'Movement Permits / Process'
+    }
+  }
 ];
 
 

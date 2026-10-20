@@ -23,7 +23,7 @@ export class IndexComponent {
 
   myLicenses:any
   myPermits:any
-  myRecentLicenses?:any[] = []
+  myRecentPermits?:any[] = []
 
   mCurrentUser:any
   mProgress = signal(false);
@@ -57,7 +57,7 @@ export class IndexComponent {
 
           this.myLicenses =(response as any).data.my_licenses
           this.myPermits =(response as any).data.my_permits
-          this.myRecentLicenses =(response as any).data.my_recent_licenses
+          this.myRecentPermits =(response as any).data.my_recent_permits
         }
         this.mProgress.set(false);
       },

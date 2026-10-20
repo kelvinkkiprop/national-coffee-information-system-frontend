@@ -146,7 +146,7 @@ export class EditComponent {
         }
       },
       error: (error ) => {
-        this.mToastrService.error(error.error.message)
+        this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
     });

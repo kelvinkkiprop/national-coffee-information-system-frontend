@@ -13,7 +13,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="role_id" class="col-form-label required">Role:</label>
-                  <select  formControlName="role_id" [ngClass]="{'is-invalid': itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)}" type="text" class="form-control">
+                  <select formControlName="role_id" [ngClass]="{'is-invalid': itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select role ---</option>
                     <option *ngFor="let item of mRoles" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -35,7 +35,7 @@
                 <div class="form-group mb-3">
                   <label for="phone_number" class="col-form-label required">Phone Number:</label>
                   <div class="input-group">
-                    <select  formControlName="country_code" [ngClass]="{'is-invalid': itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)}" type="text" style="max-width:120px;"class="form-control">
+                    <select formControlName="country_code" [ngClass]="{'is-invalid': itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)}" type="text" style="max-width:120px;"class="form-control">
                       <option value="" disabled="true" selected="true">--- Select country code ---</option>
                       <option *ngFor="let item of mCountries" value="{{item.code}}">+{{item.code}} ({{item.name}})</option>
                     </select>
@@ -52,7 +52,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="country_id" class="col-form-label required">Country:</label>
-                  <select  formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
+                  <select formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select country ---</option>
                     <option *ngFor="let item of mCountries" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -70,7 +70,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="legal_status_id" class="col-form-label required">Legal Status:</label>
-                  <select  formControlName="legal_status_id" [ngClass]="{'is-invalid': itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)}" type="text" class="form-control">
+                  <select formControlName="legal_status_id" [ngClass]="{'is-invalid': itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select role ---</option>
                     <option *ngFor="let item of mLegalStatuses" value="{{item.id}}">{{item.name}}</option>
                   </select>
@@ -157,7 +157,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="ward_id" class="col-form-label required1">Ward:</label>
-                  <select  formControlName="ward_id" [ngClass]="{'is-invalid': itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)}" type="text" class="form-control">
+                  <select formControlName="ward_id" [ngClass]="{'is-invalid': itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select ward ---</option>
                     <option *ngFor="let item of mWards" value="{{item.id}}">{{item.name}}</option>
                   </select>

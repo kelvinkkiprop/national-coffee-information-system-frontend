@@ -17,9 +17,6 @@ import { RoleService } from '../../../services/role.service';
 export class CreateComponent {
 
   // variables
-  id:any
-  name:any
-
   itemForm:any
   mProgress = signal(false)
 
@@ -77,7 +74,7 @@ export class CreateComponent {
         }
       },
       error: (error ) => {
-        this.mToastrService.error(error.error.message)
+        this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
     });

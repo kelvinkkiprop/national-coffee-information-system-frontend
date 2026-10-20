@@ -4,8 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { RoleService } from '../../../services/role.service';
-import { Role } from '../../../interfaces/role';
+import { User } from '../../../interfaces/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -17,16 +17,19 @@ import { Role } from '../../../interfaces/role';
 export class EditComponent {
 
   // variables
-  id:any
-  name:any
-
   itemForm:any
   mProgress = signal(false)
 
-  item:Role = {}
+  id:any
+  item:User = {}
+
+  mShowPassword = false
+
+  mRoles:any
+  mUserStatuses:any
 
   constructor(
-    private mRoleService: RoleService,
+    private mUserService: UserService,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
     private router: Router,
@@ -35,14 +38,19 @@ export class EditComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      id: ['', Validators.required],
+      email: ['', Validators.required],
       name: ['', Validators.required],
+      role_id: ['', Validators.required],
+      status_id: ['', Validators.required],
+      password: ['', Validators.nullValidator],
+      reset_password: [false, Validators.nullValidator],
     });
   }
 
 
   ngOnInit(): void {
     // Call
+    this.loadUnpaginatedItems()
     this.getItem()
   }
 
@@ -50,7 +58,7 @@ export class EditComponent {
   getItem(): void{
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress.set(true);
-    this.mRoleService.getOneItem(this.id).subscribe({
+    this.mUserService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any
@@ -68,17 +76,17 @@ export class EditComponent {
 
   // onSubmit
   onSubmit(formValues: any){
-    const item: Role = {
+    const item: User = {
+      ...formValues,
       id: this.item.id,
-      name: formValues.name,
     }
 
     this.mProgress.set(true);
-    this.mRoleService.updateItem(item).subscribe({
+    this.mUserService.updateItem(item).subscribe({
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
-          this.router.navigateByUrl('/roles')
+          this.router.navigateByUrl('/users')
           this.mProgress.set(false)
         }
       },
@@ -86,6 +94,24 @@ export class EditComponent {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
+  // loadUnpaginatedItems
+  loadUnpaginatedItems(){
+    this.mProgress.set(true);
+    this.mUserService.unpaginatedItems().subscribe({
+      next: (response) => {
+        if(response){
+          this.mRoles = (response as any).data.roles
+          this.mUserStatuses = (response as any).data.user_statuses
+          this.mProgress.set(false)
+        }
+      },
+      error: (error ) => {
+        this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
     });

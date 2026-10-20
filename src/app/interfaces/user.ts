@@ -8,6 +8,7 @@ export interface User {
   email_verified_at?: any,
   otp_expires_at?:any,
   otp_verified?:any,
+  password?:any,
   created_at?: string,
   updated_at?: string,
   token?: any,

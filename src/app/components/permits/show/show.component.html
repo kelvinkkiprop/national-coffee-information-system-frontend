@@ -1,1 +1,46 @@
-<p>show works!</p>
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="name">Name:</label>
+                <div *ngIf="item.name" class="text-muted">{{ item.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="name">Email:</label>
+                <div *ngIf="item.email" class="text-muted">{{ item.email }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="role_id">Role:</label>
+                <div *ngIf="item.role" class="text-muted">{{ item.role?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="investor_id">Status:</label>
+                <div *ngIf="item.status" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-end">
+            <button routerLink="/permits" cButton color="light">Cancel</button>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

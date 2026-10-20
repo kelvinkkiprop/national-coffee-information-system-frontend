@@ -17,7 +17,6 @@ constructor(
   private http: HttpClient
 ) { }
 
-  //FUNCTIONS
   allItems():Observable<Role[]>{
     const url = `${environment.base_url}/roles`;
     return this.http.get<Role[]>(url, this.mAppContextService.getHttpOptions());

@@ -14,10 +14,10 @@ import { RoleService } from '../../../services/role.service';
 export class ShowComponent {
 
   // variables
-  mProgress = signal(false);
+  mProgress = signal(false)
 
-  item:any ={};
-  id:any;
+  item:any ={}
+  id:any
 
   constructor(
    private mRoleService: RoleService,

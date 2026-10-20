@@ -142,6 +142,12 @@ export class AppContextService {
     return roles.includes(role_id ?? -1); // or return false if role_id is null
   }
 
+  // hasTypes
+  hasTypes(types: any[]): boolean {
+    const type_id = this.injector.get(AuthService).currentUser?.role?.type_id;
+    return types.includes(type_id ?? -1);
+  }
+
 
  // getColorClass
   getColorClass(mStatusId: number): string {

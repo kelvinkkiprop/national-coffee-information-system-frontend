@@ -9,6 +9,9 @@ import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { PermitRoutingModule } from './permit-routing.module';
 import { ShowComponent } from './show/show.component';
+import { ProcessComponent } from './process/process.component';
+import { ReviewComponent } from './process/inc/review/review.component';
+import { ApproveComponent } from './process/inc/approve/approve.component';
 
 
 
@@ -17,7 +20,11 @@ import { ShowComponent } from './show/show.component';
     IndexComponent,
     CreateComponent,
     EditComponent,
-    ShowComponent
+    ShowComponent,
+
+    ProcessComponent,
+    ReviewComponent,
+    ApproveComponent,
   ],
   imports: [
     CommonModule,

@@ -17,7 +17,6 @@ constructor(
   private http: HttpClient
 ) { }
 
-  //FUNCTIONS
   allItems():Observable<User[]>{
     const url = `${environment.base_url}/users`;
     return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());

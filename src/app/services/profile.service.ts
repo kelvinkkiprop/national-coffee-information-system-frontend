@@ -15,7 +15,6 @@ export class ProfileService {
     private http: HttpClient
 ) { }
 
-  // FUNCTIONS
   allItems():Observable<Profile[]>{
     const url = `${environment.base_url}/profile`;
     return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());

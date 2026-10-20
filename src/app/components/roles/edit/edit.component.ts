@@ -17,13 +17,12 @@ import { Role } from '../../../interfaces/role';
 export class EditComponent {
 
   // variables
-  id:any
-  name:any
-
   itemForm:any
   mProgress = signal(false)
 
   mRoleTypes:any
+
+  id:any
   item:Role = {}
 
   constructor(
@@ -107,7 +106,7 @@ export class EditComponent {
         }
       },
       error: (error ) => {
-        this.mToastrService.error(error.error.message)
+        this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
     });

@@ -16,7 +16,7 @@ import { UserService } from '../../../services/user.service';
 export class IndexComponent {
 
   // variables
-  mRoles: any = {}
+  mUsers: any = {}
   links:any= []
   mPageFrom: any
 
@@ -50,7 +50,7 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mPageFrom = (response as any).from
-          this.mRoles = (response as any).data
+          this.mUsers = (response as any).data
           this.links = (response as any).links
         }
         this.mProgress.set(false)
@@ -73,7 +73,7 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mPageFrom = (response as any).from
-          this.mRoles =(response as any).data
+          this.mUsers =(response as any).data
           this.links = (response as any).links
           this.mProgress.set(false)
         }
@@ -119,7 +119,7 @@ export class IndexComponent {
               next: (response) => {
                 if(response){
                   // console.log(response)
-                  this.mRoles = this.mRoles.filter((items: { id: any })=>items.id !== item.id)
+                  this.mUsers = this.mUsers.filter((items: { id: any })=>items.id !== item.id)
                   this.mToastrService.warning((response as any).message)
                   this.mProgress.set(false)
                 }
@@ -144,7 +144,7 @@ export class IndexComponent {
     this.mUserService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mRoles = (response as any).salutations
+          this.mUsers = (response as any).salutations
           this.mToastrService.success((response as any).message)
           this.mProgress.set(false)
         }
@@ -164,7 +164,7 @@ export class IndexComponent {
     this.mUserService.searchItems(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mRoles = (response as any).data
+          this.mUsers = (response as any).data
           this.mToastrService.success((response as any).message)
           this.mProgress.set(false)
         }

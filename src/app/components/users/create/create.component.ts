@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { RoleService } from '../../../services/role.service';
+import { UserService } from '../../../services/user.service';
 
 
 @Component({
@@ -17,14 +17,15 @@ import { RoleService } from '../../../services/role.service';
 export class CreateComponent {
 
   // variables
-  id:any
-  name:any
-
   itemForm:any
   mProgress = signal(false)
 
+  mShowPassword = false
+
+  mRoles:any
+
   constructor(
-    private mRoleService: RoleService,
+    private mUserService: UserService,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
     private router: Router,
@@ -32,25 +33,27 @@ export class CreateComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      id: ['', Validators.required],
+      email: ['', Validators.required],
       name: ['', Validators.required],
-      type_id: ['', Validators.required],
+      role_id: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
 
   ngOnInit(): void {
     // Call
+    this.loadUnpaginatedItems()
   }
 
   // onSubmit
   onSubmit(formValues: any){
     this.mProgress.set(true);
-    this.mRoleService.createItem(formValues).subscribe({
+    this.mUserService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
-          this.router.navigateByUrl('/roles')
+          this.router.navigateByUrl('/users')
           this.mProgress.set(false)
         }
       },
@@ -58,6 +61,24 @@ export class CreateComponent {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
+
+  // loadUnpaginatedItems
+  loadUnpaginatedItems(){
+    this.mProgress.set(true);
+    this.mUserService.unpaginatedItems().subscribe({
+      next: (response) => {
+        if(response){
+          this.mRoles = (response as any).data.roles
+          this.mProgress.set(false)
+        }
+      },
+      error: (error ) => {
+        this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
     });
