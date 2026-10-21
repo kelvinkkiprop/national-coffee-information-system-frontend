@@ -22,7 +22,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'create',
+    // path: 'create',
+    path: 'settled/:id',
     component: CreateComponent,
     data: {
       title: 'Payments / Create'

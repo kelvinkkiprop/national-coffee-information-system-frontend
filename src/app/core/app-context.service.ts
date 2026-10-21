@@ -56,6 +56,11 @@ export class AppContextService {
     return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
+  // safeResourceUrl_for_iframe
+  safeResourceUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
   // getHttpOptions
   getHttpOptions() {
     return this.defaultHttpOptions;

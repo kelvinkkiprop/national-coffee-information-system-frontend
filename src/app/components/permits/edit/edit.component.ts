@@ -92,7 +92,10 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
-          this.router.navigateByUrl('/permits')
+          // this.router.navigateByUrl('/permits')
+          const paymentId = (response as any).data.payment.id
+          // this.router.navigateByUrl('/permits')
+          this.router.navigateByUrl('/payments/show/'+paymentId)
           this.mProgress.set(false)
         }
       },

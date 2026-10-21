@@ -39,7 +39,7 @@
                 <th scope="col">Applicant</th>
                 <th scope="col">Type</th>
                 <th scope="col">Status</th>
-                <th scope="col">Payment Status</th>
+                <th scope="col">Payment</th>
                 <th scope="col">Permit</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -52,7 +52,7 @@
                 <td>{{ item.user?.name }}</td>
                 <td>{{ item.type?.name }}</td>
                 <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/permits/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
-                <td><span class="badge rounded-pill" [ngClass]="item?.payment_status_id===1 ? 'bg-danger':'bg-success'">{{ item?.payment_status?.name }}</span></td>
+                <td><span routerLink="/payments/show/{{item.payment_id}}" class="badge rounded-pill" [ngClass]="item.payment?.status_id===1 ? 'bg-danger':'bg-success'">{{ item.payment?.status.name }}</span></td>
                 <td>
                   <span *ngIf="(item.status_id==5)">
                     <button (click)="onDownloadPermit(item)" class="btn btn-link btn-sm">Download</button>

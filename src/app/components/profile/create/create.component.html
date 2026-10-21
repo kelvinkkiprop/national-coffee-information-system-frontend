@@ -71,7 +71,7 @@
                 <div class="form-group mb-3">
                   <label for="legal_status_id" class="col-form-label required">Legal Status:</label>
                   <select formControlName="legal_status_id" [ngClass]="{'is-invalid': itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select role ---</option>
+                    <option value="" disabled="true" selected="true">--- Select legal status ---</option>
                     <option *ngFor="let item of mLegalStatuses" value="{{item.id}}">{{item.name}}</option>
                   </select>
                   <div *ngIf="itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)" class="invalid-feedback" role="alert">
