@@ -13,7 +13,6 @@ import { AppContextService } from '../../../core/app-context.service';
 })
 export class ShowComponent {
 
-
   // variables
   mProgress = signal(false)
 

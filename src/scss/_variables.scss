@@ -215,6 +215,12 @@ button, input, select, textarea, .nav-link, .btn {
   --bs-btn-active-bg: #19311C !important;
 }
 
+.btn-link {
+  --cui-btn-color: #224326 !important;
+  --cui-btn-hover-color: #3A302A !important;
+  text-decoration: none !important;
+}
+
 .bg-primary{
   // background-color: #2C1E15 !important;
   background-color: $brown !important;

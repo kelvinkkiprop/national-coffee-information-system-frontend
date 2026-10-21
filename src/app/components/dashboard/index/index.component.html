@@ -11,11 +11,18 @@
 
     <div class="row mb-4">
       <div class="col-md-12">
-        <div class="alert alert-success border-0 rounded-3">
+        <div class="alert alert-warning border-0 rounded-0 border-start border-warning border-3">
+          <div class="d-flex align-items-center justify-content-between">
             <div>
               <div class="fw-bold">Welcome back, {{ mCurrentUser.name }}</div>
               <span class="text-muted">{{ getDate() }}</span>
             </div>
+            <div class="ms-3">
+              <a routerLink="/dashboard" class="btn btn-success btn-sm">
+                <i class="fa fa-arrow-circle-right"></i> User Manual
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -92,7 +99,7 @@
       </div>
     </div>
 
-    <div>
+    <div *ngIf="(mAppContextService.hasRoles([1]) || mAppContextService.hasTypes([2]))">
       <c-row [gutter]="{ gx: 3, gy: 3 }">
         <c-col xs="12">
           <h6 class="mt-2 text-muted">External</h6>

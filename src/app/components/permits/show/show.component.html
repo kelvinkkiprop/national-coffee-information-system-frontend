@@ -8,35 +8,104 @@
 
         <div>
           <div class="row">
-            <div class="col-md-12">
-              <div class="mb-3">
-                <label for="name">Name:</label>
-                <div *ngIf="item.name" class="text-muted">{{ item.name }}</div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="application_number">Application Number:</label>
+                <div *ngIf="item.application_number" class="text-muted">{{ item.application_number }}</div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="mb-3">
-                <label for="name">Email:</label>
-                <div *ngIf="item.email" class="text-muted">{{ item.email }}</div>
+              <div class="form-group mb-3">
+                <label for="application_number">Status:</label>
+                <div *ngIf="item.application_number" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span>
+                </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="mb-3">
-                <label for="role_id">Role:</label>
-                <div *ngIf="item.role" class="text-muted">{{ item.role?.name }}</div>
+              <div class="form-group mb-3">
+                <label for="type_id">Permit Type:</label>
+                <div *ngIf="item.name" class="text-muted">{{ item.type?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="mark" class="col-form-label required1">Mark:</label>
+                <div *ngIf="item.mark" class="text-muted">{{ item.mark}}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_species_id">Coffee Species:</label>
+                <div *ngIf="item.coffee_species" class="text-muted">{{ item.coffee_species?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_form_id">Coffee Form:</label>
+                <div *ngIf="item.coffee_form" class="text-muted">{{ item.coffee_form?.name }}</div>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="mb-3">
-                <label for="investor_id">Status:</label>
-                <div *ngIf="item.status" class="text-muted">
-                  <span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span>
+              <div class="form-group mb-3">
+                <label for="number_of_bags">Number of Bags (60 Kg Bags):</label>
+                <div *ngIf="item.number_of_bags" class="text-muted">{{ item.number_of_bags }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="origin">Moving From (Origin):</label>
+                <div *ngIf="item.origin" class="text-muted">{{ item.origin }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="destination">To (Destination):</label>
+                <div *ngIf="item.destination" class="text-muted">{{ item.destination }}</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="distance">Distance (KM):</label>
+                <div *ngIf="item.distance" class="text-muted">{{ item.distance }}</div>
+              </div>
+            </div>
+             <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="vehicle_registration_number">Vehicle/Wagon Registration Number:</label>
+                <div *ngIf="item.vehicle_registration_number" class="text-muted">{{ item.vehicle_registration_number }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="driver_name">Driver(s) Name:</label>
+                <div *ngIf="item.driver_name" class="text-muted">{{ item.driver_name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="driver_id_number">Driver(s) ID Number:</label>
+                <div *ngIf="item.driver_id_number" class="text-muted">{{ item.driver_id_number }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="warehouse_receipt_number">Warehouse Receipt Number:</label>
+                <div *ngIf="item.warehouse_receipt_number" class="text-muted">{{ item.driver_id_number }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="payment">Payment:</label>
+                <div *ngIf="item.payment" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="item.payment?.status_id===1 ? 'bg-danger':'bg-success'">{{ item.payment?.status.name }}</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="mt-3 text-end">
-            <button routerLink="/permits" cButton color="light">Cancel</button>
+            <a routerLink="/permits" class="btn btn-light">Cancel</a>
+            <button [routerLink]="mAppContextService.hasTypes([1]) ? ['/permits/process', item.id] : null" class="btn btn-warning">Process</button>
           </div>
         </div>
 

@@ -223,13 +223,13 @@
       .card-header {
         border-bottom: 0;
       }
-      // .card-body a {
-      //   color: var(--content-link);
-      //   text-decoration: none;
-      //   &:hover {
-      //     color: var(--content-link-hover);
-      //   }
-      // }
+      .card-body a {
+        color: var(--content-link);
+        text-decoration: none;
+        &:hover {
+          color: var(--content-link-hover);
+        }
+      }
     }
 
     .pagination {

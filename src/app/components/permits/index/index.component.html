@@ -48,13 +48,13 @@
             <tbody>
               <tr *ngFor="let item of mPermits; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
-                <td><a routerLink="/permits/show/{{item.id}}" class="text-sm">{{ item.application_number }}</a></td>
+                <td><a routerLink="/permits/show/{{item.id}}" class="small fw-bold">{{ item.application_number }}</a></td>
                 <td>{{ item.user?.name }}</td>
                 <td>{{ item.type?.name }}</td>
                 <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/permits/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
                 <td><span routerLink="/payments/show/{{item.payment_id}}" class="badge rounded-pill" [ngClass]="item.payment?.status_id===1 ? 'bg-danger':'bg-success'">{{ item.payment?.status.name }}</span></td>
                 <td>
-                  <span *ngIf="(item.status_id==5)">
+                  <span *ngIf="(item.status_id==5 || item.status_id===7)">
                     <button (click)="onDownloadPermit(item)" class="btn btn-link btn-sm">Download</button>
                   </span>
                 </td>
