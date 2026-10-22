@@ -19,44 +19,8 @@
 /* ================================================================================
   PUBLIC_PAGE
 ================================================================================ */
-#public-page{
-  #header {
-    --nav-link-color: #2C1E15;
-    --nav-link-hover-color: #224326;
-    --nav-underline-color: #224326;
-
-    .navbar-nav .nav-link {
-      position: relative;
-      color: var(--nav-link-color);
-      transition: color 250ms ease;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 10px;
-        bottom: 2px;
-        width: 50%;
-        height: 2px;
-        background-color: var(--nav-underline-color);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 250ms ease;
-      }
-
-      &:hover,
-      &:focus-visible,
-      &.active {
-        color: var(--nav-link-hover-color) !important;
-
-        &::after {
-          transform: scaleX(1);
-        }
-      }
-    }
-  }
-}
-
 #public-page {
+  overflow-x: hidden !important;
   #header {
     --nav-bg-color: #F4EBE1;
     --nav-link-color: #2C1E15;

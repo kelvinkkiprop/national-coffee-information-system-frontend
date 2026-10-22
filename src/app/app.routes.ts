@@ -5,8 +5,8 @@ import { ErrPageComponent } from './containers/err-page/err-page.component';
 import { DefaultLayoutComponent } from './containers/layout';
 import { PublicPageComponent } from './containers/public-page/public-page.component';
 import { AuthGuard } from './guards/auth.guard';
-import { OtpVerifiedGuard } from './guards/otp-verified.guard';
 import { EmailVerifiedGuard } from './guards/email-verified.guard';
+import { OtpVerifiedGuard } from './guards/otp-verified.guard';
 import { WithProfileGuard } from './guards/with-profile.guard';
 
 export const routes: Routes = [

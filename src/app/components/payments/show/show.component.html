@@ -104,7 +104,7 @@
             </div>
           </div>
           <div class="mt-3 text-end">
-            <button routerLink="/payments" cButton color="light">Cancel</button>
+            <button routerLink="/payments" type="button" class="btn btn-light">Cancel</button>
             @if (item.status_id==2) {
               <button (click)="onReceipt(item)" type="submit" class="btn btn-warning">Receipt</button>
             }@else{
