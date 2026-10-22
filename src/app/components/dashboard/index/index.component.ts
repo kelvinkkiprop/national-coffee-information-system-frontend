@@ -23,6 +23,8 @@ export class IndexComponent {
 
   myLicenses:any
   myPermits:any
+  myPayments:any
+  myExams:any
   myRecentPermits?:any[] = []
 
   mCurrentUser:any
@@ -57,6 +59,8 @@ export class IndexComponent {
 
           this.myLicenses =(response as any).data.my_licenses
           this.myPermits =(response as any).data.my_permits
+          this.myPayments =(response as any).data.my_payments
+          this.myExams =(response as any).data.my_exams
           this.myRecentPermits =(response as any).data.my_recent_permits
         }
         this.mProgress.set(false);

@@ -3,12 +3,11 @@
 <div ngPreserveWhitespaces>
 
   <div class="mb-3">
-    <c-row [gutter]="{ gx: 3, gy: 3 }">
-      <c-col xs="12">
+    <div class="row" [gutter]="{ gx: 3, gy: 3 }">
+      <div class="col-md-12">
         <h5 class="mt-2 text-muted1">System Insights</h5>
-      </c-col>
-    </c-row>
-
+      </div>
+    </div>
     <div class="row mb-4">
       <div class="col-md-12">
         <div class="alert alert-warning border-0 rounded-0 border-start border-warning border-3">
@@ -28,39 +27,39 @@
     </div>
 
     <div *ngIf="(mAppContextService.hasRoles([1,2,3,4,5,6,7]))">
-      <c-row>
-        <c-col xs="12">
+      <div class="row">
+        <div class="col-md-12">
           <h6 class="mt-2 text-muted">Internal</h6>
-        </c-col>
-        <c-col md="3" xl="3">
+        </div>
+        <div class="col-sm-6 col-md-3">
           <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-users fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
-        </c-col>
-        <c-col md="3" xl="3">
+        </div>
+        <div class="col-sm-6 col-md-3">
           <c-widget-stat-c [title]="'Licenses'" class="mb-4" color="warning" inverse value="{{ mLicenses || 0 }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
-        </c-col>
-        <c-col md="3" xl="3">
+        </div>
+        <div class="col-sm-6 col-md-3">
           <c-widget-stat-c [title]="'Permits'" class="mb-4" color="success" inverse value="{{ mPermits || 0 }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-stamp fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
-        </c-col>
-        <c-col md="3" xl="3">
+        </div>
+        <div class="col-sm-6 col-md-3">
           <c-widget-stat-c [title]="'Revenues'" class="mb-4" color="danger" inverse value="{{ (mRevenues || 0) | currency:'KES ':'symbol':'1.2-2' }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-coins fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
-        </c-col>
-      </c-row>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12 mb-4 ">
           <div class="card mb-4 h-100">
@@ -81,7 +80,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of mRecentUsers; let i = index">
-                      <td>{{ i + 1 }}.</td>
+                      <td>{{ i+1 }}.</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.role?.name }}</td>
                       <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
@@ -100,21 +99,48 @@
     </div>
 
     <div *ngIf="(mAppContextService.hasRoles([1]) || mAppContextService.hasTypes([2]))">
-      <c-row [gutter]="{ gx: 3, gy: 3 }">
-        <c-col xs="12">
-          <h6 class="mt-2 text-muted">External</h6>
-        </c-col>
-        <c-col xs="12" lg="6">
-          <c-widget-stat-e [title]="'My Licenses'" value="{{ myLicenses }}" color="info" inverse class="mb-4">
-            <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col xs="12" lg="6">
-          <c-widget-stat-e [title]="'My Permits'" value="{{ myPermits }}" color="warning" inverse class="mb-4">
-            <i class="fa-solid fa-stamp fs-1" aria-hidden="true"></i>
-          </c-widget-stat-e>
-        </c-col>
-      </c-row>
+      <div class="row">
+        <div class="col-sm-6 col-lg-6">
+          <div class="card" style="--cui-card-cap-bg: #2C1E15">
+            <div class="card-header position-relative d-flex justify-content-center align-items-center">
+              <span class="text-white my-4">
+                <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="card-body row text-center">
+              <div class="col">
+                <div class="fs-5 fw-semibold">{{ myPermits }}</div>
+                <div class="text-uppercase text-body-secondary small">Permits</div>
+              </div>
+              <div class="vr"></div>
+              <div class="col">
+                <div class="fs-5 fw-semibold">{{ myLicenses }}</div>
+                <div class="text-uppercase text-body-secondary small">Licenses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+          <div class="card" style="--cui-card-cap-bg: #224326">
+            <div class="card-header position-relative d-flex justify-content-center align-items-center">
+              <span class="text-white my-4">
+                <i class="fa-solid fa-wallet fs-1" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="card-body row text-center">
+              <div class="col">
+                <div class="fs-5 fw-semibold">{{ (myPayments|| 0) | currency:'KES ':'symbol':'1.2-2' }}</div>
+                <div class="text-uppercase text-body-secondary small">Payments</div>
+              </div>
+              <div class="vr"></div>
+              <div class="col">
+                <div class="fs-5 fw-semibold">{{ myExams }}</div>
+                <div class="text-uppercase text-body-secondary small">Exams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12 mb-4 ">
           <div class="card mb-4 h-100">
@@ -134,7 +160,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of myRecentPermits; let i = index">
-                      <td>{{ i + 1 }}.</td>
+                      <td>{{ i+1 }}.</td>
                       <td>{{ item.application_number }}</td>
                       <td><span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
                       <td>{{ item.created_at | date }}</td>

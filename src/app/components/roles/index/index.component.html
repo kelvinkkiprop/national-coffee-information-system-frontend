@@ -38,7 +38,6 @@
                 <th scope="col">Name</th>
                 <th scope="col">Type</th>
                 <th scope="col">Created</th>
-                <th scope="col">Updated</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -48,7 +47,6 @@
                 <td>{{ item.name }}</td>
                 <td><span class="badge rounded-pill" [ngClass]="item?.type_id===1 ? 'bg-success':'bg-warning'">{{ item?.type?.name }}</span></td>
                 <td>{{ item.created_at|date }}</td>
-                <td>{{ item.updated_at|date }}</td>
                 <td>
                   <div class="text-nowrap">
                     <button routerLink="/roles/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>

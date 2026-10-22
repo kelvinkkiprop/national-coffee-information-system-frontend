@@ -37,6 +37,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Role</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -46,13 +47,14 @@
               <tr *ngFor="let item of mUsers; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.name }}</td>
-                <td>{{ item.email}}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.role?.name }}</td>
                 <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">
-                    <a routerLink="/users/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></a>
-                    <a routerLink="/users/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></a>
+                    <button routerLink="/users/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button routerLink="/users/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></button>
                     <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
                   </div>
                 </td>
