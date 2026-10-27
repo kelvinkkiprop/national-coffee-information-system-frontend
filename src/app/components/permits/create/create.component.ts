@@ -67,7 +67,7 @@ export class CreateComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
@@ -89,7 +89,7 @@ export class CreateComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }

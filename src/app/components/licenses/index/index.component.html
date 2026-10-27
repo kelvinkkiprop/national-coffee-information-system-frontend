@@ -1,8 +1,92 @@
-<div class="alert alert-warning d-flex align-items-center">
-  <div>
-    <h5 class="fw-bolder">Licenses</h5>
-    <strong>🚧 Coming Soon!</strong><br />
-    This feature is under development.
-    <a routerLink="/dashboard" class="alert-link">Learn more</a>
-  </div>
-</div>
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-header>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="card-title">
+            <a routerLink="/licenses/create" class="btn btn-warning btn-sm text-light1">
+              <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
+            </a>
+          </div>
+          <div>
+            <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
+              <div class="input-group input-group-sm"  style="width: 150px;">
+                <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success btn-sm">
+                    <i class="fa-solid fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="chip">
+                  <div *ngIf="search_term.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </c-card-header>
+      <c-card-body>
+
+        <div *ngIf="mLicenses.length>0; else noItemsTemplate" class="table-responsive">
+          <table cTable striped>
+            <thead cTableColor="light1">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Number</th>
+                <th scope="col">Applicant</th>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
+                <th scope="col">Payment</th>
+                <th scope="col">License</th>
+                <th scope="col">Created</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of mLicenses; index as i">
+                <td>{{ this.mPageFrom+i }}.</td>
+                <td><a routerLink="/licenses/show/{{item.id}}" class="small fw-bold">{{ item.application_number }}</a></td>
+                <td>{{ item.user?.name }}</td>
+                <td><span class="badge" [ngClass]="item.category_id===1 ? 'bg-success':'bg-warning'">{{ item.category?.name }}</span></td>
+                <td>{{ item.type?.name }}</td>
+                <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/licenses/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
+                <td><span routerLink="/payments/show/{{item.payment_id}}" class="chip chip-clickable" [ngClass]="item.payment?.status_id===1 ? 'chip-danger':'chip-success'">{{ item.payment?.status.name }}</span></td>
+                <td>
+                  <span *ngIf="(item.status_id==5 || item.status_id===7)">
+                    <button (click)="onDownloadPermit(item)" class="btn btn-link btn-sm">Download</button>
+                  </span>
+                </td>
+                <td>{{ item.created_at|date }}</td>
+                <td>
+                  <div class="text-nowrap">
+                    <button routerLink="/licenses/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button *ngIf="(mAppContextService.hasRoles([1]) || (item.status_id== 1 || item.status_id== 2))" routerLink="/licenses/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></button>
+                    <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="links">
+          <ul class="pagination">
+            <li *ngFor="let item of links" [ngClass]="{'active': item.active, 'disabled': !item.url}" class="page-item">
+              <a class="page-link" (click)="onChangePage(item.url)" [innerHTML]="item.label"></a>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #noItemsTemplate>
+          <p class="p-5 text-center text-muted">No items</p>
+        </ng-template>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+

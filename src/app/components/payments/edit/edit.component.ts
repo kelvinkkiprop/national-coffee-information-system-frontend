@@ -59,7 +59,7 @@ export class EditComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }

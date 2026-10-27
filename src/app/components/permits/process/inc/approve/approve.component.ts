@@ -60,7 +60,7 @@ export class ApproveComponent {
           this.mProgress = signal(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.error(error.error.message)
         }
@@ -85,7 +85,7 @@ export class ApproveComponent {
           this.mProgress = signal(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.error(error.error.message)
         }
@@ -105,7 +105,7 @@ export class ApproveComponent {
           this.mProgress = signal(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.error(error.error.message)
         }

@@ -101,7 +101,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
         }
         this.mProgress = signal(false)
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
           this.mProgress = signal(false)

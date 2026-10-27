@@ -55,7 +55,7 @@ export class IndexComponent {
         }
         this.mProgress.set(false)
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
@@ -78,7 +78,7 @@ export class IndexComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         // console.log(error)
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
@@ -89,7 +89,7 @@ export class IndexComponent {
 
   }
 
-  //onDelete
+ // onDelete
   onDelete(item:any){
     const swalWithBootstrapButtons = swal.mixin({
       customClass: {
@@ -124,7 +124,7 @@ export class IndexComponent {
                   this.mProgress.set(false)
                 }
               },
-              error: (error ) => {
+              error: (error) => {
                 // console.log(error)
                 if(error.error.message){
                   this.mToastrService.warning(error.error.message)
@@ -149,7 +149,7 @@ export class IndexComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
@@ -169,7 +169,7 @@ export class IndexComponent {
           this.mProgress.set(false)
         }
       },
-      error: (error ) => {
+      error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }

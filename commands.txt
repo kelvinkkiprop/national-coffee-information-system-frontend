@@ -95,6 +95,9 @@ ng generate component components/licenses/edit
 ng generate component components/licenses/show
 ng generate module components/licenses/license
 ng generate module components/licenses/licenseRouting
+ng generate component components/licenses/process
+ng generate component components/licenses/process/inc/review
+ng generate component components/licenses/process/inc/approve
 
 ng generate component components/permits/index
 ng generate component components/permits/create
@@ -103,8 +106,6 @@ ng generate component components/permits/show
 ng generate module components/permits/permit
 ng generate module components/permits/permitRouting
 ng generate component components/permits/process
-ng generate component components/permits/process/inc/review
-ng generate component components/permits/process/inc/approve
 
 ng generate component components/progress/progress
 ng generate module components/progress/progress
@@ -134,6 +135,7 @@ ng generate service services/profile
 ng generate service services/dashboard
 ng generate service services/permit
 ng generate service services/payment
+ng generate service services/license
 
 8. Core
 ng generate service core/app-info
@@ -145,6 +147,7 @@ ng generate interface interfaces/role
 ng generate interface interfaces/profile
 ng generate interface interfaces/permit
 ng generate interface interfaces/payment
+ng generate interface interfaces/license
 
 10. Guards
 ng generate guard guards/auth
