@@ -1,1 +1,86 @@
-<p>edit works!</p>
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="category_id" class="col-form-label required">Application Category:</label>
+                <select [(ngModel)]="item.category_id" formControlName="category_id" [ngClass]="{'is-invalid': itemForm.get('category_id')?.invalid && (itemForm.get('category_id')?.dirty || itemForm.get('category_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select category ---</option>
+                  <option *ngFor="let item of mLicenseCategories" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <div *ngIf="itemForm.get('category_id')?.invalid && (itemForm.get('category_id')?.dirty || itemForm.get('category_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('category_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="financial_year" class="col-form-label required">Year/Period:</label>
+                <select [(ngModel)]="item.financial_year" formControlName="financial_year" [ngClass]="{'is-invalid': itemForm.get('financial_year')?.invalid && (itemForm.get('financial_year')?.dirty || itemForm.get('financial_year')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select year ---</option>
+                  <option *ngFor="let item of mFinancialYears" value="{{item}}">{{item}}</option>
+                </select>
+                <div *ngIf="itemForm.get('financial_year')?.invalid && (itemForm.get('financial_year')?.dirty || itemForm.get('financial_year')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('financial_year')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="expiry_date" class="col-form-label required">Expiry Date:</label>
+                <input [(ngModel)]="item.expiry_date" formControlName="expiry_date" [ngClass]="{'is-invalid': itemForm.get('expiry_date').invalid && (itemForm.get('expiry_date').dirty || itemForm.get('expiry_date').touched)}" type="date" class="form-control" readonly/>
+                <div *ngIf="itemForm.get('expiry_date').invalid && (itemForm.get('expiry_date').dirty || itemForm.get('expiry_date').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('expiry_date').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="type_id" class="col-form-label required">License Type:</label>
+                <select [(ngModel)]="item.type_id" formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select type ---</option>
+                  <option *ngFor="let item of mLicenseTypes" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <div *ngIf="itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('type_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+             <div *ngIf="itemForm.get('type_id')?.value==5" class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="coffee_tasting_expert_certificate" class="col-form-label required">Coffee Tasting Expert Certificate:</label>
+                <input (change)="onCoffeeTastingExpertCertificateChange($event)" formControlName="coffee_tasting_expert_certificate" [ngClass]="{'is-invalid': itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)}" type="file" class="form-control"/>
+                <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-check">
+                <input [(ngModel)]="item.commitment_declaration" class="form-check-input" type="checkbox" formControlName="commitment_declaration" />
+                <label class="form-check-label" for="commitment_declaration">
+                  By checking this, the applicant certifies that the information provided is accurate and agrees to comply with all applicable licence terms and conditions.
+                </label>
+              </div>
+              <div *ngIf="itemForm.get('commitment_declaration').invalid && (itemForm.get('commitment_declaration').dirty || itemForm.get('commitment_declaration').touched)" class="invalid-feedback" role="alert">
+                <div *ngIf="itemForm.get('commitment_declaration').errors?.['requiredTrue']">You must accept to proceed.</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-end">
+            <button routerLink="/licenses" type="button" class="btn btn-light">Cancel</button>
+            <button [disabled]="itemForm.invalid" type="submit" class="btn btn-warning">Submit</button>
+          </div>
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -22,6 +22,24 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="type_id">License Category:</label>
+                <div *ngIf="item.category" class="text-muted">{{ item.category?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="financial_year" class="col-form-label required1">Year/Period:</label>
+                <div *ngIf="item.financial_year" class="text-muted">{{ item.financial_year }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="expiry_date">Expiry Date:</label>
+                <div *ngIf="item.expiry_date" class="text-muted">{{ item.expiry_date | date }}</div>
+              </div>
+            </div>
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="type_id">License Type:</label>
@@ -38,12 +56,6 @@
             </div>
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label for="date_of_issue" class="col-form-label required1">Date of Issue:</label>
-                <div *ngIf="item.date_of_issue" class="text-muted">{{ item.date_of_issue | date }}</div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group mb-3">
                 <label for="coffee_species_id">Effective Date:</label>
                 <div *ngIf="item.effective_date" class="text-muted">{{ item.effective_date | date }}</div>
               </div>
@@ -52,12 +64,6 @@
               <div class="form-group mb-3">
                 <label for="coffee_form_id">Date of Gazettement Intent:</label>
                 <div *ngIf="item.date_of_gazettement_intent" class="text-muted">{{ item.date_of_gazettement_intent | date }}</div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group mb-3">
-                <label for="expiry_date">Expiry Date:</label>
-                <div *ngIf="item.expiry_date" class="text-muted">{{ item.expiry_date | date }}</div>
               </div>
             </div>
             <div class="col-md-6">

@@ -3,6 +3,7 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
+import { startWith } from 'rxjs';
 import { AppContextService } from '../../../core/app-context.service';
 import { LicenseService } from '../../../services/license.service';
 
@@ -22,6 +23,9 @@ export class CreateComponent {
 
   mLicenseCategories:any
   mLicenseTypes:any
+  mFinancialYears: string[] = []
+
+  coffee_tasting_expert_certificate_file?:any
 
   constructor(
     private mLicenseService: LicenseService,
@@ -32,21 +36,39 @@ export class CreateComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      type_id: ['', Validators.required],
       category_id: ['', Validators.required],
+      financial_year: ['', Validators.required],
+      expiry_date: ['', Validators.required],
+      type_id: ['', Validators.required],
       coffee_tasting_expert_certificate: ['', Validators.nullValidator],
+      commitment_declaration: [false, Validators.requiredTrue],
     });
   }
 
   ngOnInit(): void {
     // Call
     this.loadUnpaginatedItems()
+    this.loadFinancialYearsItems()
   }
 
   // onSubmit
   onSubmit(formValues: any){
+    let formData:any = new FormData()
+    formData.append('category_id', formValues.category_id)
+    formData.append('financial_year', formValues.financial_year)
+    formData.append('expiry_date', formValues.expiry_date)
+    formData.append('type_id', formValues.type_id)
+    // attachments
+    if(this.coffee_tasting_expert_certificate_file){
+      formData.append('coffee_tasting_expert_certificate', this.coffee_tasting_expert_certificate_file, this.coffee_tasting_expert_certificate_file.name);
+    }else{
+      formData.append('coffee_tasting_expert_certificate', '')
+    }
+    formData.append('commitment_declaration',formValues.commitment_declaration)
+    formData.append('_method', 'POST')
+
     this.mProgress.set(true)
-    this.mLicenseService.createItem(formValues).subscribe({
+    this.mLicenseService.createItem(formData).subscribe({
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
@@ -82,6 +104,36 @@ export class CreateComponent {
         this.mProgress.set(false)
       }
     });
+  }
+
+
+  loadFinancialYearsItems(){
+    const today = new Date();
+    const year = today.getFullYear();
+    // Kenyan_financial_ year_July_to_June.
+    const startYear = today.getMonth() >= 6 ? year : year - 1;
+    for (let i = 0; i < 5; i++) {
+      const start = startYear - i;
+      this.mFinancialYears.push(`${start}/${start + 1}`);
+    }
+
+    this.itemForm.get('financial_year')?.valueChanges.pipe(startWith(this.itemForm.get('financial_year')?.value)).subscribe((financialYear: string) => {
+      if (financialYear) {
+        const nextYear = financialYear.split('/')[1];
+        this.itemForm.patchValue({
+          expiry_date: `${nextYear}-06-30`
+        }, { emitEvent: false });
+      }
+    });
+
+  }
+
+  // onCoffeeTastingExpertCertificateChange
+  onCoffeeTastingExpertCertificateChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0];
+      this.coffee_tasting_expert_certificate_file = file;
+    }
   }
 
 }

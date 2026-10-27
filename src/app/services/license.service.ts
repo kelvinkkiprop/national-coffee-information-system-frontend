@@ -25,7 +25,8 @@ constructor(
 
   createItem(item: License): Observable<License>{
     const url = `${environment.base_url}/licenses`;
-    return this.http.post<License>(url, item, this.mAppContextService.getHttpOptions());
+    // return this.http.post<License>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<License>(url, item);
   }
 
   getOneItem(id:number){
@@ -33,9 +34,11 @@ constructor(
     return this.http.get<License[]>(url, this.mAppContextService.getHttpOptions());
   }
 
-  updateItem(item: License): Observable<License>{
-    const url = `${environment.base_url}/licenses/${item.id}`;
-    return this.http.put<License>(url, item, this.mAppContextService.getHttpOptions());
+  updateItem(id:any, item: License): Observable<License>{
+    // const url = `${environment.base_url}/licenses/${item.id}`;
+    const url = `${environment.base_url}/licenses/${id}`;
+    // return this.http.put<License>(url, item, this.mAppContextService.getHttpOptions());
+    return this.http.post<License>(url, item);
   }
 
   deleteItem(item: License): Observable<License>{
