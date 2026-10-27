@@ -1,4 +1,4 @@
-===================================ANGULAR===================================
+=================================================ANGULAR=================================================
 A. ANGULAR
 1. Installation
 Download: https://github.com/coreui/coreui-free-angular-admin-template
@@ -158,10 +158,10 @@ ng build --configuration production
 12. Directives
 ng generate directive directives/animations
 
-===================================./ANGULAR===================================
+=================================================./ANGULAR=================================================
 
 
-===================================SweetAlert2===================================
+=================================================SweetAlert2=================================================
 1. Install
 npm install sweetalert2 --save
 2. Add angular.json
@@ -181,10 +181,10 @@ swal({
   type: 'error',
   confirmButtonText: 'Cool'
 })
-===================================./SweetAlert2===================================
+=================================================./SweetAlert2=================================================
 
 
-===================================Toastr2===================================
+=================================================Toastr2=================================================
 1. Install
 npm install @iqx-limited/ngx-toastr@2.0.0 --save
 npm install @iqx-limited/ngx-toastr@^2.0.0 --save
@@ -213,12 +213,12 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
-===================================./Toastr2===================================
+=================================================./Toastr2=================================================
 
 
 
 
-===================================Deployment===================================
+=================================================Deployment=================================================
 J. Deploy Angular App to Apache Server
 1. Install Apache2:
 -Install from here: http://httpd.apache.org/docs/current/install.htm
@@ -250,10 +250,10 @@ sudo systemctl restart apache2
 sudo systemctl reload apache2
 
 6. Reference
-===================================./Deployment===================================
+=================================================./Deployment=================================================
 
 
-===================================CKEditor===================================
+=================================================CKEditor=================================================
 1. Installation
 npm install ckeditor5 @ckeditor/ckeditor5-angular --legacy-peer-deps
 
@@ -345,5 +345,80 @@ css/* Target the editable area */
 .ck-editor__editable_inline {
   min-height: 300px;
 }
-===================================./CKEditor===================================
+=================================================./CKEditor=================================================
 
+
+
+
+
+=================================================Configuration=================================================
+1. Create Apache configuration file:
+sudo vim /etc/apache2/sites-available/ncis.conf
+
+<VirtualHost *:80>
+
+  ServerName ncis.konza.go.ke
+  ServerAdmin kkiprop@konza.go.ke
+
+  # ----------------------------------------------------------------
+  # Frontend
+  # ----------------------------------------------------------------
+  DocumentRoot /var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser
+  <Directory "/var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser">
+      AllowOverride All
+      Require all granted
+  </Directory>
+
+  # ----------------------------------------------------------------
+  # Backend(/api)
+  # ----------------------------------------------------------------
+  Alias /api /var/www/html/national-coffee-information-system-backend/public
+  <Directory "/var/www/html/national-coffee-information-system-backend/public">
+      AllowOverride All
+      Require all granted
+  </Directory>
+
+
+  #ErrorLog ${APACHE_LOG_DIR}/ncis_error.log
+  #CustomLog ${APACHE_LOG_DIR}/ncis_access.log combined
+
+  RewriteEngine on
+  RewriteCond %{SERVER_NAME} =ncis.konza.go.ke
+  RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+
+2. Enable conf file:
+$ a2ensite ncis.conf
+
+3. Restart the apache service:
+systemctl reload apache2
+
+4. Give permissions
+sudo chgrp -R www-data /var/www/html/national-coffee-information-system-backend
+sudo chmod -R 775 /var/www/html/national-coffee-information-system-backend/storage
+=================================================./Configuration=================================================
+
+
+=================================================./Certbot=================================================
+1.Install snapd
+sudo snap install core; sudo snap refresh core
+
+2.Remove certbot-auto and any Certbot OS packages
+sudo apt-get remove certbot, sudo dnf remove certbot, or sudo yum remove certbot
+
+3.Install Certbot
+sudo snap install --classic certbot
+
+4.Prepare the Certbot command
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+5. Install your certificates
+sudo certbot --apache
+
+6. Test automatic renewal
+sudo certbot renew --dry-run
+
+7.Reference
+https://certbot.eff.org/instructions?ws=apache&os=ubuntubionic
+=================================================./Certbot=================================================
