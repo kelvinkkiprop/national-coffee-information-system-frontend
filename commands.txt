@@ -397,6 +397,7 @@ systemctl reload apache2
 4. Give permissions
 sudo chgrp -R www-data /var/www/html/national-coffee-information-system-backend
 sudo chmod -R 775 /var/www/html/national-coffee-information-system-backend/storage
+sudo chmod -R 755 /var/www/html/national-coffee-information-system-frontend
 =================================================./Configuration=================================================
 
 
@@ -422,3 +423,40 @@ sudo certbot renew --dry-run
 7.Reference
 https://certbot.eff.org/instructions?ws=apache&os=ubuntubionic
 =================================================./Certbot=================================================
+
+
+=================================================supervisor=================================================
+1. Install and update supervisor in Linux Server
+sudo apt-get install supervisor
+sudo vi /etc/supervisor/conf.d/ncis.conf
+[program:ncis]
+process_name=%(program_name)s_%(process_num)02d
+command=/usr/bin/php /var/www/html/national-coffee-information-system-backend/artisan queue:work database --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=root
+numprocs=5
+redirect_stderr=true
+stdout_logfile=/var/www/html/national-coffee-information-system-backend/storage/logs/worker.log
+
+2. Update
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start 'ncis:*'
+OR
+sudo supervisorctl start ncis.conf
+supervisorctl restart ncis:*
+
+
+3. Check if supervisor is running
+ps aux | grep artisan
+
+4. Other supervisorctl commands
+sudo supervisorctl stop all
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start all
+
+5. Reference:
+https://laravel.com/docs/6.x/queues#supervisor-configuration
+=================================================./supervisor=================================================

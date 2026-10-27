@@ -62,6 +62,8 @@ export class ShowComponent {
           if((response as any).status=='success'){
             this.router.navigateByUrl('/payments/edit/'+item.id)
             this.mToastrService.success((response as any).message)
+          }else{
+            this.mToastrService.warning((response as any).message)
           }
           this.mProgress.set(false)
         }
