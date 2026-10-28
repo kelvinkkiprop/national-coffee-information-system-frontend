@@ -80,12 +80,13 @@ export const navItems: INavData[] = [
     title: true,
     name: 'Extras',
   },
+  ...(mCurrentUser.role_id === mAdmin ? [
   {
     name: 'Roles',
     url: '/roles',
     icon: 'fa-solid fa-lock',
     // iconComponent: { name: 'cil-lock-locked' },
-  },
+  }] : []),
   {
     name: 'Profile',
     url: '/profile',
