@@ -28,8 +28,8 @@ export class EmailVerifiedGuard implements CanActivate {
     // return true;
 
     const currentUser = this.mAuthService.currentUser;
-    if (currentUser.email_verified_at===null && currentUser.role?.type_id===2) {//External
-    // if (currentUser.email_verified_at===null){
+    // if (currentUser.email_verified_at===null && currentUser.role?.type_id===2) {//External
+    if (currentUser.email_verified_at===null){
       // Email_not_verified
       this.router.navigate(['/auth/verify-email']);
       return false;
