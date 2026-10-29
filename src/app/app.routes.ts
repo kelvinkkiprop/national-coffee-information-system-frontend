@@ -75,6 +75,11 @@ export const routes: Routes = [
         canActivate: [WithProfileGuard],
       },
       {
+        path: 'traceabilities',
+        loadChildren: () => import('./components/traceabilities/traceability.module').then((m) => m.TraceabilityModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
         path: 'payments',
         loadChildren: () => import('./components/payments/payment.module').then((m) => m.PaymentModule),
         canActivate: [WithProfileGuard],

@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
+import { Profile } from '../../../interfaces/profile';
 import { AuthService } from '../../../services/auth.service';
 import { ProfileService } from '../../../services/profile.service';
 
@@ -23,12 +24,13 @@ export class EditComponent {
   mRoles:any
   mLegalStatuses:any
   mCountries:any
+  mRegions:any
   mCounties:any
   mSubCounties:any
   mWards:any
 
   id:any
-  item:any
+  item:Partial<Profile>={}
 
   constructor(
     private mProfileService: ProfileService,
@@ -55,6 +57,7 @@ export class EditComponent {
       postal_address: ['', Validators.required],
       physical_address: ['', Validators.required],
       // Location
+      region_id: ['', Validators.nullValidator],
       county_id: ['', Validators.nullValidator],
       sub_county_id: ['', Validators.nullValidator],
       ward_id: ['', Validators.nullValidator],
@@ -71,8 +74,8 @@ export class EditComponent {
 
   ngOnInit(): void {
     // Call
-    this.getItem()
     this.loadUnpaginatedItems()
+    this.getItem()
   }
 
   // getItem
@@ -83,7 +86,7 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.item = response as any
-          console.log(this.item)
+          // console.log(this.item)
           this.mProgress.set(false)
         }
       },
@@ -147,6 +150,28 @@ export class EditComponent {
       },
       error: (error) => {
         this.mToastrService.warning(error.error.message)
+        this.mProgress.set(false)
+      }
+    });
+  }
+
+  // onRegionChange
+  onRegionChange($event: any){
+    let id = $event.value
+    this.mSubCounties = []
+    // filterCounties
+    this.mProgress.set(true)
+    this.mProfileService.filterCounties(id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mCounties = response
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
         this.mProgress.set(false)
       }
     });

@@ -119,13 +119,25 @@ export class AuthService {
 
   // updateUserProfile
   updateUserProfile(profileData: any) {
-    const currentUser = this.currentUser;
-    if (currentUser) {
-      currentUser.profile = profileData;
-      // Update localStorage
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
-      // Update BehaviorSubject
-      this.mCurrentUserSubject.next(currentUser);
+    // const currentUser = this.currentUser;
+    // if (currentUser) {
+    //   currentUser.profile = profileData;
+    //   // Update localStorage
+    //   localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    //   // Update BehaviorSubject
+    //   this.mCurrentUserSubject.next(currentUser);
+    // }
+      const currentUser = this.mCurrentUserSubject.value
+      if (currentUser) {
+        const updatedUser = {...currentUser, profile: {
+          ...currentUser.profile,
+          ...profileData
+        }
+      };
+      // Update_localStorage
+      localStorage.setItem('currentUser', JSON.stringify(updatedUser))
+      // Update_BehaviorSubject_with_new_object
+      this.mCurrentUserSubject.next(updatedUser)
     }
   }
 

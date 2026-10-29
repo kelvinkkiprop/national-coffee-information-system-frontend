@@ -145,22 +145,12 @@
           <p class="footer-text">
             Stay informed with the latest coffee updates, industry insights, and regulatory guidelines.
           </p>
-
-          <form class="footer-newsletter"
-                (submit)="$event.preventDefault()">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Your email address"
-              aria-label="Your email address"
-              required
-            />
-
+          <form class="footer-newsletter" (submit)="$event.preventDefault()">
+            <input type="email" class="form-control" placeholder="Your email address" aria-label="Your email address" required/>
             <button type="submit" aria-label="Subscribe">
               <i class="fas fa-arrow-right"></i>
             </button>
           </form>
-
           <small class="footer-note">
             Trusted updates. Better insights. No unnecessary emails.
           </small>
@@ -178,11 +168,11 @@
           </div>
 
           <div class="col-md-6 text-center text-md-end">
-            <a routerLink="/terms-and-conditions">
+            <a routerLink="/home/details/terms-and-conditions">
               Terms &amp; Conditions
             </a>
             <span class="footer-divider">|</span>
-            <a routerLink="/privacy-policy">
+            <a routerLink="/home/details/privacy-policy">
               Privacy
             </a>
           </div>

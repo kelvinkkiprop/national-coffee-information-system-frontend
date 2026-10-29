@@ -1,5 +1,5 @@
 /* ================================================================================
-   COLORS
+  COLORS
 ================================================================================ */;
 $green: #224326; // 224326; //19311C; // Coffee_Leaf_Green
 $red: #E2251D;
@@ -12,13 +12,13 @@ $cream: #F4EBE1; //F4EBE1; //E5D3BD; // EADCC9;
 
 
 /* ================================================================================
-   FONTS
+  FONTS
 ================================================================================ */
 $font-family-sans-serif: 'DM Sans', sans-serif;
 $font-family-heading: 'Playfair Display', Georgia, serif;
 
 /* ========================================
-   DM SANS — BODY / UI FONT
+  DM SANS — BODY / UI FONT
 ======================================== */
 // Downloaded from https://freefontsfamily.com/tw-cen-mt-font-free-2/
 @font-face {
@@ -37,17 +37,17 @@ $font-family-heading: 'Playfair Display', Georgia, serif;
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'DM Sans';
-  src: url(/fonts/DM_Sans/DMSans-SemiBold.ttf) format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: 'DM Sans';
+//   src: url('../assets/fonts/DM_Sans/DMSans-SemiBold.ttf') format('truetype');
+//   font-weight: 600;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 @font-face {
   font-family: 'DM Sans';
-  src: url(/fonts/DM_Sans/DMSans-Bold.ttf) format('truetype');
+  src: url('../assets/fonts/DM_Sans/DMSans-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -181,22 +181,23 @@ body {
   html {
     scroll-behavior: smooth !important;
   }
-
   .required:after {
     content: " *";
     color: $red;
   }
-
   // input[readonly] {
   //   background-color: $gray !important;
   //   opacity: 1;
   //   pointer-events: none;
   // }
-
   // // input[readonly] {
   // //   background-color: var(--cui-gray-200); // Adjust_based_on_CoreUI_color_variables
   // //   pointer-events: none;
   // // }
+  .form-check-input:checked {
+    background-color: var(--cui-form-check-input-checked-bg-color, var(--cui-success)) !important;
+    border-color: var(--cui-form-check-input-checked-border-color, var(--cui-success)) !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {

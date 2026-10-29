@@ -6,6 +6,8 @@ import { ShowComponent } from './show/show.component';
 import { SupportComponent } from './show/inc/support/support.component';
 import { HowItWorksComponent } from './show/inc/how-it-works/how-it-works.component';
 import { StandardsComponent } from './show/inc/standards/standards.component';
+import { TermsAndConditionsComponent } from './show/inc/others/terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPolicyComponent } from './show/inc/others/privacy-policy/privacy-policy.component';
 
 
 // Routes
@@ -48,6 +50,20 @@ const routes: Routes = [
         component: StandardsComponent,
         data: {
           title: 'Standards'
+        }
+      },
+      {
+        path: 'terms-and-conditions',
+        component: TermsAndConditionsComponent,
+        data: {
+          title: 'Terms & Conditions'
+        }
+      },
+      {
+        path: 'privacy-policy',
+        component: PrivacyPolicyComponent,
+        data: {
+          title: 'Privacy Policy'
         }
       },
     ]

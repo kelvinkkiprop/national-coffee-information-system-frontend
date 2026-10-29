@@ -28,17 +28,21 @@ export const navItems: INavData[] = [
     title: true
   },
   {
+    name: 'Traceability',
+    url: '/traceabilities',
+    // iconComponent: { name: 'cil-description' },
+    icon: 'fa-solid fa-route'
+  },
+  {
     name: 'Licenses',
     url: '/licenses',
     // iconComponent: { name: 'cil-description' },
-    // icon: 'fa-solid fa-clipboard-list'
     icon: 'fa-solid fa-id-card'
   },
   {
     name: 'Movement Permits ',
     url: '/permits',
     // iconComponent: { name: 'cil-list' },
-    // icon: 'fa-solid fa-address-book'
     icon: 'fa-solid fa-stamp'
   },
 

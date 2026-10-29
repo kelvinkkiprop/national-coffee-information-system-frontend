@@ -37,7 +37,9 @@ export class RegisterComponent {
       email: ['', Validators.required],
       password: ['', Validators.required],
       password_confirmation: ['', Validators.required],
+      accept_terms_and_conditions: ['', Validators.requiredTrue],
     });
+
   }
 
 

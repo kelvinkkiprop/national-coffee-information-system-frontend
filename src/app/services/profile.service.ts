@@ -57,6 +57,11 @@ export class ProfileService {
 
 
 
+  filterCounties(id:number){
+    const url = `${environment.base_url}/filter-counties/${id}`;
+    return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
   filterSubCounties(id:number){
     const url = `${environment.base_url}/filter-sub-counties/${id}`;
     return this.http.get<Profile[]>(url, this.mAppContextService.getHttpOptions());

@@ -24,6 +24,7 @@ export class CreateComponent {
   mRoles:any
   mLegalStatuses:any
   mCountries:any
+  mRegions:any
   mCounties:any
   mSubCounties:any
   mWards:any
@@ -40,18 +41,19 @@ export class CreateComponent {
     this.itemForm = this.fb.group({
       // Basic
       role_id: ['', Validators.required],
-      id_number: ['', Validators.nullValidator],
       country_code: ['', Validators.required],
       phone_number: ['', Validators.required],
       country_id: ['', Validators.required],
       // General
       legal_status_id: ['', Validators.required],
+      id_number: ['', Validators.nullValidator],
       company_registration_number: ['', Validators.nullValidator],
       company_establishment_date: ['', Validators.nullValidator],
       kra_pin: ['', Validators.nullValidator],
       postal_address: ['', Validators.required],
       physical_address: ['', Validators.required],
       // Location
+      region_id: ['', Validators.nullValidator],
       county_id: ['', Validators.nullValidator],
       sub_county_id: ['', Validators.nullValidator],
       ward_id: ['', Validators.nullValidator],
@@ -109,7 +111,8 @@ export class CreateComponent {
           this.mRoles = (response as any).data.roles
           this.mLegalStatuses = (response as any).data.legal_statuses
           this.mCountries = (response as any).data.countries
-          this.mCounties = (response as any).data.counties
+          this.mRegions = (response as any).data.regions
+          // this.mCounties = (response as any).data.counties
           this.mProgress.set(false)
         }
       },
@@ -120,11 +123,33 @@ export class CreateComponent {
     });
   }
 
+  // onRegionChange
+  onRegionChange($event: any){
+    let id = $event.value
+    this.mSubCounties = []
+    // filterSubCounties
+    this.mProgress.set(true)
+    this.mProfileService.filterCounties(id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mCounties = response
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
   // onCountyChange
   onCountyChange($event: any){
     let id = $event.value
     this.mWards = []
-    // filterSubCounties
+    // filterCounties
     this.mProgress.set(true)
     this.mProfileService.filterSubCounties(id).subscribe({
       next: (response) => {

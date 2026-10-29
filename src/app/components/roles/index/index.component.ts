@@ -9,9 +9,9 @@ import { RoleService } from '../../../services/role.service';
 @Component({
   selector: 'app-index',
   // imports: [],
+  standalone: false,
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
-  standalone: false
 })
 export class IndexComponent {
 

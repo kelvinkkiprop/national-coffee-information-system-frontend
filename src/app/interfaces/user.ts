@@ -1,10 +1,14 @@
+// import
+import { Profile } from "./profile";
+import { Role } from "./role";
+
 export interface User {
   id?: any,
   name?: string,
   email?: string,
   phone?: string,
   status_id?: any,
-  role_id?: any,
+  role_id?: number,
   email_verified_at?: any,
   otp_expires_at?:any,
   otp_verified?:any,
@@ -13,9 +17,9 @@ export interface User {
   updated_at?: string,
   token?: any,
 
-  role?: role,
+  role?: Role,
   status?: status,
-  profile?: profile,
+  profile?: Profile,
 }
 
 export interface status {
@@ -25,33 +29,5 @@ export interface status {
   created_at?: Date,
   updated_at?: Date,
 }
-
-export interface role {
-  id?: string,
-  name?: string,
-  type_id?: any,
-  alias?: string,
-  created_at?: Date,
-  updated_at?: Date,
-}
-
-
-export interface profile {
-  id?: string,
-  user_id?: string,
-  professional_body_id?: number,
-  membership_number?: string,
-  consultant_name?: string,
-  email?: string,
-  membership_type?: string,
-  status?: string,
-  address?: string,
-  nationality?: string,
-  subscription_year?: string,
-  good_standing?: string,
-
-  professional_body_status_id?: number,
-}
-
 
 

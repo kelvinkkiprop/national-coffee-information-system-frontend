@@ -136,7 +136,6 @@ $white: #ffffff;
       background: $green;
       color: $white;
       transition: background 200ms ease;
-
       &:hover {
         background: lighten($green, 7%);
       }

@@ -7,9 +7,9 @@ import { RoleService } from '../../../services/role.service';
 @Component({
   selector: 'app-show',
   // imports: [],
+  standalone: false,
   templateUrl: './show.component.html',
   styleUrl: './show.component.scss',
-  standalone: false
 })
 export class ShowComponent {
 

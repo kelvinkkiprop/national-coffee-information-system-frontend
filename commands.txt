@@ -36,6 +36,8 @@ ng generate component components/home/show
 ng generate component components/home/show/inc/support
 ng generate component components/home/show/inc/standards
 ng generate component components/home/show/inc/how-it-works
+ng generate component components/home/show/inc/others/terms-and-conditions
+ng generate component components/home/show/inc/others/privacy-policy
 
 ng generate module components/errors/error
 ng generate module components/errors/errorRouting
@@ -57,6 +59,13 @@ ng generate component components/profile/edit/inc/update-password
 ng generate component components/profile/show
 ng generate module components/profile/profile
 ng generate module components/profile/profileRouting
+
+ng generate component components/traceabilities/index
+ng generate component components/traceabilities/create
+ng generate component components/traceabilities/edit
+ng generate component components/traceabilities/show
+ng generate module components/traceabilities/traceability
+ng generate module components/traceabilities/traceabilityRouting
 
 ng generate component components/users/index
 ng generate component components/users/create
@@ -463,3 +472,111 @@ sudo supervisorctl start all
 5. Reference:
 https://laravel.com/docs/6.x/queues#supervisor-configuration
 =================================================./supervisor=================================================
+
+
+=================================================Leaflet =================================================
+1. Installation
+npm install leaflet
+npm install --save-dev @types/leaflet
+npm install leaflet@latest
+
+2. Import
+"styles": [
+  "src/styles.scss",
+  "node_modules/leaflet/dist/leaflet.css"
+]
+
+2. component .ts file:
+
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import * as L from 'leaflet';
+
+@Component({
+  selector: 'app-parcel-map',
+  templateUrl: './parcel-map.component.html',
+  styleUrls: ['./parcel-map.component.scss']
+})
+export class ParcelMapComponent implements AfterViewInit, OnDestroy {
+
+  geoJsonData: any;
+
+  private map!: L.Map;
+  private parcelLayer?: L.GeoJSON;
+
+  ngAfterViewInit(): void {
+    this.initializeMap();
+    this.loadGeoJSON();
+  }
+
+  private initializeMap(): void {
+    this.map = L.map('map').setView([-0.13, 35.46], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(this.map);
+  }
+
+  private loadGeoJSON(): void {
+    // Replace this with your existing geoJsonData assignment/API call.
+    fetch('assets/data/greater_than_4ha_joined.geojson')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.geoJsonData = data;
+
+        this.parcelLayer = L.geoJSON(data, {
+          style: () => ({
+            color: '#224326',
+            weight: 2,
+            fillColor: '#62a66b',
+            fillOpacity: 0.45
+          }),
+          onEachFeature: (feature, layer) => {
+            layer.bindPopup(
+              `<pre>${JSON.stringify(feature.properties ?? {}, null, 2)}</pre>`
+            );
+          }
+        }).addTo(this.map);
+
+        const bounds = this.parcelLayer.getBounds();
+
+        if (bounds.isValid()) {
+          this.map.fitBounds(bounds, { padding: [20, 20] });
+        }
+
+        setTimeout(() => this.map.invalidateSize(), 100);
+      })
+      .catch(error => {
+        console.error('GeoJSON loading failed:', error);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.map?.remove();
+  }
+}
+
+3. map.component.scss
+  #map {
+    width: 100%;
+    height: 600px;
+    min-height: 400px;
+  }
+
+4. .html file
+
+<div class="container-fluid">
+  <h4>Land Parcels Greater Than 4 Hectares</h4>
+
+  <div id="status" class="alert alert-info">
+    {{ geoJsonData ? 'GeoJSON loaded' : 'Loading GeoJSON data...' }}
+  </div>
+
+  <div id="map"></div>
+</div>
+=================================================./Leaflet=================================================
