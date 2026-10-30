@@ -27,12 +27,12 @@ export const navItems: INavData[] = [
     name: 'Main',
     title: true
   },
-  {
-    name: 'Traceability',
-    url: '/traceabilities',
-    // iconComponent: { name: 'cil-description' },
-    icon: 'fa-solid fa-route'
-  },
+  // {
+  //   name: 'Traceability',
+  //   url: '/traceabilities',
+  //   // iconComponent: { name: 'cil-description' },
+  //   icon: 'fa-solid fa-route'
+  // },
   {
     name: 'Licenses',
     url: '/licenses',

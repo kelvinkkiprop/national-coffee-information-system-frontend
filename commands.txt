@@ -485,6 +485,9 @@ npm install leaflet@latest
   "src/styles.scss",
   "node_modules/leaflet/dist/leaflet.css"
 ]
+or
+src/styles.scss
+@import 'leaflet/dist/leaflet.css';
 
 2. component .ts file:
 

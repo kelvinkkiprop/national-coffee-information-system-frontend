@@ -36,7 +36,8 @@ export class ShowComponent  implements AfterViewInit, OnDestroy {
   private async loadGeoJSON(): Promise<void> {
     try {
       const response = await fetch(
-        'assets/coffee_farms_datasets/kericho_county_greater_than_4ha_joined_copy.geojson'
+        // 'assets/coffee_farms_datasets/kericho_county_greater_than_4ha_joined_copy.geojson'
+        'assets/coffee_farms_datasets/less_than_4ha_centroids.geojson'
       );
 
       if (!response.ok) {
@@ -55,9 +56,9 @@ export class ShowComponent  implements AfterViewInit, OnDestroy {
 
       this.parcelLayer = L.geoJSON(data, {
         style: () => ({
-          color: '#224326',
+          color: '#ff0000', //'#224326'
           weight: 1,
-          fillColor: '#62a66b',
+          fillColor: '#ff0000', // '#62a66b',
           fillOpacity: 0.6
         }),
 
