@@ -14,43 +14,41 @@
               <legend  class="float-none w-auto"><h6 class="text-bold1">Payment Invoice</h6></legend>
               <div class="col-12">
                 <div class="card1 shadow1 border-0 p-4 p-md-5">
-                  <div class="d-flex justify-content-between pb-4 pb-md-5 mb-4 mb-md-5 border-bottom border-light">
-                    <img class="image-fluid" src="/assets/images/coffee_board_logo.png" alt="Logo"><div>
-                      <h6 class="fw-bold">Coffee Board of Kenya</h6>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item border-0 fw-normal p-0">Tea House, Off Naivasha Road, Nairobi, Kenya</li>
-                        <li class="list-group-item border-0 fw-normal p-0">P.O. Box 37962 — 00100, Nairobi, Kenya</li>
-                        <li class="list-group-item border-0 fw-normal p-0"><a class="fw-bold text-success" href="#">info@coffeeboard.go.ke</a></li>
-                      </ul>
+                  <div class="d-flex  pb-4 pb-md-5 mb-4 mb-md-5 border-bottom border-light">
+                      <img class="image-fluid" src="/assets/images/coffee_board_logo.png" alt="Logo">
+                      <div class="my-4">
+                        <h6 class="fw-bold">Coffee Board of Kenya</h6>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item border-0 fw-normal p-0 text-muted">P.O. Box 30566 - 00100, Nairobi</li>
+                          <li class="list-group-item border-0 fw-normal p-0 text-muted">Tel: 0718 770000 / 0100 55000</li>
+                        </ul>
                     </div>
                   </div>
                   <div class="mb-6 d-flex align-items-center justify-content-center">
-                    <h2 class="h1 mb-0">{{ item.status?.alias }}</h2>
+                    <h2 class="h1 mb-0 text-uppercase">{{ item.status?.alias }}</h2>
                     <span class="badge badge-lg bg-danger1 ms-2" [ngClass]="{'bg-danger':item.status_id==1,'bg-success':item.status_id==2}">
                       {{ item.status?.name }}
                     </span>
                   </div>
                   <div class="row justify-content-between mb-4 mb-md-5">
                     <div class="col-sm">
-                        <h5>Client Information:</h5>
+                        <h5>BILLED TO:</h5>
                       <div>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item border-0 fw-normal p-0">{{ item.user?.name }}</li>
-                        <li class="list-group-item border-0 fw-normal p-0">{{ item.user?.postal_address }}</li>
-                        <li class="list-group-item border-0 fw-normal p-0">{{ item.user?.physical_address }}</li>
-                        <li class="list-group-item border-0 fw-normal p-0">
-                          <a class="fw-bold text-success" href="mailto:{{item.user?.email}}" >{{ item.user?.email }}</a>
-                        </li>
+                        <li class="list-group-item border-0 fw-normal text-muted p-0 text-uppercase">{{ item.user?.name }}</li>
+                        <li class="list-group-item border-0 fw-normal text-muted p-0">{{ item.user?.email }} </li>
+                        <li class="list-group-item border-0 fw-normal p-0">{{ item.user?.profile?.phone_number }}</li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-sm col-lg-4">
-                    <dl class="row text-sm-right">
-                      <dt class="col-6 p-0 m-0"><strong>{{ item.status?.alias }} No:</strong></dt><dd class="col-6">{{ item.number }}</dd>
-                      <dt class="col-6 p-0 m-0"><strong>Date Issued:</strong></dt><dd class="col-6">{{ item.created_at | date }}</dd>
-                      <dt class="col-6 p-0 m-0"><strong>Date Settled:</strong></dt><dd class="col-6">{{ item.settled_at | date }}</dd></dl>
+                    <div class="text-muted">
+                      <div class="p-0 m-0 text-end"><strong>{{ item.status?.alias }} No:</strong>{{ item.number }}</div>
+                      <div class="p-0 m-0 text-end"><strong></strong>{{ item.created_at | date }}</div>
+                      <div class="p-0 m-0 text-end"><strong>Reference No:</strong>{{ item.pesaflow_invoice_number }}</div>
                     </div>
                   </div>
+                </div>
                   <div class="row">
                     <div class="col-12">
                       <div class="table-responsive">
@@ -58,19 +56,17 @@
                           <thead class="bg-light border-top">
                             <tr>
                               <th scope="row" class="border-0 text-left">Item</th>
-                              <th scope="row" class="border-0">Description</th>
-                              <th scope="row" class="border-0">Qty</th>
-                              <th scope="row" class="border-0">Price ({{item.currency}})</th>
-                              <th scope="row" class="border-0">Total ({{item.currency}})</th>
+                              <th scope="row" class="border-0">Quantity</th>
+                              <th scope="row" class="border-0">Unit Price</th>
+                              <th scope="row" class="border-0">Total</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <th scope="row" class="text-left fw-bold h6">{{ item.service.name }}</th>
-                              <td>{{ item.tariff?.name }}</td>
+                              <td scope="row">{{ item.service.name }} ({{ item.tariff?.name }})</td>
                               <td>1</td>
-                              <td>{{ item.amount | number:'1.0-0'}} x 1</td>
-                              <td>{{ item.amount | number:'1.0-0' }}</td>
+                              <td>{{item.currency}} {{ item.amount | number:'1.0-0'}}</td>
+                              <td>{{item.currency}} {{ item.amount | number:'1.0-0' }}</td>
                             </tr>
                           </tbody>
                         </table>
