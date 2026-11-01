@@ -15,7 +15,7 @@ export interface Profile {
   company_establishment_date: string,
   kra_pin: string,
   postal_address: string,
-  physical_address: string,
+  postal_code: string,
   // Location
   county_id: number,
   sub_county_id: number,
@@ -27,6 +27,9 @@ export interface Profile {
   street_name: string,
   building_name: string,
   plot_number: string,
+
+  brief_company_profile?: string,
+  directors_of_dealership?: string,
 
   created_at?: string,
   updated_at?: string,

@@ -10,9 +10,9 @@ import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'app-edit',
   // imports: [],
+  standalone: false,
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss',
-  standalone: false
 })
 export class EditComponent {
 

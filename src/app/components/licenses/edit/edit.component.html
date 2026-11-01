@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-             <div *ngIf="itemForm.get('type_id')?.value==5" class="col-md-12">
+             <div *ngIf="itemForm.get('type_id')?.value==4" class="col-md-12">
               <div class="form-group mb-3">
                 <label for="coffee_tasting_expert_certificate" class="col-form-label required">Coffee Tasting Expert Certificate:</label>
                 <input (change)="onCoffeeTastingExpertCertificateChange($event)" formControlName="coffee_tasting_expert_certificate" [ngClass]="{'is-invalid': itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)}" type="file" class="form-control"/>

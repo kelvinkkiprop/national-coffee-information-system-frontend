@@ -61,6 +61,13 @@ constructor(
   }
 
 
+
+  filterLicenseTypes(id:number){
+    const url = `${environment.base_url}/filter-license-types/${id}`;
+    return this.http.get<License[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+
   nextPreviousStatusItem(id:any){
     const url = `${environment.base_url}/next-previous-status-process-licenses/${id}`;
     return this.http.get<License[]>(url, this.mAppContextService.getHttpOptions());

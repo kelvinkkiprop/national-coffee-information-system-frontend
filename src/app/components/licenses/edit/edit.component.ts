@@ -25,6 +25,7 @@ export class EditComponent {
   item:any = {}
 
   mLicenseCategories:any
+  mIssuingBodies:any
   mLicenseTypes:any
   mFinancialYears: string[] = []
 
@@ -98,9 +99,12 @@ export class EditComponent {
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
-          const paymentId = (response as any).data.payment.id
-          // this.router.navigateByUrl('/licenses')
-          this.router.navigateByUrl('/payments/show/'+paymentId)
+          const paymentId = (response as any).data.payment?.id
+          if(paymentId){
+            this.router.navigateByUrl('/payments/show/'+paymentId)
+          }else{
+            this.router.navigateByUrl('/licenses')
+          }
           this.mProgress.set(false)
         }
       },
@@ -120,6 +124,7 @@ export class EditComponent {
     this.mLicenseService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
+          this.mIssuingBodies = (response as any).data.issuing_bodies
           this.mLicenseCategories = (response as any).data.license_categories
           this.mLicenseTypes = (response as any).data.license_types
           this.mProgress.set(false)

@@ -1,0 +1,75 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="application_number">Application Number:</label>
+                <div *ngIf="item.id" class="text-muted">{{ item.id }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="application_number">Status:</label>
+                <div *ngIf="item.dealer_registration_status_id" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.dealer_registration_status_id==1,'bg-warning':item.dealer_registration_status_id==2, 'bg-dark':item.dealer_registration_status_id==3, 'bg-success':item.dealer_registration_status_id==4, 'bg-danger':item.dealer_registration_status_id==5, 'bg-info':item.dealer_registration_status_id==6}">{{ item?.dealer_registration_status?.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="type_id">Brief Company Profile:</label>
+                <div *ngIf="item.profile?.brief_company_profile" class="text-muted">{{ item.profile?.brief_company_profile }}</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="directors_of_dealership" class="col-form-label required1">Directors of Dealership (Names and ID/Passport Numbers)::</label>
+                <div *ngIf="item.profile?.directors_of_dealership" class="text-muted">{{ item.profile?.directors_of_dealership }}</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="dealership_services">Dealership/Service Types:</label>
+                <div *ngIf="item.dealership_services" class="text-muted">
+                  <span *ngIf="item.dealership_services?.length">{{ item.dealership_services.map(s => s.name).join(', ') }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="engaged_persons_professional_skills">Engaged Persons Professional Skills:</label>
+                <div *ngIf="item.profile?.engaged_persons_professional_skills" class="text-muted1">
+                  <a href="{{item.profile?.engaged_persons_professional_skills_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_species_id">Effective Date:</label>
+                <div *ngIf="item.effective_date" class="text-muted">{{ item.effective_date | date }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_form_id">Expiry Date:</label>
+                <div *ngIf="item.date_of_expiry" class="text-muted">{{ item.date_of_expiry | date }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-end">
+            <button routerLink="/dealer-registrations" class="btn btn-light">Cancel</button>
+            <button [routerLink]="mAppContextService.hasTypes([1]) ? ['/dealer-registrations/process', item.id] : null" class="btn btn-warning">Process</button>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

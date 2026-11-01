@@ -202,5 +202,4 @@ export class IndexComponent {
       }
     });
   }
-
 }

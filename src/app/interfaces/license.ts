@@ -2,6 +2,8 @@ export interface License {
   id?: any,
   user_id?: any,
 
+  issuing_body_id?: any,
+
   application_number?: any,
   type_id?: any,
   mark?: any,

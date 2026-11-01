@@ -40,6 +40,7 @@
                 <th scope="col">Category</th>
                 <th scope="col">Type</th>
                 <th scope="col">Status</th>
+                <th scope="col">Issuing Body</th>
                 <th scope="col">Payment</th>
                 <th scope="col">License</th>
                 <th scope="col">Created</th>
@@ -54,6 +55,7 @@
                 <td><span class="badge" [ngClass]="item.category_id===1 ? 'bg-success':'bg-warning'">{{ item.category?.name }}</span></td>
                 <td>{{ item.type?.name }}</td>
                 <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/licenses/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
+                <td>{{ item.issuing_body?.alias }}</td>
                 <td><span routerLink="/payments/show/{{item.payment_id}}" class="chip chip-clickable" [ngClass]="item.payment?.status_id===1 ? 'chip-danger':'chip-success'">{{ item.payment?.status.name }}</span></td>
                 <td>
                   <span *ngIf="!(item.status_id==5 || item.status_id===7)">

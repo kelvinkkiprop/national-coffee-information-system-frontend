@@ -108,19 +108,19 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
-                  <textarea [(ngModel)]="item.postal_address" formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
+                  <label for="postal_code" class="col-form-label required">Postal Address:</label>
+                  <textarea [(ngModel)]="item.postal_code" formControlName="postal_code" [ngClass]="{'is-invalid': itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('postal_code').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="physical_address" class="col-form-label required">Physical Address:</label>
-                  <textarea [(ngModel)]="item.physical_address" formControlName="physical_address" [ngClass]="{'is-invalid': itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('physical_address').invalid && (itemForm.get('physical_address').dirty || itemForm.get('physical_address').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('physical_address').errors?.['required']">This field is required.</div>
+                  <label for="postal_code" class="col-form-label required">Postal Code:</label>
+                  <textarea [(ngModel)]="item.postal_code" formControlName="postal_code" [ngClass]="{'is-invalid': itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('postal_code').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>

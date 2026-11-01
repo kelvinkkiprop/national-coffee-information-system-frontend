@@ -43,6 +43,18 @@
             </div>
             <div class="col-md-12">
               <div class="form-group mb-3">
+                <label for="issuing_body_id" class="col-form-label required1">Issuing Body:</label>
+                <select (change)="onIssuingBodyChange($event.target)" formControlName="issuing_body_id" [ngClass]="{'is-invalid': itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select body ---</option>
+                  <option *ngFor="let item of mIssuingBodies" value="{{item.id}}">{{item.name}} ({{item.alias}})</option>
+                </select>
+                <div *ngIf="itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('issuing_body_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
                 <label for="type_id" class="col-form-label required">License Type:</label>
                 <select formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
                   <option value="" disabled="true" selected="true">--- Select type ---</option>
@@ -53,7 +65,7 @@
                 </div>
               </div>
             </div>
-             <div *ngIf="itemForm.get('type_id')?.value==5" class="col-md-12">
+            <div *ngIf="itemForm.get('type_id')?.value==4" class="col-md-12">
               <div class="form-group mb-3">
                 <label for="coffee_tasting_expert_certificate" class="col-form-label required">Coffee Tasting Expert Certificate:</label>
                 <input (change)="onCoffeeTastingExpertCertificateChange($event)" formControlName="coffee_tasting_expert_certificate" [ngClass]="{'is-invalid': itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)}" type="file" class="form-control"/>
@@ -62,11 +74,20 @@
                 </div>
               </div>
             </div>
+            <div *ngIf="itemForm.get('type_id')?.value==5" class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="milling_capacity" class="col-form-label required">Milling Capacity for Parchment and	Buni (Tonnes per hour):</label>
+                <textarea formControlName="milling_capacity" [ngClass]="{'is-invalid': itemForm.get('milling_capacity').invalid && (itemForm.get('milling_capacity').dirty || itemForm.get('milling_capacity').touched)}" type="text" class="form-control"></textarea>
+                <div *ngIf="itemForm.get('milling_capacity').invalid && (itemForm.get('milling_capacity').dirty || itemForm.get('milling_capacity').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('milling_capacity').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
             <div class="col-md-12">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" formControlName="commitment_declaration" />
                 <label class="form-check-label" for="commitment_declaration">
-                  By checking this, the applicant certifies that the information provided is accurate and agrees to comply with all applicable licence terms and conditions.
+                  By checking this, the applicant certifies that the information provided is accurate and commits to comply with the terms and conditions of the licence.
                 </label>
               </div>
               <div *ngIf="itemForm.get('commitment_declaration').invalid && (itemForm.get('commitment_declaration').dirty || itemForm.get('commitment_declaration').touched)" class="invalid-feedback" role="alert">

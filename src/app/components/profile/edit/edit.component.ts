@@ -55,7 +55,7 @@ export class EditComponent {
       company_establishment_date: ['', Validators.nullValidator],
       kra_pin: ['', Validators.nullValidator],
       postal_address: ['', Validators.required],
-      physical_address: ['', Validators.required],
+      postal_code: ['', Validators.required],
       // Location
       region_id: ['', Validators.nullValidator],
       county_id: ['', Validators.nullValidator],

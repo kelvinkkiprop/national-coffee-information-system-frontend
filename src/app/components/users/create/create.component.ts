@@ -10,9 +10,9 @@ import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'app-create',
   // imports: [],
+  standalone: false,
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
-  standalone: false
 })
 export class CreateComponent {
 

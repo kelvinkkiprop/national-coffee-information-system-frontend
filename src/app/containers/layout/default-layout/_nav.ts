@@ -40,10 +40,16 @@ export const navItems: INavData[] = [
     icon: 'fa-solid fa-id-card'
   },
   {
-    name: 'Movement Permits ',
+    name: 'Movement Permits',
     url: '/permits',
     // iconComponent: { name: 'cil-list' },
     icon: 'fa-solid fa-stamp'
+  },
+  {
+    name: 'Dealer Registrations',
+    url: '/dealer-registrations',
+    // iconComponent: { name: 'cil-list' },
+    icon: 'fa-solid fa-handshake'
   },
 
 

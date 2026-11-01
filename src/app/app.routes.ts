@@ -80,6 +80,11 @@ export const routes: Routes = [
         canActivate: [WithProfileGuard],
       },
       {
+        path: 'dealer-registrations',
+        loadChildren: () => import('./components/dealerRegistrations//dealer-registration.module').then((m) => m.DealerRegistrationModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
         path: 'payments',
         loadChildren: () => import('./components/payments/payment.module').then((m) => m.PaymentModule),
         canActivate: [WithProfileGuard],

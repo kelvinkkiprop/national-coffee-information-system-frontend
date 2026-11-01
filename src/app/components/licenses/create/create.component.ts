@@ -22,6 +22,7 @@ export class CreateComponent {
   mProgress = signal(false)
 
   mLicenseCategories:any
+  mIssuingBodies:any
   mLicenseTypes:any
   mFinancialYears: string[] = []
 
@@ -40,7 +41,13 @@ export class CreateComponent {
       financial_year: ['', Validators.required],
       expiry_date: ['', Validators.required],
       type_id: ['', Validators.required],
+      issuing_body_id: ['', Validators.required],
+      // LiquoringLicense
+      year_of_certification : ['', Validators.nullValidator],
       coffee_tasting_expert_certificate: ['', Validators.nullValidator],
+      // CommercialMillersLicence
+      milling_capacity: ['', Validators.nullValidator],
+
       commitment_declaration: [false, Validators.requiredTrue],
     });
   }
@@ -57,6 +64,7 @@ export class CreateComponent {
     formData.append('category_id', formValues.category_id)
     formData.append('financial_year', formValues.financial_year)
     formData.append('expiry_date', formValues.expiry_date)
+    formData.append('issuing_body_id', formValues.issuing_body_id)
     formData.append('type_id', formValues.type_id)
     // attachments
     if(this.coffee_tasting_expert_certificate_file){
@@ -72,9 +80,12 @@ export class CreateComponent {
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
-          const paymentId = (response as any).data.payment.id
-          // this.router.navigateByUrl('/licenses')
-          this.router.navigateByUrl('/payments/show/'+paymentId)
+          const paymentId = (response as any).data.payment?.id
+          if(paymentId){
+            this.router.navigateByUrl('/payments/show/'+paymentId)
+          }else{
+            this.router.navigateByUrl('/licenses')
+          }
           this.mProgress.set(false)
         }
       },
@@ -94,6 +105,7 @@ export class CreateComponent {
     this.mLicenseService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
+          this.mIssuingBodies = (response as any).data.issuing_bodies
           this.mLicenseCategories = (response as any).data.license_categories
           this.mLicenseTypes = (response as any).data.license_types
           this.mProgress.set(false)
@@ -106,7 +118,7 @@ export class CreateComponent {
     });
   }
 
-
+  // loadFinancialYearsItems
   loadFinancialYearsItems(){
     const today = new Date();
     const year = today.getFullYear();
@@ -126,6 +138,26 @@ export class CreateComponent {
       }
     });
 
+  }
+
+  // onIssuingBodyChange
+  onIssuingBodyChange($event: any){
+    let id = $event.value
+    this.mProgress.set(true)
+    this.mLicenseService.filterLicenseTypes(id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mLicenseTypes = response
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    });
   }
 
   // onCoffeeTastingExpertCertificateChange
