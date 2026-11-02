@@ -43,6 +43,18 @@
             </div>
             <div class="col-md-12">
               <div class="form-group mb-3">
+                <label for="issuing_body_id" class="col-form-label required1">Issuing Body:</label>
+                <select [(ngModel)]="item.issuing_body_id" (change)="onIssuingBodyChange($event.target)" formControlName="issuing_body_id" [ngClass]="{'is-invalid': itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select body ---</option>
+                  <option *ngFor="let item of mIssuingBodies" value="{{item.id}}">{{item.name}} ({{item.alias}})</option>
+                </select>
+                <div *ngIf="itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('issuing_body_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
                 <label for="type_id" class="col-form-label required">License Type:</label>
                 <select [(ngModel)]="item.type_id" formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
                   <option value="" disabled="true" selected="true">--- Select type ---</option>
@@ -53,12 +65,214 @@
                 </div>
               </div>
             </div>
-             <div *ngIf="itemForm.get('type_id')?.value==4" class="col-md-12">
+            <!-- 1.AgentLicense -->
+            <div *ngIf="itemForm.get('type_id')?.value==1" class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="paid_share_capital" class="col-form-label required">Paid-up share capital (KES)(not less than 100,000):</label>
+                    <input [(ngModel)]="item.paid_share_capital" formControlName="paid_share_capital" [ngClass]="{'is-invalid': itemForm.get('paid_share_capital').invalid && (itemForm.get('paid_share_capital').dirty || itemForm.get('paid_share_capital').touched)}" type="number" class="form-control"/>
+                    <div *ngIf="itemForm.get('paid_share_capital').invalid && (itemForm.get('paid_share_capital').dirty || itemForm.get('paid_share_capital').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('paid_share_capital').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="directors_details" class="col-form-label required">Directors' Names (ID/Passport, KRA Clearance and Certificate of Good Conduct for Each Director):</label>
+                    <input (change)="onDirectorsDetailsChange($event)" formControlName="directors_details" [ngClass]="{'is-invalid': itemForm.get('directors_details').invalid && (itemForm.get('directors_details').dirty || itemForm.get('directors_details').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('directors_details').invalid && (itemForm.get('directors_details').dirty || itemForm.get('directors_details').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('directors_details').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="years_of_technical_experience" class="col-form-label required">Years of Technical Experience in the Coffee Business (CVs and Company Profile):</label>
+                    <input (change)="onYearsOfTechnicalExperienceChange($event)" formControlName="years_of_technical_experience" [ngClass]="{'is-invalid': itemForm.get('years_of_technical_experience').invalid && (itemForm.get('years_of_technical_experience').dirty || itemForm.get('years_of_technical_experience').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('years_of_technical_experience').invalid && (itemForm.get('years_of_technical_experience').dirty || itemForm.get('years_of_technical_experience').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('years_of_technical_experience').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="growers_represented_and_signed_agreements" class="col-form-label required">Growers represented and signed agreements (Renewal):</label>
+                    <input (change)="onGrowersRepresentedAndSignedAgreementsChange($event)" formControlName="growers_represented_and_signed_agreements" [ngClass]="{'is-invalid': itemForm.get('growers_represented_and_signed_agreements').invalid && (itemForm.get('growers_represented_and_signed_agreements').dirty || itemForm.get('growers_represented_and_signed_agreements').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('growers_represented_and_signed_agreements').invalid && (itemForm.get('growers_represented_and_signed_agreements').dirty || itemForm.get('growers_represented_and_signed_agreements').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('growers_represented_and_signed_agreements').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="indemnity_against_professional_misconduct" class="col-form-label required">Indemnity Against Professional Misconduct:</label>
+                    <input (change)="onIndemnityAgainstProfessionalMisconductChange($event)" formControlName="indemnity_against_professional_misconduct" [ngClass]="{'is-invalid': itemForm.get('indemnity_against_professional_misconduct').invalid && (itemForm.get('indemnity_against_professional_misconduct').dirty || itemForm.get('indemnity_against_professional_misconduct').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('indemnity_against_professional_misconduct').invalid && (itemForm.get('indemnity_against_professional_misconduct').dirty || itemForm.get('indemnity_against_professional_misconduct').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('indemnity_against_professional_misconduct').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="liquorer_cupping_facility_engaged" class="col-form-label required1">Liquorer/Cupping Facility Engaged (Where Applicable):</label>
+                    <textarea [(ngModel)]="item.liquorer_cupping_facility_engaged" formControlName="liquorer_cupping_facility_engaged" [ngClass]="{'is-invalid': itemForm.get('liquorer_cupping_facility_engaged').invalid && (itemForm.get('liquorer_cupping_facility_engaged').dirty || itemForm.get('liquorer_cupping_facility_engaged').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('liquorer_cupping_facility_engaged').invalid && (itemForm.get('liquorer_cupping_facility_engaged').dirty || itemForm.get('liquorer_cupping_facility_engaged').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('liquorer_cupping_facility_engaged').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 2.BuyerLicense -->
+            <div *ngIf="itemForm.get('type_id')?.value==2" class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="license_purpose" class="col-form-label required">License Purpose (choose (i)or(ii)): <br>(i) Buy clean coffee at the exchange for (a)export,(b)local sale, (c)local value addition, OR <br>(ii) Import clean coffee for secondary processing in Kenya</label>
+                    <input [(ngModel)]="item.license_purpose" formControlName="license_purpose" [ngClass]="{'is-invalid': itemForm.get('license_purpose').invalid && (itemForm.get('license_purpose').dirty || itemForm.get('license_purpose').touched)}" type="text" class="form-control"/>
+                    <div *ngIf="itemForm.get('license_purpose').invalid && (itemForm.get('license_purpose').dirty || itemForm.get('license_purpose').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('license_purpose').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 3.WarehouseOperatorLicense -->
+            <div *ngIf="itemForm.get('type_id')?.value==3" class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="directors_name_address_and_occupations" class="col-form-label required">Full Names, Address and Occupations of the Directors:</label>
+                    <textarea [(ngModel)]="item.directors_name_address_and_occupations"  formControlName="directors_name_address_and_occupations" [ngClass]="{'is-invalid': itemForm.get('directors_name_address_and_occupations').invalid && (itemForm.get('directors_name_address_and_occupations').dirty || itemForm.get('directors_name_address_and_occupations').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('directors_name_address_and_occupations').invalid && (itemForm.get('directors_name_address_and_occupations').dirty || itemForm.get('directors_name_address_and_occupations').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('directors_name_address_and_occupations').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 4.LiquoringLicense -->
+            <div *ngIf="itemForm.get('type_id')?.value==4" class="col-md-12">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="year_of_certification" class="col-form-label required">Year of Certification (By Coffee Board of Kenya):</label>
+                    <input [(ngModel)]="item.year_of_certification" formControlName="year_of_certification" [ngClass]="{'is-invalid': itemForm.get('year_of_certification').invalid && (itemForm.get('year_of_certification').dirty || itemForm.get('year_of_certification').touched)}" type="number" class="form-control"/>
+                    <div *ngIf="itemForm.get('year_of_certification').invalid && (itemForm.get('year_of_certification').dirty || itemForm.get('year_of_certification').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('year_of_certification').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="current_occupation" class="col-form-label required">Current Occupation:</label>
+                    <input [(ngModel)]="item.current_occupation" formControlName="current_occupation" [ngClass]="{'is-invalid': itemForm.get('current_occupation').invalid && (itemForm.get('current_occupation').dirty || itemForm.get('current_occupation').touched)}" type="text" class="form-control"/>
+                    <div *ngIf="itemForm.get('current_occupation').invalid && (itemForm.get('current_occupation').dirty || itemForm.get('current_occupation').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('current_occupation').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="coffee_tasting_expert_certificate" class="col-form-label required">Coffee Tasting Expert Certificate:</label>
+                    <input (change)="onCoffeeTastingExpertCertificateChange($event)" formControlName="coffee_tasting_expert_certificate" [ngClass]="{'is-invalid': itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 5.CommercialMillersLicence -->
+            <div *ngIf="itemForm.get('type_id')?.value==5" class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="milling_capacity" class="col-form-label required">Milling Capacity for Parchment and	Buni (Tonnes per hour):</label>
+                    <textarea [(ngModel)]="item.milling_capacity"  formControlName="milling_capacity" [ngClass]="{'is-invalid': itemForm.get('milling_capacity').invalid && (itemForm.get('milling_capacity').dirty || itemForm.get('milling_capacity').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('milling_capacity').invalid && (itemForm.get('milling_capacity').dirty || itemForm.get('milling_capacity').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('milling_capacity').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="comprehensive_insurance_policy" class="col-form-label required1">Comprehensive Insurance Policy:</label>
+                    <input (change)="onComprehensiveInsurancePolicyChange($event)" formControlName="comprehensive_insurance_policy" [ngClass]="{'is-invalid': itemForm.get('comprehensive_insurance_policy').invalid && (itemForm.get('comprehensive_insurance_policy').dirty || itemForm.get('comprehensive_insurance_policy').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('comprehensive_insurance_policy').invalid && (itemForm.get('comprehensive_insurance_policy').dirty || itemForm.get('comprehensive_insurance_policy').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('comprehensive_insurance_policy').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="mill_certification" class="col-form-label required1">Mill Certification (If Any):</label>
+                    <input (change)="onMillCertificationChange($event)" formControlName="mill_certification" [ngClass]="{'is-invalid': itemForm.get('mill_certification').invalid && (itemForm.get('mill_certification').dirty || itemForm.get('mill_certification').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('mill_certification').invalid && (itemForm.get('mill_certification').dirty || itemForm.get('mill_certification').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('mill_certification').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 6.IndependentCuppingLabsLicence -->
+            <div *ngIf="itemForm.get('type_id')?.value==6" class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="company_officials" class="col-form-label required">Company Officials (Names and ID/Passport No):</label>
+                    <input (change)="onCompanyOfficialsChange($event)" formControlName="company_officials" [ngClass]="{'is-invalid': itemForm.get('company_officials').invalid && (itemForm.get('company_officials').dirty || itemForm.get('company_officials').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('company_officials').invalid && (itemForm.get('company_officials').dirty || itemForm.get('company_officials').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('company_officials').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="licensed_liquorers_engaged" class="col-form-label required">Licensed Liquorers Engaged (Names and Practising Licence No):</label>
+                    <textarea [(ngModel)]="item.licensed_liquorers_engaged" formControlName="licensed_liquorers_engaged" [ngClass]="{'is-invalid': itemForm.get('licensed_liquorers_engaged').invalid && (itemForm.get('licensed_liquorers_engaged').dirty || itemForm.get('licensed_liquorers_engaged').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('licensed_liquorers_engaged').invalid && (itemForm.get('licensed_liquorers_engaged').dirty || itemForm.get('licensed_liquorers_engaged').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('licensed_liquorers_engaged').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="laboratory_facilities" class="col-form-label required">Laboratory Facilities (Roasting, grinding, cupping, moisture analysis and other equipment):</label>
+                    <textarea [(ngModel)]="item.laboratory_facilities" formControlName="laboratory_facilities" [ngClass]="{'is-invalid': itemForm.get('laboratory_facilities').invalid && (itemForm.get('laboratory_facilities').dirty || itemForm.get('laboratory_facilities').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('laboratory_facilities').invalid && (itemForm.get('laboratory_facilities').dirty || itemForm.get('laboratory_facilities').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('laboratory_facilities').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="services_to_be_offered" class="col-form-label required">Services to be Offered (Liquoring and quality analysis, Training on coffee quality, Other-specify):</label>
+                    <textarea [(ngModel)]="item.services_to_be_offered" formControlName="services_to_be_offered" [ngClass]="{'is-invalid': itemForm.get('services_to_be_offered').invalid && (itemForm.get('services_to_be_offered').dirty || itemForm.get('services_to_be_offered').touched)}" type="text" class="form-control"></textarea>
+                    <div *ngIf="itemForm.get('services_to_be_offered').invalid && (itemForm.get('services_to_be_offered').dirty || itemForm.get('services_to_be_offered').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('services_to_be_offered').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <label for="statutory_compliance" class="col-form-label required">Statutory Compliance (Combine NEMA certificate, OHSA certificate, Public health certificate,Tax compliance certificate):</label>
+                    <input (change)="onStatutoryComplianceChange($event)" formControlName="statutory_compliance" [ngClass]="{'is-invalid': itemForm.get('statutory_compliance').invalid && (itemForm.get('statutory_compliance').dirty || itemForm.get('statutory_compliance').touched)}" type="file" class="form-control"/>
+                    <div *ngIf="itemForm.get('statutory_compliance').invalid && (itemForm.get('statutory_compliance').dirty || itemForm.get('statutory_compliance').touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('statutory_compliance').errors?.['required']">This field is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <!-- Other.AgentLicense/IndependentCuppingLabsLicence -->
+            <div *ngIf="itemForm.get('type_id')?.value==1 || itemForm.get('type_id')?.value==6" class="col-md-12">
               <div class="form-group mb-3">
-                <label for="coffee_tasting_expert_certificate" class="col-form-label required">Coffee Tasting Expert Certificate:</label>
-                <input (change)="onCoffeeTastingExpertCertificateChange($event)" formControlName="coffee_tasting_expert_certificate" [ngClass]="{'is-invalid': itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)}" type="file" class="form-control"/>
-                <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').invalid && (itemForm.get('coffee_tasting_expert_certificate').dirty || itemForm.get('coffee_tasting_expert_certificate').touched)" class="invalid-feedback" role="alert">
-                  <div *ngIf="itemForm.get('coffee_tasting_expert_certificate').errors?.['required']">This field is required.</div>
+                <label for="self_declaration_form" class="col-form-label required">Self-declaration (Form M):</label>
+                <input (change)="onSelfDeclarationFormChange($event)" formControlName="self_declaration_form" [ngClass]="{'is-invalid': itemForm.get('self_declaration_form').invalid && (itemForm.get('self_declaration_form').dirty || itemForm.get('self_declaration_form').touched)}" type="file" class="form-control"/>
+                <div *ngIf="itemForm.get('self_declaration_form').invalid && (itemForm.get('self_declaration_form').dirty || itemForm.get('self_declaration_form').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('self_declaration_form').errors?.['required']">This field is required.</div>
                 </div>
               </div>
             </div>
@@ -66,7 +280,7 @@
               <div class="form-check">
                 <input [(ngModel)]="item.commitment_declaration" class="form-check-input" type="checkbox" formControlName="commitment_declaration" />
                 <label class="form-check-label" for="commitment_declaration">
-                  By checking this, the applicant certifies that the information provided is accurate and agrees to comply with all applicable licence terms and conditions.
+                  By checking this, the applicant certifies that the information provided is accurate and commits to comply with the terms and conditions of the licence.
                 </label>
               </div>
               <div *ngIf="itemForm.get('commitment_declaration').invalid && (itemForm.get('commitment_declaration').dirty || itemForm.get('commitment_declaration').touched)" class="invalid-feedback" role="alert">

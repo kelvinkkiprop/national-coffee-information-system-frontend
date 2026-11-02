@@ -92,6 +92,13 @@ export const navItems: INavData[] = [
   },
   ...(mCurrentUser.role_id === mAdmin ? [
   {
+    name: 'Committees',
+    url: '/committees',
+    icon: 'fa-solid fa-user-friends',
+    // iconComponent: { name: 'cil-lock-locked' },
+  }] : []),
+  ...(mCurrentUser.role_id === mAdmin ? [
+  {
     name: 'Roles',
     url: '/roles',
     icon: 'fa-solid fa-lock',

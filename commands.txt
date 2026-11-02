@@ -91,6 +91,13 @@ ng generate component components/roles/show
 ng generate module components/roles/role
 ng generate module components/roles/roleRouting
 
+ng generate component components/committees/index
+ng generate component components/committees/create
+ng generate component components/committees/edit
+ng generate component components/committees/show
+ng generate module components/committees/committee
+ng generate module components/committees/committeeRouting
+
 ng generate component components/payments/index
 ng generate component components/payments/create
 ng generate component components/payments/edit
@@ -155,6 +162,7 @@ ng generate service services/dashboard
 ng generate service services/permit
 ng generate service services/payment
 ng generate service services/license
+ng generate service services/committee
 
 8. Core
 ng generate service core/app-info
@@ -168,6 +176,7 @@ ng generate interface interfaces/dealerRegistration
 ng generate interface interfaces/permit
 ng generate interface interfaces/payment
 ng generate interface interfaces/license
+ng generate interface interfaces/committee
 
 10. Guards
 ng generate guard guards/auth

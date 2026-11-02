@@ -16,13 +16,21 @@
             </div>
             <div class="col-md-6">
               <div class="form-group mb-3">
+                <label for="application_number">Applicant:</label>
+                <div *ngIf="item.user" class="text-muted">
+                  <a routerLink="/users/show/{{item.user?.id}}" class="fw-bold">{{ item.user?.name }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
                 <label for="application_number">Status:</label>
-                <div *ngIf="item.application_number" class="text-muted">
+                <div *ngIf="item.status_id" class="text-muted">
                   <span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span>
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="type_id">License Category:</label>
                 <div *ngIf="item.category" class="text-muted">{{ item.category?.name }}</div>
@@ -32,6 +40,12 @@
               <div class="form-group mb-3">
                 <label for="financial_year" class="col-form-label required1">Year/Period:</label>
                 <div *ngIf="item.financial_year" class="text-muted">{{ item.financial_year }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="issuing_body_id" class="col-form-label required1">Issuing Body:</label>
+                <div *ngIf="item.issuing_body_id" class="text-muted">{{ item.issuing_body?.name }}</div>
               </div>
             </div>
             <div class="col-md-6">
@@ -46,11 +60,184 @@
                 <div *ngIf="item.type" class="text-muted">{{ item.type?.name }}</div>
               </div>
             </div>
+
+            <div class="col-md-12">
+              <fieldset class="border p-4 mb-4">
+                <legend class="float-none w-auto"><h6 class="text-bold1">{{ item.type?.name }}</h6></legend>
+                <!-- 1.AgentLicense -->
+                <div *ngIf="item.type_id==1" class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="paid_share_capital">Paid-up share capital (KES)(not less than 100,000):</label>
+                      <div *ngIf="item.paid_share_capital" class="text-muted">{{ item.paid_share_capital }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="directors_details">Directors' Names (ID/Passport, KRA Clearance and Certificate of Good Conduct for Each Director):</label>
+                      <div *ngIf="item.directors_details" class="text-muted1">
+                        <a href="{{item.directors_details_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="years_of_technical_experience">Years of Technical Experience in the Coffee Business (CVs and Company Profile):</label>
+                      <div *ngIf="item.years_of_technical_experience" class="text-muted1">
+                        <a href="{{item.years_of_technical_experience_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="growers_represented_and_signed_agreements">Growers represented and signed agreements (Renewal):</label>
+                      <div *ngIf="item.growers_represented_and_signed_agreements" class="text-muted1">
+                        <a href="{{item.growers_represented_and_signed_agreements_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="indemnity_against_professional_misconduct">Indemnity Against Professional Misconduct:</label>
+                      <div *ngIf="item.indemnity_against_professional_misconduct" class="text-muted1">
+                        <a href="{{item.indemnity_against_professional_misconduct_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="liquorer_cupping_facility_engaged">Liquorer/Cupping Facility Engaged (Where Applicable):</label>
+                      <div *ngIf="item.liquorer_cupping_facility_engaged" class="text-muted">{{ item.liquorer_cupping_facility_engaged }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="self_declaration_form">Self-declaration (Form M):</label>
+                      <div *ngIf="item.self_declaration_form" class="text-muted1">
+                        <a href="{{item.self_declaration_form_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 2.BuyerLicense -->
+                <div *ngIf="item.type_id==2" class="row">
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <label for="license_purpose">License Purpose (choose (i)or(ii)): <br>(i) Buy clean coffee at the exchange for (a)export,(b)local sale, (c)local value addition, OR <br>(ii) Import clean coffee for secondary processing in Kenya</label>
+                      <div *ngIf="item.license_purpose" class="text-muted">{{ item.license_purpose }}</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 3.WarehouseOperatorLicense -->
+                <div *ngIf="item.type_id==3" class="row">
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <label for="license_purpose">Full Names, Address and Occupations of the Directors:</label>
+                      <div *ngIf="item.directors_name_address_and_occupations" class="text-muted">{{ item.directors_name_address_and_occupations }}</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 4.LiquoringLicense -->
+                <div *ngIf="item.type_id==4" class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="year_of_certification">Year of Certification (By Coffee Board of Kenya):</label>
+                      <div *ngIf="item.year_of_certification" class="text-muted">{{ item.year_of_certification }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="current_occupation">Current Occupation:</label>
+                      <div *ngIf="item.current_occupation" class="text-muted">{{ item.current_occupation }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="coffee_tasting_expert_certificate">Coffee Tasting Expert Certificate:</label>
+                      <div *ngIf="item.coffee_tasting_expert_certificate" class="text-muted1">
+                        <a href="{{item.coffee_tasting_expert_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 5.CommercialMillersLicence -->
+                <div *ngIf="item.type_id==5" class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="milling_capacity">Milling Capacity for Parchment and	Buni (Tonnes per hour):</label>
+                      <div *ngIf="item.milling_capacity" class="text-muted">{{ item.milling_capacity }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="comprehensive_insurance_policy">Comprehensive Insurance Policy:</label>
+                      <div *ngIf="item.comprehensive_insurance_policy" class="text-muted1">
+                        <a href="{{item.comprehensive_insurance_policy_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="comprehensive_insurance_policy">Mill Certification (If Any):</label>
+                      <div *ngIf="item.mill_certification" class="text-muted1">
+                        <a href="{{item.mill_certification_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 6.IndependentCuppingLabsLicence -->
+                <div *ngIf="item.type_id==6" class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="company_officials">Company Officials (Names and ID/Passport No):</label>
+                      <div *ngIf="item.company_officials" class="text-muted1">
+                        <a href="{{item.company_officials_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="licensed_liquorers_engaged">Licensed Liquorers Engaged (Names and Practising Licence No):</label>
+                      <div *ngIf="item.licensed_liquorers_engaged" class="text-muted">{{ item.licensed_liquorers_engaged }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="laboratory_facilities">Laboratory Facilities (Roasting, grinding, cupping, moisture analysis and other equipment):</label>
+                      <div *ngIf="item.laboratory_facilities" class="text-muted">{{ item.laboratory_facilities }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="services_to_be_offered">Services to be Offered (Liquoring and quality analysis, Training on coffee quality, Other-specify):</label>
+                      <div *ngIf="item.services_to_be_offered" class="text-muted">{{ item.services_to_be_offered }}</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="statutory_compliance">Statutory Compliance (Combine NEMA certificate, OHSA certificate, Public health certificate,Tax compliance certificate):</label>
+                      <div *ngIf="item.statutory_compliance" class="text-muted1">
+                        <a href="{{item.statutory_compliance_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="self_declaration_form">Self-declaration (Form M):</label>
+                      <div *ngIf="item.self_declaration_form" class="text-muted1">
+                        <a href="{{item.self_declaration_form_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label for="warehouse_receipt_number">Coffee Tasting Expert Certificate:</label>
-                <div *ngIf="item.coffee_tasting_expert_certificate" class="text-muted1">
-                  <a href="{{item.coffee_tasting_expert_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                <label for="payment">Payment:</label>
+                <div *ngIf="item.payment" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="item.payment?.status_id===1 ? 'bg-danger':'bg-success'">{{ item.payment?.status.name }}</span>
                 </div>
               </div>
             </div>
@@ -64,14 +251,6 @@
               <div class="form-group mb-3">
                 <label for="coffee_form_id">Date of Gazettement Intent:</label>
                 <div *ngIf="item.date_of_gazettement_intent" class="text-muted">{{ item.date_of_gazettement_intent | date }}</div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group mb-3">
-                <label for="payment">Payment:</label>
-                <div *ngIf="item.payment" class="text-muted">
-                  <span class="badge rounded-pill" [ngClass]="item.payment?.status_id===1 ? 'bg-danger':'bg-success'">{{ item.payment?.status.name }}</span>
-                </div>
               </div>
             </div>
           </div>

@@ -29,7 +29,16 @@ export class EditComponent {
   mLicenseTypes:any
   mFinancialYears: string[] = []
 
+  directors_details_file?:any
+  years_of_technical_experience_file?:any
+  growers_represented_and_signed_agreements_file?:any
+  indemnity_against_professional_misconduct_file?:any
   coffee_tasting_expert_certificate_file?:any
+  company_officials_file?:any
+  comprehensive_insurance_policy_file?:any
+  mill_certification_file?:any
+  statutory_compliance_file?:any
+  self_declaration_form_file?:any
 
   constructor(
     private mLicenseService: LicenseService,
@@ -45,7 +54,34 @@ export class EditComponent {
       financial_year: ['', Validators.required],
       expiry_date: ['', Validators.required],
       type_id: ['', Validators.required],
+      issuing_body_id: ['', Validators.required],
+      // 1.AgentLicense
+      paid_share_capital: ['', Validators.nullValidator],
+      directors_details: ['', Validators.nullValidator],
+      years_of_technical_experience: ['', Validators.nullValidator],
+      growers_represented_and_signed_agreements : ['', Validators.nullValidator],
+      indemnity_against_professional_misconduct: ['', Validators.nullValidator],
+      liquorer_cupping_facility_engaged: ['', Validators.nullValidator],
+      // 2.BuyerLicense
+      license_purpose: ['', Validators.nullValidator],
+      // 3.WarehouseOperatorLicense
+      directors_name_address_and_occupations: ['', Validators.nullValidator],
+      // 4.LiquoringLicense
+      year_of_certification: ['', Validators.nullValidator],
+      current_occupation: ['', Validators.nullValidator],
       coffee_tasting_expert_certificate: ['', Validators.nullValidator],
+      // 5.CommercialMillersLicence
+      milling_capacity: ['', Validators.nullValidator],
+      comprehensive_insurance_policy: ['', Validators.nullValidator],
+      mill_certification: ['', Validators.nullValidator],
+      // 6.IndependentCuppingLabsLicence
+      company_officials: ['', Validators.nullValidator],
+      licensed_liquorers_engaged: ['', Validators.nullValidator],
+      laboratory_facilities: ['', Validators.nullValidator],
+      services_to_be_offered: ['', Validators.nullValidator],
+      statutory_compliance: ['', Validators.nullValidator],
+
+      self_declaration_form: ['', Validators.nullValidator],
       commitment_declaration: [false, Validators.requiredTrue],
     });
   }
@@ -84,12 +120,60 @@ export class EditComponent {
     formData.append('category_id', formValues.category_id)
     formData.append('financial_year', formValues.financial_year)
     formData.append('expiry_date', formValues.expiry_date)
+    formData.append('issuing_body_id', formValues.issuing_body_id)
     formData.append('type_id', formValues.type_id)
-    // attachments
-    if(this.coffee_tasting_expert_certificate_file){
-      formData.append('coffee_tasting_expert_certificate', this.coffee_tasting_expert_certificate_file, this.coffee_tasting_expert_certificate_file.name);
-    }else{
-      formData.append('coffee_tasting_expert_certificate', '')
+    let mType = formValues.type_id;
+    // 1.AgentLicense
+    formData.append('paid_share_capital',formValues.paid_share_capital)
+    if (mType==1) {
+      formData.append('directors_details', this.directors_details_file, this.directors_details_file.name)
+      formData.append('years_of_technical_experience', this.years_of_technical_experience_file, this.years_of_technical_experience_file.name)
+      formData.append('growers_represented_and_signed_agreements', this.growers_represented_and_signed_agreements_file, this.growers_represented_and_signed_agreements_file.name)
+      formData.append('indemnity_against_professional_misconduct', this.indemnity_against_professional_misconduct_file, this.indemnity_against_professional_misconduct_file.name)
+    } else {
+      formData.append('directors_details', '');
+      formData.append('years_of_technical_experience', '');
+      formData.append('growers_represented_and_signed_agreements', '');
+      formData.append('indemnity_against_professional_misconduct', '');
+    }
+    formData.append('liquorer_cupping_facility_engaged',formValues.liquorer_cupping_facility_engaged)
+    // 2.BuyerLicense
+    formData.append('license_purpose',formValues.license_purpose)
+    // 3.WarehouseOperatorLicense
+    formData.append('directors_name_address_and_occupations',formValues.directors_name_address_and_occupations)
+    // 4.LiquoringLicense
+    formData.append('year_of_certification',formValues.year_of_certification)
+    formData.append('current_occupation',formValues.current_occupation)
+    if (mType==4) {
+      formData.append('coffee_tasting_expert_certificate', this.coffee_tasting_expert_certificate_file, this.coffee_tasting_expert_certificate_file.name)
+    } else {
+      formData.append('coffee_tasting_expert_certificate', '');
+    }
+    formData.append('milling_capacity',formValues.milling_capacity)
+    // 5.CommercialMillersLicence
+    if (mType==5) {
+      formData.append('comprehensive_insurance_policy', this.comprehensive_insurance_policy_file, this.comprehensive_insurance_policy_file.name)
+      formData.append('mill_certification', this.mill_certification_file, this.mill_certification_file.name)
+    } else {
+      formData.append('comprehensive_insurance_policy', '');
+      formData.append('mill_certification', '');
+    }
+    // 6.IndependentCuppingLabsLicence
+    if (mType==6) {
+      formData.append('company_officials', this.company_officials_file, this.company_officials_file.name)
+      formData.append('statutory_compliance', this.statutory_compliance_file, this.statutory_compliance_file.name)
+    } else {
+      formData.append('company_officials', '');
+      formData.append('statutory_compliance', '');
+    }
+    formData.append('licensed_liquorers_engaged',formValues.licensed_liquorers_engaged)
+    formData.append('laboratory_facilities',formValues.laboratory_facilities)
+    formData.append('services_to_be_offered',formValues.services_to_be_offered)
+    // Other:1|6
+    if (mType==1 || mType==6) {
+      formData.append('self_declaration_form', this.self_declaration_form_file, this.self_declaration_form_file.name)
+    } else {
+      formData.append('self_declaration_form', '');
     }
     formData.append('commitment_declaration',formValues.commitment_declaration)
     formData.append('_method', 'PUT')
@@ -118,6 +202,8 @@ export class EditComponent {
   }
 
 
+
+
   // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
@@ -137,7 +223,7 @@ export class EditComponent {
     });
   }
 
-
+  // loadFinancialYearsItems
   loadFinancialYearsItems(){
     const today = new Date();
     const year = today.getFullYear();
@@ -159,11 +245,94 @@ export class EditComponent {
 
   }
 
+  // onIssuingBodyChange
+  onIssuingBodyChange($event: any){
+    let id = $event.value
+    this.mProgress.set(true)
+    this.mLicenseService.filterLicenseTypes(id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mLicenseTypes = response
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
+  // onDirectorsDetailsChange
+  onDirectorsDetailsChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.directors_details_file = file
+    }
+  }
+  // onYearsOfTechnicalExperienceChange
+  onYearsOfTechnicalExperienceChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.years_of_technical_experience_file = file
+    }
+  }
+  // onGrowersRepresentedAndSignedAgreementsChange
+  onGrowersRepresentedAndSignedAgreementsChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.growers_represented_and_signed_agreements_file = file
+    }
+  }
+  // onIndemnityAgainstProfessionalMisconductChange
+  onIndemnityAgainstProfessionalMisconductChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.indemnity_against_professional_misconduct_file = file
+    }
+  }
   // onCoffeeTastingExpertCertificateChange
   onCoffeeTastingExpertCertificateChange(event:any) {
     if (event.target.value) {
-      const file = event.target.files[0];
-      this.coffee_tasting_expert_certificate_file = file;
+      const file = event.target.files[0]
+      this.coffee_tasting_expert_certificate_file = file
+    }
+  }
+  // onComprehensiveInsurancePolicyChange
+  onComprehensiveInsurancePolicyChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.comprehensive_insurance_policy_file = file
+    }
+  }
+  // onMillCertificationChange
+  onMillCertificationChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.mill_certification_file = file
+    }
+  }
+  // onCompanyOfficialsChange
+  onCompanyOfficialsChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.company_officials_file = file
+    }
+  }
+  // onStatutoryComplianceChange
+  onStatutoryComplianceChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.statutory_compliance_file = file
+    }
+  }
+  // onSelfDeclarationFormChange
+  onSelfDeclarationFormChange(event:any) {
+    if (event.target.value) {
+      const file = event.target.files[0]
+      this.self_declaration_form_file = file
     }
   }
 

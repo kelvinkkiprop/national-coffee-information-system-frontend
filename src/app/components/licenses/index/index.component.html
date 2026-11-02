@@ -58,7 +58,7 @@
                 <td>{{ item.issuing_body?.alias }}</td>
                 <td><span routerLink="/payments/show/{{item.payment_id}}" class="chip chip-clickable" [ngClass]="item.payment?.status_id===1 ? 'chip-danger':'chip-success'">{{ item.payment?.status.name }}</span></td>
                 <td>
-                  <span *ngIf="!(item.status_id==5 || item.status_id===7)">
+                  <span *ngIf="(item.status_id==5 || item.status_id===7)">
                     <button (click)="onDownloadPermit(item)" class="btn btn-link btn-sm">Download</button>
                   </span>
                 </td>

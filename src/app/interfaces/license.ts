@@ -1,26 +1,45 @@
 export interface License {
   id?: any,
   user_id?: any,
-
-  issuing_body_id?: any,
-
-  application_number?: any,
+  category_id?: any,
+  financial_year?: any,
+  expiry_date?: any,
   type_id?: any,
-  mark?: any,
-  coffee_species_id?: any,
-  coffee_form_id?: any,
-  number_of_bags?: any,
-  origin?: any,
-  destination?: any,
-  distance?: any,
-  vehicle_registration_number?: any,
-  driver_name?: any,
-  driver_id_number?: any,
-  warehouse_receipt_number?: any,
+  issuing_body_id?: any,
+  // 1.AgentLicense
+  paid_share_capital?: any,
+  directors_details?: any,
+  years_of_technical_experience?: any,
+  growers_represented_and_signed_agreements ?: any,
+  indemnity_against_professional_misconduct?: any,
+  liquorer_cupping_facility_engaged?: any,
+  // 2.BuyerLicense
+  license_purpose?: any,
+  // 3.WarehouseOperatorLicense
+  directors_name_address_and_occupations?: any,
+  // 4.LiquoringLicense
+  year_of_certification?: any,
+  current_occupation?: any,
+  coffee_tasting_expert_certificate?: any,
+  // 5.CommercialMillersLicence
+  milling_capacity?: any,
+  comprehensive_insurance_policy?: any,
+  mill_certification?: any,
+  // 6.IndependentCuppingLabsLicence
+  company_officials?: any,
+  licensed_liquorers_engaged?: any,
+  laboratory_facilities?: any,
+  services_to_be_offered?: any,
+  statutory_compliance?: any,
+
+  self_declaration_form?: any,
+  commitment_declaration?: any,
+
+
   date_of_issue?: any,
   effective_date?: any,
   duration?: any,
-  expiry_date?: any,
+  // expiry_date?: any,
   payment_id?: any,
   payment_status_id?: any,
   status_id?: any,

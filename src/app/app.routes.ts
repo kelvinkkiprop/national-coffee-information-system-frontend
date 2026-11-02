@@ -95,6 +95,11 @@ export const routes: Routes = [
         canActivate: [WithProfileGuard],
       },
       {
+        path: 'committees',
+        loadChildren: () => import('./components/committees/committee.module').then((m) => m.CommitteeModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./components/profile/profile.module').then((m) => m.ProfileModule),
       }
