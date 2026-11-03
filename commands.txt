@@ -96,7 +96,7 @@ ng generate component components/committees/create
 ng generate component components/committees/edit
 ng generate component components/committees/show
 ng generate module components/committees/committee
-ng generate module components/committees/committeeRouting
+ng generate module components/committees/committeeRout mming
 
 ng generate component components/payments/index
 ng generate component components/payments/create
