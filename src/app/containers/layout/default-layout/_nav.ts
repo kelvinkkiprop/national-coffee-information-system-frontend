@@ -1,114 +1,99 @@
 import { INavData } from '@coreui/angular';
 
-// Roles
 const mAdmin = 1;
-const mInvestor = 2;
+const mDealer = 34;
 
-// mCurrentUser
-const mCurrentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-// console.log(mCurrentUser.role_id);
+export function getNavItems(): INavData[] {
 
-export const navItems: INavData[] = [
+  // variables
+  const mCurrentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  const isAdmin = Number(mCurrentUser.role_id) === mAdmin;
 
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    // iconComponent: { name: 'cil-speedometer' },
-    icon: 'fa-solid fa-gauge-high',
-    badge: {
-      color: 'warning',
-      text: 'NEW'
+  return [
+    {
+      name: 'Dashboard',
+      url: '/dashboard',
+      icon: 'fa-solid fa-gauge-high',
+      badge: {
+        color: 'warning',
+        text: 'NEW'
+      }
+    },
+
+    {
+      name: 'Main',
+      title: true
+    },
+    {
+      name: 'Traceability',
+      url: '/traceabilities',
+      icon: 'fa-solid fa-route'
+    },
+    {
+      name: 'Licenses',
+      url: '/licenses',
+      icon: 'fa-solid fa-id-card'
+    },
+    {
+      name: 'Movement Permits',
+      url: '/permits',
+      icon: 'fa-solid fa-stamp'
+    },
+    {
+      name: 'Dealer Registrations',
+      url: '/dealer-registrations',
+      icon: 'fa-solid fa-handshake'
+    },
+
+    {
+      title: true,
+      name: 'Other'
+    },
+    {
+      name: 'Payments',
+      url: '/payments',
+      icon: 'fa-solid fa-wallet'
+    },
+    ...(isAdmin ? [
+      {
+        name: 'Users',
+        icon: 'fa-solid fa-users',
+        children: [
+          {
+            name: 'Create user',
+            url: '/users/create',
+            icon: 'nav-icon-bullet'
+          },
+          {
+            name: 'Users list',
+            url: '/users',
+            icon: 'nav-icon-bullet'
+          }
+        ]
+      }
+    ] : []),
+
+    {
+      title: true,
+      name: 'Extras'
+    },
+    ...(isAdmin ? [
+      {
+        name: 'Committees',
+        url: '/committees',
+        icon: 'fa-solid fa-user-friends'
+      },
+      {
+        name: 'Roles',
+        url: '/roles',
+        icon: 'fa-solid fa-lock'
+      }
+    ] : []),
+    {
+      name: 'Profile',
+      url: '/profile',
+      icon: 'fa-solid fa-user'
     }
-  },
+  ];
 
-
-  // Main
-  {
-    name: 'Main',
-    title: true
-  },
-  {
-    name: 'Traceability',
-    url: '/traceabilities',
-    // iconComponent: { name: 'cil-description' },
-    icon: 'fa-solid fa-route'
-  },
-  {
-    name: 'Licenses',
-    url: '/licenses',
-    // iconComponent: { name: 'cil-description' },
-    icon: 'fa-solid fa-id-card'
-  },
-  {
-    name: 'Movement Permits',
-    url: '/permits',
-    // iconComponent: { name: 'cil-list' },
-    icon: 'fa-solid fa-stamp'
-  },
-  {
-    name: 'Dealer Registrations',
-    url: '/dealer-registrations',
-    // iconComponent: { name: 'cil-list' },
-    icon: 'fa-solid fa-handshake'
-  },
-
-
-  // Other
-  {
-    title: true,
-    name: 'Other',
-  },
-  {
-    name: 'Payments ',
-    url: '/payments',
-    icon: 'fa-solid fa-wallet'
-    // iconComponent: { name: 'cil-money' },
-  },
-  ...(mCurrentUser.role_id === mAdmin ? [
-  {
-    name: 'Users',
-    // iconComponent: { name: 'cil-people' },
-    icon: 'fa-solid fa-users',
-    attributes: { class: 'nav-group' },
-    children: [
-      {
-        name: 'Create user',
-        url: '/users/create',
-        icon: 'nav-icon-bullet',
-      },
-      {
-        name: 'Users list',
-        url: '/users',
-        icon: 'nav-icon-bullet',
-      },
-    ]
-  }] : []),
-
-
-  // Extras
-  {
-    title: true,
-    name: 'Extras',
-  },
-  ...(mCurrentUser.role_id === mAdmin ? [
-  {
-    name: 'Committees',
-    url: '/committees',
-    icon: 'fa-solid fa-user-friends',
-    // iconComponent: { name: 'cil-lock-locked' },
-  }] : []),
-  ...(mCurrentUser.role_id === mAdmin ? [
-  {
-    name: 'Roles',
-    url: '/roles',
-    icon: 'fa-solid fa-lock',
-    // iconComponent: { name: 'cil-lock-locked' },
-  }] : []),
-  {
-    name: 'Profile',
-    url: '/profile',
-    // iconComponent: { name: 'cil-user' },
-    icon: 'fa-solid fa-user'
-  },
-
-];
+}

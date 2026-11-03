@@ -100,6 +100,7 @@ export class AuthService {
 
           status: response.data.user.status,
           role: response.data.user.role,
+          committees: response.data.user.committees,
           profile: response.data.user.profile,
         }
         // store

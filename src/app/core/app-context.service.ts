@@ -153,6 +153,14 @@ export class AppContextService {
     return types.includes(type_id ?? -1);
   }
 
+  // hasCommittees
+  hasCommittees(committees: number[]): boolean {
+    const mCommittees = this.injector.get(AuthService).currentUser?.committees as any[] | undefined;
+    return (mCommittees ?? []).some(committee =>
+      committees.includes(Number(committee.committee_id))
+    );
+  }
+
 
  // getColorClass
   getColorClass(mStatusId: number): string {

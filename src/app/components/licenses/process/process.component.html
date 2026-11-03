@@ -30,8 +30,9 @@
                 <div *ngIf="(item?.status_id===3 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([2])))">
                   <app-review/>
                 </div>
-                <!-- Finance/DirectorGeneral -->
-                <div *ngIf="(item?.status_id===4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasRoles([5,7])))">
+                <!-- LicensingCommittee -->
+                <!-- <div *ngIf="(item?.status_id===4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasCommittees([1])))"> -->
+                <div *ngIf="(item?.status_id===4 && (mAppContextService.hasCommittees([1])))">
                   <app-approve/>
                 </div>
               </fieldset>

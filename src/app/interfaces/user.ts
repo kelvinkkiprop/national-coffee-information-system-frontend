@@ -1,4 +1,5 @@
 // import
+import { Committee } from "./committee";
 import { Profile } from "./profile";
 import { Role } from "./role";
 
@@ -20,6 +21,7 @@ export interface User {
   role?: Role,
   status?: status,
   profile?: Profile,
+  committees?: Committee,
 }
 
 export interface status {

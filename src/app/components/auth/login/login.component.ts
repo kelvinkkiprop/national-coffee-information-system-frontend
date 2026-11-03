@@ -50,7 +50,7 @@ export class LoginComponent {
           if(response.status =='success'){
             this.router.navigateByUrl('/dashboard')
             // this.router.navigateByUrl('/auth/verify-otp')
-            this.mToastrService.success(response.message);
+            this.mToastrService.success(response.message)
           }else{
             this.mToastrService.warning(response.message);
           }

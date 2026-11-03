@@ -5,6 +5,7 @@ import { NgScrollbar } from 'ngx-scrollbar';
 // import { IconDirective } from '@coreui/icons-angular';
 import {
   ContainerComponent,
+  INavData,
   ShadowOnScrollDirective,
   SidebarBrandComponent,
   SidebarComponent,
@@ -16,7 +17,8 @@ import {
 } from '@coreui/angular';
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from '.';
-import { navItems } from './_nav';
+// import { navItems } from './_nav';
+import { getNavItems } from './_nav';
 import { AnimationsDirective } from '../../../directives/animations.directive';
 
 function isOverflown(element: HTMLElement) {
@@ -52,5 +54,10 @@ function isOverflown(element: HTMLElement) {
   ]
 })
 export class DefaultLayoutComponent {
-  public navItems = [...navItems];
+  // public navItems = [...navItems];
+  public navItems: INavData[] = [];
+
+  ngOnInit(): void {
+    this.navItems = getNavItems();
+  }
 }

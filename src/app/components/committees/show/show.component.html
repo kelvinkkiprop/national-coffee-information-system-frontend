@@ -17,7 +17,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="created_at">Members:</label>
-                <div *ngIf="item.created_at" class="text-muted">{{ item.total_members }}</div>
+                <div *ngIf="mMembers" class="text-muted">{{ mMembers.length }}</div>
               </div>
             </div>
             <div class="col-md-6">
