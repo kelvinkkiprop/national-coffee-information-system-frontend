@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="number_of_bags" class="col-form-label required">Number of Bags (60 Kg Bags):</label>
                 <input [(ngModel)]="item.number_of_bags" formControlName="number_of_bags" [ngClass]="{'is-invalid': itemForm.get('number_of_bags').invalid && (itemForm.get('number_of_bags').dirty || itemForm.get('number_of_bags').touched)}" type="number" class="form-control"/>

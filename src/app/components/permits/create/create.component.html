@@ -8,7 +8,19 @@
 
         <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="issuing_body_id" class="col-form-label required1">Issuing Body:</label>
+                <select (change)="onIssuingBodyChange($event.target)" formControlName="issuing_body_id" [ngClass]="{'is-invalid': itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select body ---</option>
+                  <option *ngFor="let item of mIssuingBodies" value="{{item.id}}">{{item.name}} ({{item.alias}})</option>
+                </select>
+                <div *ngIf="itemForm.get('issuing_body_id')?.invalid && (itemForm.get('issuing_body_id')?.dirty || itemForm.get('issuing_body_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('issuing_body_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
               <div class="form-group mb-3">
                 <label for="type_id" class="col-form-label required">Permit Type:</label>
                 <select formControlName="type_id" [ngClass]="{'is-invalid': itemForm.get('type_id')?.invalid && (itemForm.get('type_id')?.dirty || itemForm.get('type_id')?.touched)}" type="text" class="form-control">
@@ -53,7 +65,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="number_of_bags" class="col-form-label required">Number of Bags (60 Kg Bags):</label>
                 <input formControlName="number_of_bags" [ngClass]="{'is-invalid': itemForm.get('number_of_bags').invalid && (itemForm.get('number_of_bags').dirty || itemForm.get('number_of_bags').touched)}" type="number" class="form-control"/>

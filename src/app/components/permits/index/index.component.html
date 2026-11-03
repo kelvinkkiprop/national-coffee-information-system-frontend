@@ -39,6 +39,7 @@
                 <th scope="col">Applicant</th>
                 <th scope="col">Type</th>
                 <th scope="col">Status</th>
+                <th scope="col">Issuing Body</th>
                 <th scope="col">Payment</th>
                 <th scope="col">Permit</th>
                 <th scope="col">Created</th>
@@ -52,9 +53,10 @@
                 <td>{{ item.user?.name }}</td>
                 <td>{{ item.type?.name }}</td>
                 <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/permits/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-info':item.status_id==4, 'bg-success':item.status_id==5, 'bg-primary':item.status_id==6, 'bg-danger':item.status_id==7}">{{ item?.status?.name }}</span></td>
+                <td>{{ item.issuing_body?.alias }}</td>
                 <td><span routerLink="/payments/show/{{item.payment_id}}" class="chip chip-clickable" [ngClass]="item.payment?.status_id===1 ? 'chip-danger':'chip-success'">{{ item.payment?.status.name }}</span></td>
                 <td>
-                  <span *ngIf="!(item.status_id==5 || item.status_id===7)">
+                  <span *ngIf="(item.status_id===5)">
                     <button (click)="onDownloadPermit(item)" class="btn btn-link btn-sm">Download</button>
                   </span>
                 </td>
@@ -62,7 +64,7 @@
                 <td>
                   <div class="text-nowrap">
                     <button routerLink="/permits/show/{{item.id}}" class="btn btn-outline-dark btn-sm me-1"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
-                    <button *ngIf="(mAppContextService.hasRoles([1]) || (item.status_id== 1 || item.status_id== 2))" routerLink="/permits/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></button>
+                    <button *ngIf="mAppContextService.hasRoles([1]) || (mAppContextService.hasTypes([2]) && (item.status_id== 1 || item.status_id== 2))" routerLink="/permits/edit/{{item.id}}" class="btn btn-dark btn-sm me-1"> <i class="fa-solid fa-pencil-alt" aria-hidden="true"></i></button>
                     <button *ngIf="mAppContextService.hasRoles([1])" (click)="onDelete(item)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
                   </div>
                 </td>

@@ -31,8 +31,7 @@
                   <app-review/>
                 </div>
                 <!-- LicensingCommittee -->
-                <!-- <div *ngIf="(item?.status_id===4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasCommittees([1])))"> -->
-                <div *ngIf="(item?.status_id===4 && (mAppContextService.hasCommittees([1])))">
+                <div *ngIf="(item?.status_id===4 && (mAppContextService.hasRoles([1]) || mAppContextService.hasCommittees([1])))">
                   <app-approve/>
                 </div>
               </fieldset>

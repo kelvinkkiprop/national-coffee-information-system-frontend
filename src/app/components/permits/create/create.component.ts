@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { PermitService } from 'src/app/services/permit.service';
+import { PermitService } from '../../../services/permit.service';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class CreateComponent {
   itemForm:any
   mProgress = signal(false)
 
+  mIssuingBodies:any
   mPermitTypes:any
   mCoffeeSpecies:any
   mCoffeeForms:any
@@ -34,6 +35,7 @@ export class CreateComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
+      issuing_body_id: ['', Validators.required],
       type_id: ['', Validators.required],
       mark: ['', Validators.nullValidator],
       coffee_species_id: ['', Validators.required],
@@ -60,10 +62,17 @@ export class CreateComponent {
     this.mPermitService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.success((response as any).message)
-          const paymentId = (response as any).data.payment.id
-          // this.router.navigateByUrl('/permits')
-          this.router.navigateByUrl('/payments/show/'+paymentId)
+          if((response as any).status =='success'){
+            this.mToastrService.success((response as any).message)
+            const paymentId = (response as any).data.payment?.id
+            if(paymentId){
+              this.router.navigateByUrl('/payments/show/'+paymentId)
+            }else{
+              this.router.navigateByUrl('/permits')
+            }
+          }else{
+            this.mToastrService.warning((response as any).message)
+          }
           this.mProgress.set(false)
         }
       },
@@ -83,7 +92,8 @@ export class CreateComponent {
     this.mPermitService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          this.mPermitTypes = (response as any).data.permit_types
+          this.mIssuingBodies = (response as any).data.issuing_bodies
+          // this.mPermitTypes = (response as any).data.permit_types
           this.mCoffeeSpecies = (response as any).data.coffee_species
           this.mCoffeeForms = (response as any).data.coffee_forms
           this.mProgress.set(false)
@@ -95,5 +105,27 @@ export class CreateComponent {
       }
     });
   }
+
+
+  // onIssuingBodyChange
+  onIssuingBodyChange($event: any){
+    let id = $event.value
+    this.mProgress.set(true)
+    this.mPermitService.filterPermitTypes(id).subscribe({
+      next: (response) => {
+        if(response){
+          this.mPermitTypes = response
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    });
+  }
+
 
 }

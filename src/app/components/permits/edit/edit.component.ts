@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { PermitService } from 'src/app/services/permit.service';
+import { PermitService } from '../../../services/permit.service';
 
 
 @Component({
@@ -67,7 +67,18 @@ export class EditComponent {
     this.mPermitService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
-          this.item = response as any
+          if((response as any).status =='success'){
+            this.mToastrService.success((response as any).message)
+            this.item = response as any
+            const paymentId = (response as any).data.payment?.id
+            if(paymentId){
+              this.router.navigateByUrl('/payments/show/'+paymentId)
+            }else{
+              this.router.navigateByUrl('/licenses')
+            }
+          }else{
+            this.mToastrService.warning((response as any).message)
+          }
           this.mProgress.set(false)
         }
       },
@@ -93,9 +104,12 @@ export class EditComponent {
         if(response){
           this.mToastrService.success((response as any).message)
           // this.router.navigateByUrl('/permits')
-          const paymentId = (response as any).data.payment.id
-          // this.router.navigateByUrl('/permits')
-          this.router.navigateByUrl('/payments/show/'+paymentId)
+          const paymentId = (response as any).data.payment?.id
+          if(paymentId){
+            this.router.navigateByUrl('/payments/show/'+paymentId)
+          }else{
+            this.router.navigateByUrl('/licenses')
+          }
           this.mProgress.set(false)
         }
       },

@@ -58,6 +58,12 @@ constructor(
   }
 
 
+  filterPermitTypes(id:number){
+    const url = `${environment.base_url}/filter-permit-types/${id}`;
+    return this.http.get<Permit[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+
   nextPreviousStatusItem(id:any){
     const url = `${environment.base_url}/next-previous-status-process-permits/${id}`;
     return this.http.get<Permit[]>(url, this.mAppContextService.getHttpOptions());

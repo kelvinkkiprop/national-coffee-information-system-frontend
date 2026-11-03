@@ -56,6 +56,11 @@ export function getNavItems(): INavData[] {
     },
     ...(isAdmin ? [
       {
+        name: 'Committees',
+        url: '/committees',
+        icon: 'fa-solid fa-user-friends'
+      },
+      {
         name: 'Users',
         icon: 'fa-solid fa-users',
         children: [
@@ -78,11 +83,6 @@ export function getNavItems(): INavData[] {
       name: 'Extras'
     },
     ...(isAdmin ? [
-      {
-        name: 'Committees',
-        url: '/committees',
-        icon: 'fa-solid fa-user-friends'
-      },
       {
         name: 'Roles',
         url: '/roles',

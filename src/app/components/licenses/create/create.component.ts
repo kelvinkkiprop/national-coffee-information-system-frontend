@@ -156,12 +156,16 @@ export class CreateComponent {
     this.mLicenseService.createItem(formData).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.success((response as any).message)
-          const paymentId = (response as any).data.payment?.id
-          if(paymentId){
-            this.router.navigateByUrl('/payments/show/'+paymentId)
+          if((response as any).status =='success'){
+            this.mToastrService.success((response as any).message)
+            const paymentId = (response as any).data.payment?.id
+            if(paymentId){
+              this.router.navigateByUrl('/payments/show/'+paymentId)
+            }else{
+              this.router.navigateByUrl('/licenses')
+            }
           }else{
-            this.router.navigateByUrl('/licenses')
+            this.mToastrService.warning((response as any).message)
           }
           this.mProgress.set(false)
         }
