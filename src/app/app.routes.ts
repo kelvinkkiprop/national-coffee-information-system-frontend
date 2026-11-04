@@ -75,6 +75,21 @@ export const routes: Routes = [
         canActivate: [WithProfileGuard],
       },
       {
+        path: 'coffee-transactions',
+        loadChildren: () => import('./components/coffeeTransactions/coffee-transaction.module').then((m) => m.CoffeeTransactionModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'coffee-deliveries',
+        loadChildren: () => import('./components/coffeeDeliveries/coffee-delivery.module').then((m) => m.CoffeeDeliveryModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'coffee-plots',
+        loadChildren: () => import('./components/coffeePlots/coffee-plot.module').then((m) => m.CoffeePlotModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
         path: 'traceabilities',
         loadChildren: () => import('./components/traceabilities/traceability.module').then((m) => m.TraceabilityModule),
         canActivate: [WithProfileGuard],

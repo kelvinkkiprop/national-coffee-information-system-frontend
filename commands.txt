@@ -96,7 +96,7 @@ ng generate component components/committees/create
 ng generate component components/committees/edit
 ng generate component components/committees/show
 ng generate module components/committees/committee
-ng generate module components/committees/committeeRout mming
+ng generate module components/committees/committeeRouting
 
 ng generate component components/payments/index
 ng generate component components/payments/create
@@ -132,6 +132,28 @@ ng generate module components/permits/permit
 ng generate module components/permits/permitRouting
 ng generate component components/permits/process
 
+ng generate component components/coffeePlots/index
+ng generate component components/coffeePlots/create
+ng generate component components/coffeePlots/edit
+ng generate component components/coffeePlots/show
+ng generate component components/coffeePlots/show/inc/locations
+ng generate module components/coffeePlots/coffeePlot
+ng generate module components/coffeePlots/coffeePlotRouting
+
+ng generate component components/coffeeDeliveries/index
+ng generate component components/coffeeDeliveries/create
+ng generate component components/coffeeDeliveries/edit
+ng generate component components/coffeeDeliveries/show
+ng generate module components/coffeeDeliveries/coffeeDelivery
+ng generate module components/coffeeDeliveries/coffeeDeliveryRouting
+
+ng generate component components/coffeeTransactions/index
+ng generate component components/coffeeTransactions/create
+ng generate component components/coffeeTransactions/edit
+ng generate component components/coffeeTransactions/show
+ng generate module components/coffeeTransactions/coffeeTransaction
+ng generate module components/coffeeTransactions/coffeeTransactionRouting
+
 ng generate component components/progress/progress
 ng generate module components/progress/progress
 
@@ -156,13 +178,16 @@ ng generate interceptor interceptors/RoleChange
 ng generate service services/auth
 ng generate service services/user
 ng generate service services/role
-ng generate service services/dealerRegistrations
+ng generate service services/dealerRegistration
 ng generate service services/profile
 ng generate service services/dashboard
 ng generate service services/permit
 ng generate service services/payment
 ng generate service services/license
 ng generate service services/committee
+ng generate service services/coffeePlot
+ng generate service services/coffeeDelivery
+ng generate service services/coffeeTransaction
 
 8. Core
 ng generate service core/app-info
@@ -177,6 +202,9 @@ ng generate interface interfaces/permit
 ng generate interface interfaces/payment
 ng generate interface interfaces/license
 ng generate interface interfaces/committee
+ng generate interface interfaces/coffeePlot
+ng generate interface interfaces/coffeeDelivery
+ng generate interface interfaces/coffeeTransaction
 
 10. Guards
 ng generate guard guards/auth

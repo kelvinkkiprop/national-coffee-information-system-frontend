@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 // import
-import { Observable } from 'rxjs';
-import { AppContextService } from '../core/app-context.service';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { AppContextService } from '../core/app-context.service';
 import { Role } from '../interfaces/role';
 
 @Injectable({

@@ -26,8 +26,24 @@ export function getNavItems(): INavData[] {
     },
     {
       name: 'Traceability',
-      url: '/traceabilities',
-      icon: 'fa-solid fa-route'
+      icon: 'fa-solid fa-route',
+      children: [
+        {
+          name: 'Transactions',
+          url: '/coffee-transactions',
+          icon: 'nav-icon-bullet'
+        },
+        {
+          name: 'Deliveries',
+          url: '/coffee-deliveries',
+          icon: 'nav-icon-bullet'
+        },
+        {
+          name: 'Plots',
+          url: '/coffee-plots',
+          icon: 'nav-icon-bullet'
+        }
+      ]
     },
     {
       name: 'Licenses',
@@ -39,15 +55,15 @@ export function getNavItems(): INavData[] {
       url: '/permits',
       icon: 'fa-solid fa-stamp'
     },
-    {
-      name: 'Dealer Registrations',
-      url: '/dealer-registrations',
-      icon: 'fa-solid fa-handshake'
-    },
 
     {
       title: true,
       name: 'Other'
+    },
+    {
+      name: 'Dealer Registrations',
+      url: '/dealer-registrations',
+      icon: 'fa-solid fa-handshake'
     },
     {
       name: 'Payments',

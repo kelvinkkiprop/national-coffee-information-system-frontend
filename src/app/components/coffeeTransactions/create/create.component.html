@@ -1,0 +1,76 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="stage_id" class="col-form-label required">Stage:</label>
+                <select (change)="onStageChange($event.target)" formControlName="stage_id" [ngClass]="{'is-invalid': itemForm.get('stage_id')?.invalid && (itemForm.get('stage_id')?.dirty || itemForm.get('stage_id')?.touched)}" type="text" class="form-control">
+                  <option value="" disabled="true" selected="true">--- Select stage ---</option>
+                  <option *ngFor="let item of mStages" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <div *ngIf="itemForm.get('stage_id')?.invalid && (itemForm.get('stage_id')?.dirty || itemForm.get('stage_id')?.touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('stage_id')?.errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="itemForm.get('stage_id')?.value==1" class="col-md-12">
+              <div class="form-group mb-3">
+                <label class="col-form-label required">Coffee Deliveries:</label>
+                <div class="row container">
+                  <div *ngFor="let item of mDeliveries" class="col-md-4 form-check">
+                    <input class="form-check-input" type="checkbox" [id]="'delivery_'+item.id" [checked]="mSelectedDeliveries.includes(item.id)" (change)="onDeliveryChange(item.id, $event)"/>
+                    <label class="form-check-label" [for]="'delivery_'+item.id">{{ item.delivery_number }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div *ngIf="itemForm.get('stage_id')?.value!=1" class="col-md-12">
+              <div class="form-group mb-3">
+                <label class="col-form-label required">Coffee Lots:</label>
+                <div class="row container">
+                  <div *ngFor="let item of mLots" class="col-md-4 form-check">
+                    <input class="form-check-input" type="checkbox" [id]="'lot_'+item.id" [checked]="mSelectedLots.includes(item.id)" (change)="onLotChange(item.id, $event)"/>
+                    <label class="form-check-label" [for]="'lot_'+item.id">{{ item.lot_number }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="grade" class="col-form-label required">Grade:</label>
+                <input formControlName="grade" [ngClass]="{'is-invalid': itemForm.get('grade').invalid && (itemForm.get('grade').dirty || itemForm.get('grade').touched)}" type="text" class="form-control"/>
+                <div *ngIf="itemForm.get('grade').invalid && (itemForm.get('grade').dirty || itemForm.get('grade').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('grade').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="quantity" class="col-form-label required">Quantity (Kg):</label>
+                <input formControlName="quantity" [ngClass]="{'is-invalid': itemForm.get('quantity').invalid && (itemForm.get('quantity').dirty || itemForm.get('quantity').touched)}" type="number" class="form-control"/>
+                <div *ngIf="itemForm.get('quantity').invalid && (itemForm.get('quantity').dirty || itemForm.get('quantity').touched)" class="invalid-feedback" role="alert">
+                  <div *ngIf="itemForm.get('quantity').errors?.['required']">This field is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 text-end">
+            <button routerLink="/coffee-transactions" type="button" class="btn btn-light">Cancel</button>
+            <button [disabled]="itemForm.invalid" type="submit" class="btn btn-warning">Submit</button>
+          </div>
+
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

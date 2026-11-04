@@ -1,0 +1,20 @@
+export interface CoffeePlot {
+  id?: string,
+  owner_id?:any,
+  size?:any,
+  soil_profile?:any,
+  number_of_coffee_trees?:any,
+  coffee_species_id?:any,
+  cooperative_society_id?:any,
+  country_id?:any,
+  county_id?:any,
+  latitude?:any,
+  longitude?:any,
+  geo_json_geometry?:any,
+  deforestation_free?:any,
+  legal_compliance_status_id?:any,
+  status_id?:any,
+
+  created_at?: Date,
+  updated_at?: Date,
+}

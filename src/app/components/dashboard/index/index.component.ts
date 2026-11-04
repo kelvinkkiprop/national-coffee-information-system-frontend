@@ -28,7 +28,7 @@ export class IndexComponent {
   myRecentPermits?:any[] = []
 
   mCurrentUser:any
-  mProgress = signal(false);
+  mProgress = signal(false)
 
   constructor(
     private mDownloadService: DashboardService,
