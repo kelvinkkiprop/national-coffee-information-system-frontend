@@ -64,4 +64,9 @@ constructor(
   }
 
 
+  traceItem(item: any){
+    const url = `${environment.base_url}/trace-coffee-transactions`;
+    return this.http.post<any[]>(url, item, this.mAppContextService.getHttpOptions());
+  }
+
 }

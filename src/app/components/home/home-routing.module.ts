@@ -8,6 +8,7 @@ import { HowItWorksComponent } from './show/inc/how-it-works/how-it-works.compon
 import { StandardsComponent } from './show/inc/standards/standards.component';
 import { TermsAndConditionsComponent } from './show/inc/others/terms-and-conditions/terms-and-conditions.component';
 import { PrivacyPolicyComponent } from './show/inc/others/privacy-policy/privacy-policy.component';
+import { TraceComponent } from './show/inc/trace/trace.component';
 
 
 // Routes
@@ -64,6 +65,13 @@ const routes: Routes = [
         component: PrivacyPolicyComponent,
         data: {
           title: 'Privacy Policy'
+        }
+      },
+      {
+        path: 'trace/:serial_number',
+        component: TraceComponent,
+        data: {
+          title: 'Traceability'
         }
       },
     ]

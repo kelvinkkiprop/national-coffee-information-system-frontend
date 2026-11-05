@@ -73,6 +73,12 @@ export class ShowComponent {
       next: (response) => {
         if(response){
           this.mUsers = (response as any).data.users
+
+          // ExistingCommitteeMembers
+          const memberIds = this.mMembers.map((member: any) => member.user_id)
+          // UsersNotInCommittee
+          this.mUsers = this.mUsers.filter((user: any) => !memberIds.includes(user.id))
+
           this.mProgress.set(false)
         }
       },
@@ -114,7 +120,12 @@ export class ShowComponent {
               next: (response) => {
                 if(response){
                   // console.log(response)
-                  this.mMembers = this.mMembers.filter((items: { id: any })=>items.id !== item.id)
+                  // this.mMembers = this.mMembers.filter((items: { id: any })=>items.id !== item.id)
+
+                   // Call
+                  this.getItem()
+                  this.loadUnpaginatedItems()
+
                   this.mToastrService.warning((response as any).message)
                   this.mProgress.set(false)
                 }
@@ -145,6 +156,12 @@ export class ShowComponent {
         if(response){
           this.mToastrService.success((response as any).message)
           this.mMembers = (response as any).data.members
+
+          // ExistingCommitteeMembers
+          const memberIds = this.mMembers.map((member: any) => member.user_id)
+          // UsersNotInCommittee
+          this.mUsers = this.mUsers.filter((user: any) => !memberIds.includes(user.id))
+
           this.mProgress.set(false)
         }
       },

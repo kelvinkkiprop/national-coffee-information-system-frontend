@@ -44,7 +44,8 @@ export class LocationsComponent {
     this.mCoffeePlotService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          // this.mPlots = (response as any).data.coffee_plots
+          this.mPlots = (response as any).data.coffee_plots
+          console.log('mPlots', this.mPlots)
           const features = (response as any).data.coffee_plots.map((plot: any) => ({
             type: 'Feature',
             properties: {

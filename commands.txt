@@ -36,6 +36,7 @@ ng generate component components/home/show
 ng generate component components/home/show/inc/support
 ng generate component components/home/show/inc/standards
 ng generate component components/home/show/inc/how-it-works
+ng generate component components/home/show/inc/trace
 ng generate component components/home/show/inc/others/terms-and-conditions
 ng generate component components/home/show/inc/others/privacy-policy
 

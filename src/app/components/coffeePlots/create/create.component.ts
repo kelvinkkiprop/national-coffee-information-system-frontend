@@ -20,7 +20,11 @@ export class CreateComponent {
   itemForm:any
   mProgress = signal(false)
 
-  mRoleTypes:any
+  mUsers:any
+  mCoffeeSpecies:any
+  mCounties:any
+  mCooperativeSocieties:any
+  mCountries:any
 
   constructor(
     private mCoffeePlotService: CoffeePlotService,
@@ -31,9 +35,17 @@ export class CreateComponent {
   ) {
     // validation
     this.itemForm = this.fb.group({
-      id: ['', Validators.required],
-      name: ['', Validators.required],
-      type_id: ['', Validators.required],
+      owner_id: ['', Validators.required],
+      size: ['', Validators.required],
+      soil_profile: ['', Validators.nullValidator],
+      coffee_species_id: ['', Validators.required],
+      number_of_coffee_trees: ['', Validators.nullValidator],
+      cooperative_society_id: ['', Validators.nullValidator],
+      country_id: ['', Validators.required],
+      county_id: ['', Validators.required],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
+      geo_json_geometry: ['', Validators.required],
     });
   }
 
@@ -69,7 +81,11 @@ export class CreateComponent {
     this.mCoffeePlotService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          this.mRoleTypes = (response as any).data.role_types
+          this.mUsers = (response as any).data.users
+          this.mCoffeeSpecies = (response as any).data.coffee_species
+          this.mCounties = (response as any).data.counties
+          this.mCooperativeSocieties = (response as any).data.cooperative_societies
+          this.mCountries = (response as any).data.countries
           this.mProgress.set(false)
         }
       },

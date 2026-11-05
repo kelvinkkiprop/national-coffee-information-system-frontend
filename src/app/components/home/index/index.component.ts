@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
+import { CoffeeTransactionService } from '../../../services/coffee-transaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -14,41 +16,48 @@ export class IndexComponent {
   // variables
   mProgress = signal(false)
 
-  search_term:any
+  item:any
+
+  serial_number:any
   itemForm:any
 
   constructor(
-    // private mHomeService: HomeService,
+    private mCoffeeTransactionService: CoffeeTransactionService,
     public mToastrService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     // validation
-    this.search_term = new FormControl('', Validators.required)
+    this.serial_number = new FormControl('', Validators.required)
     this.itemForm = new FormGroup({
-      search_term: this.search_term,
+      serial_number: this.serial_number,
     })
   }
 
   // onChange
   onSearch(formValues: any){
-    this.mToastrService.success(formValues.search_term)
-    // this.mProgress.set(true)
-    // this.mHomeService.searchItems(formValues).subscribe({
-    //   next: (response) => {
-    //     if(response){
-    //       this.mRoles = (response as any).data
-    //       this.mToastrService.success((response as any).message)
-    //       this.mProgress.set(false)
-    //     }
-    //   },
-    //   error: (error) => {
-    //     if(error.error.message){
-    //       this.mToastrService.warning(error.error.message)
-    //     }
-    //     this.mProgress.set(false)
-    //   }
-    // })
+    this.mProgress.set(true)
+    this.mCoffeeTransactionService.traceItem(formValues).subscribe({
+      next: (response) => {
+        if(response){
+          if((response as any).status === 'success'){
+            this.item = (response as any).data
+            this.mToastrService.success((response as any).message)
+            this.router.navigateByUrl(`/home/details/trace/${encodeURIComponent(formValues.serial_number)}`)
+          }else{
+            this.mToastrService.warning((response as any).message)
+          }
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    })
   }
 
 }

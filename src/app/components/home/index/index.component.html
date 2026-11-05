@@ -42,18 +42,19 @@
                               </p>
                             </div>
                             <div class="py-4">
-                              <form [formGroup]="itemForm" (change)="onSearch(itemForm.value)">
-                              <div class="form-group mb-3">
-                                <div class="input-group">
-                                  <span class="input-group-text bg-body">
-                                    <i class="fa-solid fa-search" aria-hidden="true"></i>
-                                  </span>
-                                  <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control form-control-lg" placeholder="Serial number...">
-                                  <div *ngIf="search_term.invalid && (search_term.dirty || search_term.touched)" class="invalid-feedback" type="chip">
-                                    <div *ngIf="search_term.errors?.['required']">This field is required.</div>
+                              <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
+                                <div class="form-group mb-3">
+                                  <div class="input-group">
+                                    <input type="text" formControlName="serial_number" [ngClass]="{'is-invalid': serial_number.invalid && (serial_number.dirty || serial_number.touched)}" class="form-control form-control-lg" placeholder="Serial number...">
+                                    <button [disabled]="itemForm.invalid" type="submit" class="input-group-text bg-body1 bg-danger1 bg-warning text-white border-light">
+                                      <span *ngIf="!mProgress()"><i class="fa-solid fa-search" aria-hidden="true"></i> Search</span>
+                                      <span *ngIf="mProgress()"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
+                                    </button>
+                                    <div *ngIf="serial_number.invalid && (serial_number.dirty || serial_number.touched)" class="invalid-feedback" type="chip">
+                                      <div *ngIf="serial_number.errors?.['required']">This field is required.</div>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
                               </form>
                             </div>
                             <div appAnimations="animate-flip-in-x" class="row p-2 text-light">

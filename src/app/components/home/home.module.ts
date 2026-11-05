@@ -15,6 +15,7 @@ import { TermsAndConditionsComponent } from './show/inc/others/terms-and-conditi
 import { StandardsComponent } from './show/inc/standards/standards.component';
 import { SupportComponent } from './show/inc/support/support.component';
 import { ShowComponent } from './show/show.component';
+import { TraceComponent } from './show/inc/trace/trace.component';
 
 
 
@@ -26,6 +27,7 @@ import { ShowComponent } from './show/show.component';
     SupportComponent,
     HowItWorksComponent,
     StandardsComponent,
+    TraceComponent,
     TermsAndConditionsComponent,
     PrivacyPolicyComponent,
   ],
