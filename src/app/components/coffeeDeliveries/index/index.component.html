@@ -35,10 +35,12 @@
             <thead cTableColor="light1">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Number</th>
+                <th scope="col">Delivery No.</th>
+                <th scope="col">Delivered To</th>
                 <th scope="col">Quantity (Kg)</th>
                 <th scope="col">Species</th>
                 <th scope="col">Delivery Date</th>
+                <th scope="col">No. of Bags</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
               </tr>
@@ -47,9 +49,11 @@
               <tr *ngFor="let item of mDeliveries; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td><a routerLink="/coffee-deliveries/show/{{item.id}}" class="small fw-bold">{{ item.delivery_number }}</a></td>
+                <td>{{ item.user?.name }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.coffee_species?.name }}</td>
                 <td>{{ item.delivery_date|date:'dd/MM/yyyy' }}</td>
+                <td>{{ item.number_of_bags }}</td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">

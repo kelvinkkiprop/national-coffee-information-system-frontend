@@ -42,6 +42,7 @@ export class HeaderComponent {
     this.mAuthService.logout().subscribe({
       next: (response) => {
         if(response.status =='success'){
+          this.mCurrentUser = null
           this.mToastrService.success(response.message)
           this.router.navigateByUrl('/auth/login')
           this.mProgress = signal(false)

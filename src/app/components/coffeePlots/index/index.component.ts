@@ -74,13 +74,12 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mPageFrom = (response as any).from
-          this.mPlots =(response as any).data
+          this.mPlots = (response as any).data
           this.links = (response as any).links
           this.mProgress.set(false)
         }
       },
       error: (error) => {
-        // console.log(error)
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }
@@ -103,7 +102,7 @@ export class IndexComponent {
     // Show
     // swal.fire({
     swalWithBootstrapButtons.fire({
-      title: 'Remove "'+item.name+'"?',
+      title: 'Remove "'+item.size+' ha"?',
       text: "You won't be able to revert this!",
       icon: 'error',
       showCancelButton: true,

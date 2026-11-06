@@ -1,9 +1,8 @@
 import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import * as L from 'leaflet';
 import { AppContextService } from '../../../../../core/app-context.service';
-import { CoffeePlotService } from '../../../../../services/coffee-plot.service';
-import { ActivatedRoute } from '@angular/router';
 import { CoffeeTransactionService } from '../../../../../services/coffee-transaction.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class TraceComponent {
   // mProgress = signal(false)
 
   // item:any ={}
-  // serialNumber:any
+  // mTraceabilityMark:any
 
   // constructor(
   //   private mCoffeeTransactionService: CoffeeTransactionService,
@@ -36,10 +35,10 @@ export class TraceComponent {
 
   // // getItem
   // getItem(): void{
-  //   this.serialNumber = this.route.snapshot.paramMap.get(decodeURIComponent('serial_number')) || '';
-  //   // console.log('Serial Number:', this.serialNumber);
+  //   this.mTraceabilityMark = this.route.snapshot.paramMap.get(decodeURIComponent('traceability_mark')) || '';
+  //   // console.log('Serial Number:', this.mTraceabilityMark);
   //   const item: any = {
-  //     serial_number: this.serialNumber,
+  //     traceability_mark: this.mTraceabilityMark,
   //   }
 
   //   this.mProgress.set(true);
@@ -72,11 +71,10 @@ export class TraceComponent {
   @ViewChild('mapContainer') mapContainer!: ElementRef<HTMLDivElement>;
   private map!: L.Map;
 
-   item:any ={}
-  serialNumber:any
+  item:any ={}
+  mTraceabilityMark:any
 
   constructor(
-    private mCoffeePlotService: CoffeePlotService,
     private mCoffeeTransactionService: CoffeeTransactionService,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
@@ -87,7 +85,7 @@ export class TraceComponent {
   ngOnInit(): void {
     // Call
     // this.getItem()
-    this.serialNumber = this.route.snapshot.paramMap.get(decodeURIComponent('serial_number')) || '';
+    this.mTraceabilityMark = this.route.snapshot.paramMap.get(decodeURIComponent('traceability_mark')) || '';
   }
 
   ngAfterViewInit(): void {
@@ -100,16 +98,16 @@ export class TraceComponent {
 
 
       const item: any = {
-        serial_number: this.serialNumber,
+        traceability_mark: this.mTraceabilityMark,
       }
     this.mProgress.set(true);
     this.mCoffeeTransactionService.traceItem(item).subscribe({
     // this.mCoffeePlotService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          console.log('Trace Item Response:', (response as any).data.lot.lots);
-          // this.mPlots = (response as any).data.coffee_plots
-          const mLots = (response as any).data.lot.lots
+          // console.log('Trace Item Response:', (response as any).data.lot.parent_lots);
+          // // this.mPlots = (response as any).data.coffee_plots
+          const mLots = (response as any).data.lot.parent_lots
           let mPlots = mLots.map((lot: any) => {
             return lot.deliveries
           });

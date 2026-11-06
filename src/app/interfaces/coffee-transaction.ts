@@ -1,7 +1,7 @@
 export interface CoffeeTransaction {
   id?: string,
   user_id?:any
-  serial_no?:any
+  traceability_mark?:any
 
   grade?:any
   quantity?:any

@@ -68,7 +68,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'trace/:serial_number',
+        path: 'trace/:traceability_mark',
         component: TraceComponent,
         data: {
           title: 'Traceability'

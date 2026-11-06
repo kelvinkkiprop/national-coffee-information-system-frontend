@@ -10,14 +10,56 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label for="investor_id">Name:</label>
-                <div *ngIf="item.name" class="text-muted">{{ item.name }}</div>
+                <label for="investor_id">Owner:</label>
+                <div *ngIf="item.owner" class="text-muted">{{ item.owner?.name }}</div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label for="investor_id">Type:</label>
-                <div *ngIf="item.type" class="text-muted">{{ item.type?.name }}</div>
+                <label for="investor_id">Size:</label>
+                <div *ngIf="item.size" class="text-muted">{{ item.size }} ha</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Soil Profile:</label>
+                <div *ngIf="item.soil_profile" class="text-muted">{{ item.soil_profile }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Coffee Species:</label>
+                <div *ngIf="item.coffee_species_id" class="text-muted">{{ item.coffee_species?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="investor_id">Cooperative Society:</label>
+                <div *ngIf="item.cooperative_society_id" class="text-muted">{{ item.cooperative_society?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Country:</label>
+                <div *ngIf="item.country" class="text-muted">{{ item.country?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">County:</label>
+                <div *ngIf="item.county" class="text-muted">{{ item.county?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Latitude:</label>
+                <div *ngIf="item.latitude" class="text-muted">{{ item.latitude }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Longitude:</label>
+                <div *ngIf="item.longitude" class="text-muted">{{ item.longitude }}</div>
               </div>
             </div>
             <div class="col-md-6">

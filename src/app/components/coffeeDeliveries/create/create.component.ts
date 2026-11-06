@@ -39,8 +39,12 @@ export class CreateComponent {
       // cooperative_society_id:['', Validators.required],
       // collection_centre_id:['', Validators.required],
       coffee_species_id:['', Validators.required],
+      harvest_date:['', Validators.required],
+      harvest_season:['', Validators.required],
       delivery_date:['', Validators.required],
+      number_of_bags:['', Validators.required],
       quantity:['', Validators.required],
+      price_per_kg:['', Validators.required],
     });
   }
 

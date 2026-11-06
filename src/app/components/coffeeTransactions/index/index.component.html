@@ -16,7 +16,7 @@
               <div class="input-group input-group-sm"  style="width: 150px;">
                 <input type="text" formControlName="search_term" [ngClass]="{'is-invalid': search_term.invalid && (search_term.dirty || search_term.touched)}" class="form-control float-right" placeholder="Search">
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-success btn-sm">
+                  <button [disabled]="itemForm.invalid" type="submit" class="btn btn-success btn-sm">
                     <i class="fa-solid fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
@@ -35,7 +35,8 @@
             <thead cTableColor="light1">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Serial No.</th>
+                <th scope="col">Traceability Mark</th>
+                <th scope="col">Transaction No.</th>
                 <th scope="col">User</th>
                 <th scope="col">Stage</th>
                 <th scope="col">Created</th>
@@ -45,9 +46,10 @@
             <tbody>
               <tr *ngFor="let item of mTransactions; index as i">
                 <td>{{ this.mPageFrom+i }}.</td>
-                <td><a routerLink="/coffee-transactions/show/{{item.id}}" class="small fw-bold">{{ item.serial_no }}</a></td>
+                <td><a routerLink="/coffee-transactions/show/{{item.id}}" class="small fw-bold">{{ item.traceability_mark }}</a></td>
+                <td>{{ item.transaction_number }}</td>
                 <td>{{ item.user?.name }}</td>
-                <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/licenses/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.stage_id==1,'bg-warning':item.stage_id==2, 'bg-success':item.stage_id==3}">{{ item?.stage?.name }}</span></td>
+                <td><span [routerLink]="mAppContextService.hasTypes([1]) ? ['/licenses/process', item.id] : null" class="badge rounded-pill" [ngClass]="{'bg-secondary':item.stage_id==1,'bg-warning':item.stage_id==2, 'bg-success':item.stage_id==3}">{{ item.stage?.alias }}</span></td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">

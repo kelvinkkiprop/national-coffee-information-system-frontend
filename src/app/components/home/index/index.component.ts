@@ -18,7 +18,7 @@ export class IndexComponent {
 
   item:any
 
-  serial_number:any
+  traceability_mark:any
   itemForm:any
 
   constructor(
@@ -29,9 +29,9 @@ export class IndexComponent {
 
   ngOnInit(): void {
     // validation
-    this.serial_number = new FormControl('', Validators.required)
+    this.traceability_mark = new FormControl('', Validators.required)
     this.itemForm = new FormGroup({
-      serial_number: this.serial_number,
+      traceability_mark: this.traceability_mark,
     })
   }
 
@@ -44,7 +44,7 @@ export class IndexComponent {
           if((response as any).status === 'success'){
             this.item = (response as any).data
             this.mToastrService.success((response as any).message)
-            this.router.navigateByUrl(`/home/details/trace/${encodeURIComponent(formValues.serial_number)}`)
+            this.router.navigateByUrl(`/home/details/trace/${encodeURIComponent(formValues.traceability_mark)}`)
           }else{
             this.mToastrService.warning((response as any).message)
           }

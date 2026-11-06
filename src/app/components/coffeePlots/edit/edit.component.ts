@@ -88,6 +88,8 @@ export class EditComponent {
     //   name: formValues.name,
     //   type_id: formValues.type_id,
     // }
+    formValues.id = this.item.id;
+
     this.mProgress.set(true);
     this.mCoffeePlotService.updateItem(formValues).subscribe({
       next: (response) => {

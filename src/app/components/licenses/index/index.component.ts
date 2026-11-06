@@ -75,13 +75,12 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mPageFrom = (response as any).from
-          this.mLicenses =(response as any).data
+          this.mLicenses = (response as any).data
           this.links = (response as any).links
           this.mProgress.set(false)
         }
       },
       error: (error) => {
-        // console.log(error)
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
         }

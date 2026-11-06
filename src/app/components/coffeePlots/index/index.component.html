@@ -40,6 +40,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Owner</th>
                 <th scope="col">Size</th>
+                <!-- <th scope="col">Greater 4ha</th> -->
                 <th scope="col">Species</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -50,6 +51,7 @@
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.owner?.name }}</td>
                 <td>{{ item.size }} ha</td>
+                <!-- <td>{{ item.greater_than_4ha }}</td> -->
                 <td>{{ item.coffee_species?.name }}</td>
                 <td>{{ item.created_at|date }}
                 <td>

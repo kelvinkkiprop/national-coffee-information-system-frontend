@@ -10,14 +10,38 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label for="investor_id">Name:</label>
-                <div *ngIf="item.name" class="text-muted">{{ item.name }}</div>
+                <label for="investor_id">User:</label>
+                <div *ngIf="item.user" class="text-muted">{{ item.user?.name }}</div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label for="investor_id">Type:</label>
-                <div *ngIf="item.type" class="text-muted">{{ item.type?.name }}</div>
+                <label for="investor_id">Farmer:</label>
+                <div *ngIf="item.farmer" class="text-muted">{{ item.farmer?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Plot:</label>
+                <div *ngIf="item.plot" class="text-muted">{{ item.plot?.size }} ha</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Delivery Date:</label>
+                <div *ngIf="item.delivery_date" class="text-muted">{{ item.delivery_date | date }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Quantity:</label>
+                <div *ngIf="item.quantity" class="text-muted">{{ item.quantity }} kg</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="investor_id">Lot:</label>
+                <div *ngIf="item.lot" class="text-muted">{{ item.lot?.lot_number }}</div>
               </div>
             </div>
             <div class="col-md-6">

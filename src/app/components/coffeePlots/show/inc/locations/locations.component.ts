@@ -90,7 +90,7 @@ export class LocationsComponent {
               layer.bindPopup(`
                 <strong>Coffee Plot</strong><br>
                 Area: ${plot.area_ha} ha<br>
-                Coffee Species: ${plot.coffee_species}
+                Species: ${plot.coffee_species}
               `);
             }
           }).addTo(this.map);

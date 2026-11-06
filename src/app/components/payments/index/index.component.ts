@@ -74,7 +74,7 @@ export class IndexComponent {
       next: (response) => {
         if(response){
           this.mPageFrom = (response as any).from
-          this.mPayments =(response as any).data
+          this.mPayments = (response as any).data
           this.links = (response as any).links
           this.mProgress.set(false)
         }

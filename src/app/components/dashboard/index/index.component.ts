@@ -51,17 +51,17 @@ export class IndexComponent {
       next: (response) => {
           // console.log(response)
         if(response){
-          this.mUsers =(response as any).data.users
-          this.mLicenses =(response as any).data.licenses
-          this.mPermits =(response as any).data.permits
-          this.mRevenues =(response as any).data.revenues
-          this.mRecentUsers =(response as any).data.recent_users
+          this.mUsers = (response as any).data.users
+          this.mLicenses = (response as any).data.licenses
+          this.mPermits = (response as any).data.permits
+          this.mRevenues = (response as any).data.revenues
+          this.mRecentUsers = (response as any).data.recent_users
 
-          this.myLicenses =(response as any).data.my_licenses
-          this.myPermits =(response as any).data.my_permits
-          this.myPayments =(response as any).data.my_payments
-          this.myExams =(response as any).data.my_exams
-          this.myRecentPermits =(response as any).data.my_recent_permits
+          this.myLicenses = (response as any).data.my_licenses
+          this.myPermits = (response as any).data.my_permits
+          this.myPayments = (response as any).data.my_payments
+          this.myExams = (response as any).data.my_exams
+          this.myRecentPermits = (response as any).data.my_recent_permits
         }
         this.mProgress.set(false);
       },

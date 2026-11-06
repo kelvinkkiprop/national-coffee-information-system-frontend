@@ -85,7 +85,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
   ngOnInit(): void {
     this.mCurrentUser = this.mAuthService.currentUser;
     this.mInitials = this.mCurrentUser.name.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase()
-    this.mCurrentUser = this.mAuthService.currentUser;
+    this.mCurrentUser = this.mAuthService.currentUser
   }
 
   // onLogout
@@ -94,10 +94,11 @@ export class DefaultHeaderComponent extends HeaderComponent {
     this.mAuthService.logout().subscribe({
       next: (response) => {
         if(response.status =='success'){
-          this.mToastrService.warning(response.message);
-          this.router.navigateByUrl('/auth/login');
+          this.mCurrentUser = null
+          this.mToastrService.warning(response.message)
+          this.router.navigateByUrl('/auth/login')
         }else{
-          this.mToastrService.warning(response.message);
+          this.mToastrService.warning(response.message)
         }
         this.mProgress = signal(false)
       },

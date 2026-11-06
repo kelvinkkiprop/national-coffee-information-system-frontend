@@ -61,8 +61,12 @@ export class CreateComponent {
     this.mCoffeePlotService.createItem(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mToastrService.success((response as any).message)
-          this.router.navigateByUrl('/coffee-plots')
+          if((response as any).status === 'success'){
+            this.mToastrService.success((response as any).message)
+            this.router.navigateByUrl('/coffee-plots')
+          }else{
+            this.mToastrService.warning((response as any).message)
+          }
           this.mProgress.set(false)
         }
       },

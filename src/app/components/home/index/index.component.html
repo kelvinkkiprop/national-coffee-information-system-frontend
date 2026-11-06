@@ -35,7 +35,7 @@
                             <div class="text-end">
                               <h5 class="text-light fw-bold">
                                 Verify Your Coffee Mark of Origin
-                                <i class="fa-solid fa-certificate ms-1"></i>
+                                <i class="fa-solid fa-certificate fa-spin ms-1"></i>
                               </h5>
                               <p class="text-light opacity-75 mb-0">
                                 Discover the authenticity and origin of your coffee.
@@ -45,13 +45,13 @@
                               <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
                                 <div class="form-group mb-3">
                                   <div class="input-group">
-                                    <input type="text" formControlName="serial_number" [ngClass]="{'is-invalid': serial_number.invalid && (serial_number.dirty || serial_number.touched)}" class="form-control form-control-lg" placeholder="Serial number...">
+                                    <input type="text" formControlName="traceability_mark" [ngClass]="{'is-invalid': traceability_mark.invalid && (traceability_mark.dirty || traceability_mark.touched)}" class="form-control form-control-lg" placeholder="Traceability Mark...">
                                     <button [disabled]="itemForm.invalid" type="submit" class="input-group-text bg-body1 bg-danger1 bg-warning text-white border-light">
-                                      <span *ngIf="!mProgress()"><i class="fa-solid fa-search" aria-hidden="true"></i> Search</span>
-                                      <span *ngIf="mProgress()"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
+                                      <span *ngIf="!mProgress()"><i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>Search</span>
+                                      <span *ngIf="mProgress()"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i>Search..</span>
                                     </button>
-                                    <div *ngIf="serial_number.invalid && (serial_number.dirty || serial_number.touched)" class="invalid-feedback" type="chip">
-                                      <div *ngIf="serial_number.errors?.['required']">This field is required.</div>
+                                    <div *ngIf="traceability_mark.invalid && (traceability_mark.dirty || traceability_mark.touched)" class="invalid-feedback" type="chip">
+                                      <div *ngIf="traceability_mark.errors?.['required']">This field is required.</div>
                                     </div>
                                   </div>
                                 </div>
