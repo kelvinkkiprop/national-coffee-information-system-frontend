@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { CoffeeTransactionService } from '../../../services/coffee-transaction.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',

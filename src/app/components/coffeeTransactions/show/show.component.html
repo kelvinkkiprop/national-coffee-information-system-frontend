@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label for="investor_id">Serial No:</label>
+                <label for="investor_id">Traceability Mark:</label>
                 <div *ngIf="item.traceability_mark" class="text-muted">{{ item.traceability_mark }}</div>
               </div>
             </div>
@@ -30,44 +30,128 @@
               <fieldset class="border p-4 mb-4">
                 <legend class="float-none w-auto"><h6 class="text-bold1">{{ item.stage?.name }}</h6></legend>
                 <!-- {{ item.lot?.parent_lots | json }} -->
-                  <div *ngIf="item.lot?.parent_lots?.length>0; else noItemsTemplate" class="table-responsive">
-                    <table class="table table-bordered table-striped text-center">
-                      <tbody>
-                        <tr>
-                          <td [attr.colspan]="item.lot?.parent_lots?.length || 2">
-                            <div class="text-success fw-bold">{{ item.lot.lot_number }}</div>
-                            <div class="text-muted">
-                              <small *ngIf="item.grade">Grade: {{ item.grade }} ({{ item.quantity }} kg)</small>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td *ngFor="let mItem of item.lot?.parent_lots; index as i">
-                            <div class="text-success fw-bold">{{ mItem.lot_number }}</div>
-                            <div class="text-muted">
-                              <small *ngIf="mItem.grade">Grade: {{ mItem.grade }} ({{ mItem.quantity }}kg)</small>
-                            </div>
-                            <table class="table table-bordered text-center" *ngIf="mItem.deliveries;">
-                              <tbody>
-                                <tr>
-                                  <td *ngFor="let mItem1 of mItem.deliveries; index as i">
-                                    <div class="text-success fw-bold">{{ mItem1.delivery_number }}</div>
+                  @if(item.stage_id==3){
+                  <!-- Bulking -->
+                    <div *ngIf="item.lot?.parent_lots?.length>0; else noItemsTemplate" class="table-responsive">
+                      <table class="table table-bordered table-striped text-center">
+                        <tbody>
+                          <tr>
+                            <td [attr.colspan]="item.lot?.parent_lots?.length || 2">
+                              <div class="text-success fw-bold">{{ item.lot.lot_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="item.grade">Grade: {{ item.grade }} ({{ item.quantity }} kg)</small>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td *ngFor="let mItem of item.lot?.parent_lots; index as i">
+                              <!-- {{ mItem | json }} -->
+                              <div class="text-success fw-bold">{{ mItem.lot_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="mItem.grade">Grade: {{ mItem.grade }} ({{ mItem.quantity }}kg)</small>
+                              </div>
+                              <table class="table table-bordered text-center" *ngIf="mItem.parent_lots;">
+                                <tbody>
+                                  <tr>
+                                    <td *ngFor="let mItem1 of mItem?.parent_lots; index as i">
+                                      <div class="text-success fw-bold">{{ mItem.lot_number }}</div>
                                       <div class="text-muted">
-                                        <!-- {{ mItem1 | json }} -->
-                                        <small *ngIf="mItem1.plot">Plot: {{ mItem1.plot.size }}ha ({{ mItem1.quantity }} kg)</small>
+                                        <small *ngIf="mItem.grade">Grade: {{ mItem1.grade }} ({{ mItem1.quantity }}kg)</small>
                                       </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <ng-template #noItemsTemplate>
-                    <p class="p-5 text-center text-muted">No items</p>
-                  </ng-template>
+                                      <table class="table table-bordered text-center" *ngIf="mItem1?.deliveries;">
+                                        <tbody>
+                                          <tr>
+                                            <td *ngFor="let mItem2 of mItem1?.deliveries; index as i">
+                                              <div class="text-success fw-bold">{{ mItem2.delivery_number }}</div>
+                                              <div class="text-muted">
+                                                <small *ngIf="mItem2.plot">Plot: {{ mItem2.plot.size }}ha ({{ mItem2.quantity }} kg)</small>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <ng-template #noItemsTemplate>
+                      <p class="p-5 text-center text-muted">No items</p>
+                    </ng-template>
+                  }@else if(item.stage_id==2){
+                  <!-- Processing -->
+                    <div *ngIf="item.lot?.parent_lots?.length>0; else noItemsTemplate" class="table-responsive">
+                      <table class="table table-bordered table-striped text-center">
+                        <tbody>
+                          <tr>
+                            <td [attr.colspan]="item.lot?.parent_lots?.length || 2">
+                              <div class="text-success fw-bold">{{ item.lot.lot_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="item.grade">Grade: {{ item.grade }} ({{ item.quantity }} kg)</small>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td *ngFor="let mItem of item.lot?.parent_lots; index as i">
+                              <div class="text-success fw-bold">{{ mItem.lot_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="mItem.grade">Grade: {{ mItem.grade }} ({{ mItem.quantity }}kg)</small>
+                              </div>
+                              <table class="table table-bordered text-center" *ngIf="mItem.deliveries;">
+                                <tbody>
+                                  <tr>
+                                    <td *ngFor="let mItem1 of mItem.deliveries; index as i">
+                                      <div class="text-success fw-bold">{{ mItem1.delivery_number }}</div>
+                                        <div class="text-muted">
+                                          <!-- {{ mItem1 | json }} -->
+                                          <small *ngIf="mItem1.plot">Plot: {{ mItem1.plot.size }}ha ({{ mItem1.quantity }} kg)</small>
+                                        </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <ng-template #noItemsTemplate>
+                      <p class="p-5 text-center text-muted">No items</p>
+                    </ng-template>
+                  } @else if(item.stage_id==1){
+                    <!-- Aggregation -->
+                     <!-- {{ item.lot?.deliveries | json }} -->
+                    <div *ngIf="item.lot?.deliveries?.length>0; else noItemsTemplate" class="table-responsive">
+                      <table class="table table-bordered table-striped text-center">
+                        <tbody>
+                          <tr>
+                            <td [attr.colspan]="item.lot?.deliveries.length || 2">
+                              <div class="text-success fw-bold">{{ item.lot.lot_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="item.grade">Grade: {{ item.grade }} ({{ item.quantity }} kg)</small>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td *ngFor="let mItem of item.lot?.deliveries; index as i">
+                              <div class="text-success fw-bold">{{ mItem.delivery_number }}</div>
+                              <div class="text-muted">
+                                <small *ngIf="mItem.plot">plot: {{ mItem.plot.size }} ({{ mItem.quantity }}kg)</small>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <ng-template #noItemsTemplate>
+                      <p class="p-5 text-center text-muted">No items</p>
+                    </ng-template>
+                  }
+
               </fieldset>
             </div>
             <div class="col-md-6">

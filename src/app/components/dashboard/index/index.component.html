@@ -68,7 +68,7 @@
             </div>
             <div class="card-body">
               <div *ngIf="mRecentUsers && mRecentUsers.length>0; else noItemsTemplate" class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -103,7 +103,7 @@
         <div *ngIf="mAppContextService.hasRoles([1])" class="col-md-12">
           <h6 class="mt-2 text-muted">External</h6>
         </div>
-        <div class="col-sm-6 col-lg-6">
+        <div class="col-sm-6 col-lg-6 mb-3">
           <div class="card" style="--cui-card-cap-bg: #2C1E15">
             <div class="card-header position-relative d-flex justify-content-center align-items-center">
               <span class="text-white my-4">
@@ -123,7 +123,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-6">
+        <div class="col-sm-6 col-lg-6 mb-3">
           <div class="card" style="--cui-card-cap-bg: #224326">
             <div class="card-header position-relative d-flex justify-content-center align-items-center">
               <span class="text-white my-4">
@@ -132,7 +132,7 @@
             </div>
             <div class="card-body row text-center">
               <div class="col">
-                <div class="fs-5 fw-semibold">{{ (myPayments|| 0) | currency:'KES ':'symbol':'1.2-2' }}</div>
+                <div class="fs-5 fw-semibold">{{ (myPayments || 0) | currency:'KES ':'symbol':'1.2-2' }}</div>
                 <div class="text-uppercase text-body-secondary small">Payments</div>
               </div>
               <div class="vr"></div>
@@ -152,7 +152,7 @@
             </div>
             <div class="card-body">
               <div *ngIf="myRecentPermits && myRecentPermits.length>0; else noItemsTemplate" class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>#</th>

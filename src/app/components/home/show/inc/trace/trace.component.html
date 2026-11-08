@@ -1,14 +1,16 @@
 <div appAnimations="animate-flip-in-x">
   <div class="text-center">
-    <!-- <h5><i class="fa-solid fa-map-location-dot me-2"></i>Coffee Source of Origin</h5> -->
-    <h5>Coffee Source of Origin</h5>
-    <div class="text-muted p-0 m-0 text-sm">Traceability Mark: {{ mTraceabilityMark }}</div>
+    <h5><i class="fa-solid fa-map-location-dot me-2"></i>Coffee Source of Origin</h5>
+    The farm(s) listed below represent the source of coffee associated with traceability mark <strong class="text-success">{{ mTraceabilityMark }}</strong>.
   </div>
   <div class="py-4" style="text-align: justify;">
     <div class="mb-4">
 
       <section class="border rounded p-3">
         <div #mapContainer id="map" style="height: 500px; width: 100%;"></div>
+      <div class="text-start">
+        <small class="text-muted p-0 m-0 text-sm ">{{ mTraceabilityMark }}</small>
+      </div>
       </section>
 
     </div>
