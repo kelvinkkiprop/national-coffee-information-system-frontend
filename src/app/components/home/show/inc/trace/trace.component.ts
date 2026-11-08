@@ -14,66 +14,15 @@ import { CoffeeTransactionService } from '../../../../../services/coffee-transac
 })
 export class TraceComponent {
 
-
-  // // variables
-  // mProgress = signal(false)
-
-  // item:any ={}
-  // mTraceabilityMark:any
-
-  // constructor(
-  //   private mCoffeeTransactionService: CoffeeTransactionService,
-  //   private mToastrService: ToastrService,
-  //   private route: ActivatedRoute,
-  //   private router: Router,
-  // ) {  }
-
-  // ngOnInit(): void {
-  //   // Call
-  //   this.getItem();
-  // }
-
-  // // getItem
-  // getItem(): void{
-  //   this.mTraceabilityMark = this.route.snapshot.paramMap.get(decodeURIComponent('traceability_mark')) || '';
-  //   // console.log('Serial Number:', this.mTraceabilityMark);
-  //   const item: any = {
-  //     traceability_mark: this.mTraceabilityMark,
-  //   }
-
-  //   this.mProgress.set(true);
-  //   this.mCoffeeTransactionService.traceItem(item).subscribe({
-  //     next: (response) => {
-  //       if(response){
-  //         this.item = response as any
-  //         this.mProgress.set(false)
-  //         // console.log('Trace Item Response:', this.item);
-  //       }
-  //     },
-  //     error: (error) => {
-  //       if(error.error.message){
-  //         this.mToastrService.warning(error.error.message)
-  //       }
-  //       this.mProgress.set(false)
-  //     }
-  //   });
-  // }
-
-
-
-
-
-
   // variables
-  mProgress = signal(false)
-  mPlots: any = {}
-
-  @ViewChild('mapContainer') mapContainer!: ElementRef<HTMLDivElement>;
-  private map!: L.Map;
+  @ViewChild('mapContainer') mapContainer!: ElementRef<HTMLDivElement>
+  private map!: L.Map
 
   item:any ={}
-  mTraceabilityMark:any
+  mProgress = signal(false)
 
+  mTraceabilityMark:any
+  mPlots: any = {}
   mLots:any
 
   constructor(
@@ -82,7 +31,6 @@ export class TraceComponent {
     public mAppContextService: AppContextService,
     private route: ActivatedRoute,
   ) {  }
-
 
   ngOnInit(): void {
     // Call
@@ -98,10 +46,9 @@ export class TraceComponent {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-
-      const item: any = {
-        traceability_mark: this.mTraceabilityMark,
-      }
+    const item: any = {
+      traceability_mark: this.mTraceabilityMark,
+    }
     this.mProgress.set(true);
     this.mCoffeeTransactionService.traceItem(item).subscribe({
     // this.mCoffeePlotService.unpaginatedItems().subscribe({
@@ -124,7 +71,6 @@ export class TraceComponent {
           console.log(this.mLots)
           // console.log((response as any).data.lot)
           // const mLots = (response as any).data.lot.parent_lots
-          let mPlots = null;
           if(mStageId === 1){
             this.mPlots = this.mLots.deliveries
           }else{
@@ -132,19 +78,16 @@ export class TraceComponent {
               return lot.deliveries
             });
           }
-
-
-          // console.log('mPlots:', mPlots);
-
+          const features = this.mPlots
+          // console.log('mPlots:', mPlots)
           //  let mPlots = this.mLots.map((lot: any) => {
           //   return lot.deliveries
           // });
-          const features = this.mPlots
+          // const features = mPlots
             .flat()
             .filter((delivery: any) => delivery.plot?.geo_json_geometry)
             .map((delivery: any) => {
               const plot = delivery.plot;
-
               return {
                 type: 'Feature',
                 properties: {
@@ -192,7 +135,6 @@ export class TraceComponent {
           if (parcels.getBounds().isValid()) {
             this.map.fitBounds(parcels.getBounds());
           }
-
           this.mProgress.set(false);
         }
       },
