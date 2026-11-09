@@ -7,7 +7,7 @@ export interface User {
   id?: any,
   name?: string,
   email?: string,
-  phone?: string,
+  phone_number: string,
   status_id?: any,
   role_id?: number,
   email_verified_at?: any,

@@ -8,42 +8,12 @@
         <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
 
           <fieldset class="border p-4 mb-4">
-            <legend  class="float-none w-auto"><h6 class="text-bold1">Basic Information</h6></legend>
+            <legend class="float-none w-auto"><h6 class="text-bold1">Basic Information</h6></legend>
             <div class="row">
-              <div *ngIf="item.user" class="col-md-12">
+              <div *ngIf="item.user" class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="role_id" class="col-form-label required">Role:</label>
-                  <select [(ngModel)]="item.user.role_id" formControlName="role_id" [ngClass]="{'is-invalid': itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select role ---</option>
-                    <option *ngFor="let item of mRoles" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('role_id')?.invalid && (itemForm.get('role_id')?.dirty || itemForm.get('role_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('role_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="id_number" class="col-form-label required">ID Number:</label>
-                  <input [(ngModel)]="item.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('id_number').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="phone_number" class="col-form-label required">Phone Number:</label>
-                  <div class="input-group">
-                    <select [(ngModel)]="item.country_code" formControlName="country_code" [ngClass]="{'is-invalid': itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)}" type="text" style="max-width:120px;"class="form-control">
-                      <option value="" disabled="true" selected="true">--- Select country code ---</option>
-                      <option *ngFor="let item of mCountries" value="{{item.code}}">+{{item.code}} ({{item.name}})</option>
-                    </select>
-                    <input [(ngModel)]="item.phone_number" formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="text" class="form-control"/>
-                  </div>
-                  <div *ngIf="itemForm.get('country_code')?.invalid && (itemForm.get('country_code')?.dirty || itemForm.get('country_code')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('country_code')?.errors?.['required']">This field is required.</div>
-                  </div>
+                  <label for="phone_number" class="col-form-label required">Phone Number:</label> <br>
+                  <input (input)="onPhoneInput()" [(ngModel)]="item.user.phone_number" #phoneInput formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="tel" class="form-control"/>
                   <div *ngIf="itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('phone_number').errors?.['required']">This field is required.</div>
                   </div>
@@ -65,7 +35,7 @@
           </fieldset>
 
           <fieldset class="border p-4 mb-4">
-            <legend  class="float-none w-auto"><h6 class="text-bold1">General Information</h6></legend>
+            <legend class="float-none w-auto"><h6 class="text-bold1">General Information</h6></legend>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group mb-3">
@@ -76,6 +46,15 @@
                   </select>
                   <div *ngIf="itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('legal_status_id')?.errors?.['required']">This field is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <label for="id_number" class="col-form-label required">ID Number:</label>
+                  <input [(ngModel)]="item.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
+                  <div *ngIf="itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('id_number').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -108,10 +87,10 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="postal_code" class="col-form-label required">Postal Address:</label>
-                  <textarea [(ngModel)]="item.postal_code" formControlName="postal_code" [ngClass]="{'is-invalid': itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('postal_code').errors?.['required']">This field is required.</div>
+                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
+                  <textarea [(ngModel)]="item.postal_address" formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
+                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
@@ -133,7 +112,7 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="region_id" class="col-form-label required1">Region:</label>
-                  <select (change)="onRegionChange($event.target)" formControlName="region_id" [ngClass]="{'is-invalid': itemForm.get('region_id')?.invalid && (itemForm.get('region_id')?.dirty || itemForm.get('region_id')?.touched)}" type="text" class="form-control">
+                  <select [(ngModel)]="item.region_id" (change)="onRegionChange($event.target)" formControlName="region_id" [ngClass]="{'is-invalid': itemForm.get('region_id')?.invalid && (itemForm.get('region_id')?.dirty || itemForm.get('region_id')?.touched)}" type="text" class="form-control">
                     <option value="" disabled="true" selected="true">--- Select region ---</option>
                     <option *ngFor="let item of mRegions" value="{{item.id}}">{{item.name}}</option>
                   </select>

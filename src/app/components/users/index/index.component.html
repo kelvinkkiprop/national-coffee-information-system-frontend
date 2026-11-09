@@ -38,6 +38,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
+                <th scope="col">Phone</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -49,6 +50,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.role?.name }}</td>
+                <td>{{ item.phone_number }}</td>
                 <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
                 <td>{{ item.created_at|date }}</td>
                 <td>

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 // import
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { AppContextService } from '../../../core/app-context.service';
 import { Profile } from '../../../interfaces/profile';
 import { AuthService } from '../../../services/auth.service';
 import { ProfileService } from '../../../services/profile.service';
+import intlTelInput from 'intl-tel-input';
 
 @Component({
   selector: 'app-edit',
@@ -32,6 +33,10 @@ export class EditComponent {
   id:any
   item:Partial<Profile>={}
 
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  iti: any;
+  phoneNumber: string = '';
+
   constructor(
     private mProfileService: ProfileService,
     private mToastrService: ToastrService,
@@ -44,9 +49,7 @@ export class EditComponent {
     // validation
     this.itemForm = this.fb.group({
       // Basic
-      role_id: ['', Validators.required],
       id_number: ['', Validators.nullValidator],
-      country_code: ['', Validators.required],
       phone_number: ['', Validators.required],
       country_id: ['', Validators.required],
       // General
@@ -140,6 +143,7 @@ export class EditComponent {
         if(response){
           this.mRoles = (response as any).data.roles
           this.mLegalStatuses = (response as any).data.legal_statuses
+          this.mRegions = (response as any).data.regions
           this.mCountries = (response as any).data.countries
           this.mCounties = (response as any).data.counties
           this.mSubCounties = (response as any).data.sub_counties
@@ -152,6 +156,27 @@ export class EditComponent {
         this.mToastrService.warning(error.error.message)
         this.mProgress.set(false)
       }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.iti = intlTelInput(this.phoneInput.nativeElement, {
+      initialCountry: 'ke',
+      separateDialCode: true,
+      // preferredCountries: ['ke', 'ug', 'tz', 'us', 'gb'],
+      loadUtils: () => import('intl-tel-input/utils')
+    });
+    // Set_existing_phone
+    const phone = this.itemForm.get('phone_number')?.value;
+    if (phone) {
+      this.iti.setNumber(phone);
+    }
+  }
+
+  onPhoneInput(): void {
+    this.phoneNumber = this.iti.getNumber();
+    this.itemForm.patchValue({
+      phone_number: this.phoneNumber
     });
   }
 

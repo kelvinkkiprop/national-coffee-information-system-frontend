@@ -46,7 +46,8 @@
               "ckeditor5/ckeditor5.css",
               "node_modules/@iqx-limited/ngx-toastr/toastr.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/intl-tel-input/dist/css/intlTelInput.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",

@@ -426,8 +426,8 @@ sudo vim /etc/apache2/sites-available/ncis.conf
   # ----------------------------------------------------------------
   DocumentRoot /var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser
   <Directory "/var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser">
-      AllowOverride All
-      Require all granted
+    AllowOverride All
+    Require all granted
   </Directory>
 
   # ----------------------------------------------------------------
@@ -435,8 +435,8 @@ sudo vim /etc/apache2/sites-available/ncis.conf
   # ----------------------------------------------------------------
   Alias /api /var/www/html/national-coffee-information-system-backend/public
   <Directory "/var/www/html/national-coffee-information-system-backend/public">
-      AllowOverride All
-      Require all granted
+    AllowOverride All
+    Require all granted
   </Directory>
 
 
@@ -450,7 +450,8 @@ sudo vim /etc/apache2/sites-available/ncis.conf
 
 
 2. Enable conf file:
-$ a2ensite ncis.conf
+sudo a2dissite 000-default.conf
+a2ensite ncis.conf
 
 3. Restart the apache service:
 systemctl reload apache2
@@ -632,3 +633,51 @@ export class ParcelMapComponent implements AfterViewInit, OnDestroy {
   <div id="map"></div>
 </div>
 =================================================./Leaflet=================================================
+
+
+=================================================intlTelInput=================================================
+1. Installation
+npm install intl-tel-input
+
+2.HTML
+<div class="mb-3">
+  <label class="form-label">Phone Number</label>
+  <input #phoneInput type="tel" class="form-control" (input)="onPhoneInput()" placeholder="Enter phone number"/>
+</div>
+
+3. TypeScript
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import intlTelInput from 'intl-tel-input';
+
+@Component({
+  selector: 'app-phone',
+  templateUrl: './phone.component.html'
+})
+export class PhoneComponent implements AfterViewInit {
+
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  iti: any;
+
+  ngAfterViewInit(): void {
+    this.iti = intlTelInput(this.phoneInput.nativeElement, {
+      initialCountry: 'ke',
+      separateDialCode: true,
+      nationalMode: true,
+      preferredCountries: ['ke', 'ug', 'tz', 'us', 'gb'],
+      loadUtils: () => import('intl-tel-input/utils')
+    });
+  }
+  getPhoneNumber(): string {
+    return this.iti.getNumber();
+  }
+}
+
+3. styles.scss
+@import "intl-tel-input/build/css/intlTelInput.css";
+.iti {
+  width: 100%;
+}
+.iti input {
+  width: 100%;
+}
+=================================================./intlTelInput=================================================

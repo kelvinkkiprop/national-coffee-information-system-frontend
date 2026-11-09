@@ -89,7 +89,7 @@ export class AuthService {
           id: response.data.user.id,
           name: response.data.user.name,
           email: response.data.user.email,
-          phone: response.data.user.phone,
+          phone_number: response.data.user.phone_number,
           status_id: response.data.user.status_id,
           role_id: response.data.user.role_id,
           email_verified_at: response.data.user.email_verified_at,

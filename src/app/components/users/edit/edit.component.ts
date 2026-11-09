@@ -21,7 +21,7 @@ export class EditComponent {
   mProgress = signal(false)
 
   id:any
-  item:User = {}
+  item:Partial<User>={}
 
   mShowPassword = false
 

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 // import
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,7 +6,7 @@ import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
 import { ProfileService } from '../../../services/profile.service';
 import { AuthService } from '../../../services/auth.service';
-
+import intlTelInput from 'intl-tel-input';
 
 @Component({
   selector: 'app-create',
@@ -29,6 +29,9 @@ export class CreateComponent {
   mSubCounties:any
   mWards:any
 
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  iti: any;
+
   constructor(
     private mProfileService: ProfileService,
     private mToastrService: ToastrService,
@@ -40,9 +43,7 @@ export class CreateComponent {
     // validation
     this.itemForm = this.fb.group({
       // Basic
-      role_id: ['', Validators.required],
-      country_code: ['', Validators.required],
-      phone_number: ['', Validators.required],
+      phone_number: ['', Validators.nullValidator],
       country_id: ['', Validators.required],
       // General
       legal_status_id: ['', Validators.required],
@@ -75,6 +76,11 @@ export class CreateComponent {
 
   // onSubmit
   onSubmit(formValues: any){
+    // patch
+    this.itemForm.patchValue({
+      phone_number: this.getPhoneNumber()
+    });
+
     this.mProgress.set(true)
     this.mProfileService.createItem(formValues).subscribe({
       next: (response) => {
@@ -123,6 +129,21 @@ export class CreateComponent {
     });
   }
 
+
+  // ngAfterViewInit
+  ngAfterViewInit(): void {
+    this.iti = intlTelInput(this.phoneInput.nativeElement, {
+      initialCountry: 'ke',
+      separateDialCode: true,
+      loadUtils: () => import('intl-tel-input/utils')
+    })
+  }
+
+  // getPhoneNumber
+  getPhoneNumber(): string {
+    return this.iti.getNumber()
+  }
+
   // onRegionChange
   onRegionChange($event: any){
     let id = $event.value
@@ -147,6 +168,7 @@ export class CreateComponent {
 
   // onCountyChange
   onCountyChange($event: any){
+    console.log('County Change Event:', this.getPhoneNumber())
     let id = $event.value
     this.mWards = []
     // filterCounties

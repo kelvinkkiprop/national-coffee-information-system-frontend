@@ -4,10 +4,7 @@ import { User } from "./user";
 export interface Profile {
   id?: string,
   user_id: string,
-  role_id: number,
   id_number: string,
-  country_code: string,
-  phone_number: string,
   country_id: number,
   // General
   legal_status_id: number,
@@ -17,6 +14,7 @@ export interface Profile {
   postal_address: string,
   postal_code: string,
   // Location
+  region_id: number,
   county_id: number,
   sub_county_id: number,
   ward_id: number,
