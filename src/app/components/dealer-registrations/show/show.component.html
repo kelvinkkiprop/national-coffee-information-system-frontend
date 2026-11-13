@@ -1,0 +1,180 @@
+
+<app-progress *ngIf="mProgress()" />
+
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4 shadow-sm border-0">
+      <c-card-body>
+
+        <div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="application_number">Applicant:</label>
+                <div *ngIf="item.user" class="text-muted">{{ item.user?.name }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="application_number">Status:</label>
+                <div *ngIf="item.status_id" class="text-muted">
+                  <span class="badge rounded-pill" [ngClass]="{'bg-secondary':item.status_id==1,'bg-warning':item.status_id==2, 'bg-dark':item.status_id==3, 'bg-success':item.status_id==4, 'bg-danger':item.status_id==5, 'bg-info':item.status_id==6}">{{ item.status?.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-3">
+                <label for="dealership_services">Dealership/Service Types:</label>
+                <div *ngIf="item.dealership_services" class="text-muted">
+                  <span *ngIf="item.dealership_services?.length">{{ item.dealership_services.map(s => s.name).join(', ') }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <fieldset class="border p-4 mb-4">
+                <legend class="float-none w-auto"><h6 class="text-bold1">Attachments & Others</h6></legend>
+                <div class="row">
+                  <!-- 0_Common  -->
+                  <div *ngIf="item.certificate_of_incorporation_or_registration" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="certificate_of_incorporation_or_registration" class="col-form-label">Certificate of Incorporation or Registration:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.certificate_of_incorporation_or_registration_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.directors_details_id_passport_and_kra_pins" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="directors_details_id_passport_and_kra_pins" class="col-form-label">Names, National ID/Passport and PIN Numbers of Directors, Officials or Proprietors:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.directors_details_id_passport_and_kra_pins_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.tax_compliance_certificate" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="directors_details_id_passport_and_kra_pins" class="col-form-label">Names, National ID/Passport and PIN Numbers of Directors, Officials or Proprietors:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.tax_compliance_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 20_Coffee_Training_School  -->
+                  <div *ngIf="item.premises_ownership_or_lease_document" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="premises_ownership_or_lease_document" class="col-form-label">Proof of Ownership or Lease of the Training Premises:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.premises_ownership_or_lease_document_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.training_equipment_inventory" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="training_equipment_inventory" class="col-form-label">Cupping, Roasting and Brewing Equipment Appropriate to Courses Offered:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.training_equipment_inventory_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.course_outline_and_training_curriculum" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="course_outline_and_training_curriculum" class="col-form-label">Course Outline and Training Curriculum (Developed by the Board under Regulation 6B(2)):</label>
+                      <div class="text-muted1">
+                        <a href="{{item.course_outline_and_training_curriculum_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.company_profile" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="company_profile" class="col-form-label">Names, Qualifications and Certificates of Trainers (Including at least One Liquorer Licensed by the Board for Cupping Courses):</label>
+                      <div class="text-muted1">
+                        <a href="{{item.company_profile_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.public_health_certificate" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="public_health_certificate" class="col-form-label">Public Health Certificate for the Premises:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.public_health_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 21_Event_Organisers -->
+                  <div *ngIf="item.company_profile" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="company_profile" class="col-form-label">Company Profile (Showing Experience in Organising Exhibitions, Festivals, Competitions or Trade Fairs):</label>
+                      <div class="text-muted1">
+                        <a href="{{item.company_profile_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 22_Coffee_Projects -->
+                  <div *ngIf="item.project_document" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="project_document" class="col-form-label">Project Document (Stating  Objectives, Counties and Areas of Operation, Target Beneficiaries, Budget, Sources of Funding/Furation):</label>
+                      <div class="text-muted1">
+                        <a href="{{item.project_document_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.implementation_plan_monitoring_and_evaluation_framework" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="implementation_plan_monitoring_and_evaluation_framework" class="col-form-label">Implementation Plan and Monitoring & Evaluation Framework:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.implementation_plan_monitoring_and_evaluation_framework_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.names_qualifications_and_certificates_of_trainers" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="names_qualifications_and_certificates_of_trainers" class="col-form-label">Names, Qualifications and Certificates of the Trainers (Including at least One Liquorer Licensed by the Board for Cupping Courses):</label>
+                      <div class="text-muted1">
+                        <a href="{{item.names_qualifications_and_certificates_of_trainers_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.education_or_training_accreditation_certificate" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="education_or_training_accreditation_certificate" class="col-form-label">Registration or Accreditation by Relevant Education or Training Accreditation Body:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.education_or_training_accreditation_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="item.public_health_certificate" class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="public_health_certificate" class="col-form-label">Public Health Certificate for the Premises.:</label>
+                      <div class="text-muted1">
+                        <a href="{{item.public_health_certificate_url}}" target="_blank" class="btn btn-link btn-sm">File</a>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_species_id">Effective Date:</label>
+                <div *ngIf="item.effective_date" class="text-muted">{{ item.effective_date | date }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="coffee_form_id">Expiry Date:</label>
+                <div *ngIf="item.date_of_expiry" class="text-muted">{{ item.date_of_expiry | date }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-end">
+            <button routerLink="/dealer-registrations" class="btn btn-light">Cancel</button>
+            <button [routerLink]="mAppContextService.hasTypes([1]) ? ['/dealer-registrations/process', item.id] : null" class="btn btn-warning">Process</button>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

@@ -20,4 +20,9 @@ export class DashboardService {
     return this.http.get<any[]>(url, this.mAppContextService.getHttpOptions());
   }
 
+  formsAndResourceItems():Observable<any[]>{
+    const url = `${environment.base_url}/forms-and-resources`;
+    return this.http.get<any[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
 }

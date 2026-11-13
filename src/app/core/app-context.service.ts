@@ -79,21 +79,6 @@ export class AppContextService {
     return cleanLink;
   }
 
-  // getYoutubeLinks
-  getYoutubeLinks(rawLinks: string): string[] {
-    return rawLinks
-      .split('https://')
-      .filter(x => x)
-      .map(x => 'https://' + x);
-  }
-
-  // getSafeUrl
-  getSafeUrl(videoId: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://www.youtube.com/embed/${videoId}`
-    );
-  }
-
   // stripHtml
   stripHtml(value: string): string {
     return value ? value.replace(/<[^>]+>/g, '') : '';
@@ -101,11 +86,11 @@ export class AppContextService {
 
   // getInitials
   getInitials(name: string): string {
-    if (!name) return '';
+    if(!name) return '';
     // split_by_whitespace
     const parts = name.trim().split(/\s+/);
     let initials = parts[0].charAt(0).toUpperCase();
-    if (parts.length > 1) {
+    if(parts.length>1){
       initials += parts[parts.length - 1].charAt(0).toUpperCase();
     }
     return initials;

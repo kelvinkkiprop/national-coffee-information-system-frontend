@@ -51,7 +51,7 @@
                 <td>{{ item.email }}</td>
                 <td>{{ item.role?.name }}</td>
                 <td>{{ item.phone_number }}</td>
-                <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
+                <td><span class="badge rounded-pill" [ngClass]="{'bg-warning':item.status_id==1,'bg-success':item.status_id==2, 'bg-danger':item.status_id==3}">{{ item?.status?.name }}</span></td>
                 <td>{{ item.created_at|date }}</td>
                 <td>
                   <div class="text-nowrap">

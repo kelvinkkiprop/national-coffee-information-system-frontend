@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { ColComponent, ContainerComponent, RowComponent } from '@coreui/angular';
 
 @Component({
   selector: 'app-auth-ui',
   imports: [
     RouterOutlet,
+    RouterModule,
     ContainerComponent,
     RowComponent,
     ColComponent

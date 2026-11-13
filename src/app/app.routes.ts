@@ -76,12 +76,12 @@ export const routes: Routes = [
       },
       {
         path: 'coffee-transactions',
-        loadChildren: () => import('./components/coffeeTransactions/coffee-transaction.module').then((m) => m.CoffeeTransactionModule),
+        loadChildren: () => import('./components/coffee-transactions/coffee-transaction.module').then((m) => m.CoffeeTransactionModule),
         canActivate: [WithProfileGuard],
       },
       {
         path: 'coffee-deliveries',
-        loadChildren: () => import('./components/coffeeDeliveries/coffee-delivery.module').then((m) => m.CoffeeDeliveryModule),
+        loadChildren: () => import('./components/coffee-deliveries/coffee-delivery.module').then((m) => m.CoffeeDeliveryModule),
         canActivate: [WithProfileGuard],
       },
       {
@@ -96,7 +96,7 @@ export const routes: Routes = [
       },
       {
         path: 'dealer-registrations',
-        loadChildren: () => import('./components/dealerRegistrations//dealer-registration.module').then((m) => m.DealerRegistrationModule),
+        loadChildren: () => import('./components/dealer-registrations//dealer-registration.module').then((m) => m.DealerRegistrationModule),
         canActivate: [WithProfileGuard],
       },
       {
@@ -105,13 +105,18 @@ export const routes: Routes = [
         canActivate: [WithProfileGuard],
       },
       {
-        path: 'roles',
-        loadChildren: () => import('./components/roles/role.module').then((m) => m.RoleModule),
+        path: 'committees',
+        loadChildren: () => import('./components/committees/committee.module').then((m) => m.CommitteeModule),
         canActivate: [WithProfileGuard],
       },
       {
-        path: 'committees',
-        loadChildren: () => import('./components/committees/committee.module').then((m) => m.CommitteeModule),
+        path: 'forms-and-resources',
+        loadChildren: () => import('./components/forms-and-resources/forms-and-resources.module').then((m) => m.FormsAndResourcesModule),
+        canActivate: [WithProfileGuard],
+      },
+      {
+        path: 'roles',
+        loadChildren: () => import('./components/roles/role.module').then((m) => m.RoleModule),
         canActivate: [WithProfileGuard],
       },
       {

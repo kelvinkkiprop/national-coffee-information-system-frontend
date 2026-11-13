@@ -5,7 +5,6 @@
     <c-card class="mb-4 shadow-sm border-0">
       <c-card-body>
 
-        {{ itemForm.valid }}
 
         <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
 
@@ -15,7 +14,7 @@
               <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="phone_number" class="col-form-label required">Phone Number:</label> <br>
-                  <input #phoneInput formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="tel" class="form-control"/>
+                  <input #phoneInput formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="tel" class="form-control w-100"/>
                   <div *ngIf="itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('phone_number').errors?.['required']">This field is required.</div>
                   </div>

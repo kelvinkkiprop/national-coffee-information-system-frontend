@@ -17,7 +17,7 @@
               <span class="text-muted">{{ getDate() }}</span>
             </div>
             <div class="ms-3">
-              <a routerLink="/dashboard" class="btn btn-warning btn-sm">
+              <a routerLink="/forms-and-resources" class="btn btn-warning btn-sm">
                 <i class="fa fa-arrow-circle-right"></i> User Guide
               </a>
             </div>
@@ -83,7 +83,7 @@
                       <td>{{ i+1 }}.</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.role?.name }}</td>
-                      <td><span class="badge rounded-pill" [ngClass]="item?.status_id===1 ? 'bg-success':'bg-warning'">{{ item?.status?.name }}</span></td>
+                      <td><span class="badge rounded-pill" [ngClass]="{'bg-warning':item.status_id==1,'bg-success':item.status_id==2, 'bg-danger':item.status_id==3}">{{ item?.status?.name }}</span></td>
                       <td>{{ item.created_at | date }}</td>
                     </tr>
                   </tbody>

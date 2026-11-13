@@ -155,6 +155,11 @@ ng generate component components/coffeeTransactions/show
 ng generate module components/coffeeTransactions/coffeeTransaction
 ng generate module components/coffeeTransactions/coffeeTransactionRouting
 
+ng generate component components/formsAndResources/index
+ng generate component components/formsAndResources/show
+ng generate module components/formsAndResources/formsAndResources
+ng generate module components/formsAndResources/formsAndResourcesRouting
+
 ng generate component components/progress/progress
 ng generate module components/progress/progress
 
@@ -177,6 +182,7 @@ ng generate interceptor interceptors/RoleChange
 
 7. Services
 ng generate service services/auth
+ng generate service services/home
 ng generate service services/user
 ng generate service services/role
 ng generate service services/dealerRegistration
