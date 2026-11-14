@@ -424,7 +424,7 @@ sudo vim /etc/apache2/sites-available/ncis.conf
 
 <VirtualHost *:80>
 
-  ServerName ncis.konza.go.ke
+  ServerName test-ncis.coffeboard.go.ke
   ServerAdmin kkiprop@konza.go.ke
 
   # ----------------------------------------------------------------
@@ -450,8 +450,41 @@ sudo vim /etc/apache2/sites-available/ncis.conf
   #CustomLog ${APACHE_LOG_DIR}/ncis_access.log combined
 
   RewriteEngine on
-  RewriteCond %{SERVER_NAME} =ncis.konza.go.ke
+  RewriteCond %{SERVER_NAME}=test-ncis.coffeeboard.go.ke
   RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+
+
+<VirtualHost *:80>
+
+  ServerName test-ncis.coffeeboard.go.ke
+  ServerAdmin kkiprop@konza.go.ke
+
+  # ----------------------------------------------------------------
+  # Frontend
+  # ----------------------------------------------------------------
+  DocumentRoot /var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser
+  <Directory "/var/www/html/national-coffee-information-system-frontend/dist/national-coffee-information-system-frontend/browser">
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  # ----------------------------------------------------------------
+  # Backend (/api)
+  # ----------------------------------------------------------------
+  Alias /api /var/www/html/national-coffee-information-system-backend/public
+  <Directory "/var/www/html/national-coffee-information-system-backend/public">
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  # ----------------------------------------------------------------
+  # Logging
+  # ----------------------------------------------------------------
+  ErrorLog ${APACHE_LOG_DIR}/test-ncis_error.log
+  CustomLog ${APACHE_LOG_DIR}/test-ncis_access.log combined
+
 </VirtualHost>
 
 
