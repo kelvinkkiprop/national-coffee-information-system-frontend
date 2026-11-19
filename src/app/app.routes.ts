@@ -86,7 +86,7 @@ export const routes: Routes = [
       },
       {
         path: 'coffee-plots',
-        loadChildren: () => import('./components/coffeePlots/coffee-plot.module').then((m) => m.CoffeePlotModule),
+        loadChildren: () => import('./components/coffee-plots/coffee-plot.module').then((m) => m.CoffeePlotModule),
         canActivate: [WithProfileGuard],
       },
       {

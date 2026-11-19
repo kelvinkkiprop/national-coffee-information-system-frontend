@@ -9,6 +9,7 @@ import { EditComponent } from './edit/edit.component';
 import { IndexComponent } from './index/index.component';
 import { ShowComponent } from './show/show.component';
 import { UserRoutingModule } from './user-routing.module';
+import { ImportComponent } from './create/inc/import/import.component';
 
 
 
@@ -17,7 +18,9 @@ import { UserRoutingModule } from './user-routing.module';
     IndexComponent,
     CreateComponent,
     EditComponent,
-    ShowComponent
+    ShowComponent,
+
+    ImportComponent,
   ],
   imports: [
     CommonModule,

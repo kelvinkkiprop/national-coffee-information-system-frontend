@@ -7,12 +7,23 @@
       <c-card-header>
         <div class="d-flex justify-content-between align-items-center">
           <div class="card-title">
-            <a routerLink="/coffee-plots/create" class="btn btn-warning btn-sm text-light1">
-              <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
-            </a>
-            <a routerLink="/coffee-plots/locations" class="btn btn-light btn-sm">
-              <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Locations
-            </a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a routerLink="/coffee-plots/create" class="btn btn-warning btn-sm text-light1">
+                <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
+              </a>
+              <c-dropdown style="display: inline;">
+                <button cButton cDropdownToggle class="btn btn-light btn-sm">
+                  <i class="fa-solid fa-sync" aria-hidden="true"></i> Sync(GIS)
+                </button>
+                <ul cDropdownMenu class="border-0">
+                  <li cDropdownItem (click)="onSyncPlotItems('1')" class="btn-icon">Greater than 4ha</li>
+                  <li cDropdownItem (click)="onSyncPlotItems('0')" class="btn-icon">Less than 4ha</li>
+                </ul>
+              </c-dropdown>
+              <a routerLink="/coffee-plots/locations" class="btn btn-dark btn-sm">
+                <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Map
+              </a>
+            </div>
           </div>
           <div>
             <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">

@@ -50,7 +50,7 @@ export class EditComponent {
     this.itemForm = this.fb.group({
       // Basic
       id_number: ['', Validators.nullValidator],
-      phone_number: ['', Validators.required],
+      phone: ['', Validators.required],
       country_id: ['', Validators.required],
       // General
       legal_status_id: ['', Validators.required],
@@ -167,7 +167,7 @@ export class EditComponent {
       loadUtils: () => import('intl-tel-input/utils')
     });
     // Set_existing_phone
-    const phone = this.itemForm.get('phone_number')?.value;
+    const phone = this.itemForm.get('phone')?.value;
     if (phone) {
       this.iti.setNumber(phone);
     }
@@ -176,7 +176,7 @@ export class EditComponent {
   onPhoneInput(): void {
     this.phoneNumber = this.iti.getNumber();
     this.itemForm.patchValue({
-      phone_number: this.phoneNumber
+      phone: this.phoneNumber
     });
   }
 

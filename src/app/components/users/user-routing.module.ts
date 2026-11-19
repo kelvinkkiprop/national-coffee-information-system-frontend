@@ -5,6 +5,7 @@ import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ShowComponent } from './show/show.component';
+import { ImportComponent } from './create/inc/import/import.component';
 
 
 // Routes
@@ -40,6 +41,13 @@ const routes: Routes = [
     component: ShowComponent,
     data: {
       title: 'Users / Show'
+    }
+  },
+  {
+    path: 'import',
+    component: ImportComponent,
+    data: {
+      title: 'Users / Import'
     }
   },
 ];

@@ -4,7 +4,6 @@ import { User } from "./user";
 export interface Profile {
   id?: string,
   user_id: string,
-  id_number: string,
   country_id: number,
   // General
   legal_status_id: number,

@@ -78,10 +78,10 @@ export class ShowComponent {
   }
 
 
-  // onReceipt
-  onReceipt(item: any){
+  // onInvoiceReceiptItem
+  onInvoiceReceiptItem(item: any){
     this.mProgress.set(true);
-    this.mPaymentService.onReceipt(item).subscribe({
+    this.mPaymentService.onInvoiceReceiptItem(item).subscribe({
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message);

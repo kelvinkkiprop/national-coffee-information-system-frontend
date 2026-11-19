@@ -12,14 +12,14 @@
             <div class="row">
               <div *ngIf="item.user" class="col-md-6">
                 <div class="form-group mb-3">
-                  <label for="phone_number" class="col-form-label required">Phone Number:</label> <br>
-                  <input (input)="onPhoneInput()" [(ngModel)]="item.user.phone_number" #phoneInput formControlName="phone_number" [ngClass]="{'is-invalid': itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)}" type="tel" class="form-control w-100"/>
-                  <div *ngIf="itemForm.get('phone_number').invalid && (itemForm.get('phone_number').dirty || itemForm.get('phone_number').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('phone_number').errors?.['required']">This field is required.</div>
+                  <label for="phone" class="col-form-label required">Phone Number:</label> <br>
+                  <input (input)="onPhoneInput()" [(ngModel)]="item.user.phone" #phoneInput formControlName="phone" [ngClass]="{'is-invalid': itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)}" type="tel" class="form-control w-100"/>
+                  <div *ngIf="itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)" class="invalid-feedback" role="alert">
+                    <div *ngIf="itemForm.get('phone').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="country_id" class="col-form-label required">Country:</label>
                   <select [(ngModel)]="item.country_id" formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
@@ -49,10 +49,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div *ngIf="item.user" class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="id_number" class="col-form-label required">ID Number:</label>
-                  <input [(ngModel)]="item.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
+                  <input [(ngModel)]="item.user.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
                   <div *ngIf="itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('id_number').errors?.['required']">This field is required.</div>
                   </div>

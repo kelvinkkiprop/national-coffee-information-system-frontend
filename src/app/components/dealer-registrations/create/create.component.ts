@@ -52,7 +52,7 @@ export class CreateComponent {
       // 2_Grower
       cooperative_society_id: ['', Validators.nullValidator],
       // ATTACHMENTS
-      // 20_Coffee_Training_School
+      // 16_Coffee_Training_School
       certificate_of_incorporation_or_registration: ['', Validators.nullValidator],
       directors_details_id_passport_and_kra_pins: ['', Validators.nullValidator],
       tax_compliance_certificate: ['', Validators.nullValidator],
@@ -62,9 +62,9 @@ export class CreateComponent {
       names_qualifications_and_certificates_of_trainers: ['', Validators.nullValidator],
       education_or_training_accreditation_certificate: ['', Validators.nullValidator],
       public_health_certificate: ['', Validators.nullValidator],
-      // 21_Event_Organisers
+      // 17_Event_Organisers
       company_profile: ['', Validators.nullValidator],
-      // 22_Coffee_Projects
+      // 18_Coffee_Projects
       project_document: ['', Validators.nullValidator],
       county_government_support_letters_and_mou: ['', Validators.nullValidator],
       implementation_plan_monitoring_and_evaluation_framework: ['', Validators.nullValidator],
@@ -90,16 +90,16 @@ export class CreateComponent {
     formData.append('certificate_of_incorporation_or_registration', this.certificate_of_incorporation_or_registration_file ? formData.append('certificate_of_incorporation_or_registration', this.certificate_of_incorporation_or_registration_file, this.certificate_of_incorporation_or_registration_file.name) : formData.append('certificate_of_incorporation_or_registration', ''))
     formData.append('directors_details_id_passport_and_kra_pins', this.directors_details_id_passport_and_kra_pins_file ? formData.append('directors_details_id_passport_and_kra_pins', this.directors_details_id_passport_and_kra_pins_file, this.directors_details_id_passport_and_kra_pins_file.name) : formData.append('directors_details_id_passport_and_kra_pins', ''))
     formData.append('tax_compliance_certificate', this.tax_compliance_certificate_file ? formData.append('tax_compliance_certificate', this.tax_compliance_certificate_file, this.tax_compliance_certificate_file.name) : formData.append('tax_compliance_certificate', ''))
-    // 20_Coffee_Training_School
+    // 16_Coffee_Training_School
     formData.append('premises_ownership_or_lease_document', this.premises_ownership_or_lease_document_file ? formData.append('premises_ownership_or_lease_document', this.premises_ownership_or_lease_document_file, this.premises_ownership_or_lease_document_file.name) : formData.append('premises_ownership_or_lease_document', ''))
     formData.append('training_equipment_inventory', this.training_equipment_inventory_file ? formData.append('training_equipment_inventory', this.training_equipment_inventory_file, this.training_equipment_inventory_file.name) : formData.append('training_equipment_inventory', ''))
     formData.append('course_outline_and_training_curriculum', this.course_outline_and_training_curriculum_file ? formData.append('course_outline_and_training_curriculum', this.course_outline_and_training_curriculum_file, this.course_outline_and_training_curriculum_file.name) : formData.append('course_outline_and_training_curriculum', ''))
     formData.append('names_qualifications_and_certificates_of_trainers', this.names_qualifications_and_certificates_of_trainers_file ? formData.append('names_qualifications_and_certificates_of_trainers', this.names_qualifications_and_certificates_of_trainers_file, this.names_qualifications_and_certificates_of_trainers_file.name) : formData.append('names_qualifications_and_certificates_of_trainers', ''))
     formData.append('education_or_training_accreditation_certificate', this.education_or_training_accreditation_certificate_file ? formData.append('education_or_training_accreditation_certificate', this.education_or_training_accreditation_certificate_file, this.education_or_training_accreditation_certificate_file.name) : formData.append('education_or_training_accreditation_certificate', ''))
     formData.append('public_health_certificate', this.public_health_certificate_file ? formData.append('public_health_certificate', this.public_health_certificate_file, this.public_health_certificate_file.name) : formData.append('public_health_certificate', ''))
-    // 21_Event_Organisers
+    // 17_Event_Organisers
     formData.append('company_profile', this.company_profile_file ? formData.append('company_profile', this.company_profile_file, this.company_profile_file.name) : formData.append('company_profile', ''))
-    // 22_Coffee_Projects
+    // 18_Coffee_Projects
     formData.append('project_document', this.project_document_file ? formData.append('project_document', this.project_document_file, this.project_document_file.name) : formData.append('project_document', ''))
     formData.append('county_government_support_letters_and_mou', this.county_government_support_letters_and_mou_file ? formData.append('county_government_support_letters_and_mou', this.county_government_support_letters_and_mou_file, this.county_government_support_letters_and_mou_file.name) : formData.append('county_government_support_letters_and_mou', ''))
     formData.append('implementation_plan_monitoring_and_evaluation_framework', this.implementation_plan_monitoring_and_evaluation_framework_file ? formData.append('implementation_plan_monitoring_and_evaluation_framework', this.implementation_plan_monitoring_and_evaluation_framework_file, this.implementation_plan_monitoring_and_evaluation_framework_file.name) : formData.append('implementation_plan_monitoring_and_evaluation_framework', ''))
@@ -133,6 +133,7 @@ export class CreateComponent {
           this.mDealershipCategories = (response as any).data.dealership_categories
           this.mCooperativeSocieties = (response as any).data.cooperative_societies
           this.mUsers = (response as any).data.users
+          console.log(response)
           this.mProgress.set(false)
         }
       },

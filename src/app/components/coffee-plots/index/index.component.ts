@@ -68,7 +68,6 @@ export class IndexComponent {
 
   //onChangePage
   onChangePage(item:any){
-
     this.mProgress.set(true)
     this.mCoffeePlotService.paginateItems(item).subscribe({
       next: (response) => {
@@ -172,6 +171,29 @@ export class IndexComponent {
       error: (error) => {
         if(error.error.message){
           this.mToastrService.warning(error.error.message)
+        }
+        this.mProgress.set(false)
+      }
+    })
+  }
+
+  // onSyncPlotItems
+  onSyncPlotItems(id:any){
+    const item: any = {
+      category_id: id,
+    }
+    this.mProgress.set(true)
+    this.mCoffeePlotService.syncPlotItems(item).subscribe({
+      next: (response) => {
+        if(response){
+          this.mToastrService.success((response as any).message)
+          this.index()
+          this.mProgress.set(false)
+        }
+      },
+      error: (error) => {
+        if(error.error.message){
+          this.mToastrService.error(error.error.message)
         }
         this.mProgress.set(false)
       }

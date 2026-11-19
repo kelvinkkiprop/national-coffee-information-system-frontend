@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule, CardModule, FormModule, GridModule, PaginationModule, TableModule } from '@coreui/angular';
+import { ButtonDirective, ButtonModule, CardModule, DropdownComponent, DropdownItemDirective, DropdownMenuDirective, DropdownToggleDirective, FormModule, GridModule, PaginationModule, TableModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ProgressModule } from '../progress/progress.module';
 import { CoffeePlotRoutingModule } from './coffee-plot-routing.module';
@@ -38,6 +38,11 @@ import { ShowComponent } from './show/show.component';
     TableModule,
     ReactiveFormsModule,
     IconModule,
+    ButtonDirective,
+    DropdownComponent,
+    DropdownItemDirective,
+    DropdownMenuDirective,
+    DropdownToggleDirective,
   ]
 })
 export class CoffeePlotModule { }

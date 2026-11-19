@@ -66,11 +66,11 @@ constructor(
     return this.http.get<Payment>(url, this.mAppContextService.getHttpOptions());
   }
 
-  // onReceipt
-  onReceipt(item: any): Observable<any>{
+  // onInvoiceReceiptItem
+  onInvoiceReceiptItem(item: any): Observable<any>{
     let headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/pdf');
-    const url = `${environment.base_url}/receipt-pdf/${item.id}`;
+    const url = `${environment.base_url}/invoice-receipt-pdf/${item.id}`;
     return this.http.get(url, { headers: headers, responseType: 'blob' });
   }
 

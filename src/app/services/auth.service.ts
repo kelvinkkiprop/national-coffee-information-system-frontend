@@ -85,11 +85,12 @@ export class AuthService {
   saveUserLocally(response: any){
     // console.log(response);
       if(response.status=='success'){
-        const user: User = {
+        // const user: User = {
+        const mCurrentUser: any = {
           id: response.data.user.id,
           name: response.data.user.name,
           email: response.data.user.email,
-          phone_number: response.data.user.phone_number,
+          phone: response.data.user.phone,
           status_id: response.data.user.status_id,
           role_id: response.data.user.role_id,
           email_verified_at: response.data.user.email_verified_at,
@@ -104,8 +105,8 @@ export class AuthService {
           profile: response.data.user.profile,
         }
         // store
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.mCurrentUserSubject.next(user);
+        localStorage.setItem('currentUser', JSON.stringify(mCurrentUser));
+        this.mCurrentUserSubject.next(mCurrentUser);
       }
   }
 

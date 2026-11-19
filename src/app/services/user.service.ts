@@ -56,4 +56,11 @@ constructor(
     return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
   }
 
+
+
+  importRegisteredFarmersItems(item: any): Observable<User[]>{
+    const url = `${environment.base_url}/import-farmer-items-users`;
+    return this.http.post<User[]>(url, item);
+  }
+
 }

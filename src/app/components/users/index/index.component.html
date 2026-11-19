@@ -7,9 +7,14 @@
       <c-card-header>
         <div class="d-flex justify-content-between align-items-center">
           <div class="card-title">
-            <a routerLink="/users/create" class="btn btn-warning btn-sm text-light1">
-              <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
-            </a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a routerLink="/coffee-plots/create" class="btn btn-warning btn-sm text-light1">
+                <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
+              </a>
+              <a routerLink="/users/import" class="btn btn-light btn-sm text-light1">
+                <i class="fa-solid fa-upload" aria-hidden="true"></i> Import
+              </a>
+            </div>
           </div>
           <div>
             <form [formGroup]="itemForm" (ngSubmit)="onSearch(itemForm.value)">
@@ -50,7 +55,7 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.role?.name }}</td>
-                <td>{{ item.phone_number }}</td>
+                <td>{{ item.phone }}</td>
                 <td><span class="badge rounded-pill" [ngClass]="{'bg-warning':item.status_id==1,'bg-success':item.status_id==2, 'bg-danger':item.status_id==3}">{{ item?.status?.name }}</span></td>
                 <td>{{ item.created_at|date }}</td>
                 <td>

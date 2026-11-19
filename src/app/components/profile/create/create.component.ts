@@ -43,7 +43,7 @@ export class CreateComponent {
     // validation
     this.itemForm = this.fb.group({
       // Basic
-      phone_number: ['', Validators.nullValidator],
+      phone: ['', Validators.nullValidator],
       country_id: ['', Validators.required],
       // General
       legal_status_id: ['', Validators.required],
@@ -78,7 +78,7 @@ export class CreateComponent {
   onSubmit(formValues: any){
     // patch
     this.itemForm.patchValue({
-      phone_number: this.getPhoneNumber()
+      phone: this.getPhoneNumber()
     });
 
     this.mProgress.set(true)

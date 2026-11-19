@@ -57,4 +57,10 @@ constructor(
     return this.http.get<CoffeePlot[]>(url, this.mAppContextService.getHttpOptions());
   }
 
+
+  syncPlotItems(item: CoffeePlot): Observable<CoffeePlot>{
+    const url = `${environment.base_url}/sync-gis-coffee-plots`;
+    return this.http.post<CoffeePlot>(url, item, this.mAppContextService.getHttpOptions());
+  }
+
 }

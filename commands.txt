@@ -70,6 +70,7 @@ ng generate module components/traceabilities/traceabilityRouting
 
 ng generate component components/users/index
 ng generate component components/users/create
+ng generate component components/users/create/inc/import
 ng generate component components/users/edit
 ng generate component components/users/show
 ng generate module components/users/user
