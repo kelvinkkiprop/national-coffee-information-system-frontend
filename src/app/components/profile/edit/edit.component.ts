@@ -4,10 +4,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
 import { AppContextService } from '../../../core/app-context.service';
-import { Profile } from '../../../interfaces/profile';
 import { AuthService } from '../../../services/auth.service';
-import { ProfileService } from '../../../services/profile.service';
+import { UserService } from '../../../services/user.service';
 import intlTelInput from 'intl-tel-input';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-edit',
@@ -31,14 +31,14 @@ export class EditComponent {
   mWards:any
 
   id:any
-  item:Partial<Profile>={}
+  item:Partial<User>={}
 
   @ViewChild('phoneInput') phoneInput!: ElementRef;
   iti: any;
   phoneNumber: string = '';
 
   constructor(
-    private mProfileService: ProfileService,
+    private mUserService: UserService,
     private mToastrService: ToastrService,
     public mAppContextService: AppContextService,
     public mAuthService: AuthService,
@@ -72,9 +72,32 @@ export class EditComponent {
       building_name: ['', Validators.nullValidator],
       plot_number: ['', Validators.nullValidator],
     });
+
+    // Conditionally_Remove_FormControl
+    this.itemForm.get('legal_status_id')?.valueChanges.subscribe((mLegalStatusId: any) => {
+      const idNumber = this.itemForm.get('id_number')
+      const companyRegistrationNumber = this.itemForm.get('company_registration_number')
+      const companyEstablishmentDate = this.itemForm.get('company_establishment_date')
+      if (Number(mLegalStatusId)===1) {
+        idNumber?.setValidators([Validators.required])
+        companyRegistrationNumber?.clearValidators()
+        companyRegistrationNumber?.reset()
+        companyEstablishmentDate?.clearValidators()
+        companyEstablishmentDate?.reset()
+      } else {
+        companyRegistrationNumber?.setValidators([Validators.required])
+        companyEstablishmentDate?.setValidators([Validators.required])
+        idNumber?.clearValidators()
+        idNumber?.reset()
+      }
+      idNumber?.updateValueAndValidity()
+      companyRegistrationNumber?.updateValueAndValidity()
+      companyEstablishmentDate?.updateValueAndValidity()
+    });
+
   }
 
-
+  // ngOnInit
   ngOnInit(): void {
     // Call
     this.loadUnpaginatedItems()
@@ -85,7 +108,7 @@ export class EditComponent {
   getItem(): void{
     this.id = this.route.snapshot.paramMap.get('id')
     this.mProgress.set(true)
-    this.mProfileService.getOneItem(this.id).subscribe({
+    this.mUserService.getOneItem(this.id).subscribe({
       next: (response) => {
         if(response){
           this.item = response as any
@@ -110,12 +133,13 @@ export class EditComponent {
     }
 
     this.mProgress.set(true);
-    this.mProfileService.updateItem(item).subscribe({
+    this.mUserService.updateProfileItem(item).subscribe({
       next: (response) => {
         if(response){
           this.mToastrService.success((response as any).message)
               let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-              user.profile = (response as any).data;
+              // user.profile = (response as any).data;
+              user = (response as any).data;
               localStorage.setItem('currentUser', JSON.stringify(user));
               // Update_instead_of_refresh
               this.mAuthService.updateUserProfile((response as any).data);
@@ -133,12 +157,10 @@ export class EditComponent {
   }
 
 
-
-
   // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
-    this.mProfileService.unpaginatedItems().subscribe({
+    this.mUserService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
           this.mRoles = (response as any).data.roles
@@ -186,7 +208,7 @@ export class EditComponent {
     this.mSubCounties = []
     // filterCounties
     this.mProgress.set(true)
-    this.mProfileService.filterCounties(id).subscribe({
+    this.mUserService.filterCounties(id).subscribe({
       next: (response) => {
         if(response){
           this.mCounties = response
@@ -208,7 +230,7 @@ export class EditComponent {
     this.mWards = []
     // filterSubCounties
     this.mProgress.set(true)
-    this.mProfileService.filterSubCounties(id).subscribe({
+    this.mUserService.filterSubCounties(id).subscribe({
       next: (response) => {
         if(response){
           this.mSubCounties = response
@@ -228,7 +250,7 @@ export class EditComponent {
   onSubCountyChange($event: any){
     let id = $event.value
     this.mProgress.set(true)
-    this.mProfileService.filterWards(id).subscribe({
+    this.mUserService.filterWards(id).subscribe({
       next: (response) => {
         if(response){
           this.mWards = response

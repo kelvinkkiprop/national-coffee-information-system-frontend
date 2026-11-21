@@ -53,7 +53,7 @@ export class LocationsComponent {
               owner_id: plot.owner_id,
               area_ha: plot.size,
               coffee_species: plot.coffee_species?.name ?? 'N/A',
-              deforestation_status_id: plot.deforestation_status_id,
+              risk_level_id: plot.risk_level_id,
               status_id: plot.status_id
             },
             geometry: JSON.parse(plot.geo_json_geometry)
@@ -72,9 +72,9 @@ export class LocationsComponent {
             //   fillOpacity: 0.5
             // },
             style: (feature) => ({
-              color: feature?.properties?.deforestation_status_id===2 ? '#224326' : '#E2251D',
+              color: feature?.properties?.risk_level_id<=4 ? '#224326' : '#E2251D',
               weight: 2,
-              fillColor: feature?.properties?.deforestation_status_id===2 ? '#62a66b' : '#F5B6B3',
+              fillColor: feature?.properties?.risk_level_id<=4 ? '#62a66b' : '#F5B6B3',
               fillOpacity: 0.5
             }),
             onEachFeature: (feature, layer) => {

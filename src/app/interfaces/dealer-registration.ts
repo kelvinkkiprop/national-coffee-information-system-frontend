@@ -1,5 +1,4 @@
 // import
-import { Profile } from "./profile";
 import { Role } from "./role";
 
 export interface DealerRegistration {
@@ -19,7 +18,6 @@ export interface DealerRegistration {
 
   role?: Role,
   dealerRegistrationStatus?: dealerRegistrationStatus,
-  profile?: Profile,
 }
 
 export interface dealerRegistrationStatus {

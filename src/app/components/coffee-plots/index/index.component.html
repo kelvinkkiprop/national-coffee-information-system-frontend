@@ -7,10 +7,10 @@
       <c-card-header>
         <div class="d-flex justify-content-between align-items-center">
           <div class="card-title">
+            <a routerLink="/coffee-plots/create" class="btn btn-warning btn-sm text-light1">
+              <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
+            </a>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <a routerLink="/coffee-plots/create" class="btn btn-warning btn-sm text-light1">
-                <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add
-              </a>
               <c-dropdown style="display: inline;">
                 <button cButton cDropdownToggle class="btn btn-light btn-sm">
                   <i class="fa-solid fa-sync" aria-hidden="true"></i> Sync(GIS)
@@ -51,7 +51,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Owner</th>
                 <th scope="col">Size</th>
-                <!-- <th scope="col">Greater 4ha</th> -->
+                <th scope="col">Risk Level</th>
                 <th scope="col">Species</th>
                 <th scope="col">Created</th>
                 <th scope="col">Action</th>
@@ -62,7 +62,17 @@
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.owner?.name }}</td>
                 <td>{{ item.size }} ha</td>
-                <!-- <td>{{ item.greater_than_4ha }}</td> -->
+                <!-- <td>
+                  {{ item.risk_level?.name }}
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-sm bg-warning" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                  </div>
+                </td> -->
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="item.risk_level_percentage" [ngClass]="{'bg-success':item.risk_level_id<=2,'bg-warning':item.risk_level_id===3,'bg-danger':item.risk_level_id >= 4}" [attr.aria-valuenow]="item.risk_level_percentage" aria-valuemin="0" aria-valuemax="100">{{ item.risk_level_percentage }}%</div>
+                  </div>
+                </td>
                 <td>{{ item.coffee_species?.name }}</td>
                 <td>{{ item.created_at|date }}
                 <td>

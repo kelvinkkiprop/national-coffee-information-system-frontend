@@ -1,6 +1,5 @@
 // import
 import { Committee } from "./committee";
-import { Profile } from "./profile";
 import { Role } from "./role";
 
 export interface User {
@@ -19,16 +18,58 @@ export interface User {
   updated_at?: string,
   token?: any,
 
+  country_id: number,
+  // General
+  legal_status_id: number,
+  company_registration_number: string,
+  company_establishment_date: string,
+  kra_pin: string,
+  postal_address: string,
+  postal_code: string,
+  // Location
+  region_id: number,
+  county_id: number,
+  sub_county_id: number,
+  ward_id: number,
+  location: string,
+  sub_location: string,
+  village: string,
+  town: string,
+  street_name: string,
+  building_name: string,
+  plot_number: string,
+
   role?: Role,
   status?: status,
-  profile?: Profile,
   committees?: Committee,
+  country?: Country,
+  county?: County,
+  ward?: Ward,
 }
 
 export interface status {
   id?: string,
   name?: string,
   alias?: string,
+  created_at?: Date,
+  updated_at?: Date,
+}
+
+export interface Country {
+  id?: string,
+  name?: string,
+  created_at?: Date,
+  updated_at?: Date,
+}
+export interface County {
+  id?: string,
+  name?: string,
+  created_at?: Date,
+  updated_at?: Date,
+}
+export interface Ward {
+  id?: string,
+  name?: string,
   created_at?: Date,
   updated_at?: Date,
 }

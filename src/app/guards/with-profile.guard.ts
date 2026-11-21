@@ -29,11 +29,12 @@ export class WithProfileGuard implements CanActivate {
     // return true;
 
     const mCurrentUser = this.mAuthService.currentUser;
-    if ((mCurrentUser.role?.type_id===2 && mCurrentUser.profile) || mCurrentUser.role?.type_id===1) {
-    // if (mCurrentUser.profile) {
+    // if ((mCurrentUser.role?.type_id===2 && mCurrentUser.phone!=null) || mCurrentUser.role?.type_id===1) {
+    if (mCurrentUser.phone!=null) {
       return true;
     }
-    this.router.navigateByUrl('profile/create');
+
+    this.router.navigateByUrl(`profile/edit/${mCurrentUser.id}`);
     return false;
 
   }

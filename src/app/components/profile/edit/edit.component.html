@@ -10,10 +10,10 @@
           <fieldset class="border p-4 mb-4">
             <legend class="float-none w-auto"><h6 class="text-bold1">Basic Information</h6></legend>
             <div class="row">
-              <div *ngIf="item.user" class="col-md-6">
+              <div class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="phone" class="col-form-label required">Phone Number:</label> <br>
-                  <input (input)="onPhoneInput()" [(ngModel)]="item.user.phone" #phoneInput formControlName="phone" [ngClass]="{'is-invalid': itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)}" type="tel" class="form-control w-100"/>
+                  <input (input)="onPhoneInput()" [(ngModel)]="item.phone" #phoneInput formControlName="phone" [ngClass]="{'is-invalid': itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)}" type="tel" class="form-control w-100"/>
                   <div *ngIf="itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('phone').errors?.['required']">This field is required.</div>
                   </div>
@@ -49,16 +49,16 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="item.user" class="col-md-12">
+              <div *ngIf="itemForm.get('legal_status_id')?.value==1" class="col-md-12">
                 <div class="form-group mb-3">
                   <label for="id_number" class="col-form-label required">ID Number:</label>
-                  <input [(ngModel)]="item.user.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
+                  <input [(ngModel)]="item.id_number" formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
                   <div *ngIf="itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)" class="invalid-feedback" role="alert">
                     <div *ngIf="itemForm.get('id_number').errors?.['required']">This field is required.</div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div *ngIf="itemForm.get('legal_status_id')?.value!=1" class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="company_registration_number" class="col-form-label required1">Company Registration Number:</label>
                   <input [(ngModel)]="item.company_registration_number" formControlName="company_registration_number" [ngClass]="{'is-invalid': itemForm.get('company_registration_number').invalid && (itemForm.get('company_registration_number').dirty || itemForm.get('company_registration_number').touched)}" type="text" class="form-control"/>
@@ -67,7 +67,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div *ngIf="itemForm.get('legal_status_id')?.value!=1" class="col-md-6">
                 <div class="form-group mb-3">
                   <label for="company_establishment_date" class="col-form-label required1">Company Establishment Date:</label>
                   <input [(ngModel)]="item.company_establishment_date" formControlName="company_establishment_date" [ngClass]="{'is-invalid': itemForm.get('company_establishment_date').invalid && (itemForm.get('company_establishment_date').dirty || itemForm.get('company_establishment_date').touched)}" type="date" class="form-control"/>

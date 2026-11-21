@@ -102,7 +102,6 @@ export class AuthService {
           status: response.data.user.status,
           role: response.data.user.role,
           committees: response.data.user.committees,
-          profile: response.data.user.profile,
         }
         // store
         localStorage.setItem('currentUser', JSON.stringify(mCurrentUser));
@@ -120,26 +119,17 @@ export class AuthService {
   }
 
   // updateUserProfile
-  updateUserProfile(profileData: any) {
-    // const currentUser = this.currentUser;
-    // if (currentUser) {
-    //   currentUser.profile = profileData;
-    //   // Update localStorage
-    //   localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    //   // Update BehaviorSubject
-    //   this.mCurrentUserSubject.next(currentUser);
-    // }
-      const currentUser = this.mCurrentUserSubject.value
-      if (currentUser) {
-        const updatedUser = {...currentUser, profile: {
-          ...currentUser.profile,
-          ...profileData
-        }
+  updateUserProfile(profileData: any): void {
+    const currentUser = this.mCurrentUserSubject.value;
+    if (currentUser) {
+      const updatedUser = {
+        ...currentUser,
+        ...profileData
       };
-      // Update_localStorage
-      localStorage.setItem('currentUser', JSON.stringify(updatedUser))
-      // Update_BehaviorSubject_with_new_object
-      this.mCurrentUserSubject.next(updatedUser)
+      // Update_ocalStorage
+      localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+      // Update_ehaviorSubject
+      this.mCurrentUserSubject.next(updatedUser);
     }
   }
 

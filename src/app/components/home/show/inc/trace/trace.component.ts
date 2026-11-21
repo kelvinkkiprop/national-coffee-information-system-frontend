@@ -51,11 +51,8 @@ export class TraceComponent {
     }
     this.mProgress.set(true);
     this.mCoffeeTransactionService.traceItem(item).subscribe({
-    // this.mCoffeePlotService.unpaginatedItems().subscribe({
       next: (response) => {
         if(response){
-          // console.log('Trace Item Response:', (response as any).data.lot.parent_lots);
-          // // this.mPlots = (response as any).data.coffee_plots
           this.mLots = null
           const mStageId = (response as any).data.stage_id
           if (mStageId === 1) {
@@ -63,15 +60,32 @@ export class TraceComponent {
             // this.mLots = (response as any).data.lot ? [(response as any).data] : [];
           }else if (mStageId === 2) {
             this.mLots = (response as any).data.lot?.parent_lots
-          }else if (mStageId === 3) {
-             this.mLots = (response as any).data.lot?.parent_lots?.flatMap(
-              (parent: any) => parent.parent_lots ?? []
-            ) ?? []
+          // }else if (mStageId === 3) {
+          //    this.mLots = (response as any).data.lot?.parent_lots?.flatMap(
+          //     (parent: any) => parent.parent_lots ?? []
+          //   ) ?? []
+          // }else if (mStageId === 4) {
+          //   this.mLots = (response as any).data.lot?.parent_lots?.flatMap(
+          //     (parent: any) => parent.parent_lots?.flatMap(
+          //       (child: any) => child.parent_lots ?? []
+          //     ) ?? []
+          //   ) ?? [];
+          // }
+            }else{
+              // Recursive
+              const getNestedLots = (lots: any[]): any[] => {
+                return lots.flatMap((lot: any) => [
+                  ...(lot.parent_lots ?? []),
+                  ...getNestedLots(lot.parent_lots ?? [])
+                ])
+              }
+              this.mLots = getNestedLots((response as any).data.lot?.parent_lots ?? [])
           }
-          console.log(this.mLots)
+
+          // console.log(this.mLots)
           // console.log((response as any).data.lot)
           // const mLots = (response as any).data.lot.parent_lots
-          if(mStageId === 1){
+          if(mStageId===1){
             this.mPlots = this.mLots.deliveries
           }else{
             this.mPlots = this.mLots.map((lot: any) => {

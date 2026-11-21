@@ -1,237 +1,50 @@
 <app-progress *ngIf="mProgress()" />
 
-<c-row ngPreserveWhitespaces>
-  <c-col xs="12">
-    <c-card class="mb-4 shadow-sm border-0">
-      <c-card-body>
+<div class="row" ngPreserveWhitespaces>
+  <div class="col-md-12">
+    <div appAnimations="animate-fade-in-left" class="card mb-4 shadow-sm border-0">
 
+      <div class="card-header">
+        <div class="card-title">Update Password</div>
+      </div>
 
+      <div class="card-body">
         <form [formGroup]="itemForm" (ngSubmit)="onSubmit(itemForm.value)">
-
-          <fieldset class="border p-4 mb-4">
-            <legend  class="float-none w-auto"><h6 class="text-bold1">Basic Information</h6></legend>
+          <div class="mb-3">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group mb-3">
-                  <label for="phone" class="col-form-label required">Phone Number:</label> <br>
-                  <input #phoneInput formControlName="phone" [ngClass]="{'is-invalid': itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)}" type="tel" class="form-control w-100"/>
-                  <div *ngIf="itemForm.get('phone').invalid && (itemForm.get('phone').dirty || itemForm.get('phone').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('phone').errors?.['required']">This field is required.</div>
+                  <label for="password" class="col-form-label required">Password:</label>
+                  <div class="input-group">
+                    <input formControlName="password" [ngClass]="{'is-invalid': itemForm.get('password')?.invalid && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)}" [type]="mShowPassword ? 'text':'password'" class="form-control"/>
+                    <span class="input-group-text" role="button" (click)="mShowPassword = !mShowPassword" [attr.aria-label]="mShowPassword ? 'Hide password':'Show password'" style="cursor: pointer;"> <i [class]="mShowPassword ? 'fa-solid fa-eye-slash':'fa-solid fa-eye'"></i></span>
+                    <div *ngIf="itemForm.get('password')?.invalid && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('password')?.errors?.['required']">This field is required.</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group mb-3">
-                  <label for="country_id" class="col-form-label required">Country:</label>
-                  <select formControlName="country_id" [ngClass]="{'is-invalid': itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select country ---</option>
-                    <option *ngFor="let item of mCountries" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('country_id')?.invalid && (itemForm.get('country_id')?.dirty || itemForm.get('country_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('country_id')?.errors?.['required']">This field is required.</div>
+                  <label for="password_confirmation" class="col-form-label required">Confirm Password:</label>
+                  <div class="input-group">
+                    <input formControlName="password_confirmation" [ngClass]="{'is-invalid': itemForm.get('password_confirmation')?.invalid && (itemForm.get('password_confirmation')?.dirty || itemForm.get('password_confirmation')?.touched)}" [type]="mShowPasswordConfirmation ? 'text':'password'" class="form-control"/>
+                    <span class="input-group-text" role="button" (click)="mShowPasswordConfirmation = !mShowPasswordConfirmation" [attr.aria-label]="mShowPasswordConfirmation ? 'Hide password_confirmation':'Show password_confirmation'" style="cursor: pointer;"> <i [class]="mShowPasswordConfirmation ? 'fa-solid fa-eye-slash':'fa-solid fa-eye'"></i></span>
+                    <div *ngIf="itemForm.get('password_confirmation')?.invalid && (itemForm.get('password_confirmation')?.dirty || itemForm.get('password_confirmation')?.touched)" class="invalid-feedback" role="alert">
+                      <div *ngIf="itemForm.get('password_confirmation')?.errors?.['required']">This field is required.</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </fieldset>
-
-          <fieldset class="border p-4 mb-4">
-            <legend  class="float-none w-auto"><h6 class="text-bold1">General Information</h6></legend>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="legal_status_id" class="col-form-label required">Legal Status:</label>
-                  <select formControlName="legal_status_id" [ngClass]="{'is-invalid': itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select legal status ---</option>
-                    <option *ngFor="let item of mLegalStatuses" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('legal_status_id')?.invalid && (itemForm.get('legal_status_id')?.dirty || itemForm.get('legal_status_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('legal_status_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="itemForm.get('legal_status_id')?.value==1" class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="id_number" class="col-form-label required">ID Number:</label>
-                  <input formControlName="id_number" [ngClass]="{'is-invalid': itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('id_number').invalid && (itemForm.get('id_number').dirty || itemForm.get('id_number').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('id_number').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="itemForm.get('legal_status_id')?.value!=1" class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="company_registration_number" class="col-form-label required1">Company Registration Number:</label>
-                  <input formControlName="company_registration_number" [ngClass]="{'is-invalid': itemForm.get('company_registration_number').invalid && (itemForm.get('company_registration_number').dirty || itemForm.get('company_registration_number').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('company_registration_number').invalid && (itemForm.get('company_registration_number').dirty || itemForm.get('company_registration_number').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('company_registration_number').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="itemForm.get('legal_status_id')?.value!=1"  class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="company_establishment_date" class="col-form-label required1">Company Establishment Date:</label>
-                  <input formControlName="company_establishment_date" [ngClass]="{'is-invalid': itemForm.get('company_establishment_date').invalid && (itemForm.get('company_establishment_date').dirty || itemForm.get('company_establishment_date').touched)}" type="date" class="form-control"/>
-                  <div *ngIf="itemForm.get('company_establishment_date').invalid && (itemForm.get('company_establishment_date').dirty || itemForm.get('company_establishment_date').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('company_establishment_date').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="kra_pin" class="col-form-label required1">KRA Pin:</label>
-                  <input formControlName="kra_pin" [ngClass]="{'is-invalid': itemForm.get('kra_pin').invalid && (itemForm.get('kra_pin').dirty || itemForm.get('kra_pin').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('kra_pin').invalid && (itemForm.get('kra_pin').dirty || itemForm.get('kra_pin').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('kra_pin').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="postal_address" class="col-form-label required">Postal Address:</label>
-                  <textarea formControlName="postal_address" [ngClass]="{'is-invalid': itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('postal_address').invalid && (itemForm.get('postal_address').dirty || itemForm.get('postal_address').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('postal_address').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="postal_code" class="col-form-label required">Postal Code:</label>
-                  <textarea formControlName="postal_code" [ngClass]="{'is-invalid': itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)}" type="text" class="form-control"></textarea>
-                  <div *ngIf="itemForm.get('postal_code').invalid && (itemForm.get('postal_code').dirty || itemForm.get('postal_code').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('postal_code').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
+            <div class="mt-3 text-end">
+              <button (click)="goBack()" type="button" class="btn btn-light me-2">Cancel</button>
+              <button [disabled]="itemForm.invalid" type="submit" class="btn btn-warning">Submit</button>
             </div>
-          </fieldset>
-
-          <fieldset class="border p-4 mb-4">
-            <legend  class="float-none w-auto"><h6 class="text-bold1">Location Details</h6></legend>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="region_id" class="col-form-label required1">Region:</label>
-                  <select (change)="onRegionChange($event.target)" formControlName="region_id" [ngClass]="{'is-invalid': itemForm.get('region_id')?.invalid && (itemForm.get('region_id')?.dirty || itemForm.get('region_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select region ---</option>
-                    <option *ngFor="let item of mRegions" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('region_id')?.invalid && (itemForm.get('region_id')?.dirty || itemForm.get('region_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('region_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="county_id" class="col-form-label required1">County:</label>
-                  <select (change)="onCountyChange($event.target)" formControlName="county_id" [ngClass]="{'is-invalid': itemForm.get('county_id')?.invalid && (itemForm.get('county_id')?.dirty || itemForm.get('county_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select county ---</option>
-                    <option *ngFor="let item of mCounties" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('county_id')?.invalid && (itemForm.get('county_id')?.dirty || itemForm.get('county_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('county_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="sub_county_id" class="col-form-label required1">Sub-County:</label>
-                  <select (change)="onSubCountyChange($event.target)" formControlName="sub_county_id" [ngClass]="{'is-invalid': itemForm.get('sub_county_id')?.invalid && (itemForm.get('sub_county_id')?.dirty || itemForm.get('sub_county_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select sub-county ---</option>
-                    <option *ngFor="let item of mSubCounties" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('sub_county_id')?.invalid && (itemForm.get('sub_county_id')?.dirty || itemForm.get('sub_county_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('sub_county_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="ward_id" class="col-form-label required1">Ward:</label>
-                  <select formControlName="ward_id" [ngClass]="{'is-invalid': itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)}" type="text" class="form-control">
-                    <option value="" disabled="true" selected="true">--- Select ward ---</option>
-                    <option *ngFor="let item of mWards" value="{{item.id}}">{{item.name}}</option>
-                  </select>
-                  <div *ngIf="itemForm.get('ward_id')?.invalid && (itemForm.get('ward_id')?.dirty || itemForm.get('ward_id')?.touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('ward_id')?.errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="location" class="col-form-label required">Location:</label>
-                  <input formControlName="location" [ngClass]="{'is-invalid': itemForm.get('location').invalid && (itemForm.get('location').dirty || itemForm.get('location').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('location').invalid && (itemForm.get('location').dirty || itemForm.get('location').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('location').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="sub_location" class="col-form-label required">Sub Location:</label>
-                  <input formControlName="sub_location" [ngClass]="{'is-invalid': itemForm.get('sub_location').invalid && (itemForm.get('sub_location').dirty || itemForm.get('sub_location').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('sub_location').invalid && (itemForm.get('sub_location').dirty || itemForm.get('sub_location').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('sub_location').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group mb-3">
-                  <label for="village" class="col-form-label required">Village:</label>
-                  <input formControlName="village" [ngClass]="{'is-invalid': itemForm.get('village').invalid && (itemForm.get('village').dirty || itemForm.get('village').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('village').invalid && (itemForm.get('village').dirty || itemForm.get('village').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('village').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="town" class="col-form-label required">City/Town:</label>
-                  <input formControlName="town" [ngClass]="{'is-invalid': itemForm.get('town').invalid && (itemForm.get('town').dirty || itemForm.get('town').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('town').invalid && (itemForm.get('town').dirty || itemForm.get('town').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('town').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="street_name" class="col-form-label required">Street Name:</label>
-                  <input formControlName="street_name" [ngClass]="{'is-invalid': itemForm.get('street_name').invalid && (itemForm.get('street_name').dirty || itemForm.get('street_name').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('street_name').invalid && (itemForm.get('street_name').dirty || itemForm.get('street_name').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('street_name').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="building_name" class="col-form-label required">Building Name:</label>
-                  <input formControlName="building_name" [ngClass]="{'is-invalid': itemForm.get('building_name').invalid && (itemForm.get('building_name').dirty || itemForm.get('building_name').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('building_name').invalid && (itemForm.get('building_name').dirty || itemForm.get('building_name').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('building_name').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="plot_number" class="col-form-label required1">Plot Number:</label>
-                  <input formControlName="plot_number" [ngClass]="{'is-invalid': itemForm.get('plot_number').invalid && (itemForm.get('plot_number').dirty || itemForm.get('plot_number').touched)}" type="text" class="form-control"/>
-                  <div *ngIf="itemForm.get('plot_number').invalid && (itemForm.get('plot_number').dirty || itemForm.get('plot_number').touched)" class="invalid-feedback" role="alert">
-                    <div *ngIf="itemForm.get('plot_number').errors?.['required']">This field is required.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <div class="mt-3 text-end">
-            <button routerLink="/profile" type="button" class="btn btn-light">Cancel</button>
-            <button [disabled]="itemForm.invalid" type="submit" class="btn btn-warning">Submit</button>
           </div>
-
         </form>
+      </div>
 
-      </c-card-body>
-    </c-card>
-  </c-col>
-</c-row>
-
+    </div>
+  </div>
+</div>

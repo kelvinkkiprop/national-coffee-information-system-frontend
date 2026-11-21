@@ -57,6 +57,26 @@ constructor(
   }
 
 
+  updateProfileItem(item: User): Observable<User>{
+    const url = `${environment.base_url}/update-profile-users/${item.id}`;
+    return this.http.post<User>(url, item, this.mAppContextService.getHttpOptions());
+  }
+
+  filterCounties(id:number){
+    const url = `${environment.base_url}/filter-counties/${id}`;
+    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+  filterSubCounties(id:number){
+    const url = `${environment.base_url}/filter-sub-counties/${id}`;
+    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
+  filterWards(id:number){
+    const url = `${environment.base_url}/filter-wards/${id}`;
+    return this.http.get<User[]>(url, this.mAppContextService.getHttpOptions());
+  }
+
 
   importRegisteredFarmersItems(item: any): Observable<User[]>{
     const url = `${environment.base_url}/import-farmer-items-users`;

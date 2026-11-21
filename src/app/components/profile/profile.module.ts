@@ -10,7 +10,6 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ShowComponent } from './show/show.component';
 import { AnimationsDirective } from '../../directives/animations.directive';
 import { CreateComponent } from './create/create.component';
-import { UpdatePasswordComponent } from './edit/inc/update-password/update-password.component';
 
 
 
@@ -20,7 +19,6 @@ import { UpdatePasswordComponent } from './edit/inc/update-password/update-passw
     CreateComponent,
     EditComponent,
     ShowComponent,
-    UpdatePasswordComponent
   ],
   imports: [
     CommonModule,

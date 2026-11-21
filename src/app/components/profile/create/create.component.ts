@@ -1,12 +1,9 @@
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, signal } from '@angular/core';
 // import
+import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from '@iqx-limited/ngx-toastr';
-import { AppContextService } from '../../../core/app-context.service';
-import { ProfileService } from '../../../services/profile.service';
 import { AuthService } from '../../../services/auth.service';
-import intlTelInput from 'intl-tel-input';
 
 @Component({
   selector: 'app-create',
@@ -18,192 +15,51 @@ import intlTelInput from 'intl-tel-input';
 export class CreateComponent {
 
   // variables
+  item:any
+  id:any
+
   itemForm:any
   mProgress = signal(false)
 
-  mRoles:any
-  mLegalStatuses:any
-  mCountries:any
-  mRegions:any
-  mCounties:any
-  mSubCounties:any
-  mWards:any
+  mShowPassword = false
+  mShowPasswordConfirmation = false
 
-  @ViewChild('phoneInput') phoneInput!: ElementRef;
-  iti: any;
-
-  constructor(
-    private mProfileService: ProfileService,
-    private mToastrService: ToastrService,
-    public mAppContextService: AppContextService,
-    public mAuthService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
+constructor(
+  private mAuthService: AuthService,
+  private mToastrService: ToastrService,
+  private location: Location,
+  private fb: FormBuilder,
   ) {
     // validation
     this.itemForm = this.fb.group({
-      // Basic
-      phone: ['', Validators.nullValidator],
-      country_id: ['', Validators.required],
-      // General
-      legal_status_id: ['', Validators.required],
-      id_number: ['', Validators.nullValidator],
-      company_registration_number: ['', Validators.nullValidator],
-      company_establishment_date: ['', Validators.nullValidator],
-      kra_pin: ['', Validators.nullValidator],
-      postal_address: ['', Validators.required],
-      postal_code: ['', Validators.required],
-      // Location
-      region_id: ['', Validators.nullValidator],
-      county_id: ['', Validators.nullValidator],
-      sub_county_id: ['', Validators.nullValidator],
-      ward_id: ['', Validators.nullValidator],
-      location: ['', Validators.nullValidator],
-      sub_location: ['', Validators.nullValidator],
-      village: ['', Validators.nullValidator],
-      town: ['', Validators.nullValidator],
-      street_name: ['', Validators.nullValidator],
-      building_name: ['', Validators.nullValidator],
-      plot_number: ['', Validators.nullValidator],
+      password: ['', Validators.required],
+      password_confirmation: ['', Validators.required],
     });
-  }
-
-
-  ngOnInit(): void {
-    // Call
-    this.loadUnpaginatedItems()
-  }
+   }
 
   // onSubmit
   onSubmit(formValues: any){
-    // patch
-    this.itemForm.patchValue({
-      phone: this.getPhoneNumber()
-    });
-
-    this.mProgress.set(true)
-    this.mProfileService.createItem(formValues).subscribe({
-      next: (response) => {
-        if(response){
-          if((response as any).status==='success'){
-            this.mToastrService.success((response as any).message)
-            let user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-              user.profile = (response as any).data;
-              localStorage.setItem('currentUser', JSON.stringify(user));
-              // Update_instead_of_refresh
-              this.mAuthService.updateUserProfile((response as any).data);
-              this.router.navigateByUrl('/profile')
-          }else{
-            this.mToastrService.warning((response as any).message)
-          }
-          this.mProgress.set(false)
-        }
-      },
-      error: (error) => {
-        if(error.error.message){
-          this.mToastrService.warning(error.error.message)
-        }
-        this.mProgress.set(false)
-      }
-    });
-  }
-
-  // loadUnpaginatedItems
-  loadUnpaginatedItems(){
     this.mProgress.set(true);
-    this.mProfileService.unpaginatedItems().subscribe({
+    this.mAuthService.changePassword(formValues).subscribe({
       next: (response) => {
         if(response){
-          this.mRoles = (response as any).data.roles
-          this.mLegalStatuses = (response as any).data.legal_statuses
-          this.mCountries = (response as any).data.countries
-          this.mRegions = (response as any).data.regions
-          // this.mCounties = (response as any).data.counties
-          this.mProgress.set(false)
-        }
-      },
-      error: (error) => {
-        this.mToastrService.warning(error.error.message)
-        this.mProgress.set(false)
-      }
-    });
-  }
-
-
-  // ngAfterViewInit
-  ngAfterViewInit(): void {
-    this.iti = intlTelInput(this.phoneInput.nativeElement, {
-      initialCountry: 'ke',
-      separateDialCode: true,
-      loadUtils: () => import('intl-tel-input/utils')
-    })
-  }
-
-  // getPhoneNumber
-  getPhoneNumber(): string {
-    return this.iti.getNumber()
-  }
-
-  // onRegionChange
-  onRegionChange($event: any){
-    let id = $event.value
-    this.mSubCounties = []
-    // filterSubCounties
-    this.mProgress.set(true)
-    this.mProfileService.filterCounties(id).subscribe({
-      next: (response) => {
-        if(response){
-          this.mCounties = response
-          this.mProgress.set(false)
+          this.mToastrService.success((response as any).message);
+          this.item = (response as any).data;
+          this.mProgress.set(false);
         }
       },
       error: (error) => {
         if(error.error.message){
-          this.mToastrService.warning(error.error.message)
+          this.mToastrService.warning(error.error.message);
         }
-        this.mProgress.set(false)
+        this.mProgress.set(false);
       }
     });
   }
 
-  // onCountyChange
-  onCountyChange($event: any){
-    console.log('County Change Event:', this.getPhoneNumber())
-    let id = $event.value
-    this.mWards = []
-    // filterCounties
-    this.mProgress.set(true)
-    this.mProfileService.filterSubCounties(id).subscribe({
-      next: (response) => {
-        if(response){
-          this.mSubCounties = response
-          this.mProgress.set(false)
-        }
-      },
-      error: (error) => {
-        if(error.error.message){
-          this.mToastrService.warning(error.error.message)
-        }
-        this.mProgress.set(false)
-      }
-    });
-  }
-
-  // onSubCountyChange
-  onSubCountyChange($event: any){
-    let id = $event.value
-    this.mProgress.set(true)
-    this.mProfileService.filterWards(id).subscribe({
-      next: (response) => {
-        if(response){
-          this.mWards = response
-          this.mProgress.set(false)
-        }
-      },
-      error: (error) => {
-        this.mProgress.set(false)
-      }
-    })
+  // goBack
+  goBack(){
+    this.location.back();
   }
 
 }
