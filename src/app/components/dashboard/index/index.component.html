@@ -32,28 +32,28 @@
           <h6 class="mt-2 text-muted">Internal</h6>
         </div>
         <div class="col-sm-6 col-md-3">
-          <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers || 0 }}">
+          <c-widget-stat-c [title]="'Users'" class="mb-4" color="info" inverse value="{{ mUsers | number }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-users fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
         </div>
         <div class="col-sm-6 col-md-3">
-          <c-widget-stat-c [title]="'Licenses'" class="mb-4" color="warning" inverse value="{{ mLicenses || 0 }}">
+          <c-widget-stat-c [title]="'Licenses'" class="mb-4" color="warning" inverse value="{{ mLicenses | number }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-id-card fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
         </div>
         <div class="col-sm-6 col-md-3">
-          <c-widget-stat-c [title]="'Permits'" class="mb-4" color="success" inverse value="{{ mPermits || 0 }}">
+          <c-widget-stat-c [title]="'Permits'" class="mb-4" color="success" inverse value="{{ mPermits | number }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-stamp fs-1" aria-hidden="true"></i>
             </ng-template>
           </c-widget-stat-c>
         </div>
         <div class="col-sm-6 col-md-3">
-          <c-widget-stat-c [title]="'Revenues'" class="mb-4" color="danger" inverse value="{{ (mRevenues || 0) | currency:'KES ':'symbol':'1.2-2' }}">
+          <c-widget-stat-c [title]="'Revenues'" class="mb-4" color="danger" inverse value="{{ (mRevenues | number) | currency:'KES ':'symbol':'1.2-2' }}">
             <ng-template cTemplateId="widgetIconTemplate">
               <i class="fa-solid fa-coins fs-1" aria-hidden="true"></i>
             </ng-template>
@@ -132,7 +132,7 @@
             </div>
             <div class="card-body row text-center">
               <div class="col">
-                <div class="fs-5 fw-semibold">{{ (myPayments || 0) | currency:'KES ':'symbol':'1.2-2' }}</div>
+                <div class="fs-5 fw-semibold">{{ (myPayments | number) | currency:'KES ':'symbol':'1.2-2' }}</div>
                 <div class="text-uppercase text-body-secondary small">Payments</div>
               </div>
               <div class="vr"></div>

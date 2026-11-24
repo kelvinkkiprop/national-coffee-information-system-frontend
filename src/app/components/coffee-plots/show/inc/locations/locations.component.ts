@@ -77,22 +77,22 @@ export class LocationsComponent {
               fillColor: feature?.properties?.risk_level_id<=4 ? '#62a66b' : '#F5B6B3',
               fillOpacity: 0.5
             }),
-            onEachFeature: (feature, layer) => {
-              const plot = feature.properties;
-              layer.bindTooltip(
-                `${plot.area_ha} ha`,
-                {
-                  permanent: true,
-                  direction: 'center',
-                  className: 'parcel-label'
-                }
-              );
-              layer.bindPopup(`
-                <strong>Coffee Plot</strong><br>
-                Area: ${plot.area_ha} ha<br>
-                Species: ${plot.coffee_species}
-              `);
-            }
+            // onEachFeature: (feature, layer) => {
+            //   const plot = feature.properties;
+            //   layer.bindTooltip(
+            //     `${plot.area_ha} ha`,
+            //     {
+            //       permanent: true,
+            //       direction: 'center',
+            //       className: 'parcel-label'
+            //     }
+            //   );
+            //   layer.bindPopup(`
+            //     <strong>Coffee Plot</strong><br>
+            //     Area: ${plot.area_ha} ha<br>
+            //     Species: ${plot.coffee_species}
+            //   `);
+            // }
           }).addTo(this.map);
 
           if (parcels.getBounds().isValid()) {

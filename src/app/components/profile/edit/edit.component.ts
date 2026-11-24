@@ -156,7 +156,6 @@ export class EditComponent {
     });
   }
 
-
   // loadUnpaginatedItems
   loadUnpaginatedItems(){
     this.mProgress.set(true);
@@ -181,6 +180,7 @@ export class EditComponent {
     });
   }
 
+  // ngAfterViewInit
   ngAfterViewInit(): void {
     this.iti = intlTelInput(this.phoneInput.nativeElement, {
       initialCountry: 'ke',

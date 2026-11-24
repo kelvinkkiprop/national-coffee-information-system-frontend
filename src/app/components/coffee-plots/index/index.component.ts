@@ -178,14 +178,16 @@ export class IndexComponent {
   }
 
   // onSyncPlotItems
-  onSyncPlotItems(id:any){
+  onSyncPlotItems(id:any, source:any){
     const item: any = {
       category_id: id,
+      data_source_id: source,
     }
     this.mProgress.set(true)
     this.mCoffeePlotService.syncPlotItems(item).subscribe({
       next: (response) => {
         if(response){
+          console.log(response)
           this.mToastrService.success((response as any).message)
           this.index()
           this.mProgress.set(false)
