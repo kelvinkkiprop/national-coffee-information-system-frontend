@@ -15,15 +15,13 @@
                 <button cButton cDropdownToggle class="btn btn-light btn-sm">
                   <i class="fa-solid fa-sync" aria-hidden="true"></i> Plots/Forests
                 </button>
-                <ul cDropdownMenu class="border-0">
-                  <!-- <li cDropdownItem (click)="onSyncPlotItems('1')" class="btn-icon">Greater than 4ha</li>
-                  <li cDropdownItem (click)="onSyncPlotItems('0')" class="btn-icon">Less than 4ha</li> -->
-                    <li cDropdownItem (click)="onSyncPlotItems('1','1')" class="btn-icon">GPS Surveys < 4ha</li>
-                    <li cDropdownItem (click)="onSyncPlotItems('0','1')" class="btn-icon">GPS Surveys > 4ha</li>
-                    <li cDropdownItem (click)="onSyncPlotItems('1','2')" class="btn-icon">Remote Sensing < 4ha</li>
-                    <li cDropdownItem (click)="onSyncPlotItems('0','2')" class="btn-icon">Remote Sensing > 4ha</li>
-                </ul>
                 <!-- <ul cDropdownMenu class="border-0">
+                    <li cDropdownItem (click)="onSyncPlotItems('1','1')" class="btn-icon">GPS Surveys > 4ha</li>
+                    <li cDropdownItem (click)="onSyncPlotItems('0','1')" class="btn-icon">GPS Surveys < 4ha</li>
+                    <li cDropdownItem (click)="onSyncPlotItems('1','2')" class="btn-icon">Remote Sensing > 4ha</li>
+                    <li cDropdownItem (click)="onSyncPlotItems('0','2')" class="btn-icon">Remote Sensing < 4ha</li>
+                </ul> -->
+                <ul cDropdownMenu class="border-0">
                   <li class="dropdown-submenu">
                     <button class="dropdown-item d-flex justify-content-between align-items-center">
                       GPS Surveys <i class="fa fa-chevron-right ms-2"></i>
@@ -37,11 +35,11 @@
                       Remote Sensing <i class="fa fa-chevron-right ms-2"></i>
                     </button>
                     <ul class="dropdown-menu border-0">
-                      <li cDropdownItem (click)="onSyncPlotItems('1','2')" class="btn-icon">Greater than 4ha</li>
-                      <li cDropdownItem (click)="onSyncPlotItems('0','2')" class="btn-icon">Less than 4ha</li>
+                      <li cDropdownItem (click)="onSyncPlotItems('1','2')" class="btn-icon">Geodatabase</li>
+                      <li cDropdownItem (click)="onSyncPlotItems('0','2')" class="btn-icon">Centroids</li>
                     </ul>
                   </li>
-                </ul> -->
+                </ul>
               </c-dropdown>
               <a routerLink="/coffee-plots/locations" class="btn btn-dark btn-sm">
                 <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Map
@@ -74,6 +72,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Farmer</th>
                 <th scope="col">Size</th>
+                <th scope="col">object_id</th>
                 <th scope="col">Risk Level</th>
                 <th scope="col">Tree Count</th>
                 <th scope="col">Created</th>
@@ -85,6 +84,7 @@
                 <td>{{ this.mPageFrom+i }}.</td>
                 <td>{{ item.farmer?.name }}</td>
                 <td>{{ item.size }} ha</td>
+                <td>{{ item.object_id }}</td>
                 <!-- <td>
                   {{ item.risk_level?.name }}
                   <div class="progress">
